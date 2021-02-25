@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TwitchLib;
+using TwitchLib.Api;
 public class Samplescript : MonoBehaviour
 {
     // Start is called before the first frame update
