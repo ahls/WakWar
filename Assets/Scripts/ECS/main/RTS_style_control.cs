@@ -10,31 +10,37 @@ using Unity.Transforms;
 using Unity.Rendering;
 public class RTS_style_control : MonoBehaviour
 {
-
+    [SerializeField]
+    private Mesh mesh;
+    [SerializeField]
+    private Material material;
     private EntityManager EM;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         EM = World.DefaultGameObjectInjectionWorld.EntityManager;
+        SpawnTest(Vector3.zero);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+  
 
 
     #region 
 
     private void SpawnTest(Vector3 spawnLocation)
     {
-        EntityArchetype entityArchetype = EM.CreateArchetype(typeof(TestingUnit), typeof(moveTo), typeof(Translation), typeof(RenderMesh));
+        EntityArchetype entityArchetype = EM.CreateArchetype(
+            typeof(TestingUnit),
+            typeof(moveTo), 
+            typeof(Translation),
+            typeof(RenderMesh),
+            typeof(RenderBounds),
+            typeof(LocalToWorld));
 
         Entity entity = EM.CreateEntity(entityArchetype);
-        EM.SetComponentData<Translation>(entity, new Translation { Value = spawnLocation });
+        //EM.SetComponentData<Translation>(entity, new Translation { Value = spawnLocation });
         EM.SetComponentData<moveTo>(entity, new moveTo { move = true, position = spawnLocation, speed = 5 });
+        EM.SetSharedComponentData<RenderMesh>(entity, new RenderMesh { mesh = mesh, material = material });
     }
 
     #endregion
