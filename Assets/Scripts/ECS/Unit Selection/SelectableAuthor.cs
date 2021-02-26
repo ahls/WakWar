@@ -7,6 +7,7 @@ using Unity.Transforms;
 using Unity.Collections;
 using Unity.Mathematics;
 using Unity.Rendering;
+
 public class SelectableAuthor : MonoBehaviour
 {
     #region 변수
@@ -17,6 +18,7 @@ public class SelectableAuthor : MonoBehaviour
     [SerializeField] private Material sampleMaterial;
     [SerializeField] private Mesh sampleMesh;
     #endregion
+
     private void Awake()
     {
         singleton = this;
@@ -37,14 +39,11 @@ public class SelectableAuthor : MonoBehaviour
 
         for (int i = 0; i < 5; i++)
         {
-
-
             Entity entity = EM.CreateEntity(testArchType);
 
             float3 newLocation = new float3(i * 3f, 0f, 0f);
             EM.SetComponentData(entity, new Translation { Value = newLocation });
             EM.SetSharedComponentData(entity, new RenderMesh { material = sampleMaterial, mesh = sampleMesh });
-
         }
     }
 

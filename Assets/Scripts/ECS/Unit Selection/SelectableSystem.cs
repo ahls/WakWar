@@ -27,12 +27,13 @@ public class SelectableSystem : ComponentSystem
             SelectableAuthor.singleton.selectionBoxTransform.position = startPosition;
         }
 
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             //마우스 좌버튼 눌린 상태
             float3 selectionBoxSize = (float3)Camera.main.ScreenToWorldPoint(Input.mousePosition) - startPosition;
             SelectableAuthor.singleton.selectionBoxTransform.localScale = selectionBoxSize;
         }
+
         if(Input.GetMouseButtonUp(0))
         {
             //마우스 좌버튼 뗌
@@ -63,32 +64,28 @@ public class SelectableSystem : ComponentSystem
                 Entities.WithAll<SelectedComponent>().ForEach((Entity entity) =>
                     {
                         PostUpdateCommands.RemoveComponent<SelectedComponent>(entity);
-                    }
-                    );
+                    });
             }
 
             //범위 안에 있는 엔티티에 선택됨 컴포넌트 추가
             Entities.ForEach((Entity entity, ref SelectableComponent selectable, ref Translation translation)=>
+            {
+                if (selectOne == false || numSelected < 1)
                 {
-                    if (selectOne == false || numSelected < 1)
+                    float3 currentLocation = translation.Value;
+                    if (
+                    currentLocation.x <= topRightPoint.x &&
+                    currentLocation.x >= bottomLeftPoint.x &&
+                    currentLocation.y <= topRightPoint.y &&
+                    currentLocation.y >= bottomLeftPoint.y)
                     {
-                        float3 currentLocation = translation.Value;
-                        if (
-                        currentLocation.x <= topRightPoint.x &&
-                        currentLocation.x >= bottomLeftPoint.x &&
-                        currentLocation.y <= topRightPoint.y &&
-                        currentLocation.y >= bottomLeftPoint.y)
-                        {
-                            PostUpdateCommands.AddComponent(entity, new SelectedComponent { });
-                        }
-                        numSelected++;
+                        PostUpdateCommands.AddComponent(entity, new SelectedComponent { TargetPosition = translation.Value, IsMove = false });
                     }
-                });
+                    numSelected++;
+                }
+            });
 
             Debug.Log("좌하단: " + bottomLeftPoint.x + ", " + bottomLeftPoint.y + "#  우상단: " + topRightPoint.x + ", " + topRightPoint.y);
         }
-
-
-
     }
 }

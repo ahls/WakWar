@@ -8,6 +8,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Rendering;
+
 public class RTS_style_control : MonoBehaviour
 {
     [SerializeField]
@@ -21,9 +22,6 @@ public class RTS_style_control : MonoBehaviour
         EM = World.DefaultGameObjectInjectionWorld.EntityManager;
         SpawnTest(Vector3.zero);
     }
-
-  
-
 
     #region 
 
@@ -47,6 +45,7 @@ public class RTS_style_control : MonoBehaviour
 }
 
 public struct TestingUnit : IComponentData { }
+
 public struct moveTo: IComponentData
 {
     public bool move;
