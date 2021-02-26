@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TwitchLib;
-using TwitchLib.Api;
-public class Samplescript : MonoBehaviour
+
+public class UnitSelection : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
