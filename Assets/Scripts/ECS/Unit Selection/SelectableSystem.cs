@@ -55,12 +55,12 @@ public class SelectableSystem : ComponentSystem
             int numSelected = 0;
 
             // 드래그가 아니라 클릭 이었을 경우, 한 유닛만 선택
-            if (selectArea < selectMinSize) 
-            {
-                selectOne = true;
-                bottomLeftPoint = new float3(-1, -1, 0) * (selectMinSize - selectArea) * 0.5f;
-                topRightPoint = new float3(1, 1, 0) * (selectMinSize - selectArea) * 0.5f;
-            }
+            //if (selectArea < selectMinSize) 
+            //{
+            //    selectOne = true;
+            //    bottomLeftPoint = new float3(-1, -1, 0) * (selectMinSize - selectArea) * 0.5f;
+            //    topRightPoint = new float3(1, 1, 0) * (selectMinSize - selectArea) * 0.5f;
+            //}
             
             // 쉬프트 누르고 있지 않으면 현재 선택된 유닛이 선택 해제됨
             if (!Input.GetKey(KeyCode.LeftShift))
