@@ -20,6 +20,8 @@ public struct SelectedComponent : IComponentData
 public class SelectableSystem : ComponentSystem
 {
     private float3 startPosition;
+    const float selectMinSize = 1f;
+
     protected override void OnUpdate()
     {
         if(Input.GetMouseButtonDown(0))
@@ -49,7 +51,6 @@ public class SelectableSystem : ComponentSystem
             float3 bottomLeftPoint = new float3(math.min(startPosition.x, endPosition.x), math.min(startPosition.y, endPosition.y), 0);
             float3 topRightPoint = new float3(math.max(startPosition.x, endPosition.x), math.max(startPosition.y, endPosition.y), 0);
 
-            float selectMinSize = 10f;
             float selectArea = math.distance(bottomLeftPoint, topRightPoint);
             bool selectOne = false;
             int numSelected = 0;
@@ -72,7 +73,7 @@ public class SelectableSystem : ComponentSystem
             }
 
             //범위 안에 있는 엔티티에 선택됨 컴포넌트 추가
-            Entities.ForEach((Entity entity, ref SelectableComponent selectable, ref Translation translation)=>
+            Entities.WithAll<SelectableComponent>().ForEach((Entity entity, ref Translation translation)=>
             {
                 if (selectOne == false || numSelected < 1)
                 {
@@ -84,12 +85,28 @@ public class SelectableSystem : ComponentSystem
                     currentLocation.y >= bottomLeftPoint.y)
                     {
                         PostUpdateCommands.AddComponent(entity, new SelectedComponent { TargetPosition = translation.Value, IsMove = false });
+                        numSelected++;
                     }
-                    numSelected++;
                 }
             });
 
-            Debug.Log("좌하단: " + bottomLeftPoint.x + ", " + bottomLeftPoint.y + "#  우상단: " + topRightPoint.x + ", " + topRightPoint.y);
         }
+    }
+}
+
+
+
+public class UnitSelectionRenderer : ComponentSystem
+{
+    protected override void OnUpdate()
+    {
+        Entities.WithAll<SelectedComponent>().ForEach((ref Translation translation)
+            =>
+        {
+
+            float3 position = translation.Value + new float3(0, -0.3f,0f);
+            Graphics.DrawMesh(SelectableAuthor.singleton.selectionMesh, position, Quaternion.identity, SelectableAuthor.singleton.selectionMaterial, 2);
+        }
+        );
     }
 }

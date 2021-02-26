@@ -235,6 +235,8 @@ MonoBehaviour:
   selectionBoxTransform: {fileID: 940484099}
   sampleMaterial: {fileID: 2100000, guid: 954c9e8d08f8c2947a1132670d19108a, type: 2}
   sampleMesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  selectionMaterial: {fileID: 2100000, guid: c52f00a7d55fa814e98cc601229ddae7, type: 2}
+  selectionMesh: {fileID: 0}
 --- !u!212 &583092762
 SpriteRenderer:
   m_ObjectHideFlags: 0
