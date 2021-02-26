@@ -11,7 +11,11 @@ using Unity.Collections;
 /// 내용물이 없는 컴포넌트라 시스템과 같은 파일에서 선언했어요.
 /// </summary>
 public struct SelectableComponent : IComponentData{}
-public struct SelectedComponent : IComponentData { }
+public struct SelectedComponent : IComponentData
+{
+    public float3 TargetPosition;
+    public bool IsMove;
+}
 
 public class SelectableSystem : ComponentSystem
 {
