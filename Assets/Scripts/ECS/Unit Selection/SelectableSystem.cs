@@ -49,18 +49,18 @@ public class SelectableSystem : ComponentSystem
             float3 bottomLeftPoint = new float3(math.min(startPosition.x, endPosition.x), math.min(startPosition.y, endPosition.y), 0);
             float3 topRightPoint = new float3(math.max(startPosition.x, endPosition.x), math.max(startPosition.y, endPosition.y), 0);
 
-            float selectMinSize = 8;
+            float selectMinSize = 10f;
             float selectArea = math.distance(bottomLeftPoint, topRightPoint);
             bool selectOne = false;
             int numSelected = 0;
 
             // 드래그가 아니라 클릭 이었을 경우, 한 유닛만 선택
-            //if (selectArea < selectMinSize) 
-            //{
-            //    selectOne = true;
-            //    bottomLeftPoint = new float3(-1, -1, 0) * (selectMinSize - selectArea) * 0.5f;
-            //    topRightPoint = new float3(1, 1, 0) * (selectMinSize - selectArea) * 0.5f;
-            //}
+            if (selectArea < selectMinSize) 
+            {
+                selectOne = true;
+                bottomLeftPoint += new float3(-1, -1, 0) * (selectMinSize - selectArea) * 0.5f;
+                topRightPoint += new float3(1, 1, 0) * (selectMinSize - selectArea) * 0.5f;
+            }
             
             // 쉬프트 누르고 있지 않으면 현재 선택된 유닛이 선택 해제됨
             if (!Input.GetKey(KeyCode.LeftShift))
