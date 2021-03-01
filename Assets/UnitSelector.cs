@@ -91,7 +91,7 @@ public class UnitSelector : MonoBehaviour
     }
 
 
-    readonly private float3 cursorLocation() 
+    private float3 cursorLocation() 
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
