@@ -6,7 +6,6 @@ using UnityEngine;
 public class UnitSelector : MonoBehaviour
 {
     #region 변수
-    public static UnitSelector instance;
     List<GameObject> UnitList = new List<GameObject>();
     private Transform selectionBoxTransform;
     private float3 startLocation;
@@ -19,7 +18,7 @@ public class UnitSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+        IngameManager.instance.SetUnitSelector(this);
         selectionBoxTransform = transform.Find("selectionBox");
     }
 
