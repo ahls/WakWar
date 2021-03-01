@@ -16,7 +16,7 @@ public struct SelectedComponent : IComponentData
     public float3 TargetPosition;
     public bool IsMove;
 }
-
+/*
 public class SelectableSystem : ComponentSystem
 {
     private float3 startPosition;
@@ -94,7 +94,7 @@ public class SelectableSystem : ComponentSystem
     }
 }
 
-
+*/
 
 public class UnitSelectionRenderer : ComponentSystem
 {
