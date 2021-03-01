@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Global : MonoBehaviour
 {
-    static public Global instance
+    public static Global instance
     {
         get
         {
