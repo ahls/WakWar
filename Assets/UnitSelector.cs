@@ -11,6 +11,8 @@ public class UnitSelector : MonoBehaviour
     private Transform selectionBoxTransform;
     private float3 startLocation;
     private const float clickThreshold = 0.1f;
+    private short selectedUnitCount = 0; //마우스 클릭인지 확인할때 사용됨
+    private bool selectOneOnly = false; // 위와 동일
     #endregion
 
 
@@ -58,24 +60,29 @@ public class UnitSelector : MonoBehaviour
             float2 sizeOfBox;
 
             if (math.distance(endLocation,startLocation) <= clickThreshold) 
-            {// 클릭싸이즈면 0.2*0.2 크기 박스로 생성
+            {// 클릭싸이즈면 0.2*0.2 크기 박스로 생성 및 한마리만 잡기 설정
                 Debug.Log(math.distance(endLocation, startLocation));
-                sizeOfBox = new float2(0.2f, 0.2f);
+                sizeOfBox = new float2(clickThreshold,clickThreshold);
+                selectOneOnly = true;
             }
             else
             {// 클릭이 아닐경우 평범하게 생성
                 sizeOfBox = new float2(math.abs(endLocation.x - startLocation.x), math.abs(endLocation.y - startLocation.y));
+                selectOneOnly = false;
             }
-
+            selectedUnitCount = 0;
 
             Collider2D [] thingsInSelcetion = Physics2D.OverlapBoxAll(centerOfBox, sizeOfBox, 0f);
             foreach (Collider2D thing in thingsInSelcetion)
             {
                 UnitStats tempStats = thing.GetComponent<UnitStats>();
-                if(tempStats != null)
+                if(tempStats != null && tempStats.playerOwned)
                 {
                     tempStats.setSelectionCircleState(true);
                     UnitList.Add(thing.gameObject);
+                    selectedUnitCount++;
+                    if (selectOneOnly && selectedUnitCount == 1)
+                        break;
                 }
             }
 
@@ -84,7 +91,7 @@ public class UnitSelector : MonoBehaviour
     }
 
 
-    private float3 cursorLocation()
+    readonly private float3 cursorLocation() 
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
