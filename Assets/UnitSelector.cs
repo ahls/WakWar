@@ -27,20 +27,19 @@ public class UnitSelector : MonoBehaviour
     {
 
         if (Input.GetMouseButtonDown(0))
-        {///좌클릭 누름
+        {
             startLocation = cursorLocation();
             selectionBoxTransform.gameObject.SetActive(true);
             selectionBoxTransform.position = startLocation;
-
         }
+
         if(Input.GetMouseButton(0))
-        {//좌클릭 눌린상태
+        {
             selectionBoxTransform.localScale = cursorLocation() - startLocation;
         }
+
         if(Input.GetMouseButtonUp(0))
-        {//좌클릭 뗌
-
-
+        {
             //쉬프트 안누르고 있으면 선택 해제 안함
             if(!Input.GetKey(KeyCode.LeftShift))
             {
@@ -48,7 +47,8 @@ public class UnitSelector : MonoBehaviour
                 {
                     selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(false);
                 }
-                UnitList.Clear();//리스트 비움
+
+                UnitList.Clear();
             }
 
             selectionBoxTransform.gameObject.SetActive(false);
@@ -59,13 +59,15 @@ public class UnitSelector : MonoBehaviour
             float2 sizeOfBox;
 
             if (math.distance(endLocation,startLocation) <= clickThreshold) 
-            {// 클릭싸이즈면 0.2*0.2 크기 박스로 생성 및 한마리만 잡기 설정
+            {
+                // 클릭싸이즈면 0.2*0.2 크기 박스로 생성 및 한마리만 잡기 설정
                 Debug.Log(math.distance(endLocation, startLocation));
                 sizeOfBox = new float2(clickThreshold,clickThreshold);
                 selectOneOnly = true;
             }
             else
-            {// 클릭이 아닐경우 평범하게 생성
+            {
+                // 클릭이 아닐경우 평범하게 생성
                 sizeOfBox = new float2(math.abs(endLocation.x - startLocation.x), math.abs(endLocation.y - startLocation.y));
                 selectOneOnly = false;
             }
@@ -84,8 +86,6 @@ public class UnitSelector : MonoBehaviour
                         break;
                 }
             }
-
-
         }
     }
 
