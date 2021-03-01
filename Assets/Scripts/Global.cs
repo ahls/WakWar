@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Global : MonoBehaviour
 {
@@ -28,5 +29,10 @@ public class Global : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
     }
 }
