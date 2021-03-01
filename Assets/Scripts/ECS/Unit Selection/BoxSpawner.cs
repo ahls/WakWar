@@ -11,16 +11,22 @@ public struct Spawner_FromEntity : IComponentData
     public Entity Prefab;
 }
 
+public struct Box : IComponentData
+{
+}
+
 public class BoxSpawner : MonoBehaviour
 {
     public GameObject Prefab;
     public int CountX = 100;
     public int CountY = 100;
 
+    private BlobAssetStore _blobAssetStore;
+
     private void Start()
     {
-        var blobAssetStore = new BlobAssetStore();
-        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, blobAssetStore);
+        _blobAssetStore = new BlobAssetStore();
+        var settings = GameObjectConversionSettings.FromWorld(World.DefaultGameObjectInjectionWorld, _blobAssetStore);
         var prefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(Prefab, settings);
         var entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
@@ -34,5 +40,10 @@ public class BoxSpawner : MonoBehaviour
                 entityManager.SetComponentData(instance, new Translation { Value = position });
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        _blobAssetStore.Dispose();
     }
 }
