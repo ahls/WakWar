@@ -14,18 +14,18 @@ public class IngameManager : MonoBehaviour
             return _instance;
         }
     }
-    public static UnitSelector UnitSelector => _unitSelector;
+    public static UnitManager UnitManager => _unitManager;
 
     private static IngameManager _instance;
-    private static UnitSelector _unitSelector;
+    private static UnitManager _unitManager;
 
     private void Awake()
     {
         _instance = this;
     }
 
-    public void SetUnitSelector(UnitSelector unitSelector)
+    public void SetUnitManager(UnitManager unitManager)
     {
-        _unitSelector = unitSelector;
+        _unitManager = unitManager;
     }
 }

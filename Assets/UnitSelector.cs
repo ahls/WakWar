@@ -18,7 +18,6 @@ public class UnitSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IngameManager.instance.SetUnitSelector(this);
         selectionBoxTransform = transform.Find("selectionBox");
     }
 
