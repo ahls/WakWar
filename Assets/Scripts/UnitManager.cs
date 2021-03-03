@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -85,8 +84,11 @@ public class UnitManager : MonoBehaviour
                     tempStats.setSelectionCircleState(true);
                     _selectedUnitList.Add(thing.gameObject);
                     _selectedUnitCount++;
+
                     if (_selectOneOnly && _selectedUnitCount == 1)
+                    {
                         break;
+                    }
                 }
             }
         }
