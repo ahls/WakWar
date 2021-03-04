@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 ﻿using System.Collections;
 using UnityEngine.UI;
+
 public class UnitStats : MonoBehaviour
 {
     #region 변수
@@ -28,7 +29,6 @@ public class UnitStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
         healthBarUpdate();
@@ -39,7 +39,6 @@ public class UnitStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void playerUnitInit(string PlayerName)
@@ -99,11 +98,13 @@ public class UnitStats : MonoBehaviour
 
         selectionCircle.SetActive(value);
     }
+
     public void takeDamage(int damageAmount)
     {
         healthCurrent -= damageAmount;
         healthBarUpdate();
     }
+
     private void healthBarUpdate()
     {
         healthBar.value = healthCurrent;
