@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using TwitchLib.Unity;
+using UnityEngine.UI;
 public class UnitStats : MonoBehaviour
 {
     #region 변수
@@ -10,6 +10,7 @@ public class UnitStats : MonoBehaviour
 
     private int healthCurrent;
 
+    [SerializeField]private Slider healthBar;
     [SerializeField] private GameObject selectionCircle;
     #endregion
 
@@ -17,7 +18,8 @@ public class UnitStats : MonoBehaviour
     void Start()
     {
         healthCurrent = healthMax;
-
+        healthBar.maxValue = healthMax;
+        healthBarUpdate();
         playerOwned = true;
         selectionCircle.SetActive(false);
     }
@@ -36,4 +38,14 @@ public class UnitStats : MonoBehaviour
 
         selectionCircle.SetActive(value);
     }
+    public void takeDamage(int damageAmount)
+    {
+        healthCurrent -= damageAmount;
+        healthBarUpdate();
+    }
+    private void healthBarUpdate()
+    {
+        healthBar.value = healthCurrent;
+    }
+
 }
