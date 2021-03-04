@@ -23,6 +23,7 @@ public class UnitManager : MonoBehaviour
     private void Update()
     {
         SelectUnitControl();
+        UnitMoveControl();
     }
 
     private void SelectUnitControl()
@@ -90,6 +91,17 @@ public class UnitManager : MonoBehaviour
                         break;
                     }
                 }
+            }
+        }
+    }
+
+    private void UnitMoveControl()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            foreach (GameObject selectedUnit in _selectedUnitList)
+            {
+                selectedUnit.GetComponent<UnitStats>().MoveToTarget(cursorLocation());
             }
         }
     }
