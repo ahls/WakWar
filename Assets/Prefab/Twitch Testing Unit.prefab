@@ -544,6 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 6520456813337381849}
   selectionCircle: {fileID: 8720594781551919073}
+  PlayerNameText: {fileID: 1859366810873294107}
 --- !u!212 &8720594783474616045
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class IngameManager : MonoBehaviour
         }
     }
     public static UnitManager UnitManager => _unitManager;
+    public static TwitchClient TwitchClient => _twitchClient;
 
     private static IngameManager _instance;
     private static UnitManager _unitManager;

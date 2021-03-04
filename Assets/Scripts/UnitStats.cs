@@ -3,7 +3,8 @@ using UnityEngine.UI;
 public class UnitStats : MonoBehaviour
 {
     #region 변수
-    public int healthMax { get; set; }
+    public int healthMax => _healthMax;
+    private int _healthMax = 10;
     public int moveSpeed { get; set; }
     public int attackSpeed { get; set; }
     public bool playerOwned { get; set; }
