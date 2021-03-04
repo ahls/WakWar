@@ -11,6 +11,7 @@ public class UnitStats : MonoBehaviour
 
     private int healthCurrent;
 
+    [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject selectionCircle;
     [SerializeField] private Text PlayerNameText;
