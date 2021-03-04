@@ -10,8 +10,9 @@ public class UnitStats : MonoBehaviour
 
     private int healthCurrent;
 
-    [SerializeField]private Slider healthBar;
+    [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject selectionCircle;
+    [SerializeField] private Text PlayerNameText;
     #endregion
 
     // Start is called before the first frame update
@@ -21,12 +22,6 @@ public class UnitStats : MonoBehaviour
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
         healthBarUpdate();
-
-        if (selectionCircle != null)//다른 유닛이랑 공용으로 쓰려면 이거 넣어야 할거같아요!
-        {
-            playerOwned = true;
-            selectionCircle.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -34,6 +29,21 @@ public class UnitStats : MonoBehaviour
     {
         
     }
+
+    public void playerUnitInit(string PlayerName)
+    {
+        playerOwned = true;
+        selectionCircle.SetActive(false);
+        PlayerNameText.text = PlayerName;
+    }
+
+    public void unitInit()
+    {
+
+    }
+
+
+
     public void setSelectionCircleState(bool value)
     {
         if (!playerOwned)
@@ -52,5 +62,4 @@ public class UnitStats : MonoBehaviour
     {
         healthBar.value = healthCurrent;
     }
-
 }
