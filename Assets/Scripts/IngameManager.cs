@@ -18,7 +18,7 @@ public class IngameManager : MonoBehaviour
 
     private static IngameManager _instance;
     private static UnitManager _unitManager;
-
+    private static TwitchClient _twitchClient;
     private void Awake()
     {
         _instance = this;
@@ -27,5 +27,10 @@ public class IngameManager : MonoBehaviour
     public void SetUnitManager(UnitManager unitManager)
     {
         _unitManager = unitManager;
+    }
+
+    public void SetTwitchClient(TwitchClient twitchClient)
+    {
+        _twitchClient = twitchClient;
     }
 }
