@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using TwitchLib.Unity;
 public class UnitStats : MonoBehaviour
 {
     #region 변수
