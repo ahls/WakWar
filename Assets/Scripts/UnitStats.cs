@@ -17,11 +17,16 @@ public class UnitStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
         healthBarUpdate();
-        playerOwned = true;
-        selectionCircle.SetActive(false);
+
+        if (selectionCircle != null)//다른 유닛이랑 공용으로 쓰려면 이거 넣어야 할거같아요!
+        {
+            playerOwned = true;
+            selectionCircle.SetActive(false);
+        }
     }
 
     // Update is called once per frame
