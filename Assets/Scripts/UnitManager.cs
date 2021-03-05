@@ -63,7 +63,6 @@ public class UnitManager : MonoBehaviour
             if (math.distance(endLocation, _startLocation) <= clickThreshold)
             {
                 // 클릭싸이즈면 0.2*0.2 크기 박스로 생성 및 한마리만 잡기 설정
-                Debug.Log(math.distance(endLocation, _startLocation));
                 sizeOfBox = new float2(clickThreshold, clickThreshold);
                 _selectOneOnly = true;
             }

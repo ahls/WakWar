@@ -33,6 +33,7 @@ public class UnitStats : MonoBehaviour
         healthBar.maxValue = healthMax;
         healthBarUpdate();
 
+        //테스트라인
         playerUnitInit("test");
     }
 
@@ -45,6 +46,7 @@ public class UnitStats : MonoBehaviour
     {
         playerOwned = true;
         selectionCircle.SetActive(false);
+        Debug.Log($"기존에 써져있던 이름: {PlayerNameText.text} ### 새로 전해받은 플레이어이름: {PlayerName}");
         PlayerNameText.text = PlayerName;
     }
 

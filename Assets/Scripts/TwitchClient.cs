@@ -38,7 +38,7 @@ public class TwitchClient : MonoBehaviour
         client = new Client();
         client.Initialize(credentials, Channel_Name);
         client.Connect();
-
+        Debug.Log("클라이언트 연결!");
         //이벤트 셋업
         client.OnMessageReceived += MyMessageInputFunction;
 
@@ -63,6 +63,7 @@ public class TwitchClient : MonoBehaviour
                     client.SendMessage(client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
                     GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
                     instance.GetComponent<UnitStats>().playerUnitInit(userName);
+                    Debug.Log(userName);
                     twitchPlayerList.Add(userName, instance);
                 }
                 /*어차피 그냥 무시해도 될테니까 도배 방지용으로 주석처리 해놨습니다. 뽈롱뽈랑님 보시고 동의 하시면 아래 else 문 지워주세요!
