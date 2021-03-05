@@ -7,7 +7,7 @@ public class UnitStats : MonoBehaviour
     #region 변수
     public int healthMax => _healthMax;
     private int _healthMax = 10;
-    public int moveSpeed { get; set; } = 10;
+    public float moveSpeed { get; set; } = 0.05f;
     public int attackSpeed { get; set; }
     public bool playerOwned { get; set; }
 
@@ -37,9 +37,12 @@ public class UnitStats : MonoBehaviour
         playerUnitInit("test");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+        if (_isMoving)
+        {
+            Move();
+        }
     }
 
     public void playerUnitInit(string PlayerName)
@@ -50,11 +53,6 @@ public class UnitStats : MonoBehaviour
         PlayerNameText.text = PlayerName;
     }
 
-    public void unitInit()
-    {
-
-    }
-
     public void MoveToTarget(Vector3 target)
     {
         _targetPos = new Vector3(target.x, target.y , 0f);
@@ -63,32 +61,28 @@ public class UnitStats : MonoBehaviour
 
         var distance = Vector2.Distance(this.transform.position, _targetPos);
 
-        if (_isMoving)
-        {
-            StopCoroutine(_moveCoroutine);
-        }
-        
-        _moveCoroutine = Move();
-        StartCoroutine(_moveCoroutine);
+        _isMoving = true;
     }
 
-    private IEnumerator Move()
+    private void Move()
     {
-        _isMoving = true;
-
-        while (Vector2.Distance(this.transform.position, _targetPos) > 0.2f)
+        if (Vector2.Distance(this.transform.position, _targetPos) > 0.1f)
         {
-            _rigid.MovePosition(Vector3.Lerp(this.transform.position, _targetPos, moveSpeed * Time.deltaTime));
-
-            yield return null;
+            _rigid.MovePosition(Vector3.MoveTowards(this.transform.position, _targetPos, moveSpeed));
         }
+        else
+        {
+            _isMoving = false;
 
-        yield return null;
+            ResetTarget();
+        }
+    }
 
+    private void ResetTarget()
+    {
         _moveTime = 0;
         _targetPos = Vector3.zero;
         _direction = Vector3.zero;
-        _isMoving = false;
     }
 
     public void setSelectionCircleState(bool value)
