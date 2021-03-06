@@ -5,13 +5,16 @@ using UnityEngine.UI;
 public class UnitStats : MonoBehaviour
 {
     #region 변수
-    public int healthMax => _healthMax;
-    private int _healthMax = 10;
-    public float moveSpeed { get; set; } = 0.05f;
-    public int attackSpeed { get; set; }
+    //체력
+    public int healthMax { get; set; } = 10;
+    private int healthCurrent;
+
+    //플레이어 소유주
     public bool playerOwned { get; set; }
 
-    private int healthCurrent;
+    //이동속도
+    public float moveSpeed { get; set; } = 0.05f;
+    
 
     [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private Slider healthBar;
@@ -104,5 +107,10 @@ public class UnitStats : MonoBehaviour
     private void healthBarUpdate()
     {
         healthBar.value = healthCurrent;
+    }
+
+    public void equip()
+    {
+
     }
 }
