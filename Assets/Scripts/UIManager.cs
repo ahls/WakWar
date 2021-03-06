@@ -15,4 +15,11 @@ public class UIManager : MonoBehaviour
     {
         Global.instance.SetUIManager(this);
     }
+
+    public void PushNotiMsg(string text, float lifeTime)
+    {
+        var notiMsgObject = Instantiate(_notifyText, _canvas.transform);
+        notiMsgObject.SetActive(true);
+        notiMsgObject.GetComponent<UINotifyText>().SetInfo(text, lifeTime);
+    }
 }
