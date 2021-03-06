@@ -29,6 +29,27 @@ public class UnitWeapon : MonoBehaviour
         unit.armor += armor;
         unit.attackArea += attackArea;
         unit.effect = effect;
-
     }
+    public void unequip(UnitCombat unit)
+    {
+        unit.attackDamage -= attackDamage;
+        unit.attackSpeed -= attackSpeed;
+        unit.attackRange -= attackRange;
+        unit.armor -= armor;
+        unit.attackArea -= attackArea;
+        unit.effect = null;
+    }
+}
+public class WeaponEffect : MonoBehaviour   
+{
+    public int damage;
+    public float area;
+    public SpriteRenderer SR;
+    public Rigidbody2D RB;
+
+    public void Awake()
+    {
+        RB = GetComponent<Rigidbody2D>();
+    }
+
 }
