@@ -12,7 +12,8 @@ public enum WeaponType
 
 public class UnitWeapon : MonoBehaviour
 {
-    private float attackDamage, armor, attackSpeed, attackRange, attackArea;
+    private int attackDamage, armor;
+    private float attackSpeed, attackRange, attackArea;
     GameObject effect;
     WeaponType weaponType;
 
@@ -22,6 +23,12 @@ public class UnitWeapon : MonoBehaviour
         {
             return;
         }
+        unit.attackDamage += attackDamage;
+        unit.attackSpeed += attackSpeed;
+        unit.attackRange += attackRange;
+        unit.armor += armor;
+        unit.attackArea += attackArea;
+        unit.effect = effect;
 
     }
 }
