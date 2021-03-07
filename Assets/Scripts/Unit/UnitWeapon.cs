@@ -21,6 +21,7 @@ public class UnitWeapon : MonoBehaviour
     {
         if (unit.weaponType != weaponType && unit.weaponType != WeaponType.Wak)
         {
+            Global.UIManager.PushNotiMsg("직업에 맞지 않는 장비입니다.", 1f);
             return;
         }
         unit.attackDamage += attackDamage;
