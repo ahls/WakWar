@@ -12,35 +12,16 @@ public enum WeaponType
 
 public class UnitWeapon : MonoBehaviour
 {
-    private int attackDamage, armor;
-    private float attackSpeed, attackRange, attackArea;
-    GameObject effect;
-    WeaponType weaponType;
+    public int AttackDamage { get; }
+    public int Armor { get; }
+    public float AttackSpeed { get; }
+    public float AttackRange { get; }
+    public float AttackArea { get; }
 
-    public void equip(UnitCombat unit)
-    {
-        if (unit.weaponType != weaponType && unit.weaponType != WeaponType.Wak)
-        {
-            Global.UIManager.PushNotiMsg("직업에 맞지 않는 장비입니다.", 1f);
-            return;
-        }
-        unit.attackDamage += attackDamage;
-        unit.attackSpeed += attackSpeed;
-        unit.attackRange += attackRange;
-        unit.armor += armor;
-        unit.attackArea += attackArea;
-        unit.effect = effect;
-    }
-    public void unequip(UnitCombat unit)
-    {
-        unit.attackDamage -= attackDamage;
-        unit.attackSpeed -= attackSpeed;
-        unit.attackRange -= attackRange;
-        unit.armor -= armor;
-        unit.attackArea -= attackArea;
-        unit.effect = null;
-    }
+    public GameObject effect;
+    public WeaponType weaponType;
 }
+
 public class WeaponEffect : MonoBehaviour   
 {
     public int damage;
@@ -52,5 +33,4 @@ public class WeaponEffect : MonoBehaviour
     {
         RB = GetComponent<Rigidbody2D>();
     }
-
 }

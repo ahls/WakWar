@@ -20,16 +20,25 @@ public class UnitCombat : MonoBehaviour
     //타입
     public WeaponType weaponType;
 
+    private UnitWeapon _weapon;
+
     #endregion
-    // Start is called before the first frame update
-    void Start()
+
+    public void EquipWeapon(UnitWeapon weapon)
     {
-        
+        if (weapon.weaponType != weaponType && weapon.weaponType != WeaponType.Wak)
+        {
+            Global.UIManager.PushNotiMsg("직업에 맞지 않는 장비입니다.", 1f);
+            return;
+        }
+
+        _weapon = weapon;
+        effect = weapon.effect;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UnEquipWeapon()
     {
-        
+        _weapon = null;
+        effect = null;
     }
 }
