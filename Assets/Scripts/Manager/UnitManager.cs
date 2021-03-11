@@ -79,7 +79,7 @@ public class UnitManager : MonoBehaviour
             {
                 UnitStats tempStats = thing.GetComponent<UnitStats>();
 
-                if (tempStats != null && tempStats.playerOwned)
+                if (tempStats != null && tempStats.ownedFaction == faction.player)
                 {
                     tempStats.setSelectionCircleState(true);
                     _selectedUnitList.Add(thing.gameObject);

@@ -2,6 +2,7 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 
+public enum faction { player, enemy, both }//유닛 컴뱃에 부여해서 피아식별
 public class UnitStats : MonoBehaviour
 {
     #region 변수
@@ -11,6 +12,7 @@ public class UnitStats : MonoBehaviour
 
     //플레이어 소유주
     public bool playerOwned { get; set; } = false;
+    public faction ownedFaction { get; set; } = faction.enemy;
 
     //이동속도
     public float moveSpeed { get; set; } = 0.05f;
@@ -37,7 +39,7 @@ public class UnitStats : MonoBehaviour
         healthBarUpdate();
 
         //테스트라인
-        if (playerOwned)
+        if (ownedFaction == faction.player)
         {
             playerUnitInit("test");
         }
@@ -53,7 +55,7 @@ public class UnitStats : MonoBehaviour
 
     public void playerUnitInit(string PlayerName)
     {
-        playerOwned = true;
+        ownedFaction = faction.player;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
     }
@@ -92,7 +94,7 @@ public class UnitStats : MonoBehaviour
 
     public void setSelectionCircleState(bool value)
     {
-        if (!playerOwned)
+        if (ownedFaction != faction.player)
         {
             return;
         }
