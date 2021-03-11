@@ -10,7 +10,7 @@ public class UnitStats : MonoBehaviour
     private int healthCurrent;
 
     //플레이어 소유주
-    public bool playerOwned { get; set; }
+    public bool playerOwned { get; set; } = false;
 
     //이동속도
     public float moveSpeed { get; set; } = 0.05f;
@@ -37,7 +37,10 @@ public class UnitStats : MonoBehaviour
         healthBarUpdate();
 
         //테스트라인
-        playerUnitInit("test");
+        if (playerOwned)
+        {
+            playerUnitInit("test");
+        }
     }
 
     private void FixedUpdate()
@@ -52,7 +55,6 @@ public class UnitStats : MonoBehaviour
     {
         playerOwned = true;
         selectionCircle.SetActive(false);
-        Debug.Log($"기존에 써져있던 이름: {PlayerNameText.text} ### 새로 전해받은 플레이어이름: {PlayerName}");
         PlayerNameText.text = PlayerName;
     }
 
