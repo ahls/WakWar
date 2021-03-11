@@ -15,9 +15,12 @@ public class Global : MonoBehaviour
             return _instance;
         }
     }
+
+    public static ResourceManager ResourceManager => _resourceManager;
     public static UIManager UIManager => _uiManager;
 
     private static Global _instance;
+    private static ResourceManager _resourceManager;
     private static UIManager _uiManager;
 
     private void Awake()
@@ -31,6 +34,8 @@ public class Global : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        _resourceManager = new ResourceManager();
     }
 
     public void ChangeScene(string sceneName)

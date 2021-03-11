@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class ResourceManager
 {
-    private const string assetBundlePath = "";
+    private const string assetBundlePath = "Assets/AssetBundles/WakAsset";
     private AssetBundle assetBundle;
 
-    private Dictionary<string, GameObject> _loadedObjectDic;
+    private Dictionary<string, GameObject> _loadedObjectDic = new Dictionary<string, GameObject>();
 
     public GameObject LoadPrefab(string path)
     {
-        assetBundle = AssetBundle.LoadFromFile(assetBundlePath);
+        if (assetBundle == null)
+        {
+            assetBundle = AssetBundle.LoadFromFile(assetBundlePath);
+        }
 
         if (_loadedObjectDic.ContainsKey(path))
         {
