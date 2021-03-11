@@ -14,18 +14,23 @@ public class UnitCombat : MonoBehaviour
     //공격관련
     public int attackDamage { get; set; }
     public float attackRange { get; set; }
-    public float attackSpeed { get; set; }
+    public float attackSpeed { get; set; } // 초당 공격
+    private float attackTimer = 0; // 0일때 공격 가능
     public float attackArea { get; set; }
-
+    public float projectileSpeed { get; set; }
+    private Transform attackTarget;
+    private float targetAcquisitionRange;
     //방어력
     public int armor { get; set; }
 
-    public GameObject effect { get; set; }
+    public Sprite attackImage { get; set; }
 
     //타입
     public faction ownedFaction;
+    public faction targetFaction;
     public WeaponType weaponType;
     private UnitWeapon _weapon;
+    private GameObject _effect;
 
     #endregion
     private void Start()
@@ -34,7 +39,31 @@ public class UnitCombat : MonoBehaviour
         healthBar.maxValue = healthMax;
     }
 
+    private void Update()
+    {
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+        }
+        else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
+        {
+            if (attackTarget != null)
+            {
+                if ((attackTarget.position - transform.position).magnitude <= attackRange)
+                {//적이 사정거리 내에 있을경우
+                    attack();
+                }
+                else
+                {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
 
+                }
+            }
+            /*
+             공격 타겟이 없을경우 근처에 있는 적을 자동으로 추격하도록 할지 결정
+             */
+
+        }
+    }
 
     #region 장비관련
     public void EquipWeapon(UnitWeapon weapon)
@@ -46,17 +75,34 @@ public class UnitCombat : MonoBehaviour
         }
 
         _weapon = weapon;
-        effect = weapon.effect;
     }
 
     public void UnEquipWeapon()
     {
         _weapon = null;
-        effect = null;
     }
     #endregion
 
+    #region 공격관련
+    public void attack()
+    {
+        //투사체 pull 해주세요
+        //############
+        if(_effect == null)
+        {
+            //_effect = Instantiate()
+        }
+        _effect.transform.position = transform.position;
+        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position);
 
+        attackTimer = 1 / attackSpeed;
+        
+    }
+    public void targetAquire()
+    {
+
+    }
+    #endregion
 
     #region 체력관련
     public void takeDamage(int damageAmount)
