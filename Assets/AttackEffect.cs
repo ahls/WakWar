@@ -24,13 +24,15 @@ public class AttackEffect : MonoBehaviour
         
     }
 
-    public AttackEffect(float Aoe, float Speed , int Damage,faction Targets , Vector3 Destination)
+    public void Setup(float Aoe, float Speed , int Damage,faction Targets , Vector3 Destination, GameObject ProjectileEffect = null, GameObject OnHitEffect = null)
     {
         aoe = new Vector2(Aoe,Aoe);
         speed = Speed;
         damage = Damage;
         destination = Destination;
         targetFaction = Targets;
+        projectileEffect = ProjectileEffect;
+        onHitEffect = OnHitEffect;
     }
 
     void dealDamage()
@@ -38,11 +40,12 @@ public class AttackEffect : MonoBehaviour
         Collider2D []unitsInRange = Physics2D.OverlapAreaAll(transform.position, aoe);
         foreach (var target in unitsInRange)
         {
-            UnitCombat targetStats = target.GetComponent<UnitCombat>();
-            if(targetStats != null)
+            UnitCombat targetCombat = target.GetComponent<UnitCombat>();
+            if(targetCombat != null)
             {
-                if(targetFaction == faction.both || targetFaction == targetStats.owner)
-                { 
+                if(targetFaction == faction.both || targetFaction == targetCombat.ownedFaction)
+                {
+                    targetCombat.takeDamage(damage);
                 }
             }
         }

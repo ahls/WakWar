@@ -550,6 +550,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa36cbcb64ea04a4dbe8d1a01b93c371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 0}
+  weaponType: 0
 --- !u!1 &8720594781551919073
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +647,7 @@ GameObject:
   - component: {fileID: 8720594783474616042}
   - component: {fileID: 8442029823977151630}
   - component: {fileID: 3862550047673607434}
+  - component: {fileID: 6203894984019401858}
   m_Layer: 0
   m_Name: Twitch Testing Unit
   m_TagString: Untagged
@@ -682,7 +685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigid: {fileID: 3862550047673607434}
-  healthBar: {fileID: 6520456813337381849}
   selectionCircle: {fileID: 8720594781551919073}
   PlayerNameText: {fileID: 1859366810873294107}
 --- !u!212 &8720594783474616045
@@ -792,3 +794,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6203894984019401858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720594783474616043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 6520456813337381849}
+  ownedFaction: 0
+  weaponType: 0
