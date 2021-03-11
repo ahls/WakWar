@@ -2,13 +2,10 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 
-public enum faction { player, enemy, both }//유닛 컴뱃에 부여해서 피아식별
 public class UnitStats : MonoBehaviour
 {
     #region 변수
-    //체력
-    public int healthMax { get; set; } = 10;
-    private int healthCurrent;
+
 
     //플레이어 소유주
     public bool playerOwned { get; set; } = false;
@@ -19,7 +16,6 @@ public class UnitStats : MonoBehaviour
     
 
     [SerializeField] private Rigidbody2D _rigid;
-    [SerializeField] private Slider healthBar;
     [SerializeField] private GameObject selectionCircle;
     [SerializeField] private Text PlayerNameText;
 
@@ -34,12 +30,9 @@ public class UnitStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthCurrent = healthMax;
-        healthBar.maxValue = healthMax;
-        healthBarUpdate();
 
         //테스트라인
-        if (ownedFaction == faction.player)
+        if (playerOwned)
         {
             playerUnitInit("test");
         }
@@ -55,7 +48,8 @@ public class UnitStats : MonoBehaviour
 
     public void playerUnitInit(string PlayerName)
     {
-        ownedFaction = faction.player;
+        playerOwned = true;
+        GetComponent<UnitCombat>().ownedFaction = faction.player;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
     }
@@ -94,7 +88,7 @@ public class UnitStats : MonoBehaviour
 
     public void setSelectionCircleState(bool value)
     {
-        if (ownedFaction != faction.player)
+        if (!playerOwned)
         {
             return;
         }
@@ -102,16 +96,6 @@ public class UnitStats : MonoBehaviour
         selectionCircle.SetActive(value);
     }
 
-    public void takeDamage(int damageAmount)
-    {
-        healthCurrent -= damageAmount;
-        healthBarUpdate();
-    }
-
-    private void healthBarUpdate()
-    {
-        healthBar.value = healthCurrent;
-    }
 
     public void equip()
     {

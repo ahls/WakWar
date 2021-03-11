@@ -10,6 +10,8 @@ public class AttackEffect : MonoBehaviour
     private Vector2 aoe;
     private Vector3 destination;
     private faction targetFaction;
+    private GameObject projectileEffect;
+    private GameObject onHitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +42,7 @@ public class AttackEffect : MonoBehaviour
             if(targetStats != null)
             {
                 if(targetFaction == faction.both || targetFaction == targetStats.owner)
-                {
-
+                { 
                 }
             }
         }
