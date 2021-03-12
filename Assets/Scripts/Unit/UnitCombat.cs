@@ -18,8 +18,9 @@ public class UnitCombat : MonoBehaviour
     private float attackTimer = 0; // 0일때 공격 가능
     public float attackArea { get; set; }
     public float projectileSpeed { get; set; }
-    private Transform attackTarget;
+
     //타겟 관련
+    private Transform attackTarget;
     private int searchCooldown = 15;
     private int searchTimer;
     private static int searchAssign = 0;
