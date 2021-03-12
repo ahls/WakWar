@@ -8,17 +8,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _btnMargin;
 
-    [SerializeField] private GameObject _notifyText;
-    [SerializeField] private GameObject _notifyWindow;
+    private GameObject _notifyText;
+    private GameObject _notifyWindow;
 
     private void Start()
     {
         Global.instance.SetUIManager(this);
+        //_notifyText = Global.ResourceManager.LoadPrefab("NotifyText");
     }
 
     public void PushNotiMsg(string text, float lifeTime)
     {
-        var notiMsgObject = Instantiate(_notifyText, _canvas.transform);
+        var notiMsgObject = Instantiate(Global.ResourceManager.LoadPrefab("NotifyText"), _canvas.transform);
         notiMsgObject.SetActive(true);
         notiMsgObject.GetComponent<UINotifyText>().SetInfo(text, lifeTime);
     }
