@@ -19,7 +19,12 @@ public class UnitCombat : MonoBehaviour
     public float attackArea { get; set; }
     public float projectileSpeed { get; set; }
     private Transform attackTarget;
-    private float targetAcquisitionRange;
+    //타겟 관련
+    private int searchCooldown = 15;
+    private int searchTimer;
+    private static int searchAssign = 0;
+
+
     //방어력
     public int armor { get; set; }
 
@@ -37,6 +42,10 @@ public class UnitCombat : MonoBehaviour
     {
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
+
+        //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
+        searchTimer = searchAssign++ % searchCooldown;
+        searchAssign %= searchCooldown;
     }
 
     private void Update()
@@ -58,10 +67,10 @@ public class UnitCombat : MonoBehaviour
 
                 }
             }
-            /*
-             공격 타겟이 없을경우 근처에 있는 적을 자동으로 추격하도록 할지 결정
-             */
-
+            else
+            {
+                search();
+            }
         }
     }
 
@@ -98,9 +107,31 @@ public class UnitCombat : MonoBehaviour
         attackTimer = 1 / attackSpeed;
         
     }
-    public void targetAquire()
+    #endregion
+    #region 탐색 관련
+    private void search()
     {
-
+        if (searchTimer <= 0)
+        {
+            searchTimer = searchCooldown;
+            Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
+            foreach (Collider2D selected in inRange)
+            {
+                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+                if (selectedCombat != null)
+                {
+                    if (selectedCombat.ownedFaction != ownedFaction)
+                    {
+                        attackTarget = selectedCombat.transform;
+                        return;
+                    }
+                }
+            }
+        }
+        else
+        {
+            searchTimer--;
+        }
     }
     #endregion
 
