@@ -67,13 +67,23 @@ public class UnitCombat : MonoBehaviour
 
                 }
             }
-            else
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (searchTimer <= 0)
+        {
+            searchTimer = searchCooldown;
+            if(attackTarget ==null)
             {
                 search();
             }
         }
+        else
+        {
+            searchTimer--;
+        }
     }
-
     #region 장비관련
     public void EquipWeapon(UnitWeapon weapon)
     {
@@ -111,27 +121,20 @@ public class UnitCombat : MonoBehaviour
     #region 탐색 관련
     private void search()
     {
-        if (searchTimer <= 0)
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
+        foreach (Collider2D selected in inRange)
         {
-            searchTimer = searchCooldown;
-            Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
-            foreach (Collider2D selected in inRange)
+            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            if (selectedCombat != null)
             {
-                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
-                if (selectedCombat != null)
+                if (selectedCombat.ownedFaction != ownedFaction)
                 {
-                    if (selectedCombat.ownedFaction != ownedFaction)
-                    {
-                        attackTarget = selectedCombat.transform;
-                        return;
-                    }
+                    attackTarget = selectedCombat.transform;
+                    return;
                 }
             }
         }
-        else
-        {
-            searchTimer--;
-        }
+        
     }
     #endregion
 
