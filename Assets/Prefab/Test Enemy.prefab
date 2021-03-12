@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 6769527757377700757}
   - component: {fileID: 5899691344777796081}
   - component: {fileID: 1255800253157007477}
+  - component: {fileID: -8139324200269600903}
   m_Layer: 0
   m_Name: Test Enemy
   m_TagString: Untagged
@@ -302,7 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigid: {fileID: 1255800253157007477}
-  healthBar: {fileID: 9118284616455949990}
   selectionCircle: {fileID: 0}
   PlayerNameText: {fileID: 4411903810193385572}
 --- !u!212 &6769527757377700754
@@ -412,6 +412,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-8139324200269600903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769527757377700756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  ownedFaction: 1
+  targetFaction: 0
+  weaponType: 0
 --- !u!1 &7659131419763117895
 GameObject:
   m_ObjectHideFlags: 0
