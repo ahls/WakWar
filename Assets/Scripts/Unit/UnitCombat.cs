@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public enum faction { player, enemy, both }//유닛 컴뱃에 부여해서 피아식별
+
 public class UnitCombat : MonoBehaviour
 {
+    public enum ActionStats
+    {
+        Idle,
+        Move,
+        Attack
+    }
+
     #region 변수
+
+    private ActionStats _actionStats = ActionStats.Idle;
+
     //체력
     public int healthMax { get; set; } = 10;
     private int healthCurrent;
@@ -65,51 +77,81 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        if (attackTimer > 0)
+        if (_unitstats._isMoving)
         {
-            attackTimer -= Time.deltaTime;
+            _actionStats = ActionStats.Move;
         }
-        else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
-        {
-            if(_unitstats._isMoving)
-            {//움직이고 있으면 아래를 돌리지 않음
-                return;
-            }
-            if (attackTarget != null)
-            {
-                if ((attackTarget.position - transform.position).magnitude <= attackRange)
-                {//적이 사정거리 내에 있을경우
-                    Attack();
-                }
-                else
-                {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
 
+        switch (_actionStats)
+        {
+            case ActionStats.Idle:
+                {
+                    break;
                 }
-            }
+            case ActionStats.Move:
+                {
+                    if (!_unitstats._isMoving)
+                    {
+                        _actionStats = ActionStats.Idle;
+                    }
+                    break;
+                }
+            case ActionStats.Attack:
+                {
+                    if (attackTimer > 0)
+                    {
+                        attackTimer -= Time.deltaTime;
+                    }
+                    else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
+                    {
+                        if (attackTarget != null)
+                        {
+                            if ((attackTarget.position - transform.position).magnitude <= attackRange)
+                            {//적이 사정거리 내에 있을경우
+                                Attack();
+                            }
+                            else
+                            {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
+
+                            }
+                        }
+                    }
+
+                    break;
+                }
         }
     }
 
     private void FixedUpdate()
     {
-        if (searchTimer <= 0)
+        switch (_actionStats)
         {
-            searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
+            case ActionStats.Idle:
+                {
+                    if (searchTimer <= 0)
+                    {
+                        searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
 
-            if (!_unitstats._isMoving && attackTarget != null && OffSetToTarget() > resultRange)
-            {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
-                attackTarget = null;
-            }
+                        if (!_unitstats._isMoving && attackTarget != null && OffSetToTarget() > resultRange)
+                        {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
+                            attackTarget = null;
+                        }
 
-            if(attackTarget == null)
-            {
-                Search();
-            }
-        }
-        else
-        {
-            searchTimer--;
+                        if (attackTarget == null)
+                        {
+                            Search();
+                        }
+                    }
+                    else
+                    {
+                        searchTimer--;
+                    }
+
+                    break;
+                }
         }
     }
+
     #region 장비관련
 
     public void EquipWeapon(UnitWeapon weapon)
@@ -161,6 +203,7 @@ public class UnitCombat : MonoBehaviour
                 if (selectedCombat.ownedFaction != ownedFaction)
                 {
                     attackTarget = selectedCombat.transform;
+                    _actionStats = ActionStats.Attack;
                     return;
                 }
             }
