@@ -79,7 +79,7 @@ public class UnitCombat : MonoBehaviour
             {
                 if ((attackTarget.position - transform.position).magnitude <= attackRange)
                 {//적이 사정거리 내에 있을경우
-                    attack();
+                    Attack();
                 }
                 else
                 {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
@@ -95,14 +95,14 @@ public class UnitCombat : MonoBehaviour
         {
             searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
 
-            if (!_unitstats._isMoving && attackTarget != null && offsetToTarget() > resultRange)
+            if (!_unitstats._isMoving && attackTarget != null && OffSetToTarget() > resultRange)
             {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
                 attackTarget = null;
             }
 
             if(attackTarget == null)
             {
-                search();
+                Search();
             }
         }
         else
@@ -131,7 +131,7 @@ public class UnitCombat : MonoBehaviour
 
     #region 공격관련
 
-    public void attack()
+    public void Attack()
     {
         //투사체 pull 해주세요
         //############
@@ -150,7 +150,7 @@ public class UnitCombat : MonoBehaviour
 
     #region 탐색 관련
 
-    private void search()
+    private void Search()
     {
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
         foreach (Collider2D selected in inRange)
@@ -168,7 +168,7 @@ public class UnitCombat : MonoBehaviour
         
     }
 
-    private float offsetToTarget()
+    private float OffSetToTarget()
     {
         return (attackTarget.position - transform.position).magnitude;
     }
@@ -177,19 +177,19 @@ public class UnitCombat : MonoBehaviour
 
     #region 체력관련
 
-    public void takeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         healthCurrent -= (damageAmount - resultArmor);
-        healthBarUpdate();
+        HealthBarUpdate();
     }
 
-    public void takeDamage(int dmg, int armorPierce)
+    public void TakeDamage(int dmg, int armorPierce)
     {
         healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
-        healthBarUpdate();
+        HealthBarUpdate();
     }
 
-    private void healthBarUpdate()
+    private void HealthBarUpdate()
     {
         healthBar.value = healthCurrent;
     }
