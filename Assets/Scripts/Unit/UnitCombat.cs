@@ -94,10 +94,12 @@ public class UnitCombat : MonoBehaviour
         if (searchTimer <= 0)
         {
             searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
-            if (!_unitstats._isMoving && offsetToTarget()> resultRange)
+
+            if (!_unitstats._isMoving && attackTarget != null && offsetToTarget() > resultRange)
             {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
                 attackTarget = null;
             }
+
             if(attackTarget == null)
             {
                 search();
