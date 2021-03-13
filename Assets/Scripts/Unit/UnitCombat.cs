@@ -65,7 +65,6 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        
         if (attackTimer > 0)
         {
             attackTimer -= Time.deltaTime;
@@ -89,6 +88,7 @@ public class UnitCombat : MonoBehaviour
             }
         }
     }
+
     private void FixedUpdate()
     {
         if (searchTimer <= 0)
@@ -98,7 +98,7 @@ public class UnitCombat : MonoBehaviour
             {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
                 attackTarget = null;
             }
-            if(attackTarget ==null)
+            if(attackTarget == null)
             {
                 search();
             }
@@ -109,6 +109,7 @@ public class UnitCombat : MonoBehaviour
         }
     }
     #region 장비관련
+
     public void EquipWeapon(UnitWeapon weapon)
     {
         if (weapon.weaponType != weaponType && weapon.weaponType != WeaponType.Wak)
@@ -127,6 +128,7 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 공격관련
+
     public void attack()
     {
         //투사체 pull 해주세요
@@ -141,8 +143,11 @@ public class UnitCombat : MonoBehaviour
         attackTimer = 1 / attackSpeed;
         
     }
+    
     #endregion
+
     #region 탐색 관련
+
     private void search()
     {
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
@@ -160,18 +165,22 @@ public class UnitCombat : MonoBehaviour
         }
         
     }
+
     private float offsetToTarget()
     {
         return (attackTarget.position - transform.position).magnitude;
     }
+
     #endregion
 
     #region 체력관련
+
     public void takeDamage(int damageAmount)
     {
         healthCurrent -= (damageAmount - resultArmor);
         healthBarUpdate();
     }
+
     public void takeDamage(int dmg, int armorPierce)
     {
         healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
@@ -182,6 +191,7 @@ public class UnitCombat : MonoBehaviour
     {
         healthBar.value = healthCurrent;
     }
+    
     #endregion 
 }
 
