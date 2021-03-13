@@ -16,7 +16,19 @@ public class UnitCombat : MonoBehaviour
 
     #region 변수
 
-    private ActionStats _actionStats = ActionStats.Idle;
+    private ActionStats _actionStats
+    {
+        get
+        {
+            return _actionStats;
+        }
+
+        set
+        {
+            ResetAttackTimer();
+            ResetSearchTimer();
+        }
+    }
 
     //체력
     public int healthMax { get; set; } = 10;
@@ -73,6 +85,8 @@ public class UnitCombat : MonoBehaviour
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         searchTimer = searchAssign++ % searchCooldown;
         searchAssign %= searchCooldown;
+        
+        _actionStats = ActionStats.Idle;
     }
 
     private void Update()
@@ -130,7 +144,7 @@ public class UnitCombat : MonoBehaviour
                 {
                     if (searchTimer <= 0)
                     {
-                        searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
+                        ResetSearchTimer();//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
 
                         if (!_unitstats._isMoving && attackTarget != null && OffSetToTarget() > resultRange)
                         {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
@@ -183,11 +197,14 @@ public class UnitCombat : MonoBehaviour
         }
         _effect.transform.position = transform.position;
         _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position);
-
-        attackTimer = 1 / attackSpeed;
-        
+        ResetAttackTimer();
     }
     
+    private void ResetAttackTimer()
+    {
+        attackTimer = 1 / attackSpeed;
+    }
+
     #endregion
 
     #region 탐색 관련
@@ -209,6 +226,11 @@ public class UnitCombat : MonoBehaviour
             }
         }
         
+    }
+
+    private void ResetSearchTimer()
+    {
+        searchTimer = searchCooldown;
     }
 
     private float OffSetToTarget()
