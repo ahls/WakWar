@@ -15,9 +15,8 @@ public class UnitCombat : MonoBehaviour
     public int attackDamage { get; set; }
     public float attackRange { get; set; }
     public float attackSpeed { get; set; } // 초당 공격
-    private float attackTimer = 0; // 0일때 공격 가능
     public float attackArea { get; set; }
-    public float projectileSpeed { get; set; }
+    public int armorPiercing { get; set; }
 
     //타겟 관련
     private Transform attackTarget;
@@ -29,18 +28,33 @@ public class UnitCombat : MonoBehaviour
     //방어력
     public int armor { get; set; }
 
-    public Sprite attackImage { get; set; }
-
+    
     //타입
     public faction ownedFaction = faction.enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public faction targetFaction;                       //공격타겟
     public WeaponType weaponType;
     private UnitWeapon _weapon;
     private GameObject _effect;
+    public Sprite attackImage { get; set; }
+
+    private UnitStats _unitstats;
+    //장비 장착후 스탯
+    public int resultDamage { get; set; }
+    public float resultRange { get; set; }
+    public float resultAOE { get; set; }
+    public int resultAP { get; set; }
+    public float projectileSpeed { get; set; }
+
+    private float resultSpeed;
+    private float attackTimer = 0; // 0일때 공격 가능
+    private int resultArmor;
+
+
 
     #endregion
     private void Start()
     {
+        _unitstats = GetComponent<UnitStats>();
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
 
@@ -51,12 +65,17 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
+        
         if (attackTimer > 0)
         {
             attackTimer -= Time.deltaTime;
         }
         else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
         {
+            if(_unitstats._isMoving)
+            {//움직이고 있으면 아래를 돌리지 않음
+                return;
+            }
             if (attackTarget != null)
             {
                 if ((attackTarget.position - transform.position).magnitude <= attackRange)
@@ -74,7 +93,11 @@ public class UnitCombat : MonoBehaviour
     {
         if (searchTimer <= 0)
         {
-            searchTimer = searchCooldown;
+            searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
+            if (!_unitstats._isMoving && offsetToTarget()> resultRange)
+            {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
+                attackTarget = null;
+            }
             if(attackTarget ==null)
             {
                 search();
@@ -137,12 +160,21 @@ public class UnitCombat : MonoBehaviour
         }
         
     }
+    private float offsetToTarget()
+    {
+        return (attackTarget.position - transform.position).magnitude;
+    }
     #endregion
 
     #region 체력관련
     public void takeDamage(int damageAmount)
     {
-        healthCurrent -= damageAmount;
+        healthCurrent -= (damageAmount - resultArmor);
+        healthBarUpdate();
+    }
+    public void takeDamage(int dmg, int armorPierce)
+    {
+        healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
         healthBarUpdate();
     }
 

@@ -24,7 +24,7 @@ public class UnitStats : MonoBehaviour
     private float _moveTime;
 
     private IEnumerator _moveCoroutine;
-    private bool _isMoving = false;
+    public bool _isMoving = false;
     #endregion
 
     // Start is called before the first frame update

@@ -8,6 +8,7 @@ public class AttackEffect : MonoBehaviour
     UnitCombat attackerInfo; 
     //레퍼런스를 잡긴 했는데 범위공격같은애들이 있으면, 공격 정보를 매번 끌어와야되니까 일단 아래 데미지랑 타겟팩션같은거는 담아둘 변수를 만들어놨어요
     private int _damage;
+    private int _AP; // 아머피어싱
     private Vector2 _aoe;
     private Vector3 _destination;
     private faction _targetFaction;
@@ -27,9 +28,10 @@ public class AttackEffect : MonoBehaviour
         attackerInfo = attacker;
 
 
-        _damage = attackerInfo.attackDamage;
+        _damage = attackerInfo.resultDamage;
         _targetFaction = attackerInfo.targetFaction;
-        _aoe = new Vector2(attacker.attackArea, attacker.attackArea);
+        _aoe = new Vector2(attacker.resultAOE, attacker.resultAOE);
+        _AP = attackerInfo.resultAP;
         projectileImage.sprite = attacker.attackImage;
 
         Vector2 offsetToTarget = destination - transform.position;
@@ -66,7 +68,7 @@ public class AttackEffect : MonoBehaviour
             {
                 if(_targetFaction == faction.both || _targetFaction == targetCombat.ownedFaction)
                 {
-                    targetCombat.takeDamage(_damage);
+                    targetCombat.takeDamage(_damage,_AP);
                 }
             }
         }
