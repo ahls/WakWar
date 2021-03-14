@@ -68,7 +68,7 @@ public class AttackEffect : MonoBehaviour
             {
                 if(_targetFaction == faction.both || _targetFaction == targetCombat.ownedFaction)
                 {
-                    targetCombat.takeDamage(_damage,_AP);
+                    targetCombat.TakeDamage(_damage,_AP);
                 }
             }
         }
