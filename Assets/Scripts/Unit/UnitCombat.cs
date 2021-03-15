@@ -16,17 +16,20 @@ public class UnitCombat : MonoBehaviour
 
     #region 변수
 
-    private ActionStats _actionStats
+    private ActionStats _actionStat;
+
+    public ActionStats ActionStat
     {
         get
         {
-            return _actionStats;
+            return _actionStat;
         }
-
         set
         {
             ResetAttackTimer();
             ResetSearchTimer();
+
+            _actionStat = value;
         }
     }
 
@@ -85,18 +88,18 @@ public class UnitCombat : MonoBehaviour
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         searchTimer = searchAssign++ % searchCooldown;
         searchAssign %= searchCooldown;
-        
-        _actionStats = ActionStats.Idle;
+
+        ActionStat = ActionStats.Idle;
     }
 
     private void Update()
     {
         if (_unitstats._isMoving)
         {
-            _actionStats = ActionStats.Move;
+            ActionStat = ActionStats.Move;
         }
 
-        switch (_actionStats)
+        switch (ActionStat)
         {
             case ActionStats.Idle:
                 {
@@ -106,7 +109,7 @@ public class UnitCombat : MonoBehaviour
                 {
                     if (!_unitstats._isMoving)
                     {
-                        _actionStats = ActionStats.Idle;
+                        ActionStat = ActionStats.Idle;
                     }
                     break;
                 }
@@ -133,12 +136,16 @@ public class UnitCombat : MonoBehaviour
 
                     break;
                 }
+            default:
+                {
+                    break;
+                }
         }
     }
 
     private void FixedUpdate()
     {
-        switch (_actionStats)
+        switch (ActionStat)
         {
             case ActionStats.Idle:
                 {
@@ -161,6 +168,10 @@ public class UnitCombat : MonoBehaviour
                         searchTimer--;
                     }
 
+                    break;
+                }
+            default:
+                {
                     break;
                 }
         }
@@ -220,7 +231,7 @@ public class UnitCombat : MonoBehaviour
                 if (selectedCombat.ownedFaction != ownedFaction)
                 {
                     attackTarget = selectedCombat.transform;
-                    _actionStats = ActionStats.Attack;
+                    ActionStat = ActionStats.Attack;
                     return;
                 }
             }
