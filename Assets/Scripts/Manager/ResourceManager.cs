@@ -34,6 +34,13 @@ public class ResourceManager
        
         if (_loadedObjectDic.ContainsKey(path))
         {
+            var pooledObject = Global.ObjectPoolManager.GetObject(path);
+
+            if (pooledObject != null)
+            {
+                return pooledObject;
+            }
+
             return _loadedObjectDic[path];
         }
 
