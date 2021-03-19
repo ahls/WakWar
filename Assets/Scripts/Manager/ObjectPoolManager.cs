@@ -50,20 +50,15 @@ public class ObjectPoolManager : MonoBehaviour
     
             return pooledObjectData.GetObject();
         }
-    
-        return null;
-    }
-    
-    public GameObject GetGlobalObject(string path)
-    {
+
         if (_globalObjectPoolDic.ContainsKey(path))
         {
             var pooledObjectData = _globalObjectPoolDic[path];
             _globalObjectPoolDic.Remove(path);
-    
+
             return pooledObjectData.GetObject();
         }
-    
+
         return null;
     }
     
