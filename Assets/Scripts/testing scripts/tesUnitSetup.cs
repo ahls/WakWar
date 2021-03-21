@@ -5,19 +5,21 @@ using UnityEngine;
 public class tesUnitSetup : MonoBehaviour
 {
     public bool CanControl = false;
-
+    public Sprite image;
     private void Awake()
     {
         if(CanControl)
         GetComponent<UnitStats>().playerUnitInit("Dango");
         UnitCombat UC = GetComponent<UnitCombat>();
         UC.resultDamage = 1;
-        UC.resultRange = 5;
+        UC.resultRange = 2;
         UC.resultAP = 0;
-        UC.resultAOE = 1;
-        UC.projectileSpeed = 1;
-        UC.attackSpeed = 1;
+        UC.resultAOE = 0.3f;
+        UC.projectileSpeed = 3;
+        UC.attackSpeed = 3;
         UC.armor = 0;
+        UC.attackImage = image;
+        UC.healthMax = 10;
 
     }
     void Start()

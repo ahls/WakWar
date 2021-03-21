@@ -75,7 +75,7 @@ public class UnitCombat : MonoBehaviour
     public int resultAP { get; set; }
     public float projectileSpeed { get; set; }
 
-    private float resultSpeed;
+    private float resultSpeed= 2;
     private float attackTimer = 0; // 0일때 공격 가능
     private int resultArmor;
 
@@ -87,7 +87,7 @@ public class UnitCombat : MonoBehaviour
         _unitstats = GetComponent<UnitStats>();
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
-
+        HealthBarUpdate();
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         searchTimer = searchAssign++ % searchCooldown;
         searchAssign %= searchCooldown;
@@ -106,6 +106,10 @@ public class UnitCombat : MonoBehaviour
         {
             case ActionStats.Idle:
                 {
+                    if(attackTarget != null)
+                    {
+                        ActionStat = ActionStats.Attack;
+                    }
                     break;
                 }
             case ActionStats.Move:
@@ -134,6 +138,10 @@ public class UnitCombat : MonoBehaviour
                             {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
 
                             }
+                        }
+                        else
+                        {//적이 없을경우 상태를 대기로 변경
+                            ActionStat = ActionStats.Idle;
                         }
                     }
 
@@ -284,6 +292,16 @@ public class UnitCombat : MonoBehaviour
     private void HealthBarUpdate()
     {
         healthBar.value = healthCurrent;
+        HealthBarUpdate();
+        if(healthCurrent<= 0)
+        {
+            death();
+        }
+
+    }
+    private void death()
+    {
+        gameObject.SetActive(false);
     }
 
     #endregion

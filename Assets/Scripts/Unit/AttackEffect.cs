@@ -35,7 +35,7 @@ public class AttackEffect : MonoBehaviour
         projectileImage.sprite = attacker.attackImage;
 
         Vector2 offsetToTarget = destination - transform.position;
-        RB.velocity = offsetToTarget * attacker.projectileSpeed;
+        RB.velocity = offsetToTarget.normalized * attacker.projectileSpeed;
 
         // 거리 / 투사체 속도 = 목표까지 걸리는 시간
         // 목표까지 걸리는 시간 * 50(초당 프레임) = 목표까지 도달하는데 걸리는 fixedUpdate 프레임 수 
@@ -51,6 +51,7 @@ public class AttackEffect : MonoBehaviour
             //인게임 매니져 오브젝트 풀링 매니져 생기면 아래 줄 수정
 
             //            .ObjectPooling(, gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -66,9 +67,11 @@ public class AttackEffect : MonoBehaviour
             UnitCombat targetCombat = target.GetComponent<UnitCombat>();
             if(targetCombat != null)
             {
-                if(_targetFaction == faction.both || _targetFaction == targetCombat.ownedFaction)
+                Debug.Log($"{_targetFaction} attacked {targetCombat.ownedFaction}");
+                if (_targetFaction == targetCombat.ownedFaction || _targetFaction == faction.both)
                 {
-                    targetCombat.TakeDamage(_damage,_AP);
+
+                    targetCombat.TakeDamage(_damage, _AP);
                 }
             }
         }
