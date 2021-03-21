@@ -70,7 +70,7 @@ public class UnitCombat : MonoBehaviour
         {
             attackTimer -= Time.deltaTime;
         }
-        else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
+        else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 적을 탐색하거나 공격을 위해 적에게 다가가지 않음.
         {
             if(_unitstats._isMoving)
             {//움직이고 있으면 아래를 돌리지 않음
@@ -78,35 +78,21 @@ public class UnitCombat : MonoBehaviour
             }
             if (attackTarget != null)
             {
-                if ((attackTarget.position - transform.position).magnitude <= attackRange)
+                if (offsetToTarget() <= attackRange)
                 {//적이 사정거리 내에 있을경우
                     attack();
                 }
                 else
                 {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
-
+                    float distanceOffset = offsetToTarget() - resultRange;//현재 거리 - 무기 사정거리
+                    _unitstats.MoveToTarget(Vector3.MoveTowards(transform.position,attackTarget.position,distanceOffset));
                 }
             }
         }
     }
     private void FixedUpdate()
     {
-        if (searchTimer <= 0)
-        {
-            searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
-            if (!_unitstats._isMoving && offsetToTarget()> resultRange)
-            {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
-                attackTarget = null;
-            }
-            if(attackTarget ==null)
-            {
-                search();
-            }
-        }
-        else
-        {
-            searchTimer--;
-        }
+        searchShell();
     }
     #region 장비관련
     public void EquipWeapon(UnitWeapon weapon)
@@ -143,6 +129,25 @@ public class UnitCombat : MonoBehaviour
     }
     #endregion
     #region 탐색 관련
+    private void searchShell()
+    {
+        if (searchTimer <= 0)
+        {
+            searchTimer = searchCooldown;//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
+            if (!_unitstats._isMoving && offsetToTarget() > resultRange)
+            {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
+                attackTarget = null;
+            }
+            if (attackTarget == null)
+            {
+                search();
+            }
+        }
+        else
+        {
+            searchTimer--;
+        }
+    }
     private void search()
     {
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
