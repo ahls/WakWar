@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private GameObject _notifyText;
     private GameObject _notifyWindow;
 
-    private void Start()
+    private void Awake()
     {
         Global.instance.SetUIManager(this);
         //_notifyText = Global.ResourceManager.LoadPrefab("NotifyText");

@@ -22,7 +22,7 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
         _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
         if (_canvas == null)
         {
-            _canvas = Global.UIManager.transform.GetChild(0).GetComponent<Canvas>();
+            _canvas = Global.UIManager.canvas.GetComponent<Canvas>();
             _canvasScale = _canvas.scaleFactor;
         }
     }
