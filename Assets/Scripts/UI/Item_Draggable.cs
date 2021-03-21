@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class Item_Draggable : UIDraggable,IPointerDownHandler, IBeginDragHandler, IEndDragHandler,IDragHandler
+public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler
 {
     #region 변수
     [SerializeField] CanvasGroup _canvasGroup;
@@ -50,10 +50,6 @@ public class Item_Draggable : UIDraggable,IPointerDownHandler, IBeginDragHandler
         _canvasGroup.alpha = 1f;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("On pointer down called");
-    }
 
     public void placeItem(Transform parentToBe)
     {
