@@ -7,13 +7,13 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _btnMargin;
-    public GameObject canvas => _canvas;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
 
-    private void Awake()
+    private void Start()
     {
         Global.instance.SetUIManager(this);
+        Item_Draggable.initItems(_canvas.GetComponent<Canvas>());
         //_notifyText = Global.ResourceManager.LoadPrefab("NotifyText");
     }
 

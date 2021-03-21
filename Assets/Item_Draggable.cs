@@ -18,13 +18,8 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
-
         _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
-        if (_canvas == null)
-        {
-            _canvas = Global.UIManager.canvas.GetComponent<Canvas>();
-            _canvasScale = _canvas.scaleFactor;
-        }
+        parentToReturn = _rectTransform.parent;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -40,7 +35,7 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        _rectTransform.anchoredPosition += eventData.delta / _canvasScale;
+        _rectTransform.position = eventData.position;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -64,5 +59,17 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
     public void placeItem(Transform parentToBe)
     {
         parentToReturn = parentToBe;
+    }
+
+
+
+    IEnumerator InitDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+    }
+    static public void initItems(Canvas canvas)
+    {
+        _canvas = canvas;
+        _canvasScale = _canvas.scaleFactor;
     }
 }
