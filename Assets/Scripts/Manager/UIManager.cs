@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         Global.instance.SetUIManager(this);
-        Item_Draggable.initItems(_canvas.GetComponent<Canvas>());
+        UIDraggable.SetupDraggableWindow(_canvas);
         //_notifyText = Global.ResourceManager.LoadPrefab("NotifyText");
     }
 

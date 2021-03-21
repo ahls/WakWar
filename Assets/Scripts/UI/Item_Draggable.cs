@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IEndDragHandler,IDragHandler
+public class Item_Draggable : UIDraggable,IPointerDownHandler, IBeginDragHandler, IEndDragHandler,IDragHandler
 {
     #region 변수
-    private static Canvas _canvas;
-    private static float _canvasScale;
     [SerializeField] CanvasGroup _canvasGroup;
     public Transform parentToReturn;
     
@@ -25,8 +23,7 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
     {
         parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
         _rectTransform.SetParent(_canvas.transform);
-        _rectTransform.SetSiblingIndex(_rectTransform.parent.childCount-1);//다른 UI 보다 밑으로 가게 설정
-
+        SetSecondToLast();
 
         //raycast ignore to allow item_slot to be accessible.
         _canvasGroup.blocksRaycasts = false;
@@ -59,17 +56,5 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
     public void placeItem(Transform parentToBe)
     {
         parentToReturn = parentToBe;
-    }
-
-
-
-    IEnumerator InitDelay(float time)
-    {
-        yield return new WaitForSeconds(time);
-    }
-    static public void initItems(Canvas canvas)
-    {
-        _canvas = canvas;
-        _canvasScale = _canvas.scaleFactor;
     }
 }

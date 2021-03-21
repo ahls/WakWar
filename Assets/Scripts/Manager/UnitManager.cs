@@ -5,13 +5,13 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour
 {
     #region 변수
-    private const float clickThreshold = 0.1f;
-
+    public bool ControlOn { get; set; } = true;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     [SerializeField] private GameObject _selectionBox;
     private float3 _startLocation;
-    private short _selectedUnitCount = 0; //마우스 클릭인지 확인할때 사용됨
-    private bool _selectOneOnly = false; // 위와 동일
+    private short _selectedUnitCount = 0;       //유닛 선택이
+    private bool _selectOneOnly = false;        //클릭인지
+    private const float clickThreshold = 0.1f;  //확인할떄 쓰임
     #endregion
 
     // Start is called before the first frame update
@@ -22,8 +22,11 @@ public class UnitManager : MonoBehaviour
 
     private void Update()
     {
-        SelectUnitControl();
-        UnitMoveControl();
+        if (ControlOn)
+        {
+            SelectUnitControl();
+            UnitMoveControl();
+        }
     }
 
     private void SelectUnitControl()
