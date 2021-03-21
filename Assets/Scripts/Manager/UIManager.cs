@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _btnMargin;
-
+    public GameObject canvas => _canvas;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
 

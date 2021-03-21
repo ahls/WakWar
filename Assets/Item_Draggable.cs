@@ -6,25 +6,32 @@ using UnityEngine.EventSystems;
 public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandler, IEndDragHandler,IDragHandler
 {
     #region 변수
-    [SerializeField] Canvas _canvas;
+    private static Canvas _canvas;
+    private static float _canvasScale;
     [SerializeField] CanvasGroup _canvasGroup;
     public Transform parentToReturn;
+    
     RectTransform _rectTransform;
-    int _childIndex = 0;
 
     #endregion
 
-    private void Awake()
+    private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
+
+        _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
+        if (_canvas == null)
+        {
+            _canvas = Global.UIManager.transform.GetChild(0).GetComponent<Canvas>();
+            _canvasScale = _canvas.scaleFactor;
+        }
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentToReturn = _rectTransform.parent;
-        _childIndex = transform.GetSiblingIndex();
-        _rectTransform.SetParent(parentToReturn.parent.parent);
-        _rectTransform.SetSiblingIndex(_rectTransform.parent.childCount-1);
-        parentToReturn.GetChild(_childIndex).gameObject.SetActive(true); 
+        parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
+        _rectTransform.SetParent(_canvas.transform);
+        _rectTransform.SetSiblingIndex(_rectTransform.parent.childCount-1);//다른 UI 보다 밑으로 가게 설정
+
 
         //raycast ignore to allow item_slot to be accessible.
         _canvasGroup.blocksRaycasts = false;
@@ -33,15 +40,15 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
+        _rectTransform.anchoredPosition += eventData.delta / _canvasScale;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         //setting parents
-        parentToReturn.GetChild(_childIndex).gameObject.SetActive(false);
         _rectTransform.SetParent(parentToReturn);
-        _rectTransform.SetSiblingIndex(_childIndex); 
+        _rectTransform.position = parentToReturn.position;
+        parentToReturn.GetComponent<Item_Slot>().currentNumber++;
 
 
         //setting the raycast option
@@ -54,9 +61,8 @@ public class Item_Draggable : MonoBehaviour,IPointerDownHandler, IBeginDragHandl
         Debug.Log("On pointer down called");
     }
 
-    public void dropItem(Transform parentToBe, int childIndex)
+    public void placeItem(Transform parentToBe)
     {
         parentToReturn = parentToBe;
-        _childIndex = childIndex;
     }
 }
