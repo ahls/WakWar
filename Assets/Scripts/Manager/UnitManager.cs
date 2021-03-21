@@ -77,15 +77,15 @@ public class UnitManager : MonoBehaviour
             }
             _selectedUnitCount = 0;
 
-            Collider2D[] thingsInSelcetion = Physics2D.OverlapBoxAll(centerOfBox, sizeOfBox, 0f);
-            foreach (Collider2D thing in thingsInSelcetion)
+            Collider2D[] UnitsInRange = Physics2D.OverlapBoxAll(centerOfBox, sizeOfBox, 0f);
+            foreach (Collider2D selectingUnit in UnitsInRange)
             {
-                UnitStats tempStats = thing.GetComponent<UnitStats>();
+                UnitStats tempStats = selectingUnit.GetComponent<UnitStats>();
 
                 if (tempStats != null && tempStats.playerOwned)
                 {
                     tempStats.setSelectionCircleState(true);
-                    _selectedUnitList.Add(thing.gameObject);
+                    _selectedUnitList.Add(selectingUnit.gameObject);
                     _selectedUnitCount++;
 
                     if (_selectOneOnly && _selectedUnitCount == 1)

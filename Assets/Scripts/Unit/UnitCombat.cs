@@ -33,6 +33,9 @@ public class UnitCombat : MonoBehaviour
         }
     }
 
+
+    public GameObject effectPrefab;
+
     //체력
     public int healthMax { get; set; } = 10;
     private int healthCurrent;
@@ -46,7 +49,7 @@ public class UnitCombat : MonoBehaviour
     public int armorPiercing { get; set; }
 
     //타겟 관련
-    private Transform attackTarget;
+    public Transform attackTarget;
     private int searchCooldown = 15;
     private int searchTimer;
     private static int searchAssign = 0;
@@ -123,7 +126,7 @@ public class UnitCombat : MonoBehaviour
                     {
                         if (attackTarget != null)
                         {
-                            if ((attackTarget.position - transform.position).magnitude <= attackRange)
+                            if ((attackTarget.position - transform.position).magnitude <= resultRange)
                             {//적이 사정거리 내에 있을경우
                                 Attack();
                             }
@@ -194,18 +197,31 @@ public class UnitCombat : MonoBehaviour
     {
         _weapon = null;
     }
+    public void UpdateStats()
+    {
+        resultDamage = attackDamage + _weapon.AttackDamage;
+        resultAOE = attackArea + _weapon.AttackArea;
+        resultRange = attackRange + _weapon.AttackRange;
+        resultSpeed = attackSpeed + _weapon.AttackSpeed;
+        resultArmor = armor + _weapon.Armor;
+        
+    }
     #endregion
 
     #region 공격관련
 
     public void Attack()
     {
+        //##리소스매니져 위치
         //투사체 pull 해주세요
         //############
+        /*
         if (_effect == null)
         {
             //_effect = Instantiate()
         }
+        */
+        _effect = Instantiate(effectPrefab);
         _effect.transform.position = transform.position;
         _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position);
         ResetAttackTimer();
@@ -213,7 +229,7 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetAttackTimer()
     {
-        attackTimer = 1 / attackSpeed;
+        attackTimer = 1 / resultSpeed;
     }
 
     #endregion
@@ -222,7 +238,7 @@ public class UnitCombat : MonoBehaviour
 
     private void Search()
     {
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, attackRange);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, resultRange);
         foreach (Collider2D selected in inRange)
         {
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();

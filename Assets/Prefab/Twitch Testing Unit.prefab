@@ -142,7 +142,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5622039247556796953
 Canvas:
@@ -687,6 +687,7 @@ MonoBehaviour:
   _rigid: {fileID: 3862550047673607434}
   selectionCircle: {fileID: 8720594781551919073}
   PlayerNameText: {fileID: 1859366810873294107}
+  _isMoving: 0
 --- !u!212 &8720594783474616045
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -806,6 +807,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectPrefab: {fileID: 0}
   healthBar: {fileID: 6520456813337381849}
+  attackTarget: {fileID: 0}
   ownedFaction: 0
+  targetFaction: 0
   weaponType: 0
