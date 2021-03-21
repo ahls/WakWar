@@ -17,11 +17,15 @@ public class Global : MonoBehaviour
     }
 
     public static ResourceManager ResourceManager => _resourceManager;
+    public static ObjectPoolManager ObjectPoolManager => _objectPoolManager;
     public static UIManager UIManager => _uiManager;
 
     private static Global _instance;
     private static ResourceManager _resourceManager;
+    private static ObjectPoolManager _objectPoolManager;
     private static UIManager _uiManager;
+
+    [SerializeField] private GameObject _disableObject;
 
     private void Awake()
     {
@@ -36,6 +40,7 @@ public class Global : MonoBehaviour
         }
 
         _resourceManager = new ResourceManager();
+        _objectPoolManager = new ObjectPoolManager(_disableObject);
     }
 
     public void ChangeScene(string sceneName)
