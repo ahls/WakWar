@@ -24,6 +24,7 @@ public class Item_Draggable : UIDraggable,IPointerDownHandler, IBeginDragHandler
         parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
         _rectTransform.SetParent(_canvas.transform);
         SetSecondToLast();
+        IngameManager.UnitManager.ControlOn = false;
 
         //raycast ignore to allow item_slot to be accessible.
         _canvasGroup.blocksRaycasts = false;
@@ -41,6 +42,7 @@ public class Item_Draggable : UIDraggable,IPointerDownHandler, IBeginDragHandler
         _rectTransform.SetParent(parentToReturn);
         _rectTransform.position = parentToReturn.position;
         parentToReturn.GetComponent<Item_Slot>().currentNumber++;
+        IngameManager.UnitManager.ControlOn = true;
 
 
         //setting the raycast option
