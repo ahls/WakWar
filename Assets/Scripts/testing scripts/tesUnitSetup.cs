@@ -14,7 +14,7 @@ public class tesUnitSetup : MonoBehaviour
         UC.resultDamage = 1;
         UC.resultRange = 2;
         UC.resultAP = 0;
-        UC.resultAOE = 0.3f;
+        UC.resultAOE = 0.1f;
         UC.projectileSpeed = 3;
         UC.attackSpeed = 3;
         UC.armor = 0;
