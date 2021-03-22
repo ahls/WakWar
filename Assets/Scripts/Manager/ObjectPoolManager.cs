@@ -45,18 +45,22 @@ public class ObjectPoolManager : MonoBehaviour
     {
         if (_objectPoolDic.ContainsKey(path))
         {
-            var pooledObjectData = _objectPoolDic[path];
-            _objectPoolDic.Remove(path);
-    
-            return pooledObjectData.GetObject();
+            if (_objectPoolDic[path].GetPoolObjectCount() > 0)
+            {
+                var pooledObjectData = _objectPoolDic[path];
+
+                return pooledObjectData.GetObject();
+            }
         }
 
         if (_globalObjectPoolDic.ContainsKey(path))
         {
-            var pooledObjectData = _globalObjectPoolDic[path];
-            _globalObjectPoolDic.Remove(path);
+            if (_globalObjectPoolDic[path].GetPoolObjectCount() > 0)
+            {
+                var pooledObjectData = _globalObjectPoolDic[path];
 
-            return pooledObjectData.GetObject();
+                return pooledObjectData.GetObject();
+            }
         }
 
         return null;
@@ -73,5 +77,10 @@ public class ObjectPoolManager : MonoBehaviour
         }
     
         _objectPoolDic.Clear();
+    }
+
+    public GameObject CreatObject(GameObject _gameObject)
+    {
+        return Instantiate(_gameObject);
     }
 }
