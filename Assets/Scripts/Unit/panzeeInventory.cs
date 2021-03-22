@@ -87,8 +87,6 @@ public class panzeeInventory : MonoBehaviour
     {   
        string tempString = value.ToString();
         char[] newchars = tempString.PadLeft(length).ToCharArray();
-        Debug.Log(new string(newchars));
-        Debug.Log($"lenght {length}, length of value {newchars.Length}");
         for (int i = 0; i < length; i++)
         {
             _stats[index + i] =  newchars[i];

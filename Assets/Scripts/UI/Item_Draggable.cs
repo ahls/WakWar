@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
+public enum ItemType {potion, relic, money, weapon,any}
 public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler
 {
     #region 변수
     [SerializeField] CanvasGroup _canvasGroup;
+    [SerializeField] ItemType _itemType;
     public Transform parentToReturn;
     
     RectTransform _rectTransform;
@@ -54,5 +57,10 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
     public void placeItem(Transform parentToBe)
     {
         parentToReturn = parentToBe;
+    }
+
+    public bool compareType(ItemType slottype)
+    {
+        return (slottype == _itemType || slottype ==ItemType.any);
     }
 }

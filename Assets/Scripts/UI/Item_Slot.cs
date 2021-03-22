@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+
 public class Item_Slot : MonoBehaviour, IDropHandler
 {
+    [SerializeField] private ItemType _slotType;
     public int currentNumber { get; set; } = 0;
     public void OnDrop(PointerEventData eventData)
     {
@@ -14,17 +16,21 @@ public class Item_Slot : MonoBehaviour, IDropHandler
         {
             if (currentNumber == 0)
             {
-                draggedItem.placeItem(transform);
+                if (draggedItem.compareType(_slotType))
+                {
+                    draggedItem.placeItem(transform);
+                }
+                else
+                {
+                    Global.UIManager.PushNotiMsg("잘못된 타입 입니다.", 1f);
+                }
             }
-            //draggedItem.dropItem(transform, transform.GetSiblingIndex());
-//            gameObject.SetActive(false);
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void setup(ItemType newType)
     {
-        
+        _slotType = newType;
     }
 
     
