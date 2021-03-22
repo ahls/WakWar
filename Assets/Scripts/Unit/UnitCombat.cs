@@ -128,7 +128,7 @@ public class UnitCombat : MonoBehaviour
                     }
                     else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
                     {
-                        if (attackTarget != null)
+                        if (attackTarget != null) 
                         {
                             if ((attackTarget.position - transform.position).magnitude <= resultRange)
                             {//적이 사정거리 내에 있을경우
@@ -137,6 +137,12 @@ public class UnitCombat : MonoBehaviour
                             else
                             {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
 
+                            }
+
+                            if (!attackTarget.gameObject.activeSelf)
+                            {
+                                attackTarget = null;
+                                ActionStat = ActionStats.Idle;
                             }
                         }
                         else
