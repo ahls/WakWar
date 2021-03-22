@@ -41,13 +41,13 @@ public class ResourceManager
                 return pooledObject;
             }
 
-            return _loadedObjectDic[path];
+            return Global.ObjectPoolManager.CreatObject(_loadedObjectDic[path]);
         }
 
         var prefab = assetBundle.LoadAsset<GameObject>(path);
 
         _loadedObjectDic[path] = prefab;
-        
-        return prefab;
+
+        return Global.ObjectPoolManager.CreatObject(prefab);
     }
 }
