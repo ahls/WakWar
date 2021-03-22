@@ -292,7 +292,6 @@ public class UnitCombat : MonoBehaviour
     private void HealthBarUpdate()
     {
         healthBar.value = healthCurrent;
-        HealthBarUpdate();
         if(healthCurrent<= 0)
         {
             death();

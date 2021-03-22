@@ -9,7 +9,7 @@ public class AttackEffect : MonoBehaviour
     //레퍼런스를 잡긴 했는데 범위공격같은애들이 있으면, 공격 정보를 매번 끌어와야되니까 일단 아래 데미지랑 타겟팩션같은거는 담아둘 변수를 만들어놨어요
     private int _damage;
     private int _AP; // 아머피어싱
-    private Vector2 _aoe;
+    private float _aoe;
     private Vector3 _destination;
     private faction _targetFaction;
     private GameObject onHitEffect;
@@ -30,8 +30,9 @@ public class AttackEffect : MonoBehaviour
 
         _damage = attackerInfo.resultDamage;
         _targetFaction = attackerInfo.targetFaction;
-        _aoe = new Vector2(attacker.resultAOE, attacker.resultAOE);
+        _aoe = attacker.resultAOE;
         _AP = attackerInfo.resultAP;
+        _destination = destination;
         projectileImage.sprite = attacker.attackImage;
 
         Vector2 offsetToTarget = destination - transform.position;
@@ -61,17 +62,17 @@ public class AttackEffect : MonoBehaviour
     }
     void dealDamage()
     {
-        Collider2D []unitsInRange = Physics2D.OverlapAreaAll(_destination, _aoe);
+        Collider2D []unitsInRange = Physics2D.OverlapCircleAll(_destination,_aoe);
         foreach (var target in unitsInRange)
         {
+
             UnitCombat targetCombat = target.GetComponent<UnitCombat>();
             if(targetCombat != null)
             {
-                Debug.Log($"{_targetFaction} attacked {targetCombat.ownedFaction}");
-                if (_targetFaction == targetCombat.ownedFaction || _targetFaction == faction.both)
+                Debug.Log($"{_targetFaction} is inteded target and {targetCombat.ownedFaction} is the owned target.");
+                if( _targetFaction == targetCombat.ownedFaction|| _targetFaction == faction.both )
                 {
-
-                    targetCombat.TakeDamage(_damage, _AP);
+                    targetCombat.TakeDamage(_damage,_AP);
                 }
             }
         }
