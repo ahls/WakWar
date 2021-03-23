@@ -8,7 +8,10 @@ public class ObjectPoolData
 
     public GameObject GetObject()
     {
-        return gameObjectsQueue.Dequeue();
+        var returnObject = gameObjectsQueue.Dequeue();
+        returnObject.transform.parent = null;
+        returnObject.SetActive(true);
+        return returnObject;
     }
     
     public void PoolingObject(GameObject poolObject)
