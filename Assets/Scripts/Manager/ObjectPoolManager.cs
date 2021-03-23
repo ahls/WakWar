@@ -35,7 +35,7 @@ public class ObjectPoolManager : MonoBehaviour
         if (!_globalObjectPoolDic.TryGetValue(path, out ObjectPoolData objectData))
         {
             objectData = new ObjectPoolData();
-            _objectPoolDic.Add(path, objectData);
+            _globalObjectPoolDic.Add(path, objectData);
         }
 
         objectData.PoolingObject(gameObject);
