@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public enum DisplayStat {level,Mxhealth,CrntHealth,str,agi,inte,dmg,range,atkSpd,mvSpd,amr,ap }
 public class panzeeInventory : MonoBehaviour
 {
-    [SerializeField] Text StatDisplay;
+    [SerializeField] TextMeshProUGUI StatDisplay;
     char[] _stats;
     // Start is called before the first frame update
     void Awake()
@@ -91,7 +91,7 @@ public class panzeeInventory : MonoBehaviour
         {
             _stats[index + i] =  newchars[i];
         }
-        StatDisplay.text = new String(_stats);
+        StatDisplay.SetCharArray(_stats);
     }
     private void updateDisplay(int index, float value)
     {
@@ -101,7 +101,7 @@ public class panzeeInventory : MonoBehaviour
             _stats[index + i] = newchars[i];
         }
 
-        StatDisplay.text = new String(_stats);
+        StatDisplay.SetCharArray(_stats);
     }
 
 }
