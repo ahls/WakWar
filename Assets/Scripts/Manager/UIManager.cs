@@ -19,7 +19,8 @@ public class UIManager : MonoBehaviour
 
     public void PushNotiMsg(string text, float lifeTime)
     {
-        var notiMsgObject = Instantiate(Global.ResourceManager.LoadPrefab("NotifyText"), _canvas.transform);
+        var notiMsgObject = Global.ResourceManager.LoadPrefab("NotifyText");
+        notiMsgObject.transform.parent = _canvas.transform;
         notiMsgObject.SetActive(true);
         notiMsgObject.GetComponent<UINotifyText>().SetInfo(text, lifeTime);
     }

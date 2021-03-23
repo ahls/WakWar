@@ -101,8 +101,6 @@ public class UnitManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Global.UIManager.PushNotiMsg("Vow" , 2.0f);
-
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
                 selectedUnit.GetComponent<UnitStats>().MoveToTarget(cursorLocation());
