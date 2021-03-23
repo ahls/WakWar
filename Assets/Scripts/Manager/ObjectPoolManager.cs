@@ -44,21 +44,21 @@ public class ObjectPoolManager : MonoBehaviour
     public GameObject GetObject(string path)
     {
         if (_objectPoolDic.ContainsKey(path))
-        {
-            if (_objectPoolDic[path].GetPoolObjectCount() > 0)
             {
                 var pooledObjectData = _objectPoolDic[path];
 
+            if (pooledObjectData.GetPoolObjectCount() > 0)
+            {
                 return pooledObjectData.GetObject();
             }
         }
 
         if (_globalObjectPoolDic.ContainsKey(path))
-        {
-            if (_globalObjectPoolDic[path].GetPoolObjectCount() > 0)
             {
                 var pooledObjectData = _globalObjectPoolDic[path];
 
+            if (pooledObjectData.GetPoolObjectCount() > 0)
+            {
                 return pooledObjectData.GetObject();
             }
         }
