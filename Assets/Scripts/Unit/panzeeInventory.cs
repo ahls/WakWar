@@ -52,8 +52,12 @@ public class panzeeInventory : MonoBehaviour
                 case DisplayStat.ap:
                     updateDisplay(101, 2, newValue);
                     break;
-                default:
+                case DisplayStat.range:
+                case DisplayStat.atkSpd:
+                case DisplayStat.mvSpd:
                     updateStat(statType, (float)newValue);
+                    break;
+                default:
                     break;
             }
         }
