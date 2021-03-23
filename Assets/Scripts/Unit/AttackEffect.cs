@@ -16,17 +16,19 @@ public class AttackEffect : MonoBehaviour
     private int lifeTime;//착탄지점에 도착했는지 여부를 검사할때 쓰일거
     [SerializeField] private SpriteRenderer projectileImage;
     [SerializeField] private Rigidbody2D RB;
-    // Start is called before the first frame update
+
+    private string _name;
 
     /// <summary>
     /// 셋업 하기 전에 공격자 위치로 미리 불러와야 합니다.
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void setup(UnitCombat attacker, Vector3 destination)
+    public void setup(UnitCombat attacker, Vector3 destination, string name)
     {
-        attackerInfo = attacker;
+        _name = name;
 
+        attackerInfo = attacker;
 
         _damage = attackerInfo.resultDamage;
         _targetFaction = attackerInfo.targetFaction;
@@ -49,10 +51,14 @@ public class AttackEffect : MonoBehaviour
         {
             dealDamage();
 
-            //인게임 매니져 오브젝트 풀링 매니져 생기면 아래 줄 수정
-
-            //            .ObjectPooling(, gameObject);
-            Destroy(gameObject);
+            if (!string.IsNullOrWhiteSpace(_name))
+            {
+                Global.ObjectPoolManager.ObjectPooling(_name, this.gameObject);
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
         else
         {

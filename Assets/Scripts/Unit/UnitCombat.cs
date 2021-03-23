@@ -226,18 +226,9 @@ public class UnitCombat : MonoBehaviour
 
     public void Attack()
     {
-        //##리소스매니져 위치
-        //투사체 pull 해주세요
-        //############
-        /*
-        if (_effect == null)
-        {
-            //_effect = Instantiate()
-        }
-        */
-        _effect = Instantiate(effectPrefab);
+        _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position);
+        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name);
         ResetAttackTimer();
     }
 
