@@ -40,6 +40,6 @@ public class UINotifyText : MonoBehaviour
             yield return null;
         }
 
-        Global.ObjectPoolManager.ObjectPooling("NotifyText", this.gameObject);
+        Global.ObjectPoolManager.CanvasObjectPooling("NotifyText", this.gameObject);
     }
 }

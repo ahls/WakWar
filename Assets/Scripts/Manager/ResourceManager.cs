@@ -25,7 +25,7 @@ public class ResourceManager
         }
     }
 
-    public GameObject LoadPrefab(string path)
+    public GameObject LoadPrefab(string path, bool isUI = false)
     {
         if (assetBundle == null)
         {
@@ -41,13 +41,13 @@ public class ResourceManager
                 return pooledObject;
             }
 
-            return Global.ObjectPoolManager.CreatObject(_loadedObjectDic[path]);
+            return Global.ObjectPoolManager.CreatObject(_loadedObjectDic[path], isUI);
         }
 
         var prefab = assetBundle.LoadAsset<GameObject>(path);
 
         _loadedObjectDic[path] = prefab;
 
-        return Global.ObjectPoolManager.CreatObject(prefab);
+        return Global.ObjectPoolManager.CreatObject(prefab, isUI);
     }
 }
