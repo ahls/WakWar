@@ -88,6 +88,7 @@ public class UnitCombat : MonoBehaviour
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
         HealthBarUpdate();
+        HealthBarColor(ownedFaction == faction.player ? Color.green : Color.red);
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         searchTimer = searchAssign++ % searchCooldown;
         searchAssign %= searchCooldown;
@@ -106,7 +107,7 @@ public class UnitCombat : MonoBehaviour
         {
             case ActionStats.Idle:
                 {
-                    if(attackTarget != null)
+                    if (attackTarget != null)
                     {
                         ActionStat = ActionStats.Attack;
                     }
@@ -122,13 +123,13 @@ public class UnitCombat : MonoBehaviour
                 }
             case ActionStats.Attack:
                 {
-                    if (attackTimer > 0)
+                    if (attackTarget != null && attackTarget.gameObject.activeSelf)
                     {
-                        attackTimer -= Time.deltaTime;
-                    }
-                    else//else문을 넣음으로 공격에 후딜이 추가됨: 공격후 새로운 적을 잡거나 공격을 위해 적에게 다가가지 않음.
-                    {
-                        if (attackTarget != null) 
+                        if (attackTimer > 0)
+                        {
+                            attackTimer -= Time.deltaTime;
+                        }
+                        else
                         {
                             if ((attackTarget.position - transform.position).magnitude <= resultRange)
                             {//적이 사정거리 내에 있을경우
@@ -136,23 +137,19 @@ public class UnitCombat : MonoBehaviour
                             }
                             else
                             {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
-                                
+
                             }
 
-                            if (!attackTarget.gameObject.activeSelf)
-                            {
-                                attackTarget = null;
-                                ActionStat = ActionStats.Idle;
-                            }
-                        }
-                        else
-                        {//적이 없을경우 상태를 대기로 변경
-                            ActionStat = ActionStats.Idle;
                         }
                     }
-
-                    break;
+                    else
+                    {//타겟이 없거나 비활성화 되어있으면 바로 타겟 비우고 대기상태로 변환
+                        attackTarget = null;
+                        ActionStat = ActionStats.Idle;
+                    }
                 }
+                break;
+
             default:
                 {
                     break;
@@ -293,6 +290,11 @@ public class UnitCombat : MonoBehaviour
         {
             death();
         }
+
+    }
+    private void HealthBarColor(Color newColor)
+    {
+       healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
 
     }
     private void death()

@@ -24,7 +24,7 @@ public class AttackEffect : MonoBehaviour
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void setup(UnitCombat attacker, Vector3 destination, string name)
+    public void setup(UnitCombat attacker, Vector3 destination, string name, float torque)
     {
         _name = name;
 
@@ -39,12 +39,14 @@ public class AttackEffect : MonoBehaviour
 
         Vector2 offsetToTarget = destination - transform.position;
         RB.velocity = offsetToTarget.normalized * attacker.projectileSpeed;
+        RB.AddTorque(torque);
 
         // 거리 / 투사체 속도 = 목표까지 걸리는 시간
         // 목표까지 걸리는 시간 * 50(초당 프레임) = 목표까지 도달하는데 걸리는 fixedUpdate 프레임 수 
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
         lifeTime = (int)(50 * offsetToTarget.magnitude/attacker.projectileSpeed);
     }
+    
     private void FixedUpdate()
     {
         if(lifeTime ==0)
