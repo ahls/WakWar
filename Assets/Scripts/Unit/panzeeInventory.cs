@@ -7,15 +7,29 @@ using TMPro;
 public enum DisplayStat {level,Mxhealth,CrntHealth,str,agi,inte,dmg,range,atkSpd,mvSpd,amr,ap }
 public class panzeeInventory : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI StatDisplay;
+    #region 변수
+    [SerializeField] private Text _name; 
+
+    //스탯관련
+    [SerializeField] private TextMeshProUGUI StatDisplay;
     char[] _stats;
+    GameObject _unit;
+    #endregion
     // Start is called before the first frame update
     void Awake()
     {
         _stats = StatDisplay.text.ToCharArray();
     }
 
+    public void setup(string name, GameObject gameObject)
+    {
+        _name.text = name;
+        _unit = gameObject;
+    }
 
+
+
+    #region 판도라의 상자
     public void updateStat(DisplayStat statType, int newValue)
     {
         try
@@ -107,5 +121,5 @@ public class panzeeInventory : MonoBehaviour
 
         StatDisplay.SetCharArray(_stats);
     }
-
+    #endregion
 }

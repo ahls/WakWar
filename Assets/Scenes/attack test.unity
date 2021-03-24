@@ -235,7 +235,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &15277472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -255,7 +263,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1 &131315331 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -275,7 +291,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &131717307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -295,7 +319,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &176659926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -315,7 +347,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &208975341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -335,7 +375,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &219631692 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -355,7 +403,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &263943656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,7 +797,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &402313673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -761,7 +825,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1 &423513327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -781,7 +853,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!114 &439315983 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -813,7 +893,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &453174108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1038,7 +1126,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &493230068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1355,7 +1451,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &599967790
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1470,7 +1574,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &667337110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -1490,7 +1602,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &692664015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1835,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &770181841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2020,7 +2148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &833531108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2257,7 +2393,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &882122484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2387,7 +2531,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &913287864 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -2407,7 +2559,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1 &959687016 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -2427,7 +2587,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1 &989004557 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -2447,7 +2615,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &1044909637 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -2467,7 +2643,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &1047790098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2597,7 +2781,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &1110215891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2712,7 +2904,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &1118927468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3523,7 +3723,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &1318497850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
@@ -3543,7 +3751,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!114 &1327370631 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -3575,7 +3791,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!114 &1331345670 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -3920,7 +4144,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!114 &1454473864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -3952,7 +4184,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &1517443689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4067,7 +4307,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!114 &1565987940 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -4194,7 +4442,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &1645508046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -4214,7 +4470,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &1648261131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4341,7 +4605,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!114 &1706064931 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9118284616455949990, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -4373,7 +4645,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1 &1765949163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6769527757377700756, guid: 1b19a00c5783fba4d91a916dd5b0db27,
@@ -4393,7 +4673,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1.5
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0
+  hp: 10
+  dmg: 1
+  AP: 0
+  image: {fileID: 4229250186976457064, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 500
 --- !u!1001 &1771374639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4615,7 +4903,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &1877821054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4852,7 +5148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  range: 1
+  AOE: 0.01
+  projSpeed: 2
+  ms: 0.01
+  hp: 7
+  dmg: 1
+  AP: 0
+  image: {fileID: -7357431110860939664, guid: 1fb93b8bd41332d4ca2ec710a7cf1526, type: 3}
+  torque: 0
 --- !u!1001 &1996653800
 PrefabInstance:
   m_ObjectHideFlags: 0
