@@ -75,7 +75,7 @@ public class AttackEffect : MonoBehaviour
             UnitCombat targetCombat = target.GetComponent<UnitCombat>();
             if(targetCombat != null)
             {
-                Debug.Log($"{_targetFaction} is inteded target and {targetCombat.ownedFaction} is the owned target.");
+
                 if( _targetFaction == targetCombat.ownedFaction|| _targetFaction == faction.both )
                 {
                     targetCombat.TakeDamage(_damage,_AP);

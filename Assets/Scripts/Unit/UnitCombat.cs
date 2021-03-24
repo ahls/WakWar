@@ -66,7 +66,7 @@ public class UnitCombat : MonoBehaviour
     private UnitWeapon _weapon;
     private GameObject _effect;
     public Sprite attackImage { get; set; }
-
+    public float attackTorque { get; set; } = 0;
     private UnitStats _unitstats;
     //장비 장착후 스탯
     public int resultDamage { get; set; }
@@ -228,7 +228,7 @@ public class UnitCombat : MonoBehaviour
     {
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name);
+        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name,attackTorque);
         ResetAttackTimer();
     }
 
