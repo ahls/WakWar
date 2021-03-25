@@ -12022,6 +12022,7 @@ GameObject:
   - component: {fileID: 2095362799}
   - component: {fileID: 2095362798}
   - component: {fileID: 2095362797}
+  - component: {fileID: 2095362800}
   m_Layer: 0
   m_Name: Panzee Window
   m_TagString: Untagged
@@ -12100,6 +12101,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095362795}
   m_CullTransparentMesh: 0
+--- !u!114 &2095362800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095362795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 302569b0f0b0a304e8e531936bb1265a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotLists: []
+  slotPrefab: {fileID: 0}
 --- !u!224 &2098989598 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5484659015161531336, guid: f165f0db6d31c4a46a7a56fd9a66e64c,
