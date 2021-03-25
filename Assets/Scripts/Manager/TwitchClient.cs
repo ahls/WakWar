@@ -61,10 +61,7 @@ public class TwitchClient : MonoBehaviour
                 if (UnitClasses.Contains(UnitClass))
                 {//고른 직업이 존재할경우
                     client.SendMessage(client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
-                    GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
-                    instance.GetComponent<UnitStats>().playerUnitInit(userName);
-                    Debug.Log(userName);
-                    twitchPlayerList.Add(userName, instance);
+                    unitCreation(userName, UnitClass);
                 }
                 /*어차피 그냥 무시해도 될테니까 도배 방지용으로 주석처리 해놨습니다. 뽈롱뽈랑님 보시고 동의 하시면 아래 else 문 지워주세요!
                 else
@@ -81,5 +78,30 @@ public class TwitchClient : MonoBehaviour
     public void flushPlayerList()
     {
         twitchPlayerList.Clear();
+    }
+
+    private void unitCreation(string userName, string unitClass)
+    {
+        GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
+        instance.GetComponent<UnitStats>().playerUnitInit(userName);
+        instance.GetComponent<UnitCombat>().playerSetup();
+
+        WeaponType inputClass;
+        if(unitClass == UnitClasses[0])
+        {
+            inputClass = WeaponType.Warrior;
+        }
+        else if(unitClass == UnitClasses[1])
+        {
+            inputClass = WeaponType.Shooter;
+        }
+        else
+        {
+            inputClass = WeaponType.Supporter;
+        }
+
+        PanzeeWindow.instance.addToList(userName, instance, inputClass);
+        twitchPlayerList.Add(userName, instance);
+
     }
 }

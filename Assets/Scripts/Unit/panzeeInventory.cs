@@ -21,10 +21,12 @@ public class panzeeInventory : MonoBehaviour
         _stats = StatDisplay.text.ToCharArray();
     }
 
-    public void setup(string name, GameObject gameObject)
+    public void setup(string name, GameObject gameObject, Transform parent)
     {
         _name.text = name;
         _unit = gameObject;
+        transform.parent = parent;
+        transform.localScale = Vector3.one;
     }
 
 

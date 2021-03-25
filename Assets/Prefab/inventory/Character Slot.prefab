@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 51698179069260080}
   - component: {fileID: 51698179069260083}
   - component: {fileID: 936735738259788668}
-  - component: {fileID: 1552099343}
   m_Layer: 0
   m_Name: Character Slot
   m_TagString: Untagged
@@ -96,8 +95,8 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 270
-  m_PreferredHeight: 700
+  m_PreferredWidth: 460
+  m_PreferredHeight: 145
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -113,20 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: {fileID: 51698179752636784}
   StatDisplay: {fileID: 8774027671299594715}
---- !u!114 &1552099343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51698179069260085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 934b59649bd9cd44f849b2f2672c329a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PI: {fileID: 936735738259788668}
 --- !u!1 &51698179752636786
 GameObject:
   m_ObjectHideFlags: 0

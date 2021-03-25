@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3264998550
+CRC: 2493184332
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 274075582fb79aeb00bb894b53ed5089
+    Hash: 97a537d0cc49f88aa809eeae916665e5
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d4dec42c781461fcd3059b6558a7e5e0
+    Hash: fb4acf68f0955260a241d6745681d507
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -14,6 +14,8 @@ ClassTypes:
 - Class: 4
   Script: {instanceID: 0}
 - Class: 21
+  Script: {instanceID: 0}
+- Class: 23
   Script: {instanceID: 0}
 - Class: 28
   Script: {instanceID: 0}
@@ -24,11 +26,21 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d19d9307e61739c49a8af4c8f0f309bb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 19f0668bed4145a46a7fffb5875f97d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
 - Class: 115
@@ -43,7 +55,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
 Assets:
+- Assets/Prefab/inventory/Character Slot.prefab
 - Assets/WakAsset/UI/NotifyText.prefab
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Prefab/AttackEffect.prefab

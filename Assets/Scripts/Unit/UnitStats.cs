@@ -31,11 +31,6 @@ public class UnitStats : MonoBehaviour
     void Start()
     {
 
-        //테스트라인
-        if (playerOwned)
-        {
-            playerUnitInit("test");
-        }
     }
 
     private void FixedUpdate()
@@ -49,7 +44,6 @@ public class UnitStats : MonoBehaviour
     public void playerUnitInit(string PlayerName)
     {
         playerOwned = true;
-        GetComponent<UnitCombat>().ownedFaction = faction.player;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
     }

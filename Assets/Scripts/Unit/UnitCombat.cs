@@ -80,6 +80,12 @@ public class UnitCombat : MonoBehaviour
     private int resultArmor;
 
 
+    public void playerSetup()
+    {
+        ownedFaction = faction.player;
+        HealthBarColor(Color.green);
+
+    }
 
     #endregion
     private void Start()
@@ -88,7 +94,6 @@ public class UnitCombat : MonoBehaviour
         healthCurrent = healthMax;
         healthBar.maxValue = healthMax;
         HealthBarUpdate();
-        HealthBarColor(ownedFaction == faction.player ? Color.green : Color.red);
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         searchTimer = searchAssign++ % searchCooldown;
         searchAssign %= searchCooldown;
