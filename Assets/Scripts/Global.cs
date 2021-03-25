@@ -26,6 +26,7 @@ public class Global : MonoBehaviour
     private static UIManager _uiManager;
 
     [SerializeField] private GameObject _disableObject;
+    [SerializeField] private GameObject _disableCanvas;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class Global : MonoBehaviour
         }
 
         _resourceManager = new ResourceManager();
-        _objectPoolManager = new ObjectPoolManager(_disableObject);
+        _objectPoolManager = new ObjectPoolManager(_disableObject, _disableCanvas);
     }
 
     public void ChangeScene(string sceneName)
