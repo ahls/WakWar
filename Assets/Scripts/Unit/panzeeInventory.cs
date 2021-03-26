@@ -8,12 +8,13 @@ public enum DisplayStat {level,Mxhealth,CrntHealth,str,agi,inte,dmg,range,atkSpd
 public class panzeeInventory : MonoBehaviour
 {
     #region 변수
-    [SerializeField] private Text _name; 
-
+    [SerializeField] private Text _name;
+    [SerializeField] private GameObject itemSlot;
     //스탯관련
     [SerializeField] private TextMeshProUGUI StatDisplay;
     char[] _stats;
     GameObject _unit;
+    
     #endregion
     // Start is called before the first frame update
     void Awake()
@@ -25,10 +26,16 @@ public class panzeeInventory : MonoBehaviour
     {
         _name.text = name;
         _unit = gameObject;
-        transform.parent = parent;
+        transform.SetParent(parent);
         transform.localScale = Vector3.one;
     }
-
+    /// <param name="one_or_zero"></param>
+    public void collapse(bool collapsing)
+    {
+        itemSlot.SetActive(!collapsing);
+        Vector2 sizeDelta = new Vector2(460, collapsing ? 75 : 150);
+        GetComponent<RectTransform>().sizeDelta = sizeDelta;
+    }
 
 
     #region 판도라의 상자
