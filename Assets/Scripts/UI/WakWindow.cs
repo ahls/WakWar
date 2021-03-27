@@ -8,7 +8,6 @@ public class WakWindow : MonoBehaviour
     static public WakWindow instance;
     [SerializeField] TextMeshProUGUI StatDisplay;
     char[] _stats;
-    int3 panzees = new int3(0, 0, 0);
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,21 +56,17 @@ public class WakWindow : MonoBehaviour
                 break;
         }
     }
-    public void updateStat(WeaponType weaponType, int valueDelta )
+    public void updateStat(WeaponType weaponType, int newValue )
     {
-        int newValue = valueDelta;
         switch (weaponType)
         {
             case WeaponType.Warrior:
-                newValue += panzees.x ;
                 updateDisplay(10, 2, newValue);
                 break;
             case WeaponType.Shooter:
-                newValue += panzees.y;
                 updateDisplay(17, 2, newValue);
                 break;
             case WeaponType.Supporter:
-                newValue += panzees.z;
                 updateDisplay(24, 2, newValue);
                 break;
             default:
