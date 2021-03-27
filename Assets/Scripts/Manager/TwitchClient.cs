@@ -101,6 +101,7 @@ public class TwitchClient : MonoBehaviour
         }
 
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
+        WakWindow.instance.updateStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
 
     }
