@@ -5,6 +5,7 @@ using Unity.Mathematics;
 public class WakgoodBehaviour : MonoBehaviour
 {
     #region 함수
+    static public WakgoodBehaviour instance;
     private int3 _panzees = new int3(0, 0, 0);
     private UnitCombat _unitCombat;
     public int statPerUnit { get; set; } = 1;
@@ -16,6 +17,10 @@ public class WakgoodBehaviour : MonoBehaviour
     }
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
         _unitCombat = GetComponent<UnitCombat>();
     }
 
@@ -55,6 +60,6 @@ public class WakgoodBehaviour : MonoBehaviour
             default:
                 break;
         }
-        _unitCombat.UpdateStats();
+        //_unitCombat.UpdateStats();
     }
 }
