@@ -6219,6 +6219,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 504650752530063566, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 504650752530063566, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.55160683
+      objectReference: {fileID: 0}
+    - target: {fileID: 504650752530063566, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.068752214
+      objectReference: {fileID: 0}
     - target: {fileID: 2177561436774762111, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -6242,7 +6257,7 @@ PrefabInstance:
     - target: {fileID: 8720594783474616043, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
         type: 3}
       propertyPath: m_Name
-      value: Twitch Testing Unit
+      value: temp wakgood
       objectReference: {fileID: 0}
     - target: {fileID: 8720594783474616047, guid: 248a5c791ca7eb8449ecc3c0baf7395d,
         type: 3}
@@ -6442,7 +6457,7 @@ GameObject:
   - component: {fileID: 1379933922}
   - component: {fileID: 1379933921}
   m_Layer: 0
-  m_Name: 8b472153e2e1559c
+  m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
