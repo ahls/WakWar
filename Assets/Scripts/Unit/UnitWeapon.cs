@@ -18,8 +18,6 @@ public class Weapon
     public int weaponID;
     [XmlElement("name")]
     public string weaponName;
-    [XmlElement("desc")]
-    public string desc;
     [XmlElement("damage")]
     public int AttackDamage;
     [XmlElement("range")]
@@ -30,9 +28,9 @@ public class Weapon
     public float AttackArea;
     [XmlElement("armorPiercing")]
     public int AP;
-    [XmlElement("equippedImage")]
+    [XmlAttribute("Esrc")]
     public string equipImage;
-    [XmlElement("projectileImage")]
+    [XmlAttribute("Psrc")]
     public string projImage;
     [XmlElement("projectileSpeed")]
     public float projSpeed;

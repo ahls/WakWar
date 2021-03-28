@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public enum ItemType {potion, relic, money, weapon,any}
+public enum ItemType {potion, weapon,relic, money,any}
 public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler
 {
     #region 변수
