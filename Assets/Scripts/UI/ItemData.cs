@@ -19,6 +19,7 @@ public class Item
     [XmlElement("weaponID")]
     public int weaponID;
 }
+[XmlRoot("itemsCollection")]
 public class ItemDB
 {
     public static ItemDB instance;
