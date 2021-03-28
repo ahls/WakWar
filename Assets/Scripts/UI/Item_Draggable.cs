@@ -24,33 +24,42 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
-        _rectTransform.SetParent(_canvas.transform);
-        SetSecondToLast();
-        IngameManager.UnitManager.ControlOn = false;
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
+            _rectTransform.SetParent(_canvas.transform);
+            SetSecondToLast();
+            IngameManager.UnitManager.ControlOn = false;
 
-        //raycast ignore to allow item_slot to be accessible.
-        _canvasGroup.blocksRaycasts = false;
-        _canvasGroup.alpha = 0.7f;
+            //raycast ignore to allow item_slot to be accessible.
+            _canvasGroup.blocksRaycasts = false;
+            _canvasGroup.alpha = 0.7f;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        _rectTransform.position = eventData.position;
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            _rectTransform.position = eventData.position;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //setting parents
-        _rectTransform.SetParent(parentToReturn);
-        _rectTransform.position = parentToReturn.position;
-        parentToReturn.GetComponent<Item_Slot>().currentNumber++;
-        IngameManager.UnitManager.ControlOn = true;
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            //setting parents
+            _rectTransform.SetParent(parentToReturn);
+            _rectTransform.position = parentToReturn.position;
+            parentToReturn.GetComponent<Item_Slot>().currentNumber++;
+            IngameManager.UnitManager.ControlOn = true;
 
 
-        //setting the raycast option
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.alpha = 1f;
+            //setting the raycast option
+            _canvasGroup.blocksRaycasts = true;
+            _canvasGroup.alpha = 1f;
+        }
     }
 
 
