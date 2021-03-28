@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 public enum WeaponType
 {
     Warrior,
@@ -10,27 +12,56 @@ public enum WeaponType
     Wak
 }
 
-public class UnitWeapon : MonoBehaviour
+public class Weapon
 {
-    public int AttackDamage { get; }
-    public int Armor { get; }
-    public float AttackSpeed { get; }
-    public float AttackRange { get; }
-    public float AttackArea { get; }
-
-    public GameObject effect;
+    [XmlElement("id")]
+    public int weaponID;
+    [XmlElement("name")]
+    public string weaponName;
+    [XmlElement("desc")]
+    public string desc;
+    [XmlElement("damage")]
+    public int AttackDamage;
+    [XmlElement("range")]
+    public float AttackRange;
+    [XmlElement("speed")]
+    public float AttackSpeed;
+    [XmlElement("aoe")]
+    public float AttackArea;
+    [XmlElement("armorPiercing")]
+    public int AP;
+    [XmlElement("equippedImage")]
+    public string equipImage;
+    [XmlElement("projectileImage")]
+    public string projImage;
+    [XmlElement("projectileSpeed")]
+    public float projSpeed;
+    [XmlElement("armor")]
+    public int Armor;
+    [XmlElement("class")]
     public WeaponType weaponType;
 }
 
-public class WeaponEffect : MonoBehaviour   
-{
-    public int damage;
-    public float area;
-    public SpriteRenderer SR;
-    public Rigidbody2D RB;
 
-    public void Awake()
+[XmlRoot("weaponCollection")]
+public class WeaponDB
+{
+    public static WeaponDB instance;
+    [XmlArray("weapons")]
+    [XmlArrayItem("weapon")]
+    public List<Weapon> weapons = new List<Weapon>();
+
+    public static void Load(string path)
     {
-        RB = GetComponent<Rigidbody2D>();
+        TextAsset _xml = Resources.Load<TextAsset>(path);
+        Debug.Log(_xml);
+        XmlSerializer serializer = new XmlSerializer(typeof(WeaponDB));
+
+        StringReader reader = new StringReader(_xml.text);
+
+        instance = serializer.Deserialize(reader) as WeaponDB;
+
+        reader.Close();
+
     }
 }

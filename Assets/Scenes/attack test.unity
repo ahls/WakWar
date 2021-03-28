@@ -293,7 +293,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -321,7 +321,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -349,7 +349,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -377,7 +377,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -799,7 +799,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -1604,7 +1604,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -2150,7 +2150,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -2533,7 +2533,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -2617,7 +2617,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -2906,7 +2906,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -3753,7 +3753,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -4186,7 +4186,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -4607,7 +4607,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -4647,7 +4647,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1
@@ -4905,7 +4905,7 @@ MonoBehaviour:
   CanControl: 1
   range: 1
   AOE: 0.01
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 7
   dmg: 1

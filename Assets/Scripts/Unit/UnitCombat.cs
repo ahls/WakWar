@@ -63,7 +63,7 @@ public class UnitCombat : MonoBehaviour
     public faction ownedFaction = faction.enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public faction targetFaction;                       //공격타겟
     public WeaponType weaponType;
-    private UnitWeapon _weapon;
+    private Weapon _weapon;
     private GameObject _effect;
     public Sprite attackImage { get; set; }
     public float attackTorque { get; set; } = 0;
@@ -198,7 +198,7 @@ public class UnitCombat : MonoBehaviour
 
     #region 장비관련
 
-    public void EquipWeapon(UnitWeapon weapon)
+    public void EquipWeapon(Weapon weapon)
     {
         if (weapon.weaponType != weaponType && weapon.weaponType != WeaponType.Wak)
         {
