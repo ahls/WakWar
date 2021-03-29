@@ -2,10 +2,51 @@
 
 <weaponCollection>
 	<weapons>
+    <weapon>
+      <id>10</id>
+      <name>주먹</name>
+      <damage>3</damage>
+      <range>0.05</range>
+      <speed>1</speed>
+      <aoe>0.01</aoe>
+      <armorPiercing>0</armorPiercing>
+      <equippedImage Esrc="null"/>
+      <projectileImage Psrc="null"/>
+      <projectileSpeed>10</projectileSpeed>
+      <armor>2</armor>
+      <class>Warrior</class>
+    </weapon>
+    <weapon>
+      <id>20</id>
+      <name>돌맹이</name>
+      <damage>3</damage>
+      <range>0.05</range>
+      <speed>1</speed>
+      <aoe>0.01</aoe>
+      <armorPiercing>0</armorPiercing>
+      <equippedImage Esrc="null"/>
+      <projectileImage Psrc="null"/>
+      <projectileSpeed>10</projectileSpeed>
+      <armor>2</armor>
+      <class>Warrior</class>
+    </weapon>
+    <weapon>
+      <id>30</id>
+      <name>손뼉</name>
+      <damage>3</damage>
+      <range>0.05</range>
+      <speed>1</speed>
+      <aoe>0.01</aoe>
+      <armorPiercing>0</armorPiercing>
+      <equippedImage Esrc="null"/>
+      <projectileImage Psrc="null"/>
+      <projectileSpeed>10</projectileSpeed>
+      <armor>2</armor>
+      <class>Warrior</class>
+    </weapon>
 		<weapon>
 			<id>100000</id>
 			<name>나무검</name>
-			<desc>목검입니다. 너무 세게 휘두르면 부러질수 있으니까 살살 치세요.</desc>
 			<damage>3</damage>
 			<range>0.05</range>
 			<speed>1</speed>

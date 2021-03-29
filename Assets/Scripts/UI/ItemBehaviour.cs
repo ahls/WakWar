@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public enum ItemType {potion, weapon,relic, money,any}
-public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler, IPointerDownHandler
+public class ItemBehaviour : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler, IPointerDownHandler
 {
     #region 변수
     [SerializeField] CanvasGroup _canvasGroup;
-    [SerializeField] ItemType _itemType;
+    public Item _item;
     public Transform parentToReturn;
     
     RectTransform _rectTransform;
@@ -22,6 +22,12 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
         _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
         parentToReturn = _rectTransform.parent;
     }
+    public void setup()
+    {
+        GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load(_item.imgSrc);
+    }
+
+    #region 클릭 관련
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -66,10 +72,12 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
     {
         if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
         {
-            itemInfoDisplay.instance.loadInfo(Items.DB[30003]);
+            itemInfoDisplay.instance.loadInfo(_item);
             itemInfoDisplay.instance.setLocation(eventData.position);
         }
     }
+
+    #endregion
 
     #region 헬퍼 함수
 
@@ -80,7 +88,7 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
 
     public bool compareType(ItemType slottype)
     {
-        return (slottype == _itemType || slottype ==ItemType.any);
+        return (slottype == _item.type || slottype ==ItemType.any);
     }
 
     #endregion
