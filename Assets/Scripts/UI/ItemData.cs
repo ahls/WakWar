@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-public class Item
+public class PulledItem
 {
     [XmlElement("id")]
     public int itemID;
@@ -19,25 +19,55 @@ public class Item
     [XmlElement("weaponID")]
     public int weaponID;
 }
-[XmlRoot("itemsCollection")]
-public class ItemDB
+
+public struct Item
 {
-    public static ItemDB instance;
+    public ItemType type;
+    public string name, desc;
+    public int value,weaponID;
+
+    public Item(PulledItem _input)
+    {
+        type = _input.itemType;
+        name = _input.name;
+        desc = _input.desc;
+        value = _input.value;
+        if(type == ItemType.weapon)
+        {
+            weaponID = _input.weaponID;
+        }
+        else
+        {
+            weaponID = 0;
+        }
+    }
+}
+
+public class Items
+{
+    static public Dictionary<int, Item> DB = new Dictionary<int, Item>();
+}
+
+[XmlRoot("itemCollection")]
+public class ItemContainer
+{
     [XmlArray("items")]
     [XmlArrayItem("item")]
-    public List<Item> weapons = new List<Item>();
+    public List<PulledItem> pulledItems = new List<PulledItem>();
 
     public static void Load(string path)
     {
         TextAsset _xml = Resources.Load<TextAsset>(path);
-        Debug.Log(_xml);
-        XmlSerializer serializer = new XmlSerializer(typeof(ItemDB));
+        XmlSerializer serializer = new XmlSerializer(typeof(ItemContainer));
 
         StringReader reader = new StringReader(_xml.text);
 
-        instance = serializer.Deserialize(reader) as ItemDB;
+        ItemContainer instance = serializer.Deserialize(reader) as ItemContainer;
 
         reader.Close();
-
+        foreach (var _item in instance.pulledItems)
+        {
+            Items.DB[_item.itemID] = new Item(_item);
+        }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<itemsCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<itemCollection>
 	<items>
 		<item>
 			<id>10000</id>
@@ -443,4 +444,4 @@
 죽은 팬치 셋을 1/3 체력을 남기고 부활시킴\n\n새벽반의 기운이 담긴 반지. 죽은듯 자고있던 팬치를 일으켜 세운다.</desc>
 		</item>
 	</items>
-</itemsCollection>
+</itemCollection>

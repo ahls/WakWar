@@ -10,8 +10,8 @@ public class xmlLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WeaponDB.Load(weaponPath);
-        ItemDB.Load(itemPath);
+        WeaponContainer.Load(weaponPath);
+        ItemContainer.Load(itemPath);
     }
 
 }

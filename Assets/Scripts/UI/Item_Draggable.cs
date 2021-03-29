@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public enum ItemType {potion, weapon,relic, money,any}
-public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler
+public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler, IPointerDownHandler
 {
     #region 변수
     [SerializeField] CanvasGroup _canvasGroup;
@@ -62,6 +62,16 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
+        {
+            itemInfoDisplay.instance.loadInfo(Items.DB[30003]);
+            itemInfoDisplay.instance.setLocation(eventData.position);
+        }
+    }
+
+    #region 헬퍼 함수
 
     public void placeItem(Transform parentToBe)
     {
@@ -72,4 +82,6 @@ public class Item_Draggable : UIDraggable, IBeginDragHandler, IEndDragHandler,ID
     {
         return (slottype == _itemType || slottype ==ItemType.any);
     }
+
+    #endregion
 }

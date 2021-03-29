@@ -211,11 +211,23 @@ public class UnitCombat : MonoBehaviour
 
     public void UnEquipWeapon()
     {
-        _weapon = null;
+        switch (weaponType)
+        {
+            case WeaponType.Warrior:
+            case WeaponType.Wak:
+                _weapon = Weapons.DB[10];
+                break;
+            case WeaponType.Shooter:
+                _weapon = Weapons.DB[20];
+                break;
+            case WeaponType.Supporter:
+                _weapon = Weapons.DB[30];
+                break;
+        }
     }
     public void UpdateStats()
     {
-        resultDamage = attackDamage + _weapon.AttackDamage;
+        resultDamage = attackDamage + _weapon.damage;
         resultAOE = attackArea + _weapon.AttackArea;
         resultRange = attackRange + _weapon.AttackRange;
         resultSpeed = attackSpeed + _weapon.AttackSpeed;

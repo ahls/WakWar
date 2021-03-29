@@ -12,7 +12,7 @@ public enum WeaponType
     Wak
 }
 
-public class Weapon
+public class PulledWeapon
 {
     [XmlElement("id")]
     public int weaponID;
@@ -40,26 +40,54 @@ public class Weapon
     public WeaponType weaponType;
 }
 
+public struct Weapon
+{
+    public string name;
+    public int damage,AP,Armor;
+    public float AttackRange, AttackSpeed, AttackArea, projSpeed;
+    public string equipImage, projImage;
+    public WeaponType weaponType;
+
+    public Weapon(PulledWeapon _input)
+    {
+        name = _input.weaponName;
+        damage = _input.AttackDamage;
+        AP = _input.AP;
+        Armor = _input.Armor;
+        AttackRange = _input.AttackRange;
+        AttackSpeed = _input.AttackSpeed;
+        AttackArea = _input.AttackArea;
+        projSpeed = _input.projSpeed;
+        equipImage = _input.equipImage;
+        projImage = _input.projImage;
+        weaponType = _input.weaponType;
+    }
+}
+public class Weapons
+{
+    public static Dictionary<int, Weapon> DB = new Dictionary<int, Weapon>();
+}
 
 [XmlRoot("weaponCollection")]
-public class WeaponDB
+public class WeaponContainer
 {
-    public static WeaponDB instance;
     [XmlArray("weapons")]
     [XmlArrayItem("weapon")]
-    public List<Weapon> weapons = new List<Weapon>();
+    public List<PulledWeapon> pulledWeapons = new List<PulledWeapon>();
 
     public static void Load(string path)
     {
         TextAsset _xml = Resources.Load<TextAsset>(path);
-        Debug.Log(_xml);
-        XmlSerializer serializer = new XmlSerializer(typeof(WeaponDB));
+        XmlSerializer serializer = new XmlSerializer(typeof(WeaponContainer));
 
         StringReader reader = new StringReader(_xml.text);
 
-        instance = serializer.Deserialize(reader) as WeaponDB;
+        WeaponContainer tempContainer = serializer.Deserialize(reader) as WeaponContainer;
 
         reader.Close();
-
+        foreach (PulledWeapon currentWeapon in tempContainer.pulledWeapons)
+        {
+            Weapons.DB[currentWeapon.weaponID] = new Weapon(currentWeapon);
+        }
     }
 }
