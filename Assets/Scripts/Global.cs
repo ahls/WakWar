@@ -19,11 +19,13 @@ public class Global : MonoBehaviour
     public static ResourceManager ResourceManager => _resourceManager;
     public static ObjectPoolManager ObjectPoolManager => _objectPoolManager;
     public static UIManager UIManager => _uiManager;
+    public static UIPopupManager UIPopupManager => _uiPopupManager;
 
     private static Global _instance;
     private static ResourceManager _resourceManager;
     private static ObjectPoolManager _objectPoolManager;
     private static UIManager _uiManager;
+    private static UIPopupManager _uiPopupManager;
 
     [SerializeField] private GameObject _disableObject;
     [SerializeField] private GameObject _disableCanvas;
@@ -52,5 +54,10 @@ public class Global : MonoBehaviour
     public void SetUIManager(UIManager uiManager)
     {
         _uiManager = uiManager;
+    }
+
+    public void SetUIPopupManager(UIPopupManager uiPopupManager)
+    {
+        _uiPopupManager = uiPopupManager;
     }
 }

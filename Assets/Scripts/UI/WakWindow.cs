@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 using TMPro;
-public class WakWindow : MonoBehaviour
+public class WakWindow : UIPopup
 {
     static public WakWindow instance;
     [SerializeField] TextMeshProUGUI StatDisplay;
     char[] _stats;
+
+    public override PopupID GetPopupID() { return PopupID.UIWakWindow; }
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,8 +20,6 @@ public class WakWindow : MonoBehaviour
             instance = this;
         }
     }
-
-
 
     #region 판도라의 상자 
     public void updateStat(DisplayStat statType, int newValue)
