@@ -12,10 +12,6 @@ public class xmlLoader : MonoBehaviour
     {
         WeaponContainer.Load(weaponPath);
         ItemContainer.Load(itemPath);
-        foreach (var item in Items.DB.Keys)
-        {
-            Debug.Log(item);
-        }
     }
 
 }
