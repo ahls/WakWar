@@ -1,33 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-public enum ItemType {potion, weapon,relic, money,any}
-public class ItemBehaviour : UIDraggable, IBeginDragHandler, IEndDragHandler,IDragHandler, IPointerDownHandler
+public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    #region 변수
+
     [SerializeField] CanvasGroup _canvasGroup;
-    public Item _item;
+
     public Transform parentToReturn;
-    
+    private ItemType _itemType;
+
     RectTransform _rectTransform;
-
-    #endregion
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
+
         _rectTransform = GetComponent<RectTransform>();
         _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
         parentToReturn = _rectTransform.parent;
     }
-    public void setup()
+
+    // Update is called once per frame
+    void Update()
     {
-        GetComponent<SpriteRenderer>().sprite = (Sprite)Resources.Load(_item.imgSrc);
+        
+    }
+    #region 헬퍼 함수
+
+    public void placeItem(Transform parentToBe)
+    {
+        parentToReturn = parentToBe;
     }
 
-    #region 클릭 관련
+    public bool compareType(ItemType slottype)
+    {
+        return (slottype == _itemType || slottype == ItemType.any);
+    }
+    public void setType(ItemType _type)
+    {
+        _itemType = _type;
+    }
+    #endregion
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -67,29 +80,4 @@ public class ItemBehaviour : UIDraggable, IBeginDragHandler, IEndDragHandler,IDr
             _canvasGroup.alpha = 1f;
         }
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
-        {
-            itemInfoDisplay.instance.loadInfo(_item);
-            itemInfoDisplay.instance.setLocation(eventData.position);
-        }
-    }
-
-    #endregion
-
-    #region 헬퍼 함수
-
-    public void placeItem(Transform parentToBe)
-    {
-        parentToReturn = parentToBe;
-    }
-
-    public bool compareType(ItemType slottype)
-    {
-        return (slottype == _item.type || slottype ==ItemType.any);
-    }
-
-    #endregion
 }

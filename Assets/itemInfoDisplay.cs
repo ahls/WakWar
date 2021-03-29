@@ -28,7 +28,7 @@ public class itemInfoDisplay : MonoBehaviour,IPointerExitHandler
         _desc.text = item.desc;
         gameObject.SetActive(true);
         Canvas.ForceUpdateCanvases();
-        rectTransform.sizeDelta = new Vector2(400, 80+_desc.cachedTextGenerator.lineCount * 19);
+        rectTransform.sizeDelta = new Vector2(400, 93+_desc.cachedTextGenerator.lineCount * 22.5f);
 
     }
     public void setLocation(Vector2 mouseLocation)

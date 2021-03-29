@@ -11,7 +11,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
-        ItemBehaviour draggedItem = eventData.pointerDrag.GetComponent<ItemBehaviour>();
+        Item_Drag draggedItem = eventData.pointerDrag.GetComponent<Item_Drag>();
         
         if(draggedItem != null)
         {

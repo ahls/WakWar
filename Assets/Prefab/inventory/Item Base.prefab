@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5484659015161531337}
   - component: {fileID: 5484659015161531339}
   - component: {fileID: 5484659015161531316}
+  - component: {fileID: 8498745003061381146}
   m_Layer: 0
   m_Name: Item Base
   m_TagString: Untagged
@@ -88,9 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c1a2d782491b14cbf54fcf06bb3039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvas: {fileID: 0}
-  _canvasGroup: {fileID: 5484659015161531316}
-  parentToReturn: {fileID: 0}
+  itemID: 0
 --- !u!225 &5484659015161531316
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -103,3 +102,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &8498745003061381146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484659015161531343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 565b0c2b15dde5c46820b532bb092288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 5484659015161531316}
+  parentToReturn: {fileID: 0}

@@ -159,7 +159,7 @@
 		</weapon>
 		<weapon>
 			<id>100200</id>
-			<name>솜이불</name>
+			<name>종이박스</name>
 			<damage>2</damage>
 			<range>0.05</range>
 			<speed>0.67</speed>
