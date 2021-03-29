@@ -29,6 +29,7 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        this.transform.SetAsLastSibling();
         _dragPivot = this.transform.position - Input.mousePosition;
         IngameManager.UnitManager.ControlOn = false;
     }
