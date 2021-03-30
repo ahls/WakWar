@@ -11,7 +11,7 @@ public enum PopupID
 
 public class UIPopupManager : MonoBehaviour
 {
-    private Queue<GameObject> _popupQueue = new Queue<GameObject>();
+    private List<UIPopup> _popupQueue = new List<UIPopup>();
 
     public void Start()
     {
@@ -20,6 +20,45 @@ public class UIPopupManager : MonoBehaviour
 
     public void Push(PopupID id)
     {
+        var findPopup = FindPopup(id);
+        if (findPopup != null)
+        {
+            Pop(findPopup);
+        }
 
+        var currentPopup = Global.ResourceManager.LoadPrefab(id.ToString(), true);
+        currentPopup.transform.SetParent(this.transform);
+        currentPopup.transform.SetAsLastSibling();
+        currentPopup.transform.localPosition = Vector3.zero;
+
+        _popupQueue.Add(currentPopup.GetComponent<UIPopup>());
+    }
+
+    public void Pop(PopupID id)
+    {
+        var findPopup = _popupQueue.Find(x => x.GetPopupID() == id);
+
+        if (findPopup != null)
+        {
+            findPopup.Pop();
+        }
+    }
+
+    public void Pop(UIPopup uiPopup)
+    {
+        _popupQueue.Remove(uiPopup);
+    }
+
+    public UIPopup FindPopup(PopupID id)
+    {
+        foreach (var popup in _popupQueue)
+        {
+            if (popup.GetPopupID() == id)
+            {
+                return popup;
+            }
+        }
+
+        return null;
     }
 }
