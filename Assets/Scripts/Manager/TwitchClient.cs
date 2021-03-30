@@ -18,11 +18,10 @@ public class TwitchClient : MonoBehaviour
 
 
     //####### 유닛 생성 관련
-    private bool openEnroll = true;
     public GameObject UnitBase;
     string[] UnitClasses = new string[3] {"전사","사수","지원가"};
     Dictionary<string, GameObject> twitchPlayerList = new Dictionary<string, GameObject>();
-
+    private int openSlots = 12; //초기 시작 유닛 수 여기서 설정
 
 
 
@@ -47,7 +46,7 @@ public class TwitchClient : MonoBehaviour
     private void MyMessageInputFunction(object sender, OnMessageReceivedArgs e)
     {
 
-        if (openEnroll && e.ChatMessage.Message.StartsWith("!참가 "))
+        if (openSlots > 0 && e.ChatMessage.Message.StartsWith("!참가 "))
         {//게임 참가 메커니즘
             if(e.ChatMessage.Message.Length < 4)
             {//커맨드 입력이 이상하게 됨. 
@@ -62,6 +61,7 @@ public class TwitchClient : MonoBehaviour
                 {//고른 직업이 존재할경우
                     client.SendMessage(client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
                     unitCreation(userName, UnitClass);
+                    openSlots--;
                 }
                 /*어차피 그냥 무시해도 될테니까 도배 방지용으로 주석처리 해놨습니다. 뽈롱뽈랑님 보시고 동의 하시면 아래 else 문 지워주세요!
                 else
@@ -105,5 +105,10 @@ public class TwitchClient : MonoBehaviour
         WakgoodBehaviour.instance.addPanzeeStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
 
+    }
+
+    public void openEnrolling(int numSlots)
+    {
+        openSlots = numSlots;
     }
 }
