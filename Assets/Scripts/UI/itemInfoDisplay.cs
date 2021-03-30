@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class itemInfoDisplay : MonoBehaviour,IPointerExitHandler
 {
     public static itemInfoDisplay instance;
-    [SerializeField] private Text _name, _type, _value, _desc;
+    [SerializeField] private Text _name, _type, _value, _desc,_enchant;
     RectTransform rectTransform;
     
     // Start is called before the first frame update
@@ -35,6 +35,7 @@ public class itemInfoDisplay : MonoBehaviour,IPointerExitHandler
     {
         Debug.Log(mouseLocation);
         rectTransform.position = mouseLocation + new Vector2(-2,2);
+        rectTransform.SetAsLastSibling();
     }
 
     public void OnPointerExit(PointerEventData eventData)
