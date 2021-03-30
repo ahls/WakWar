@@ -18,7 +18,8 @@ public class PulledItem
     public int value;
     [XmlElement("weaponID")]
     public int weaponID;
-    [XmlAttribute("src")]
+    
+    [XmlElement("Image")]
     public string imageSrc;
 }
 
@@ -34,6 +35,7 @@ public struct Item
         name = _input.name;
         desc = _input.desc;
         value = _input.value;
+        
         imgSrc = _input.imageSrc;
         if(type == ItemType.weapon)
         {

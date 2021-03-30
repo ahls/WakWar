@@ -8,7 +8,7 @@ public class xmlLoader : MonoBehaviour
     public const string itemPath = "items";
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         WeaponContainer.Load(weaponPath);
         ItemContainer.Load(itemPath);

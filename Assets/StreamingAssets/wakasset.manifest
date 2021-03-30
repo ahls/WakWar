@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1048382740
+CRC: 206381796
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: edf2897fa3c97f6b6310adcfa117ac18
+    Hash: 614ef388e37fdb42f06b2529659bc23a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 99b6ac86b4830ec20637cd73b5ab8c63
@@ -66,10 +66,22 @@ ClassTypes:
 - Class: 225
   Script: {instanceID: 0}
 Assets:
+- Assets/Sprites/weapons/axe1.png
 - Assets/Prefab/inventory/Character Slot.prefab
+- Assets/Sprites/weapons/shield0.png
 - Assets/Prefab/inventory/Item Base.prefab
+- Assets/Sprites/weapons/sword2.png
 - Assets/WakAsset/UI/NotifyText.prefab
+- Assets/Sprites/weapons/sword1.png
+- Assets/Sprites/weapons/sword3.png
+- Assets/Sprites/weapons/shield1.png
+- Assets/Sprites/weapons/axe3.png
+- Assets/Sprites/weapons/shield2.png
+- Assets/Sprites/weapons/axe2.png
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/WakAsset/UI/NotifyWindow.prefab
+- Assets/Sprites/weapons/axe0.png
 - Assets/Prefab/AttackEffect.prefab
+- Assets/Sprites/weapons/shield3.png
+- Assets/Sprites/weapons/sword0.png
 Dependencies: []
