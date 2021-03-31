@@ -50,6 +50,7 @@ public struct Item
 
 public class Items
 {
+    static public List<int> weaponIDs = new List<int>(), relicIDs = new List<int>(), consumableIDs = new List<int>();
     static public Dictionary<int, Item> DB = new Dictionary<int, Item>();
 }
 
@@ -68,11 +69,26 @@ public class ItemContainer
         StringReader reader = new StringReader(_xml.text);
 
         ItemContainer instance = serializer.Deserialize(reader) as ItemContainer;
-
         reader.Close();
+
+
         foreach (var _item in instance.pulledItems)
         {
             Items.DB[_item.itemID] = new Item(_item);
+            switch (_item.itemType)
+            {
+                case ItemType.potion:
+                    Items.consumableIDs.Add(_item.itemID);
+                    break;
+                case ItemType.weapon:
+                    Items.weaponIDs.Add(_item.itemID);
+                    break;
+                case ItemType.relic:
+                    Items.relicIDs.Add(_item.itemID);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

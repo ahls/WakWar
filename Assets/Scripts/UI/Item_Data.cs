@@ -15,11 +15,13 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        setup(testID);//테스팅용 라인
+//        setup(testID);//테스팅용 라인
     }
     public void setup(int ID)
     {
         itemID = ID;
+        Debug.Log($"아이템 데이터 스크립트:{Items.DB[itemID].imgSrc}");
+        Debug.Log(Items.DB[itemID].name);
         string tempsource = "weapons/" + Items.DB[itemID].imgSrc;
 //        GetComponent<Image>().sprite = Resources.Load<Sprite>("weapons/" + Items.DB[itemID].imgSrc);
         GetComponent<Image>().sprite = Resources.Load<Sprite>(tempsource);//리소스 매니져로 불러오는 방법 물어보기

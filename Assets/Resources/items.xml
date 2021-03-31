@@ -7,7 +7,7 @@
 			<name>회복 물약</name>
 			<desc>모든 캐릭터의 체력을 10% 회복합니다.</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>10001</id>
@@ -15,14 +15,14 @@
 			<name>회복의 영약</name>
 			<desc>모든 캐릭터를 체력을 50% 회복합니다</desc>
 			<value>50</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>10002</id>
 			<type>potion</type>
 			<name>경험 물약</name>
 			<desc>레벨이 낮은 다섯 팬치의 레벨을 상승시킵니다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>20000</id>
@@ -139,7 +139,7 @@
 			<name>너프건</name>
 			<desc>아무리 용감한 사람이라도 움찔 합니다.</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>200000</weaponID>
 		</item>
 		<item>
@@ -148,7 +148,7 @@
 			<name>BB탄총</name>
 			<desc>BB탄이라고 무시하면 큰코 다칩니다.</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>200001</weaponID>
 		</item>
 		<item>
@@ -157,7 +157,7 @@
 			<name>화승총</name>
 			<desc>불 붙이는 중.....</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>200002</weaponID>
 		</item>
 		<item>
@@ -166,7 +166,7 @@
 			<name>5-퍼레이터</name>
 			<desc>당신의 샷발이 얼마나 구데기인지 보여주는 총입니다.</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>200003</weaponID>
 		</item>
 		<item>
@@ -175,7 +175,7 @@
 			<name>장난감활</name>
 			<desc>플라스틱으로 이루어진 활입니다. 같이 딸려온 화살에는 고무 빨판이 붙어있습니다. 떼면 더 아프지 않을까요..?</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"bow0"</Image>
 			<weaponID>201000</weaponID>
 		</item>
 		<item>
@@ -184,7 +184,7 @@
 			<name>단궁</name>
 			<desc>투박한 구조를 지닌 나무 활입니다. 제작시 낚싯대 보다 많은 양의 줄을 요구합니다.</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"bow1"</Image>
 			<weaponID>201001</weaponID>
 		</item>
 		<item>
@@ -193,7 +193,7 @@
 			<name>각궁</name>
 			<desc>나무로 된 활 끝에 단단한 뿔이 달린 있는 곡궁입니다.</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"bow2"</Image>
 			<weaponID>201002</weaponID>
 		</item>
 		<item>
@@ -202,7 +202,7 @@
 			<name>컴파운드 보우</name>
 			<desc>도르레의 원리를 이용하여 유지력, 파괴력, 정확도를 향상시킨 활입니다. 활 시위를 당기는데 어마무지한 힘이 듭니다.</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"bow3"</Image>
 			<weaponID>201003</weaponID>
 		</item>
 		<item>
@@ -211,7 +211,7 @@
 			<name>야구공</name>
 			<desc>"자아아 궁내 체고의 씽카볼 투순데"</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>202000</weaponID>
 		</item>
 		<item>
@@ -220,7 +220,7 @@
 			<name>부메랑</name>
 			<desc>돌아올땐 화면의 수직방향으로 서서 날아오기 때문에 보이지 않습니다. 절대로 구현하기 귀찮았던게 아닙니다.</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>202001</weaponID>
 		</item>
 		<item>
@@ -229,7 +229,7 @@
 			<name>표창</name>
 			<desc>옆동네 겐X가 자주 쓰는 무기입니다.</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>202002</weaponID>
 		</item>
 		<item>
@@ -238,7 +238,7 @@
 			<name>수류탄</name>
 			<desc>"이거슨 수류탄이여!!"</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>202003</weaponID>
 		</item>
 		<item>
@@ -247,7 +247,7 @@
 			<name>응원봉</name>
 			<desc>꺄아악! 어빠~~~! 왁두 오빠~~~~~~</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>300000</weaponID>
 		</item>
 		<item>
@@ -257,7 +257,7 @@
 			<desc>이번 영상 개웃기네 ㅋ
 "GWANG-GO is CRAZY"</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>300001</weaponID>
 		</item>
 		<item>
@@ -266,7 +266,7 @@
 			<name>쌍절곤</name>
 			<desc>"니가 그렇게 싸움을 잘해? 옥상으로 올라와."</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>300002</weaponID>
 		</item>
 		<item>
@@ -275,7 +275,7 @@
 			<name>모닝스타</name>
 			<desc>이름의 유래는 맞았을때 아침에도 별(morning star) 이라는 설도 있고... 아... 안물어봤다고..? 알았어...</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>300003</weaponID>
 		</item>
 		<item>
@@ -284,7 +284,7 @@
 			<name>효자손</name>
 			<desc>이걸 보면 등이 간지러워집니다. 왜일까요?</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>301000</weaponID>
 		</item>
 		<item>
@@ -293,7 +293,7 @@
 			<name>지휘봉</name>
 			<desc>오솔레미오~~~~~~~ 켁켁</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>301001</weaponID>
 		</item>
 		<item>
@@ -302,7 +302,7 @@
 			<name>깃대</name>
 			<desc>윗동네 한 왕자가 쓰는 듯합니다.</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>301002</weaponID>
 		</item>
 		<item>
@@ -311,7 +311,7 @@
 			<name>요술봉</name>
 			<desc>해뤼뽀터!</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>301003</weaponID>
 		</item>
 		<item>
@@ -320,7 +320,7 @@
 			<name>탬버린</name>
 			<desc>2. 왁굳이 언급하기 전에 타 스트리머 언급을 하지 말아주세요.</desc>
 			<value>10</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>302000</weaponID>
 		</item>
 		<item>
@@ -329,7 +329,7 @@
 			<name>리코더</name>
 			<desc>플라스틱으로 만들어진 리코더. 삑사리가 쉽게 납니다.</desc>
 			<value>30</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>302001</weaponID>
 		</item>
 		<item>
@@ -338,7 +338,7 @@
 			<name>하모니카</name>
 			<desc>대충 불어도 듣기 괜찮은 소리가 나는 신기한 악기입니다. 고대인들은 옥수수로 이 악기를 만들었다고 합니다.</desc>
 			<value>75</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>302002</weaponID>
 		</item>
 		<item>
@@ -347,7 +347,7 @@
 			<name>기타</name>
 			<desc>나비보벳따우 보보벳띠~~</desc>
 			<value>100</value>
-			<Image src="null"/>
+			<Image>"null"</Image>
 			<weaponID>302003</weaponID>
 		</item>
 		<item>
@@ -358,13 +358,13 @@
       
       차갑게 식어버린 치킨조각. 온기라곤 하나도 남아있지 않으나,  마지막까지 늙은 팬치의 손에 쥐어져있던 듯 하다.
 이 유물을 가지고 있는 자는 두개의 세상에 걸쳐 살아가게 된다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30002</id>
 			<type>relic</type>
 			<name>흐물흐물한 잔디</name>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30003</id>
@@ -377,7 +377,7 @@
  
  기생충들은 팬치들의 무리에 교묘히 숨어들어 서로의 모습으로 싸움을 붙이고, 상처 입은 팬치들을 사냥한다.
  이곳에 원해서 들어온 자는 없으며, 그렇기에 더욱 이 벌래들은 역겨운 것이다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30004</id>
@@ -387,7 +387,7 @@
       
       출처를 알 수 없는 통속의 눈. 소문에 의하면 팬치들의 왕국에서 성유물로써 모셔지던 물건이라고 한다.
 완전한 객관은 존재할 수 없다지만, 적어도 시점을 달리함으로써 더 넓은 시야를 제공할 것은 분명하다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30005</id>
@@ -397,7 +397,7 @@
       
       본래라면 이곳에 올 일이 없어야 했던 따뜻한 기운. 
 의도와 목적은 모두 잊힌 지 오래지만, 그 따스함은 아직도 수많은 팬치들을 이끌어주곤 한다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30006</id>
@@ -408,7 +408,7 @@
       예로부터 뚫린적이 없다는 관짝의 뚜껑. 
 사실 관 안쪽에 것을 못나오게 막는 용도라 반대로 잡아야 효과가 더 크지만, 
 아무도 그 사실을 눈치채지 못하는 것 같다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30007</id>
@@ -420,7 +420,7 @@
 무수한 세월 동안 누군가의 발밑에서 점점 헐어갔지만, 
 그 끝에 얻은 여행의 기억은 소유자의 발걸음을 더 가볍게 해줄 것이다.
 어떤 것이든 시작이 어려운 것이기 때문에.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30008</id>
@@ -430,7 +430,7 @@
       
       미심쩍은 프로틴. 
 근육을 늘리기 위한 물건이지, 늘려주는 물건은 아니지만 어쩐 일인지 근육을 더욱 탄탄하게 만들어준다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30009</id>
@@ -439,7 +439,7 @@
 			<desc>전사, 사수 공격속도 15% 증가
       
       빛바랜 회초리의 조각. 올바른 가르침에 건강한 정신이 깃들며, 건강한 정신은 칼끝을 날카롭게 벼린다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30010</id>
@@ -448,7 +448,7 @@
 			<desc>다음 층으로 이동할 때 전체 최대체력의 10% 회복
       
       안경 쓴 천사의 모습을 하고 있는 인형. 알 수 없는 따스함이 느껴진다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30011</id>
@@ -458,7 +458,7 @@
       
       앞부분이 뭉텅이로 잘려나간 채찍. 
 더이상 채찍으로써의 기능은 불가능하지만, 그 역할은 이미 팬치들의 기억속에 각인 되어있다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30012</id>
@@ -467,7 +467,7 @@
 			<desc>다음 층 시작시 30초간 최대체력의 20% 보호막 생성
       
       배 가운데를 누르면 짖는 소리가 나는 웰시 코기 인형. 기분을 북돋아준다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30013</id>
@@ -478,7 +478,7 @@
       어릴적 많이 보던 철가방. 안에 무언가 들어있을것 같다 
  아직 몇 번 사용하지 않은 듯한 모양이지만 군데군데 녹이 슬어있다..
 이걸 들고 있으면 굉장히 빨리 움직여야할 것만 같은 느낌이 든다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30014</id>
@@ -489,7 +489,7 @@
       노예 '왁노예'의 대한 이름과 설명이 써져있다.
 그는 검술과 탈출의 달인이었으며, 오크란의 수용소에서 탈출한 엄청난 실력을 가지고 있다.
 또한 굉장히 잔혹한 인물로 동료였던 '레이'와 선동한 다른 노예들을 미끼로 빠져나갔다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30015</id>
@@ -503,13 +503,13 @@
 그는 유람선에 있는 모든 사람을 죽일 때가 많지만 운 좋게 살아남은 사람들의 증언을 따르면 
 "그 살인마는 자신이 죽인 사람으로 변장해서 저희들 사이에 끼어들곤 했어요... 이 사실을 알아차린 것은 
 그의 손에 총이 쥐여졌 있었을 때 뿐이었거든요...."</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30016</id>
 			<type>relic</type>
 			<name>NONE</name>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30017</id>
@@ -519,7 +519,7 @@
 팬치 유입량 + 5
 
 "난민 받아라!" / "난하!"</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 		<item>
 			<id>30018</id>
@@ -529,7 +529,7 @@
 죽은 팬치 셋을 1/3 체력을 남기고 부활시킴
 
 새벽반의 기운이 담긴 반지. 죽은듯 자고있던 팬치를 일으켜 세운다.</desc>
-			<Image src="null"/>
+			<Image>"null"</Image>
 		</item>
 	</items>
 </itemCollection>
