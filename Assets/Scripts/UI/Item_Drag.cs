@@ -47,7 +47,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         {
             parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
             _rectTransform.SetParent(_canvas.transform);
-            SetSecondToLast();
+            _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
 
             //raycast ignore to allow item_slot to be accessible.
