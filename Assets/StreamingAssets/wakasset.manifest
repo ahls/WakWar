@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 206381796
+CRC: 493963535
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 614ef388e37fdb42f06b2529659bc23a
+    Hash: 72d39336df56b67cd3939e3a593e2aeb
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 99b6ac86b4830ec20637cd73b5ab8c63
+    Hash: d25bf6c6cbe6505d00772b7f073d41c3
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -30,9 +30,9 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-- Class: 114
   Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
 - Class: 114
@@ -51,6 +51,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -66,22 +68,23 @@ ClassTypes:
 - Class: 225
   Script: {instanceID: 0}
 Assets:
-- Assets/Sprites/weapons/axe1.png
+- Assets/Resources/weapons/axe1.png
 - Assets/Prefab/inventory/Character Slot.prefab
-- Assets/Sprites/weapons/shield0.png
+- Assets/Resources/weapons/shield0.png
 - Assets/Prefab/inventory/Item Base.prefab
-- Assets/Sprites/weapons/sword2.png
+- Assets/Resources/weapons/sword2.png
 - Assets/WakAsset/UI/NotifyText.prefab
-- Assets/Sprites/weapons/sword1.png
-- Assets/Sprites/weapons/sword3.png
-- Assets/Sprites/weapons/shield1.png
-- Assets/Sprites/weapons/axe3.png
-- Assets/Sprites/weapons/shield2.png
-- Assets/Sprites/weapons/axe2.png
+- Assets/Resources/weapons/sword1.png
+- Assets/Resources/weapons/sword3.png
+- Assets/Resources/weapons/shield1.png
+- Assets/Resources/weapons/axe3.png
+- Assets/Resources/weapons/shield2.png
+- Assets/WakAsset/UI/UIInventory.prefab
+- Assets/Resources/weapons/axe2.png
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/WakAsset/UI/NotifyWindow.prefab
-- Assets/Sprites/weapons/axe0.png
+- Assets/Resources/weapons/axe0.png
 - Assets/Prefab/AttackEffect.prefab
-- Assets/Sprites/weapons/shield3.png
-- Assets/Sprites/weapons/sword0.png
+- Assets/Resources/weapons/shield3.png
+- Assets/Resources/weapons/sword0.png
 Dependencies: []
