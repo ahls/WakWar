@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum rewardType { equipment,reinforcement,consumable, relic}
+public enum rewardType
+{
+    equipment,
+    reinforcement,
+    consumable,
+    relic
+}
+
 public class RewardsWindow : MonoBehaviour
 {
 
