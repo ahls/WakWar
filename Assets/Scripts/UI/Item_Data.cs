@@ -33,7 +33,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
         if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
         {
             var param = new itemInfoDisplay.Param();
-            param.item = Items.DB[10000];
+            param.item = Items.DB[itemID];
             param.position = eventData.position;
 
             Global.UIPopupManager.Push(PopupID.UIItemToolTip, param);
