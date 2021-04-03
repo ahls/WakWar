@@ -21,6 +21,10 @@ public class WakWindow : UIPopup
         }
     }
 
+    public override void SetInfo()
+    {
+    }
+
     #region 판도라의 상자 
     public void updateStat(DisplayStat statType, int newValue)
     {

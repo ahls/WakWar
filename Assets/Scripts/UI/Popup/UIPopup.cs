@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public abstract PopupID GetPopupID();
+    public abstract void SetInfo();
 
     protected RectTransform _rectTransform;
 
@@ -14,6 +15,11 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
     private void Start()
     {
         _rectTransform = this.GetComponent<RectTransform>();
+    }
+
+    public void OnEnable()
+    {
+        SetInfo();
     }
 
     public object Param { get; set; }

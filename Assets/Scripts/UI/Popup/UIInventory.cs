@@ -5,4 +5,8 @@ using UnityEngine;
 public class UIInventory : UIPopup
 {
     public override PopupID GetPopupID() { return PopupID.UIInventory; }
+
+    public override void SetInfo()
+    {
+    }
 }
