@@ -18,7 +18,7 @@ public class UIPopupManager : MonoBehaviour
         Global.instance.SetUIPopupManager(this);
     }
 
-    public void Push(PopupID id)
+    public void Push(PopupID id, object param = null)
     {
         var findPopup = FindPopup(id);
         if (findPopup != null)
@@ -31,7 +31,14 @@ public class UIPopupManager : MonoBehaviour
         currentPopup.transform.SetAsLastSibling();
         currentPopup.transform.localPosition = Vector3.zero;
 
-        _popupQueue.Add(currentPopup.GetComponent<UIPopup>());
+        var uiPopupScript = currentPopup.GetComponent<UIPopup>();
+
+        if (param != null)
+        {
+            uiPopupScript.Param = param; 
+        }
+
+        _popupQueue.Add(uiPopupScript);
     }
 
     public void Pop(PopupID id)

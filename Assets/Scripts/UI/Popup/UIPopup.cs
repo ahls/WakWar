@@ -16,6 +16,24 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
         _rectTransform = this.GetComponent<RectTransform>();
     }
 
+    public object Param { get; set; }
+
+    protected object GetParam()
+    {
+        return Param;
+    }
+
+    protected T GetParam<T>() where T : class
+    {
+        T param = Param as T;
+        if (param == null)
+        {
+            return null;
+        }
+
+        return param;
+    }
+
     public void Pop()
     {
         Global.UIPopupManager.Pop(this);
