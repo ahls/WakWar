@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 493963535
+CRC: 3266849436
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 72d39336df56b67cd3939e3a593e2aeb
+    Hash: 6fe6d451ed795ab647c49b35addd777e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: d25bf6c6cbe6505d00772b7f073d41c3
+    Hash: 39b62d41df53bd355c6d074f8a1f4e2d
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -34,6 +34,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d19d9307e61739c49a8af4c8f0f309bb, type: 3}
@@ -52,7 +54,7 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
 - Class: 114
-  Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
+  Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -81,6 +83,7 @@ Assets:
 - Assets/Resources/weapons/shield2.png
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/Resources/weapons/axe2.png
+- Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Resources/weapons/axe0.png
