@@ -32,8 +32,11 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
     {
         if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
         {
-            itemInfoDisplay.instance.loadInfo(Items.DB[itemID]);
-            itemInfoDisplay.instance.setLocation(eventData.position);
+            var param = new itemInfoDisplay.Param();
+            param.item = Items.DB[10000];
+            param.position = eventData.position;
+
+            Global.UIPopupManager.Push(PopupID.UIItemToolTip, param);
         }
     }
 

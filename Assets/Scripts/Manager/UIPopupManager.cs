@@ -7,6 +7,7 @@ public enum PopupID
     UIWakWindow,
     UIInventory,
     UIUnitWindow,
+    UIItemToolTip,
 }
 
 public class UIPopupManager : MonoBehaviour
