@@ -9,11 +9,12 @@ public class WakgoodBehaviour : MonoBehaviour
     private int3 _panzees = new int3(0, 0, 0);
     private UnitCombat _unitCombat;
     public int statPerUnit { get; set; } = 1;
+    public int[] WakStats { get; set; } = new int[3] { 0, 0, 0 };
     #endregion
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<UnitStats>().playerUnitInit("우왁굳");   
     }
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class WakgoodBehaviour : MonoBehaviour
         {
             case WeaponType.Warrior:
                 _panzees.x+=numDelta;
-                WakWindow.instance.updateStat(panzeeClass, _panzees.x);
+                WakStats[0] += numDelta;
                 //전사 유닛 추가스탯: 체력, 방어력
                 _unitCombat.armor+= numDelta;
                 _unitCombat.healthMax+= numDelta;
@@ -44,7 +45,7 @@ public class WakgoodBehaviour : MonoBehaviour
                 break;
             case WeaponType.Shooter:
                 _panzees.y += numDelta;
-                WakWindow.instance.updateStat(panzeeClass, _panzees.y);
+                WakStats[1] += numDelta;
                 //사수 유닛 추가스탯: 방어관통, 추뎀
                 _unitCombat.armorPiercing+= numDelta;
                 _unitCombat.attackDamage+= numDelta;
@@ -52,7 +53,7 @@ public class WakgoodBehaviour : MonoBehaviour
                 break;
             case WeaponType.Supporter:
                 _panzees.z += numDelta;
-                WakWindow.instance.updateStat(panzeeClass, _panzees.z);
+                WakStats[2] += numDelta;
                 //지원가 유닛 추가스탯:  사거리, 공속
                 _unitCombat.attackSpeed += 0.05f * numDelta;
                 _unitCombat.attackRange += 0.05f * numDelta;

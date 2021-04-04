@@ -18,6 +18,7 @@ public class PanzeeWindow : MonoBehaviour
         {
             instance = this;
         }
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame

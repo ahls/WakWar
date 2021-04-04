@@ -29,12 +29,6 @@ public class UnitStats : MonoBehaviour
 
     void Start()
     {
-
-        Debug.Log(ownedFaction);
-        if(ownedFaction == faction.player)
-        {
-            playerUnitInit("player");
-        }
         _animator = GetComponent<Animator>();
     }
 
@@ -51,6 +45,7 @@ public class UnitStats : MonoBehaviour
         playerOwned = true;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
+        GetComponent<UnitCombat>().ownedFaction = ownedFaction;
     }
 
     public void MoveToTarget(Vector3 target)

@@ -68,11 +68,9 @@ public class ResourceManager
         
         foreach (var path in assetBundle.GetAllAssetNames())
         {
-            Debug.Log(path);
             Sprite[] _sprites;
             if(path.Contains("sprites/weapon/img_"))//빌드에서도 적용 되는지 확인 필요
             {
-                Debug.Log("worked!!");
                 _sprites = assetBundle.LoadAssetWithSubAssets<Sprite>(path);
                 foreach (var subsprite in _sprites)
                 {

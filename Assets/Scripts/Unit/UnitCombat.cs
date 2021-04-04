@@ -104,9 +104,6 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-
-        //테스트용 라인 끝
-
         if (_unitstats._isMoving)
         {
             ActionStat = ActionStats.Move;
