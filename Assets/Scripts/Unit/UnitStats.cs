@@ -18,7 +18,9 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private GameObject selectionCircle;
     [SerializeField] private Text PlayerNameText;
+    [SerializeField] private Transform DoNotRotate;
     private Animator _animator;
+    
     private Vector3 _targetPos;
     private Vector3 _direction;
     private float _moveTime;
@@ -60,7 +62,8 @@ public class UnitStats : MonoBehaviour
 
         //애니메이션 부분
         _animator.SetBool("Move", true);
-        transform.rotation = _direction.x < 0? Quaternion.Euler(0, 180, 0): Quaternion.Euler(0, 0, 0);
+        transform.rotation = _direction.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        DoNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }
 
     private void Move()
