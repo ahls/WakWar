@@ -28,6 +28,7 @@ public class panzeeInventory : MonoBehaviour
         _unit = gameObject;
         transform.SetParent(parent);
         transform.localScale = Vector3.one;
+        itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<UnitCombat>();
     }
     /// <param name="one_or_zero"></param>
     public void collapse(bool collapsing)

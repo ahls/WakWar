@@ -63,11 +63,12 @@ public class UnitCombat : MonoBehaviour
     public faction ownedFaction = faction.enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public faction targetFaction;                       //공격타겟
     public WeaponType weaponType;
-    private Weapon _weapon;
+    private int weaponIndex;
     private GameObject _effect;
     public Sprite attackImage { get; set; }
     public float attackTorque { get; set; } = 0;
     private UnitStats _unitstats;
+    [SerializeField] private SpriteRenderer equippedImage;
     //장비 장착후 스탯
     public int resultDamage { get; set; }
     public float resultRange { get; set; }
@@ -103,6 +104,9 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
+
+        //테스트용 라인 끝
+
         if (_unitstats._isMoving)
         {
             ActionStat = ActionStats.Move;
@@ -198,40 +202,42 @@ public class UnitCombat : MonoBehaviour
 
     #region 장비관련
 
-    public void EquipWeapon(Weapon weapon)
-    {
+    public void EquipWeapon(int weaponID)
+    {/*
         if (weapon.weaponType != weaponType && weapon.weaponType != WeaponType.Wak)
         {
             Global.UIManager.PushNotiMsg("직업에 맞지 않는 장비입니다.", 1f);
             return;
-        }
-
-        _weapon = weapon;
+        }*///슬롯 스크립트에서 해결할것
+        
+        weaponIndex = weaponID;
+        equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[weaponIndex].equipImage);
     }
 
     public void UnEquipWeapon()
     {
+        equippedImage.sprite = null;
         switch (weaponType)
         {
             case WeaponType.Warrior:
             case WeaponType.Wak:
-                _weapon = Weapons.DB[10];
+                weaponIndex = 10;
                 break;
             case WeaponType.Shooter:
-                _weapon = Weapons.DB[20];
+                weaponIndex = 20;
                 break;
             case WeaponType.Supporter:
-                _weapon = Weapons.DB[30];
+                weaponIndex = 30;
                 break;
         }
     }
     public void UpdateStats()
     {
-        resultDamage = attackDamage + _weapon.damage;
-        resultAOE = attackArea + _weapon.AttackArea;
-        resultRange = attackRange + _weapon.AttackRange;
-        resultSpeed = attackSpeed + _weapon.AttackSpeed;
-        resultArmor = armor + _weapon.Armor;
+        resultDamage = attackDamage + Weapons.DB[weaponIndex].damage;
+        resultAOE = attackArea + Weapons.DB[weaponIndex].AttackArea;
+        resultRange = attackRange + Weapons.DB[weaponIndex].AttackRange;
+        resultSpeed = attackSpeed + Weapons.DB[weaponIndex].AttackSpeed;
+        resultArmor = armor + Weapons.DB[weaponIndex].Armor;
         
     }
     #endregion

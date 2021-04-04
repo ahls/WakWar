@@ -9,7 +9,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
 {
     #region 변수
     public int testID;
-    private int itemID;
+    public int itemID { get; set; }
     private int enchantID;
     #endregion
 
