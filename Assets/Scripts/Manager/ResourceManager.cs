@@ -9,6 +9,7 @@ public class ResourceManager
     private AssetBundle assetBundle;
 
     private Dictionary<string, GameObject> _loadedObjectDic = new Dictionary<string, GameObject>();
+    private Dictionary<string, Sprite> _loadedTexture = new Dictionary<string, Sprite>();
 
     public ResourceManager()
     {
@@ -22,6 +23,7 @@ public class ResourceManager
             AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(assetBundlePath));
             assetBundle = request.assetBundle;
             //AssetBundle.LoadFromFile(assetBundlePath);
+            preloadTextures();
         }
     }
 
@@ -49,5 +51,33 @@ public class ResourceManager
         _loadedObjectDic[path] = prefab;
 
         return Global.ObjectPoolManager.CreatObject(prefab, isUI);
+    }
+
+    public Sprite LoadTexture(string path, bool isUI = false)
+    {
+        if (assetBundle == null)
+        {
+            throw new Exception("AseetBundle is Null");
+        }
+
+        return _loadedTexture[path];
+
+    }
+    private void preloadTextures()
+    {
+        
+        foreach (var path in assetBundle.GetAllAssetNames())
+        {
+            Sprite[] _sprites;
+            if(path.Contains("sprites/weapon/img_"))//빌드에서도 적용 되는지 확인 필요
+            {
+                _sprites = assetBundle.LoadAssetWithSubAssets<Sprite>(path);
+                foreach (var subsprite in _sprites)
+                {
+                    _loadedTexture[subsprite.name] = subsprite;
+                }
+            }
+        }
+
     }
 }

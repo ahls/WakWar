@@ -9,16 +9,18 @@ public class UnitStats : MonoBehaviour
 
     //플레이어 소유주
     public bool playerOwned { get; set; } = false;
-    public faction ownedFaction { get; set; } = faction.enemy;
+    public faction ownedFaction { get; set; }
 
     //이동속도
-    public float moveSpeed { get; set; } = 0.05f;
+    public float moveSpeed { get; set; } = 0.01f;
     
 
     [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private GameObject selectionCircle;
     [SerializeField] private Text PlayerNameText;
-
+    [SerializeField] private Transform DoNotRotate;
+    private Animator _animator;
+    
     private Vector3 _targetPos;
     private Vector3 _direction;
     private float _moveTime;
@@ -27,10 +29,9 @@ public class UnitStats : MonoBehaviour
     public bool _isMoving = false;
     #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        _animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -46,6 +47,7 @@ public class UnitStats : MonoBehaviour
         playerOwned = true;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
+        GetComponent<UnitCombat>().ownedFaction = ownedFaction;
     }
 
     public void MoveToTarget(Vector3 target)
@@ -57,6 +59,11 @@ public class UnitStats : MonoBehaviour
         var distance = Vector2.Distance(this.transform.position, _targetPos);
 
         _isMoving = true;
+
+        //애니메이션 부분
+        _animator.SetBool("Move", true);
+        transform.rotation = _direction.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
+        DoNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }
 
     private void Move()
@@ -67,6 +74,7 @@ public class UnitStats : MonoBehaviour
         }
         else
         {
+            _animator.SetBool("Move", false);
             _isMoving = false;
 
             ResetTarget();

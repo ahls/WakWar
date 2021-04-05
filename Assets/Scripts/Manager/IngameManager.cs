@@ -35,4 +35,5 @@ public class IngameManager : MonoBehaviour
     {
         _twitchClient = twitchClient;
     }
+
 }

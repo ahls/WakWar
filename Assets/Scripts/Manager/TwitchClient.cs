@@ -100,8 +100,8 @@ public class TwitchClient : MonoBehaviour
             inputClass = WeaponType.Supporter;
         }
 
+        Debug.Log(PanzeeWindow.instance);
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
-        WakWindow.instance.updateStat(inputClass, 1);
         WakgoodBehaviour.instance.addPanzeeStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
 

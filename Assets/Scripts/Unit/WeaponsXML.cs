@@ -28,9 +28,9 @@ public class PulledWeapon
     public float AttackArea;
     [XmlElement("armorPiercing")]
     public int AP;
-    [XmlAttribute("Esrc")]
+    [XmlElement("Esrc")]
     public string equipImage;
-    [XmlAttribute("Psrc")]
+    [XmlElement("Psrc")]
     public string projImage;
     [XmlElement("projectileSpeed")]
     public float projSpeed;
