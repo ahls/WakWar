@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3965410942
+CRC: 2813638534
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 22500f8866ba4bddad7a7046b82b1254
+    Hash: a873baa8d92cbc5fc7c1f49593756f9e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 39b62d41df53bd355c6d074f8a1f4e2d
@@ -77,12 +77,15 @@ Assets:
 - Assets/Prefab/inventory/Item Base.prefab
 - Assets/Resources/weapons/sword2.png
 - Assets/WakAsset/UI/NotifyText.prefab
+- Assets/Sprites/Weapon/img_arrow.png
 - Assets/Resources/weapons/sword1.png
 - Assets/Resources/weapons/sword3.png
 - Assets/Sprites/Weapon/img_sword.png
 - Assets/Resources/weapons/shield1.png
 - Assets/Resources/weapons/axe3.png
+- Assets/Sprites/Weapon/img_instruments.png
 - Assets/Sprites/Weapon/img_axe.png
+- Assets/Sprites/Weapon/img_bow.png
 - Assets/Resources/weapons/shield2.png
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/Resources/weapons/axe2.png
