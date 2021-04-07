@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class UnitManager : MonoBehaviour
     #region 변수
     public bool ControlOn { get; set; } = true;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
+    private List<List<GameObject>> unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
     private float3 _startLocation;
     private short _selectedUnitCount = 0;       //유닛 선택이
@@ -18,6 +20,10 @@ public class UnitManager : MonoBehaviour
     private void Start()
     {
         IngameManager.instance.SetUnitManager(this);
+        for (int i = 0; i < 10; i++)
+        {
+            unitSquads.Add(new List<GameObject>());
+        }
     }
 
     private void Update()
@@ -26,6 +32,7 @@ public class UnitManager : MonoBehaviour
         {
             SelectUnitControl();
             UnitMoveControl();
+            SquadControl();
         }
     }
 
@@ -107,7 +114,36 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
-
+    private void SquadControl()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if(Input.GetKeyDown((KeyCode)i+48))
+            {
+                if(Input.GetKey(KeyCode.LeftControl))
+                {//부대 지정
+                    unitSquads[i] = _selectedUnitList.ToList();
+                    return;
+                }
+                //부대 선택
+                foreach (var selectedUnit in _selectedUnitList)
+                {
+                    selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(false);
+                }
+                _selectedUnitList = unitSquads[i].ToList();
+                foreach (var selectedUnit in _selectedUnitList)
+                {
+                    if (selectedUnit.activeSelf)
+                    {
+                        selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(true);
+                    }
+                }
+                return;
+                
+            }
+        }
+        
+    }
     private float3 cursorLocation()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
