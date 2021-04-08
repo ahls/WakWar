@@ -38,6 +38,7 @@ public class UnitCombat : MonoBehaviour
 
     //체력
     public int healthMax { get; set; } = 10;
+    public bool isDead { get; set; } = false;
     private int healthCurrent;
     [SerializeField] private Slider healthBar;
 
@@ -290,13 +291,20 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 체력관련
-
+    /// <summary>
+    /// 방어무시 공격
+    /// </summary>
+    /// <param name="damageAmount"></param>
     public void TakeDamage(int damageAmount)
     {
-        healthCurrent -= (damageAmount - resultArmor);
+        healthCurrent -= (damageAmount);
         HealthBarUpdate();
     }
-
+    /// <summary>
+    /// 방어관통 있는 버젼
+    /// </summary>
+    /// <param name="dmg"></param>
+    /// <param name="armorPierce"></param>
     public void TakeDamage(int dmg, int armorPierce)
     {
         healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
@@ -319,8 +327,14 @@ public class UnitCombat : MonoBehaviour
     }
     private void death()
     {
+        GetComponent<Animator>().SetTrigger("Die");
+        isDead = true;
+        StartCoroutine(deathDelay());
+    }
+    IEnumerator deathDelay()
+    {
+        yield return new WaitForSeconds(2);
         gameObject.SetActive(false);
     }
-
     #endregion
 }
