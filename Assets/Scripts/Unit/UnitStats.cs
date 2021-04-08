@@ -27,6 +27,9 @@ public class UnitStats : MonoBehaviour
 
     private IEnumerator _moveCoroutine;
     public bool _isMoving = false;
+    private int stuckCounter = 0;
+    private Vector2 lastPosition;
+    private float stuckDisplacement = 0.005f; 
     #endregion
 
     void Start()
@@ -39,7 +42,9 @@ public class UnitStats : MonoBehaviour
         if (_isMoving)
         {
             Move();
+            stuckCheck();
         }
+       
     }
 
     public void playerUnitInit(string PlayerName)
@@ -98,9 +103,25 @@ public class UnitStats : MonoBehaviour
         selectionCircle.SetActive(value);
     }
 
-
-    public void equip()
+    private void stuckCheck()
     {
-
+        if ((lastPosition - (Vector2)transform.position).magnitude < stuckDisplacement)
+        {
+            if (stuckCounter == 10)
+            {//안움직인지 10/50 초 가 지나면
+                stuckCounter = 0;
+                _animator.SetBool("Move", false);   
+                _isMoving = false;
+            }
+            else
+            {
+                stuckCounter++;
+            }
+        }
+        else
+        {
+            stuckCounter = 0;
+        }
+        lastPosition = transform.position;
     }
 }
