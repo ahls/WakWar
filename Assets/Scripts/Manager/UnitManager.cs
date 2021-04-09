@@ -89,7 +89,7 @@ public class UnitManager : MonoBehaviour
             {
                 UnitStats tempStats = selectingUnit.GetComponent<UnitStats>();
 
-                if (tempStats != null && tempStats.playerOwned)
+                if (tempStats != null && tempStats.Selectable)
                 {
                     tempStats.setSelectionCircleState(true);
                     _selectedUnitList.Add(selectingUnit.gameObject);
@@ -147,5 +147,9 @@ public class UnitManager : MonoBehaviour
     private float3 cursorLocation()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+    public void deselectUnit(GameObject unitToDeselect)
+    {
+        _selectedUnitList.Remove(unitToDeselect);
     }
 }

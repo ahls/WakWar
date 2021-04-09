@@ -329,6 +329,10 @@ public class UnitCombat : MonoBehaviour
     {
         GetComponent<Animator>().SetTrigger("Die");
         isDead = true;
+        _unitstats._isMoving = false;
+        _unitstats.setSelectionCircleState(false);
+        _unitstats.Selectable = false;
+        IngameManager.UnitManager.deselectUnit(gameObject);
         StartCoroutine(deathDelay());
     }
     IEnumerator deathDelay()

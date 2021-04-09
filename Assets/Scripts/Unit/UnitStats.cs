@@ -8,7 +8,7 @@ public class UnitStats : MonoBehaviour
 
 
     //플레이어 소유주
-    public bool playerOwned { get; set; } = false;
+    public bool Selectable { get; set; } = false;
     public faction ownedFaction { get; set; }
 
     //이동속도
@@ -28,8 +28,8 @@ public class UnitStats : MonoBehaviour
     private IEnumerator _moveCoroutine;
     public bool _isMoving = false;
     private int stuckCounter = 0;
-    private Vector2 lastPosition;
     private float stuckDisplacement = 0.005f; 
+    private Vector2 lastPosition;
     #endregion
 
     void Start()
@@ -49,7 +49,7 @@ public class UnitStats : MonoBehaviour
 
     public void playerUnitInit(string PlayerName)
     {
-        playerOwned = true;
+        Selectable = true;
         selectionCircle.SetActive(false);
         PlayerNameText.text = PlayerName;
         GetComponent<UnitCombat>().ownedFaction = ownedFaction;
@@ -95,7 +95,7 @@ public class UnitStats : MonoBehaviour
 
     public void setSelectionCircleState(bool value)
     {
-        if (!playerOwned)
+        if (!Selectable)
         {
             return;
         }

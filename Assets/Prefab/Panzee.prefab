@@ -626,8 +626,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 186482193
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &3964886468274477671
 MonoBehaviour:
@@ -1285,6 +1285,7 @@ GameObject:
   - component: {fileID: 8252109871089551390}
   - component: {fileID: 3565577381062980783}
   - component: {fileID: 8656048728641931286}
+  - component: {fileID: 3994128196793667038}
   m_Layer: 0
   m_Name: Panzee
   m_TagString: Untagged
@@ -1407,6 +1408,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.17}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!114 &3994128196793667038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 8404557900482047080}
+  - {fileID: 6717859888757973268}
+  - {fileID: 2734279930261161463}
+  - {fileID: 3188484297814004630}
+  - {fileID: 4068964447474577886}
+  - {fileID: 6640610026269112796}
+  - {fileID: 2989731452029694304}
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0
