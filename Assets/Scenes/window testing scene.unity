@@ -668,12 +668,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80053897}
   m_CullTransparentMesh: 0
---- !u!212 &98037504 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4657821170559574952, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &105837495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -950,9 +944,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -1343,9 +1337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -1501,9 +1495,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -2764,18 +2758,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487848044}
   m_CullTransparentMesh: 0
---- !u!212 &497735662 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1581302813697150639, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &506719119 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4449214133407098907, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &508703412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3001,9 +2983,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -3029,9 +3011,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -3360,9 +3342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd79e36b80e7b84e8c938338acf717c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  Damage: 0
   AOE: 0.7
-  targetFaction: 0
+  TargetFaction: 0
   PS: {fileID: 709868404}
 --- !u!198 &709868404
 ParticleSystem:
@@ -8415,9 +8397,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -8509,12 +8491,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5099cdc2351dd2d4e9969cf02b98bb09, type: 3}
---- !u!212 &764488776 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5201102291014278070, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &771061130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8904,12 +8880,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5484659015161531343, guid: f165f0db6d31c4a46a7a56fd9a66e64c,
     type: 3}
   m_PrefabInstance: {fileID: 811698991}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &830810781 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 195085769257838179, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &841696665
 GameObject:
@@ -9415,12 +9385,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5099cdc2351dd2d4e9969cf02b98bb09, type: 3}
---- !u!212 &982430331 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 4769129619832623378, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996358765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5900826945032943484, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
@@ -9440,9 +9404,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -9546,9 +9510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -9665,9 +9629,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -9690,17 +9654,17 @@ PrefabInstance:
     - target: {fileID: 195085769257838179, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 119
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 1095260716562439570, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 131
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1581302813697150639, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 120
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1808040283182414976, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
@@ -9785,7 +9749,7 @@ PrefabInstance:
     - target: {fileID: 3918521910823092487, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 145
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 4129808488276339618, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
@@ -9795,46 +9759,40 @@ PrefabInstance:
     - target: {fileID: 4449214133407098907, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 130
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4657821170559574952, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 118
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4769129619832623378, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 140
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5201102291014278070, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 134
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 7127537102941846574, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 132
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7483811622134944215, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 130
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 9106241899852106408, guid: 21b074215aa0602418e2e1d1a4738556,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 139
+      value: 39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21b074215aa0602418e2e1d1a4738556, type: 3}
---- !u!212 &1103325876 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7483811622134944215, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110712631
 GameObject:
   m_ObjectHideFlags: 0
@@ -10160,12 +10118,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186884988}
   m_CullTransparentMesh: 0
---- !u!212 &1203217033 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7127537102941846574, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1224822914
 GameObject:
   m_ObjectHideFlags: 0
@@ -10212,9 +10164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd79e36b80e7b84e8c938338acf717c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  Damage: 0
   AOE: 0.2
-  targetFaction: 0
+  TargetFaction: 0
   PS: {fileID: 1224822918}
 --- !u!199 &1224822917
 ParticleSystemRenderer:
@@ -15461,7 +15413,7 @@ PrefabInstance:
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.175
+      value: 0.216
       objectReference: {fileID: 0}
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -15750,9 +15702,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -15778,9 +15730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -15960,12 +15912,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5099cdc2351dd2d4e9969cf02b98bb09, type: 3}
---- !u!212 &1372988065 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 9106241899852106408, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1375558462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5900826945032943484, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
@@ -15985,9 +15931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -16647,9 +16593,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -17151,12 +17097,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5099cdc2351dd2d4e9969cf02b98bb09, type: 3}
---- !u!212 &1572832015 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3918521910823092487, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1586241825
 GameObject:
   m_ObjectHideFlags: 0
@@ -22525,7 +22465,7 @@ MonoBehaviour:
   ownedFaction: 1
   targetFaction: 0
   weaponType: 0
-  equippedImage: {fileID: 0}
+  _equippedImage: {fileID: 0}
 --- !u!50 &1772615214
 Rigidbody2D:
   serializedVersion: 4
@@ -22576,18 +22516,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 1572832015}
-  - {fileID: 764488776}
-  - {fileID: 506719119}
-  - {fileID: 982430331}
-  - {fileID: 1372988065}
-  - {fileID: 1203217033}
-  - {fileID: 1885512704}
-  - {fileID: 1103325876}
-  - {fileID: 98037504}
-  - {fileID: 497735662}
-  - {fileID: 830810781}
+  _sprites: []
+--- !u!114 &1772615217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772615208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanControl: 0
+  range: 0
+  AOE: 0
+  projSpeed: 0
+  ms: 0
+  hp: 1000
+  dmg: 0
+  AP: 0
+  image: {fileID: 0}
+  torque: 0
 --- !u!1 &1778098916
 GameObject:
   m_ObjectHideFlags: 0
@@ -22867,9 +22818,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -22895,9 +22846,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -22923,9 +22874,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -22951,9 +22902,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -23247,12 +23198,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882406667}
   m_CullTransparentMesh: 0
---- !u!212 &1885512704 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1095260716562439570, guid: 21b074215aa0602418e2e1d1a4738556,
-    type: 3}
-  m_PrefabInstance: {fileID: 1086847219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909407445
 GameObject:
   m_ObjectHideFlags: 0
@@ -23408,9 +23353,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -23805,9 +23750,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -23963,9 +23908,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -23991,9 +23936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -24019,9 +23964,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -28865,9 +28810,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
@@ -29354,9 +29299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 1
-  range: 0
+  range: 0.3
   AOE: 0
-  projSpeed: 2
+  projSpeed: 10
   ms: 0.01
   hp: 10
   dmg: 1
