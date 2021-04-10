@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class UnitLayerAdjust : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer[] sprites;
+    [SerializeField] private SpriteRenderer[] _sprites;
     private int[] _layerOrders;
     private int _numLayers;
     // Start is called before the first frame update
     void Start()
     {
-        _numLayers = sprites.Length;
+        _numLayers = _sprites.Length;
         _layerOrders = new int[_numLayers];
         for (int i = 0; i < _numLayers; i++)
         {
-            _layerOrders[i] = sprites[i].sortingOrder;
+            _layerOrders[i] = _sprites[i].sortingOrder;
         }
     }
 
@@ -26,7 +26,7 @@ public class UnitLayerAdjust : MonoBehaviour
         {
 
 
-            sprites[i].sortingOrder =  _layerOrders[i]- (int)(currentY * 100);
+            _sprites[i].sortingOrder =  _layerOrders[i]- (int)(currentY * 100);
         }
     }
 }

@@ -38,7 +38,7 @@ public class UnitCombat : MonoBehaviour
 
     //체력
     public int healthMax { get; set; } = 10;
-    public bool isDead { get; set; } = false;
+    public bool _isDead { get; set; } = false;
     private int healthCurrent;
     [SerializeField] private Slider healthBar;
 
@@ -349,7 +349,7 @@ public class UnitCombat : MonoBehaviour
     private void death()
     {
         _animator.SetTrigger("Die");
-        isDead = true;
+        _isDead = true;
         _unitstats._isMoving = false;
         _unitstats.setSelectionCircleState(false);
         _unitstats.Selectable = false;

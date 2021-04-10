@@ -8,12 +8,12 @@ public class UnitManager : MonoBehaviour
     #region 변수
     public bool ControlOn { get; set; } = true;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
-    private List<List<GameObject>> unitSquads = new List<List<GameObject>>(10);
+    private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
     private float3 _startLocation;
     private short _selectedUnitCount = 0;       //유닛 선택이
     private bool _selectOneOnly = false;        //클릭인지
-    private const float clickThreshold = 0.1f;  //확인할떄 쓰임
+    private const float CLICK_THRESHOLD = 0.1f;  //확인할떄 쓰임
     #endregion
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class UnitManager : MonoBehaviour
         IngameManager.instance.SetUnitManager(this);
         for (int i = 0; i < 10; i++)
         {
-            unitSquads.Add(new List<GameObject>());
+            _unitSquads.Add(new List<GameObject>());
         }
     }
 
@@ -70,10 +70,10 @@ public class UnitManager : MonoBehaviour
             float2 centerOfBox = new float2((endLocation.x + _startLocation.x) / 2f, (endLocation.y + _startLocation.y) / 2f);
             float2 sizeOfBox;
 
-            if (math.distance(endLocation, _startLocation) <= clickThreshold)
+            if (math.distance(endLocation, _startLocation) <= CLICK_THRESHOLD)
             {
                 // 클릭싸이즈면 0.2*0.2 크기 박스로 생성 및 한마리만 잡기 설정
-                sizeOfBox = new float2(clickThreshold, clickThreshold);
+                sizeOfBox = new float2(CLICK_THRESHOLD, CLICK_THRESHOLD);
                 _selectOneOnly = true;
             }
             else
@@ -122,7 +122,7 @@ public class UnitManager : MonoBehaviour
             {
                 if(Input.GetKey(KeyCode.LeftControl))
                 {//부대 지정
-                    unitSquads[i] = _selectedUnitList.ToList();
+                    _unitSquads[i] = _selectedUnitList.ToList();
                     return;
                 }
                 //부대 선택
@@ -130,12 +130,16 @@ public class UnitManager : MonoBehaviour
                 {
                     selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(false);
                 }
-                _selectedUnitList = unitSquads[i].ToList();
+                _selectedUnitList = _unitSquads[i].ToList();
                 foreach (var selectedUnit in _selectedUnitList)
                 {
-                    if (selectedUnit.activeSelf)
+                    if (selectedUnit.GetComponent<UnitStats>().Selectable)
                     {
                         selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(true);
+                    }
+                    else
+                    {
+                        deselectUnit(selectedUnit);
                     }
                 }
                 return;
