@@ -69,7 +69,8 @@ public class UnitCombat : MonoBehaviour
     public Sprite attackImage { get; set; }
     public float attackTorque { get; set; } = 0;
     private UnitStats _unitstats;
-    [SerializeField] private SpriteRenderer equippedImage;
+    [SerializeField] private SpriteRenderer _equippedImage;
+    private Animator _animator;
     //장비 장착후 스탯
     public int resultDamage { get; set; }
     public float resultRange { get; set; }
@@ -81,7 +82,7 @@ public class UnitCombat : MonoBehaviour
     private float attackTimer = 0; // 0일때 공격 가능
     private int resultArmor;
 
-
+    
     public void playerSetup()
     {
         ownedFaction = faction.player;
@@ -101,6 +102,7 @@ public class UnitCombat : MonoBehaviour
         searchAssign %= searchCooldown;
 
         ActionStat = ActionStats.Idle;
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -209,12 +211,30 @@ public class UnitCombat : MonoBehaviour
         }*///슬롯 스크립트에서 해결할것
         
         weaponIndex = weaponID;
-        equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[weaponIndex].equipImage);
+        _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[weaponIndex].equipImage);
+        
+        //장비 이미지 바꾸는 코드
+        if (100200 <= weaponID && weaponID <= 100203)
+        {
+            _animator.SetTrigger("Shield");
+        }
+        else if (200100 <= weaponID && weaponID <= 200103)
+        {
+            _animator.SetTrigger("Bow");
+        }
+        else if (300200 <= weaponID && weaponID <= 300203)
+        {
+            _animator.SetTrigger("Inst");
+        }
+        else
+        {
+            _animator.SetTrigger("Regular");
+        }
     }
 
     public void UnEquipWeapon()
     {
-        equippedImage.sprite = null;
+        _equippedImage.sprite = null;
         switch (weaponType)
         {
             case WeaponType.Warrior:
@@ -244,6 +264,7 @@ public class UnitCombat : MonoBehaviour
 
     public void Attack()
     {
+        _animator.SetTrigger("Attack");
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
         _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name,attackTorque);
@@ -327,7 +348,7 @@ public class UnitCombat : MonoBehaviour
     }
     private void death()
     {
-        GetComponent<Animator>().SetTrigger("Die");
+        _animator.SetTrigger("Die");
         isDead = true;
         _unitstats._isMoving = false;
         _unitstats.setSelectionCircleState(false);

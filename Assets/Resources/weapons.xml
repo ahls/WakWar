@@ -437,7 +437,7 @@
 			<class>Supporter</class>
 		</weapon>
 		<weapon>
-			<id>301000</id>
+			<id>300100</id>
 			<name>효자손</name>
 			<damage>-10</damage>
 			<range>1</range>
@@ -451,7 +451,7 @@
 			<class>Supporter</class>
 		</weapon>
 		<weapon>
-			<id>301001</id>
+			<id>300101</id>
 			<name>지휘봉</name>
 			<damage>-20</damage>
 			<range>1</range>
@@ -479,7 +479,7 @@
 			<class>Supporter</class>
 		</weapon>
 		<weapon>
-			<id>301003</id>
+			<id>3000103</id>
 			<name>요술봉</name>
 			<damage>-50</damage>
 			<range>1</range>
@@ -493,7 +493,7 @@
 			<class>Supporter</class>
 		</weapon>
 		<weapon>
-			<id>302000</id>
+			<id>300200</id>
 			<name>탬버린</name>
 			<damage>0</damage>
 			<range>0</range>

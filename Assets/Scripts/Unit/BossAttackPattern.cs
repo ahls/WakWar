@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BossAttackPattern : MonoBehaviour
 {
-    public int damage;
+    public int Damage;
     public float AOE;
-    public faction targetFaction;
+    public faction TargetFaction;
     public ParticleSystem PS;
 
     // Start is called before the first frame update
@@ -29,9 +29,9 @@ public class BossAttackPattern : MonoBehaviour
             UnitCombat selectedUnitCombat = unit.GetComponent<UnitCombat>();
             if (selectedUnitCombat != null)
             {
-                if (selectedUnitCombat.targetFaction != targetFaction)
+                if (selectedUnitCombat.targetFaction != TargetFaction)
                 {
-                    selectedUnitCombat.TakeDamage(damage);
+                    selectedUnitCombat.TakeDamage(Damage);
                 }
             }
         }
