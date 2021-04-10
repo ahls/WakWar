@@ -10,6 +10,10 @@ public class UIMenuBar : MonoBehaviour
         {
             Global.UIPopupManager.Push(PopupID.UIWakWindow);
         }
+        else
+        {
+            Global.UIPopupManager.Pop(PopupID.UIWakWindow);
+        }
     }
 
     public void PushUIInventory()
@@ -17,6 +21,10 @@ public class UIMenuBar : MonoBehaviour
         if (Global.UIPopupManager.FindPopup(PopupID.UIInventory) == null)
         {
             Global.UIPopupManager.Push(PopupID.UIInventory);
+        }
+        else
+        {
+            Global.UIPopupManager.Pop(PopupID.UIInventory);
         }
     }
 }
