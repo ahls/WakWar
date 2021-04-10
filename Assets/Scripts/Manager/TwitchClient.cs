@@ -104,7 +104,7 @@ public class TwitchClient : MonoBehaviour
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
         WakgoodBehaviour.instance.addPanzeeStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
-
+        instance.GetComponent<UnitCombat>().UnEquipWeapon();
     }
 
     public void openEnrolling(int numSlots)

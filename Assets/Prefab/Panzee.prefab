@@ -1353,7 +1353,7 @@ MonoBehaviour:
   ownedFaction: 0
   targetFaction: 1
   weaponType: 0
-  equippedImage: {fileID: 2989731452029694304}
+  _equippedImage: {fileID: 2989731452029694304}
 --- !u!114 &8252109871089551390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1420,14 +1420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 8404557900482047080}
-  - {fileID: 6717859888757973268}
-  - {fileID: 2734279930261161463}
-  - {fileID: 3188484297814004630}
-  - {fileID: 4068964447474577886}
-  - {fileID: 6640610026269112796}
-  - {fileID: 2989731452029694304}
+  _sprites: []
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0
