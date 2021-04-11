@@ -63,11 +63,6 @@ public class TwitchClient : MonoBehaviour
                     unitCreation(userName, UnitClass);
                     openSlots--;
                 }
-                /*어차피 그냥 무시해도 될테니까 도배 방지용으로 주석처리 해놨습니다. 뽈롱뽈랑님 보시고 동의 하시면 아래 else 문 지워주세요!
-                else
-                {
-                    client.SendMessage(client.JoinedChannels[0], $"{UnitClass}는 존재하지 않는 직업입니다.");
-                }*/
             }
             else
             {//딕셔너리에 이름이 있는경우 

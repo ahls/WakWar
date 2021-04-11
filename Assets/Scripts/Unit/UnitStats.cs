@@ -32,7 +32,7 @@ public class UnitStats : MonoBehaviour
     private Vector2 lastPosition;
     #endregion
 
-    void Start()
+    void Awake()
     {
         _animator = GetComponent<Animator>();
     }

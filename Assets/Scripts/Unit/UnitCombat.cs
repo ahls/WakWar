@@ -233,7 +233,10 @@ public class UnitCombat : MonoBehaviour
 
     public void UnEquipWeapon()
     {
-        _animator.SetTrigger("Regular");
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Regular");
+        }
         _equippedImage.sprite = null;
         switch (weaponType)
         {
