@@ -6,7 +6,7 @@ public class cameraControl : MonoBehaviour
 {
     private const float SCROLL_MULTIPLIER= 0.1f;
     private const float SCROLL_SPEED = 0.05f;
-    private const float LERP = 0.1f;
+    private const float LERP = 0.2f;
     private const float EDGE_SIZE = 30f;
     private float _targetSize =2 ;
     private Vector2 _targetLocaiton;
@@ -52,19 +52,19 @@ public class cameraControl : MonoBehaviour
         _rightTopCorner.position = new Vector2(1.778f, 0.999f) * (2 - _targetSize);
         _leftBottomCorner.position = -_rightTopCorner.position;
 
-        if (mousePos.x > Screen.width - EDGE_SIZE)
+        if (mousePos.x > Screen.width - EDGE_SIZE || Input.GetKey(KeyCode.RightArrow))
         {
             _targetLocaiton.x += SCROLL_SPEED;
         }
-        else if (mousePos.x < EDGE_SIZE)
+        else if (mousePos.x < EDGE_SIZE || Input.GetKey(KeyCode.LeftArrow))
         {
             _targetLocaiton.x -= SCROLL_SPEED;
         }
-        if (mousePos.y > Screen.height - EDGE_SIZE)
+        if (mousePos.y > Screen.height - EDGE_SIZE || Input.GetKey(KeyCode.UpArrow))
         {
             _targetLocaiton.y += SCROLL_SPEED;
         }
-        else if (mousePos.y < EDGE_SIZE)
+        else if (mousePos.y < EDGE_SIZE || Input.GetKey(KeyCode.DownArrow))
         {
             _targetLocaiton.y -= SCROLL_SPEED;
         }
