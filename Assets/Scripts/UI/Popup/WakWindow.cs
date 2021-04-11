@@ -25,9 +25,6 @@ public class WakWindow : UIPopup
 
     public override void SetInfo()
     {
-        updateStat(WeaponType.Warrior, WakgoodBehaviour.instance.WakStats[0]);
-        updateStat(WeaponType.Shooter, WakgoodBehaviour.instance.WakStats[1]);
-        updateStat(WeaponType.Supporter, WakgoodBehaviour.instance.WakStats[2]);
         WakgoodBehaviour.instance.WakStats[0] = 0;
         WakgoodBehaviour.instance.WakStats[1] = 0;
         WakgoodBehaviour.instance.WakStats[2] = 0;

@@ -97,7 +97,7 @@ public class TwitchClient : MonoBehaviour
 
 
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
-        WakgoodBehaviour.instance.addPanzeeStat(inputClass, 1);
+        IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
         instance.GetComponent<UnitCombat>().UnEquipWeapon();
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
