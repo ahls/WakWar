@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIInventory : UIPopup
 {
     [SerializeField] private Item_Slot[] _itemSlots;
-    static public UIInventory instance;
     public override PopupID GetPopupID() { return PopupID.UIInventory; }
 
     public override void SetInfo()
@@ -14,9 +13,9 @@ public class UIInventory : UIPopup
 
     private void Start()
     {
-        instance = this;
+        IngameManager.instance.SetInventory(this);
     }
-    public Transform[] getEmptySlot(int numSlots)
+    public List<Transform> getEmptySlot(int numSlots)
     {
         List<Transform> returningList = new List<Transform>();
         int numSlotEmpty = 0;
@@ -28,7 +27,7 @@ public class UIInventory : UIPopup
                 returningList.Add(itemSlot.transform);   
             }
         }
-        return returningList.ToArray();
+        return returningList;
     }
     
 }

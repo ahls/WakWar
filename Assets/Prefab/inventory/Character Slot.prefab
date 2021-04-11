@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _name: {fileID: 51698179752636784}
-  itemSlot: {fileID: 5524447144660895261}
-  StatDisplay: {fileID: 8774027671299594715}
+  _itemSlot: {fileID: 5524447144660895261}
+  _statDisplay: {fileID: 8774027671299594715}
 --- !u!1 &51698179752636786
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,9 +22,8 @@ public class testItemGiver : MonoBehaviour
             if(Items.DB.ContainsKey(givenInput))
             {
                 Debug.Log("아이템 추가!");
-                Transform[] itemslot = UIInventory.instance.getEmptySlot(1);
-                Debug.Log(itemslot.Length);
-                if (itemslot.Length != 0)
+                List<Transform> itemslot = IngameManager.UIInventory.getEmptySlot(1);
+                if (itemslot.Count != 0)
                 {
                     GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
                     newItem.GetComponent<Item_Data>().setup(givenInput,itemslot[0]);
