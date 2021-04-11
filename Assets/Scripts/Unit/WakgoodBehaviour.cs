@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
+
 public class WakgoodBehaviour : MonoBehaviour
 {
     #region 함수
     private int3 _panzees = new int3(0, 0, 0);
     private UnitCombat _unitCombat;
-    public int statPerUnit { get; set; } = 1;
+    public int StatPerUnit { get; set; } = 1;
     public int[] WakStats { get; set; } = new int[3] { 0, 0, 0 };
     #endregion
     // Start is called before the first frame update
@@ -17,18 +18,13 @@ public class WakgoodBehaviour : MonoBehaviour
         GetComponent<UnitStats>().playerUnitInit("우왁굳");
         _unitCombat.weaponType = WeaponType.Wak;
     }
+
     private void Awake()
     {
         _unitCombat = GetComponent<UnitCombat>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void addPanzeeStat(WeaponType panzeeClass, int numDelta)
+    public void AddPanzeeStat(WeaponType panzeeClass, int numDelta)
     {
         switch (panzeeClass)
         {
