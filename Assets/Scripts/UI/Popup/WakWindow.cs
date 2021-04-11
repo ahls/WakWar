@@ -5,123 +5,117 @@ using Unity.Mathematics;
 using TMPro;
 public class WakWindow : UIPopup
 {
-    static public WakWindow instance;
-    [SerializeField] TextMeshProUGUI StatDisplay;
-    [SerializeField] Item_Slot _itemSlot;
-    char[] _stats;
+    [SerializeField] private TextMeshProUGUI _currentHealth;
+    [SerializeField] private TextMeshProUGUI _maxHealth;
+    [SerializeField] private TextMeshProUGUI _warrierCount;
+    [SerializeField] private TextMeshProUGUI _shooterCount;
+    [SerializeField] private TextMeshProUGUI _supporterCount;
+    [SerializeField] private TextMeshProUGUI _damageValue;
+    [SerializeField] private TextMeshProUGUI _rangeValue;
+    [SerializeField] private TextMeshProUGUI _attackSpeedValue;
+    [SerializeField] private TextMeshProUGUI _moveSpeedValue;
+    [SerializeField] private TextMeshProUGUI _armorValue;
+    [SerializeField] private TextMeshProUGUI _penetrateValue;
+    [SerializeField] private Item_Slot _itemSlot;
 
     public override PopupID GetPopupID() { return PopupID.UIWakWindow; }
 
-    // Start is called before the first frame update
     void Awake()
     {
-        _stats = StatDisplay.text.ToCharArray();
-        if(instance == null)
-        {
-            instance = this;
-        }
-        _itemSlot.assgiendUnit = WakgoodBehaviour.instance.GetComponent<UnitCombat>();
     }
 
     public override void SetInfo()
     {
-        WakgoodBehaviour.instance.WakStats[0] = 0;
-        WakgoodBehaviour.instance.WakStats[1] = 0;
-        WakgoodBehaviour.instance.WakStats[2] = 0;
+        _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();
+
+        UpdateStat(WeaponType.Warrior, IngameManager.WakgoodBehaviour.WakStats[0]);
+        UpdateStat(WeaponType.Shooter, IngameManager.WakgoodBehaviour.WakStats[1]);
+        UpdateStat(WeaponType.Supporter, IngameManager.WakgoodBehaviour.WakStats[2]);
+        IngameManager.WakgoodBehaviour.WakStats[0] = 0;
+        IngameManager.WakgoodBehaviour.WakStats[1] = 0;
+        IngameManager.WakgoodBehaviour.WakStats[2] = 0;
     }
 
-    #region 판도라의 상자 
-    public void updateStat(DisplayStat statType, int newValue)
+    public void UpdateStat(DisplayStat statType, int newValue)
     {
-
-
         switch (statType)
         {
             case DisplayStat.CrntHealth:
-                updateDisplay(0, 3, newValue);
-                break;
+                {
+                    _currentHealth.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.Mxhealth:
-                updateDisplay(6, 3, newValue);
-                break;
-            
-            case DisplayStat.inte:
-                updateDisplay(24, 2, newValue);
-                break;
+                {
+                    _maxHealth.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.dmg:
-                updateDisplay(30, 2, newValue);
-                break;
-
+                {
+                    _damageValue.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.amr:
-                updateDisplay(60, 2, newValue);
-                break;
-            case DisplayStat.ap:
-                updateDisplay(70, 2, newValue);
-                break;
+                {
+                    _armorValue.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.range:
             case DisplayStat.atkSpd:
             case DisplayStat.mvSpd:
-                updateStat(statType, (float)newValue);
-                break;
+                {
+                    break;
+                }
             default:
                 break;
         }
     }
-    public void updateStat(WeaponType weaponType, int newValue )
+
+    public void UpdateStat(WeaponType weaponType, int newValue )
     {
         switch (weaponType)
         {
             case WeaponType.Warrior:
-                updateDisplay(10, 2, newValue);
-                break;
+                {
+                    _warrierCount.text = newValue.ToString();
+                    break;
+                }
             case WeaponType.Shooter:
-                updateDisplay(17, 2, newValue);
-                break;
+                {
+                    _shooterCount.text = newValue.ToString();
+                    break;
+                }
             case WeaponType.Supporter:
-                updateDisplay(24, 2, newValue);
-                break;
+                {
+                    _supporterCount.text = newValue.ToString();
+                    break;
+                }
             default:
                 break;
         }
     }
-    public void updateStat(DisplayStat statType, float newValue)
-    {
 
+    public void UpdateStat(DisplayStat statType, float newValue)
+    {
         switch (statType)
         {
             case DisplayStat.range:
-                updateDisplay(38, newValue);
-                break;
-
+                {
+                    _rangeValue.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.atkSpd:
-                updateDisplay(43, newValue);
-                break;
+                {
+                    _attackSpeedValue.text = newValue.ToString();
+                    break;
+                }
             case DisplayStat.mvSpd:
-                updateDisplay(53, newValue);
-                break;
+                {
+                    _moveSpeedValue.text = newValue.ToString();
+                    break;
+                }
             default:
                 break;
         }
     }
-
-    private void updateDisplay(int index, int length, int value)
-    {
-        string tempString = value.ToString();
-        char[] newchars = tempString.PadLeft(length).ToCharArray();
-        for (int i = 0; i < length; i++)
-        {
-            _stats[index + i] = newchars[i];
-        }
-        StatDisplay.SetCharArray(_stats);
-    }
-    private void updateDisplay(int index, float value)
-    {
-        char[] newchars = value.ToString("F").ToCharArray();
-        for (int i = 0; i < 4; i++)
-        {
-            _stats[index + i] = newchars[i];
-        }
-
-        StatDisplay.SetCharArray(_stats);
-    }
-    #endregion
 }
