@@ -226,10 +226,10 @@ RectTransform:
   m_Father: {fileID: 51698179069260082}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -43.4003, y: -27.30017}
-  m_SizeDelta: {x: 200, y: 105}
+  m_SizeDelta: {x: 200, y: -30.20017}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &378790925134833018
 CanvasRenderer:
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB808\uBCA8: \t\t  \uCCB4\uB825: \n\uD798: \t\t    \uBBFC:      \t\t\uC9C0:\n\n\uD53C\uD574:\t\t     
+  m_text: "\uD798:\t\t \uBBFC:\t\t\t\uC9C0:\n\uB808\uBCA8: \t\t  \uCCB4\uB825: \n\n\uD53C\uD574:\t\t     
     \uBC29\uC5B4:\t\t   \uAD00\uD1B5:\n\uAC70\uB9AC:\t\t      \uACF5\uC18D:     \t  
     \uC774\uC18D:"
   m_isRightToLeft: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -235.31856, w: -27.704857}
+  m_margin: {x: 0, y: 0, z: -69.008575, w: -2.9715614}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -503,10 +503,10 @@ RectTransform:
   m_Father: {fileID: 51698179069260082}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -7.0003967, y: -33.00009}
-  m_SizeDelta: {x: 200, y: 106}
+  m_SizeDelta: {x: 200, y: -38}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3047272545197306897
 CanvasRenderer:
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "  1          10/ 10\n 1       1        1\n\n   00       00       00\n1.00    
+  m_text: " 1       1        1\n  1          10/ 10\n\n  00       00       00\n1.00    
     1.00     1.00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 997123a85c5b8b643bf75428eabb1b17, type: 2}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -111.51325, w: -8.587681}
+  m_margin: {x: 0, y: 0, z: -40.724968, w: -5.1761885}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -9,17 +9,17 @@ public class panzeeInventory : MonoBehaviour
 {
     #region 변수
     [SerializeField] private Text _name;
-    [SerializeField] private GameObject itemSlot;
+    [SerializeField] private GameObject _itemSlot;
     //스탯관련
-    [SerializeField] private TextMeshProUGUI StatDisplay;
-    char[] _stats;
-    GameObject _unit;
+    [SerializeField] private TextMeshProUGUI _statDisplay;
+    private char[] _stats;
+    private GameObject _unit;
     
     #endregion
     // Start is called before the first frame update
     void Awake()
     {
-        _stats = StatDisplay.text.ToCharArray();
+        _stats = _statDisplay.text.ToCharArray();
     }
 
     public void setup(string name, GameObject gameObject, Transform parent)
@@ -28,13 +28,13 @@ public class panzeeInventory : MonoBehaviour
         _unit = gameObject;
         transform.SetParent(parent);
         transform.localScale = Vector3.one;
-        itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<UnitCombat>();
+        _itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<UnitCombat>();
     }
     /// <param name="one_or_zero"></param>
     public void collapse(bool collapsing)
     {
-        itemSlot.SetActive(!collapsing);
-        Vector2 sizeDelta = new Vector2(460, collapsing ? 75 : 150);
+        _itemSlot.SetActive(!collapsing);
+        Vector2 sizeDelta = new Vector2(300, collapsing ? 50 : 108);
         GetComponent<RectTransform>().sizeDelta = sizeDelta;
     }
 
@@ -49,32 +49,32 @@ public class panzeeInventory : MonoBehaviour
             switch (statType)
             {
                 case DisplayStat.level:
-                    updateDisplay(1, 2, newValue);
+                    updateDisplay(21, 2, newValue);
                     break;
                 case DisplayStat.Mxhealth:
-                    updateDisplay(16, 3, newValue);
+                    updateDisplay(36, 3, newValue);
                     break;
                 case DisplayStat.CrntHealth:
-                    updateDisplay(12, 3, newValue);
+                    updateDisplay(32, 3, newValue);
                     break;
                 case DisplayStat.str:
-                    updateDisplay(20, 2, newValue);
+                    updateDisplay(0, 2, newValue);
                     break;
                 case DisplayStat.agi:
-                    updateDisplay(28, 2, newValue);
+                    updateDisplay(8, 2, newValue);
                     break;
                 case DisplayStat.inte:
-                    updateDisplay(37, 2, newValue);
+                    updateDisplay(17, 2, newValue);
                     break;
                 case DisplayStat.dmg:
                     updateDisplay(43, 2, newValue);
                     break;
 
                 case DisplayStat.amr:
-                    updateDisplay(86, 2, newValue);
+                    updateDisplay(52, 2, newValue);
                     break;
                 case DisplayStat.ap:
-                    updateDisplay(101, 2, newValue);
+                    updateDisplay(61, 2, newValue);
                     break;
                 case DisplayStat.range:
                 case DisplayStat.atkSpd:
@@ -97,14 +97,14 @@ public class panzeeInventory : MonoBehaviour
         switch (statType)
         {
             case DisplayStat.range:
-                updateDisplay(57, newValue);
+                updateDisplay(64, newValue);
                 break;
 
             case DisplayStat.atkSpd:
-                updateDisplay(63, newValue);
+                updateDisplay(73, newValue);
                 break;
             case DisplayStat.mvSpd:
-                updateDisplay(78, newValue);
+                updateDisplay(82, newValue);
                 break;
             default:
                 break;
@@ -119,7 +119,7 @@ public class panzeeInventory : MonoBehaviour
         {
             _stats[index + i] =  newchars[i];
         }
-        StatDisplay.SetCharArray(_stats);
+        _statDisplay.SetCharArray(_stats);
     }
     private void updateDisplay(int index, float value)
     {
@@ -129,7 +129,7 @@ public class panzeeInventory : MonoBehaviour
             _stats[index + i] = newchars[i];
         }
 
-        StatDisplay.SetCharArray(_stats);
+        _statDisplay.SetCharArray(_stats);
     }
     #endregion
 }
