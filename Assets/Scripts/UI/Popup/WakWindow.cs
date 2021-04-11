@@ -7,6 +7,7 @@ public class WakWindow : UIPopup
 {
     static public WakWindow instance;
     [SerializeField] TextMeshProUGUI StatDisplay;
+    [SerializeField] Item_Slot _itemSlot;
     char[] _stats;
 
     public override PopupID GetPopupID() { return PopupID.UIWakWindow; }
@@ -19,6 +20,7 @@ public class WakWindow : UIPopup
         {
             instance = this;
         }
+        _itemSlot.assgiendUnit = WakgoodBehaviour.instance.GetComponent<UnitCombat>();
     }
 
     public override void SetInfo()

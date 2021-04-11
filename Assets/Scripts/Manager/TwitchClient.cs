@@ -82,10 +82,6 @@ public class TwitchClient : MonoBehaviour
 
     private void unitCreation(string userName, string unitClass)
     {
-        GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
-        instance.GetComponent<UnitStats>().playerUnitInit(userName);
-        instance.GetComponent<UnitCombat>().playerSetup();
-
         WeaponType inputClass;
         if(unitClass == UnitClasses[0])
         {
@@ -100,11 +96,16 @@ public class TwitchClient : MonoBehaviour
             inputClass = WeaponType.Supporter;
         }
 
-        Debug.Log(PanzeeWindow.instance);
+        GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
+        instance.GetComponent<UnitStats>().playerUnitInit(userName);
+        instance.GetComponent<UnitCombat>().playerSetup(inputClass);
+
+
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
         WakgoodBehaviour.instance.addPanzeeStat(inputClass, 1);
         twitchPlayerList.Add(userName, instance);
         instance.GetComponent<UnitCombat>().UnEquipWeapon();
+        instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
     }
 
     public void openEnrolling(int numSlots)

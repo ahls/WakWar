@@ -83,8 +83,9 @@ public class UnitCombat : MonoBehaviour
     private int resultArmor;
 
     
-    public void playerSetup()
+    public void playerSetup(WeaponType inputWeaponType)
     {
+        weaponType = inputWeaponType;
         ownedFaction = faction.player;
         HealthBarColor(Color.green);
 
@@ -203,13 +204,7 @@ public class UnitCombat : MonoBehaviour
     #region 장비관련
 
     public void EquipWeapon(int weaponID)
-    {/*
-        if (weapon.weaponType != weaponType && weapon.weaponType != WeaponType.Wak)
-        {
-            Global.UIManager.PushNotiMsg("직업에 맞지 않는 장비입니다.", 1f);
-            return;
-        }*///슬롯 스크립트에서 해결할것
-        
+    {       
         weaponIndex = weaponID;
         _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[weaponIndex].equipImage);
         
@@ -217,6 +212,10 @@ public class UnitCombat : MonoBehaviour
         if (100200 <= weaponID && weaponID <= 100203)
         {
             _animator.SetTrigger("Shield");
+        }
+        else if (200000 <= weaponID && weaponID <= 200003)
+        {
+            _animator.SetTrigger("Gun");
         }
         else if (200100 <= weaponID && weaponID <= 200103)
         {
@@ -234,6 +233,7 @@ public class UnitCombat : MonoBehaviour
 
     public void UnEquipWeapon()
     {
+        _animator.SetTrigger("Regular");
         _equippedImage.sprite = null;
         switch (weaponType)
         {

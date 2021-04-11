@@ -17,15 +17,23 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
     {
 //        setup(testID);//테스팅용 라인
     }
-    public void setup(int ID)
+    public void setup(int ID,Transform parent = null)
     {
         itemID = ID;
         Debug.Log($"아이템 데이터 스크립트:{Items.DB[itemID].imgSrc}");
         Debug.Log(Items.DB[itemID].name);
         string tempsource = "weapons/" + Items.DB[itemID].imgSrc;
+        Debug.Log(tempsource);
 //        GetComponent<Image>().sprite = Resources.Load<Sprite>("weapons/" + Items.DB[itemID].imgSrc);
         GetComponent<Image>().sprite = Resources.Load<Sprite>(tempsource);//리소스 매니져로 불러오는 방법 물어보기
         GetComponent<Item_Drag>().setType(Items.DB[itemID].type);
+        if(parent != null)
+        {
+            transform.SetParent(parent);
+            transform.position = parent.position;
+        }
+        GetComponent<RectTransform>().sizeDelta = new Vector2(116, 116);
+        transform.localScale = Vector3.one;
     }
 
     public void OnPointerDown(PointerEventData eventData)

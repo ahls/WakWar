@@ -123,11 +123,7 @@ public class RewardsWindow : MonoBehaviour
         for (int i = 0; i < numItems; i++)
         {
             GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
-            newItem.GetComponent<Item_Data>().setup(itemID);
-            newItem.transform.SetParent(slots[i].transform,false);
-            newItem.GetComponent<RectTransform>().sizeDelta = new Vector2(116, 116);
-            newItem.transform.localScale = Vector3.one;
-            newItem.GetComponent<RectTransform>().position = slots[i].transform.position;
+            newItem.GetComponent<Item_Data>().setup(itemID,slots[i].transform);
             slots[i].GetComponent<Item_Slot>().currentNumber++;
         }
     }

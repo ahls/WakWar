@@ -190,7 +190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764036845875572591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017089844, y: 0.48095703, z: 0}
+  m_LocalPosition: {x: -0.01708984, y: 0.48095703, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7225797426657462201}
@@ -266,8 +266,8 @@ MonoBehaviour:
   - {fileID: 6519895036207969959}
   - {fileID: 6023770227881158884}
   m_Bounds:
-    m_Center: {x: 0.011832625, y: -0.42587954, z: 0}
-    m_Extent: {x: 0.081843026, y: 0.11408199, z: 0}
+    m_Center: {x: 0.011832617, y: -0.42587954, z: 0}
+    m_Extent: {x: 0.08184302, y: 0.11408199, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2361949689597732434
@@ -945,13 +945,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4765098568027627659}
-  m_LocalRotation: {x: -0, y: -0, z: -0.6720949, w: 0.74046504}
-  m_LocalPosition: {x: 0.442, y: 0.061, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70555365, w: -0.7086566}
+  m_LocalPosition: {x: 0.444, y: 0.031, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2672959412284204689}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -84.45801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270.251}
 --- !u!212 &2989731452029694304
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -991,16 +991,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 6674386295937086461, guid: f95291785d1a25b47b676bf8f0da28c5,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.25, y: 0.5}
+  m_Size: {x: 0.5, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4862325396624084488
@@ -1420,7 +1419,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites: []
+  _sprites:
+  - {fileID: 8404557900482047080}
+  - {fileID: 6717859888757973268}
+  - {fileID: 2734279930261161463}
+  - {fileID: 3188484297814004630}
+  - {fileID: 4068964447474577886}
+  - {fileID: 6640610026269112796}
+  - {fileID: 2989731452029694304}
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0

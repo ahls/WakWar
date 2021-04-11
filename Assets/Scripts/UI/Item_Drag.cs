@@ -7,17 +7,18 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     [SerializeField] CanvasGroup _canvasGroup;
 
-    public Transform parentToReturn;
+    public Transform ParentToReturn;
+    public bool Equipped = false;
+    private RectTransform _rectTransform;
     private ItemType _itemType;
 
-    RectTransform _rectTransform;
     // Start is called before the first frame update
     void Start()
     {
 
         _rectTransform = GetComponent<RectTransform>();
         _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
-        parentToReturn = _rectTransform.parent;
+        ParentToReturn = _rectTransform.parent;
     }
 
     // Update is called once per frame
@@ -29,7 +30,12 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public void placeItem(Transform parentToBe)
     {
-        parentToReturn = parentToBe;
+        if(Equipped)
+        {
+            ParentToReturn.GetComponent<Item_Slot>().assgiendUnit.UnEquipWeapon();
+            Equipped = false;
+        }
+        ParentToReturn = parentToBe;
     }
 
     public bool compareType(ItemType slottype)
@@ -45,7 +51,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            parentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
+            ParentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
             _rectTransform.SetParent(_canvas.transform);
             _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
@@ -69,9 +75,9 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             //setting parents
-            _rectTransform.SetParent(parentToReturn);
-            _rectTransform.position = parentToReturn.position;
-            parentToReturn.GetComponent<Item_Slot>().currentNumber++;
+            _rectTransform.SetParent(ParentToReturn);
+            _rectTransform.position = ParentToReturn.position;
+            ParentToReturn.GetComponent<Item_Slot>().currentNumber++;
             IngameManager.UnitManager.ControlOn = true;
 
 

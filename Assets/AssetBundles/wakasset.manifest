@@ -1,0 +1,100 @@
+ManifestFileVersion: 0
+CRC: 433580177
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 92f2d5c71934a035cbe78030c71a6fae
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1bad4982ad7d30dfef99e86b4cfc0fc4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d19d9307e61739c49a8af4c8f0f309bb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f9c1a2d782491b14cbf54fcf06bb3039, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0aeaa3dad8f6d554b93db965b16e5d69, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 565b0c2b15dde5c46820b532bb092288, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 19f0668bed4145a46a7fffb5875f97d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/weapons/axe1.png
+- Assets/Prefab/inventory/Character Slot.prefab
+- Assets/Resources/weapons/shield0.png
+- Assets/Sprites/Weapon/img_gun.png
+- Assets/Prefab/inventory/Item Base.prefab
+- Assets/Resources/weapons/sword2.png
+- Assets/WakAsset/UI/NotifyText.prefab
+- Assets/Sprites/Weapon/img_arrow.png
+- Assets/Resources/weapons/sword1.png
+- Assets/Resources/weapons/sword3.png
+- Assets/Sprites/Weapon/img_sword.png
+- Assets/Resources/weapons/shield1.png
+- Assets/Resources/weapons/axe3.png
+- Assets/Sprites/Weapon/img_instruments.png
+- Assets/Sprites/Weapon/img_axe.png
+- Assets/Sprites/Weapon/img_bow.png
+- Assets/Resources/weapons/shield2.png
+- Assets/WakAsset/UI/UIInventory.prefab
+- Assets/Resources/weapons/axe2.png
+- Assets/Sprites/Weapon/img_shield.png
+- Assets/WakAsset/UI/UIItemToolTip.prefab
+- Assets/WakAsset/UI/UIWakWindow.prefab
+- Assets/WakAsset/UI/NotifyWindow.prefab
+- Assets/Resources/weapons/axe0.png
+- Assets/Prefab/AttackEffect.prefab
+- Assets/Resources/weapons/shield3.png
+- Assets/Resources/weapons/sword0.png
+Dependencies: []

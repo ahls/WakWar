@@ -24,9 +24,11 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     if (assgiendUnit != null)
                     {//유닛과 연결되어있을경우, 이미 무기로 설정되어있음.
                         int tempWeaponIndex = Items.DB[draggedItem.GetComponent<Item_Data>().itemID].weaponID;
-                        if (Weapons.DB[tempWeaponIndex].weaponType == assgiendUnit.weaponType)
+                        if (Weapons.DB[tempWeaponIndex].weaponType == assgiendUnit.weaponType || assgiendUnit.weaponType == WeaponType.Wak)
                         {
                             assgiendUnit.EquipWeapon(tempWeaponIndex);
+                            draggedItem.placeItem(transform);
+                            draggedItem.Equipped = true;
                         }
                         else
                         {

@@ -47,11 +47,11 @@ public class UnitStats : MonoBehaviour
        
     }
 
-    public void playerUnitInit(string PlayerName)
+    public void playerUnitInit(string playerName)
     {
         Selectable = true;
         selectionCircle.SetActive(false);
-        PlayerNameText.text = PlayerName;
+        PlayerNameText.text = playerName;
         GetComponent<UnitCombat>().ownedFaction = ownedFaction;
     }
 

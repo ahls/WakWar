@@ -14,7 +14,8 @@ public class WakgoodBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<UnitStats>().playerUnitInit("우왁굳");   
+        GetComponent<UnitStats>().playerUnitInit("우왁굳");
+        _unitCombat.weaponType = WeaponType.Wak;
     }
     private void Awake()
     {
