@@ -16,10 +16,12 @@ public class IngameManager : MonoBehaviour
     }
     public static UnitManager UnitManager => _unitManager;
     public static TwitchClient TwitchClient => _twitchClient;
+    public static WakgoodBehaviour WakgoodBehaviour => _wakgoodBehaviour;
 
     private static IngameManager _instance;
     private static UnitManager _unitManager;
     private static TwitchClient _twitchClient;
+    private static WakgoodBehaviour _wakgoodBehaviour;
 
     private void Awake()
     {
@@ -36,4 +38,8 @@ public class IngameManager : MonoBehaviour
         _twitchClient = twitchClient;
     }
 
+    public void SetWakgoodBehaviour(WakgoodBehaviour wakgoodBehaviour)
+    {
+        _wakgoodBehaviour = wakgoodBehaviour;
+    }
 }
