@@ -12,7 +12,7 @@ public class cameraControl : MonoBehaviour
     private Vector2 _targetLocaiton;
     private Vector2 _screenVector;
     private Camera _camera;
-    private float _screenRatio = Screen.width/Screen.height;
+    private float _screenRatio;
     private float _maxX, _maxY, _minX, _minY;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class cameraControl : MonoBehaviour
         _camera = Camera.main;
         _screenVector = new Vector2(Screen.width / 2, Screen.height / 2);
         _targetLocaiton = Vector2.zero;
+        _screenRatio = Screen.width / Screen.height;
     }
 
     // Update is called once per frame
@@ -49,10 +50,10 @@ public class cameraControl : MonoBehaviour
     private void cameraScrolling(Vector2 mousePos)
     {
         //테두리 설정
-        _maxX = _screenRatio * (2 - _targetSize);
+        _maxX = 1.778f * (2 - _targetSize);
         _minX = -_maxX;
-        _maxY = (2 - _targetSize);
-        _minY = -_minY;
+        _maxY = 0.999f*(2 - _targetSize);
+        _minY = -_maxY;
 
         if (mousePos.x > Screen.width - EDGE_SIZE || Input.GetKey(KeyCode.RightArrow))
         {
