@@ -23,13 +23,13 @@ public class UnitStats : MonoBehaviour
     
     private Vector3 _targetPos;
     private Vector3 _direction;
-    private float _moveTime;
+    //private float _moveTime;
 
-    private IEnumerator _moveCoroutine;
+    //private IEnumerator _moveCoroutine;
     public bool _isMoving = false;
-    private int stuckCounter = 0;
-    private float stuckDisplacement = 0.005f; 
-    private Vector2 lastPosition;
+    private int _stuckCounter = 0;
+    private const float STUCK_DISPLACEMENT = 0.005f; 
+    private Vector2 _lastPosition;
     #endregion
 
     void Awake()
@@ -57,10 +57,10 @@ public class UnitStats : MonoBehaviour
 
     public void MoveToTarget(Vector3 target)
     {
-        _targetPos = new Vector3(target.x, target.y , 0f);
-        _direction = _targetPos - this.transform.position;
+        _targetPos = (Vector2)target;
+        _direction = (Vector2)(_targetPos - transform.position);
         _direction = _direction.normalized;
-
+        Debug.Log(_direction);
         var distance = Vector2.Distance(this.transform.position, _targetPos);
 
         _isMoving = true;
@@ -73,9 +73,9 @@ public class UnitStats : MonoBehaviour
 
     private void Move()
     {
-        if (Vector2.Distance(this.transform.position, _targetPos) > 0.1f)
+        if (Vector2.Distance(this.transform.position, _targetPos) > 0.001f)
         {
-            _rigid.MovePosition(Vector3.MoveTowards(this.transform.position, _targetPos, moveSpeed));
+            _rigid.MovePosition(Vector2.MoveTowards(this.transform.position, _targetPos, moveSpeed));
         }
         else
         {
@@ -88,7 +88,7 @@ public class UnitStats : MonoBehaviour
 
     private void ResetTarget()
     {
-        _moveTime = 0;
+        //_moveTime = 0;
         _targetPos = Vector3.zero;
         _direction = Vector3.zero;
     }
@@ -105,23 +105,23 @@ public class UnitStats : MonoBehaviour
 
     private void stuckCheck()
     {
-        if ((lastPosition - (Vector2)transform.position).magnitude < stuckDisplacement)
+        if ((_lastPosition - (Vector2)transform.position).magnitude < STUCK_DISPLACEMENT)
         {
-            if (stuckCounter == 10)
+            if (_stuckCounter == 10)
             {//안움직인지 10/50 초 가 지나면
-                stuckCounter = 0;
+                _stuckCounter = 0;
                 _animator.SetBool("Move", false);   
                 _isMoving = false;
             }
             else
             {
-                stuckCounter++;
+                _stuckCounter++;
             }
         }
         else
         {
-            stuckCounter = 0;
+            _stuckCounter = 0;
         }
-        lastPosition = transform.position;
+        _lastPosition = transform.position;
     }
 }
