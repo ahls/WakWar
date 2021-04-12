@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6764091278536084021}
   - component: {fileID: 6764091278536084020}
+  - component: {fileID: 1777722025}
   m_Layer: 0
   m_Name: IngameManager
   m_TagString: Untagged
@@ -124,6 +125,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0efc42e2aa0a0b64ca63f369784e4565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1777722025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764091278536084027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87713df8e1014146840b66c12af2e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6764091278587696953
@@ -214,6 +227,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Twitch Chat Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 528269887364523737, guid: 6657dc498e43c274895d6904f819330b,
+        type: 3}
+      propertyPath: UnitBase
+      value: 
+      objectReference: {fileID: 5900826945032943484, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
     - target: {fileID: 528269887364523742, guid: 6657dc498e43c274895d6904f819330b,
         type: 3}
       propertyPath: m_RootOrder

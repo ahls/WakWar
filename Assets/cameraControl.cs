@@ -7,18 +7,18 @@ public class cameraControl : MonoBehaviour
     private const float SCROLL_MULTIPLIER= 0.1f;
     private const float SCROLL_SPEED = 0.05f;
     private const float LERP = 0.2f;
-    private const float EDGE_SIZE = 30f;
+    private const float EDGE_SIZE = 10f;
     private float _targetSize =2 ;
     private Vector2 _targetLocaiton;
     private Vector2 _screenVector;
     private Camera _camera;
-    [SerializeField] private Transform _leftBottomCorner;
-    [SerializeField] private Transform _rightTopCorner;
+    private float _screenRatio = Screen.width/Screen.height;
+    private float _maxX, _maxY, _minX, _minY;
 
     // Start is called before the first frame update
     void Start()
     {
-        _camera = GetComponent<Camera>();
+        _camera = Camera.main;
         _screenVector = new Vector2(Screen.width / 2, Screen.height / 2);
         _targetLocaiton = Vector2.zero;
     }
@@ -49,8 +49,10 @@ public class cameraControl : MonoBehaviour
     private void cameraScrolling(Vector2 mousePos)
     {
         //테두리 설정
-        _rightTopCorner.position = new Vector2(1.778f, 0.999f) * (2 - _targetSize);
-        _leftBottomCorner.position = -_rightTopCorner.position;
+        _maxX = _screenRatio * (2 - _targetSize);
+        _minX = -_maxX;
+        _maxY = (2 - _targetSize);
+        _minY = -_minY;
 
         if (mousePos.x > Screen.width - EDGE_SIZE || Input.GetKey(KeyCode.RightArrow))
         {
@@ -68,9 +70,9 @@ public class cameraControl : MonoBehaviour
         {
             _targetLocaiton.y -= SCROLL_SPEED;
         }
-        _targetLocaiton.x = Mathf.Clamp(_targetLocaiton.x, _leftBottomCorner.position.x, _rightTopCorner.position.x);
-        _targetLocaiton.y = Mathf.Clamp(_targetLocaiton.y, _leftBottomCorner.position.y, _rightTopCorner.position.y);
+        _targetLocaiton.x = Mathf.Clamp(_targetLocaiton.x, _minX, _maxX);
+        _targetLocaiton.y = Mathf.Clamp(_targetLocaiton.y, _minY, _maxY);
 
-        transform.position = Vector3.Lerp(transform.position, _targetLocaiton, LERP);
+        _camera.transform.position = Vector3.Lerp(_camera.transform.position, _targetLocaiton, LERP);
     }
 }
