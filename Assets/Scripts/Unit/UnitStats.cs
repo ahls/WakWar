@@ -60,7 +60,6 @@ public class UnitStats : MonoBehaviour
         _targetPos = (Vector2)target;
         _direction = (Vector2)(_targetPos - transform.position);
         _direction = _direction.normalized;
-        Debug.Log(_direction);
         var distance = Vector2.Distance(this.transform.position, _targetPos);
 
         _isMoving = true;
