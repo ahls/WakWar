@@ -66,6 +66,7 @@ public class UnitStats : MonoBehaviour
 
         //애니메이션 부분
         _animator.SetBool("Move", true);
+        _animator.speed = moveSpeed * 100f;
         transform.rotation = _direction.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
         DoNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }

@@ -264,13 +264,18 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 공격관련
-
-    public void Attack()
+    public void Fire()
     {
-        _animator.SetTrigger("Attack");
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
         _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name,attackTorque);
+
+    }
+
+    public void Attack()
+    {
+        UpdatePlaybackSpeed();
+        _animator.SetTrigger("Attack");        
         ResetAttackTimer();
     }
 
@@ -278,7 +283,10 @@ public class UnitCombat : MonoBehaviour
     {
         attackTimer = 1 / resultSpeed;
     }
-
+    public void UpdatePlaybackSpeed()
+    {
+        _animator.speed = Mathf.Max(resultSpeed, 1f);
+    }
     #endregion
 
     #region 탐색 관련
