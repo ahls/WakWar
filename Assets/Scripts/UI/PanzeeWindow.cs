@@ -5,9 +5,9 @@ using UnityEngine;
 public class PanzeeWindow : MonoBehaviour
 {
     public static PanzeeWindow instance;
-    [SerializeField] Transform[] slotLists;
-    [SerializeField] GameObject slotPrefab;
-    [SerializeField] RectTransform contentBox;
+    [SerializeField] private Transform[] slotLists;
+    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private RectTransform contentBox;
     private int[] contentCounter = new int[4] { 0,0,0,1};
     private float contentBoxHeight = 80;
     private bool collapsed = false;
@@ -56,7 +56,7 @@ public class PanzeeWindow : MonoBehaviour
         }
         contentBoxResize();
         GameObject newSlot = Global.ResourceManager.LoadPrefab(slotPrefab.name);
-        newSlot.GetComponent<panzeeInventory>().setup(name,unit,tempParent);
+        newSlot.GetComponent<panzeeInventory>().Setup(name,unit,tempParent);
     }
 
 
@@ -73,7 +73,7 @@ public class PanzeeWindow : MonoBehaviour
         {
             foreach(Transform slot in slotLists[listIndex].transform)
             {
-                slot.GetComponent<panzeeInventory>().collapse(collapsed);
+                slot.GetComponent<panzeeInventory>().Collapse(collapsed);
             }
         }
         contentBoxResize();

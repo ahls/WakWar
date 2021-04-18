@@ -9,15 +9,16 @@ public class Item_Slot : MonoBehaviour, IDropHandler
     [SerializeField] private ItemType _slotType;
     public UnitCombat assgiendUnit { get; set; }
 
-    public int currentNumber { get; set; } = 0;
+    public int CurrentNumber { get; set; } = 0;
+
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return;
         Item_Drag draggedItem = eventData.pointerDrag.GetComponent<Item_Drag>();
-        
-        if(draggedItem != null)
+
+        if (draggedItem != null)
         {
-            if (currentNumber == 0)
+            if (CurrentNumber == 0)
             {
                 if (draggedItem.compareType(_slotType))
                 {
@@ -45,15 +46,15 @@ public class Item_Slot : MonoBehaviour, IDropHandler
 
                     Global.UIManager.PushNotiMsg("잘못된 타입 입니다.", 1f);
                 }
-                
+
             }
         }
     }
 
-    public void setup(ItemType newType)
+    public void Setup(ItemType newType)
     {
         _slotType = newType;
     }
 
-    
+
 }

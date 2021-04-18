@@ -8,19 +8,19 @@ public class statdisplay_test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PI.updateStat(DisplayStat.level, 2);
+        PI.updateStat(DisplayStat.Level, 2);
         PI.updateStat(DisplayStat.Mxhealth, 2);
         PI.updateStat(DisplayStat.CrntHealth, 2);
-        PI.updateStat(DisplayStat.dmg, 2);
-        PI.updateStat(DisplayStat.range, 2);
-        PI.updateStat(DisplayStat.agi, 2);
-        PI.updateStat(DisplayStat.str, 2);
-        PI.updateStat(DisplayStat.inte, 2);
-        PI.updateStat(DisplayStat.amr, 2);
-        PI.updateStat(DisplayStat.ap, 2);
-        PI.updateStat(DisplayStat.atkSpd, 2.12f);
-        PI.updateStat(DisplayStat.mvSpd, 2.00f);
-        PI.updateStat(DisplayStat.range, 2);
+        PI.updateStat(DisplayStat.Dmg, 2);
+        PI.updateStat(DisplayStat.Range, 2);
+        PI.updateStat(DisplayStat.Agi, 2);
+        PI.updateStat(DisplayStat.Str, 2);
+        PI.updateStat(DisplayStat.Inte, 2);
+        PI.updateStat(DisplayStat.Amr, 2);
+        PI.updateStat(DisplayStat.Ap, 2);
+        PI.updateStat(DisplayStat.AtkSpd, 2.12f);
+        PI.updateStat(DisplayStat.MvSpd, 2.00f);
+        PI.updateStat(DisplayStat.Range, 2);
     }
 
     // Update is called once per frame

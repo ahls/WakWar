@@ -26,7 +26,7 @@ public class testItemGiver : MonoBehaviour
                 if (itemslot.Count != 0)
                 {
                     GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
-                    newItem.GetComponent<Item_Data>().setup(givenInput,itemslot[0]);
+                    newItem.GetComponent<Item_Data>().Setup(givenInput,itemslot[0]);
 
                 }
             }

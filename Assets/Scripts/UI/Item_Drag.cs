@@ -17,7 +17,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
 
         _rectTransform = GetComponent<RectTransform>();
-        _rectTransform.parent.GetComponent<Item_Slot>().currentNumber++;
+        _rectTransform.parent.GetComponent<Item_Slot>().CurrentNumber++;
         ParentToReturn = _rectTransform.parent;
     }
 
@@ -51,7 +51,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            ParentToReturn.GetComponent<Item_Slot>().currentNumber--; //현재 자리를 빈자리로 표시
+            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber--; //현재 자리를 빈자리로 표시
             _rectTransform.SetParent(_canvas.transform);
             _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
@@ -77,7 +77,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             //setting parents
             _rectTransform.SetParent(ParentToReturn);
             _rectTransform.position = ParentToReturn.position;
-            ParentToReturn.GetComponent<Item_Slot>().currentNumber++;
+            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber++;
             IngameManager.UnitManager.ControlOn = true;
 
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-public class itemInfoDisplay : UIPopup, IPointerExitHandler
+
+public class ItemInfoDisplay : UIPopup, IPointerExitHandler
 {
     public override PopupID GetPopupID() { return PopupID.UIItemToolTip; }
 

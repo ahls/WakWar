@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public enum DisplayStat {level,Mxhealth,CrntHealth,str,agi,inte,dmg,range,atkSpd,mvSpd,amr,ap }
+public enum DisplayStat { Level, Mxhealth, CrntHealth, Str, Agi, Inte, Dmg, Range, AtkSpd, MvSpd, Amr, Ap }
+
 public class panzeeInventory : MonoBehaviour
 {
     #region 변수
@@ -22,7 +23,7 @@ public class panzeeInventory : MonoBehaviour
         _stats = _statDisplay.text.ToCharArray();
     }
 
-    public void setup(string name, GameObject gameObject, Transform parent)
+    public void Setup(string name, GameObject gameObject, Transform parent)
     {
         _name.text = name;
         _unit = gameObject;
@@ -31,7 +32,7 @@ public class panzeeInventory : MonoBehaviour
         _itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<UnitCombat>();
     }
     /// <param name="one_or_zero"></param>
-    public void collapse(bool collapsing)
+    public void Collapse(bool collapsing)
     {
         _itemSlot.SetActive(!collapsing);
         Vector2 sizeDelta = new Vector2(300, collapsing ? 50 : 108);
@@ -48,7 +49,7 @@ public class panzeeInventory : MonoBehaviour
 
             switch (statType)
             {
-                case DisplayStat.level:
+                case DisplayStat.Level:
                     updateDisplay(21, 2, newValue);
                     break;
                 case DisplayStat.Mxhealth:
@@ -57,28 +58,28 @@ public class panzeeInventory : MonoBehaviour
                 case DisplayStat.CrntHealth:
                     updateDisplay(32, 3, newValue);
                     break;
-                case DisplayStat.str:
+                case DisplayStat.Str:
                     updateDisplay(0, 2, newValue);
                     break;
-                case DisplayStat.agi:
+                case DisplayStat.Agi:
                     updateDisplay(8, 2, newValue);
                     break;
-                case DisplayStat.inte:
+                case DisplayStat.Inte:
                     updateDisplay(17, 2, newValue);
                     break;
-                case DisplayStat.dmg:
+                case DisplayStat.Dmg:
                     updateDisplay(43, 2, newValue);
                     break;
 
-                case DisplayStat.amr:
+                case DisplayStat.Amr:
                     updateDisplay(52, 2, newValue);
                     break;
-                case DisplayStat.ap:
+                case DisplayStat.Ap:
                     updateDisplay(61, 2, newValue);
                     break;
-                case DisplayStat.range:
-                case DisplayStat.atkSpd:
-                case DisplayStat.mvSpd:
+                case DisplayStat.Range:
+                case DisplayStat.AtkSpd:
+                case DisplayStat.MvSpd:
                     updateStat(statType, (float)newValue);
                     break;
                 default:
@@ -96,14 +97,14 @@ public class panzeeInventory : MonoBehaviour
 
         switch (statType)
         {
-            case DisplayStat.range:
+            case DisplayStat.Range:
                 updateDisplay(64, newValue);
                 break;
 
-            case DisplayStat.atkSpd:
+            case DisplayStat.AtkSpd:
                 updateDisplay(73, newValue);
                 break;
-            case DisplayStat.mvSpd:
+            case DisplayStat.MvSpd:
                 updateDisplay(82, newValue);
                 break;
             default:

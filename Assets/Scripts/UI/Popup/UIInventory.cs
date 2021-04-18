@@ -21,7 +21,7 @@ public class UIInventory : UIPopup
         int numSlotEmpty = 0;
         foreach (var itemSlot in _itemSlots)
         {
-            if (itemSlot.currentNumber == 0)
+            if (itemSlot.CurrentNumber == 0)
             {
                 numSlotEmpty++;
                 returningList.Add(itemSlot.transform);   
