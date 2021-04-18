@@ -6,8 +6,8 @@ public class BossAttackPattern : MonoBehaviour
 {
     public int Damage;
     public float AOE;
-    public faction TargetFaction;
-    public ParticleSystem PS;
+    public Faction TargetFaction;
+    public ParticleSystem MyParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,10 @@ public class BossAttackPattern : MonoBehaviour
     {
         
     }
-    public void patternCalled()
+
+    public void PatternCalled()
     {
-        PS.Play();
+        MyParticleSystem.Play();
         Collider2D [] unitsInRange = Physics2D.OverlapCircleAll(transform.position, AOE);
         foreach(Collider2D unit in unitsInRange)
         {

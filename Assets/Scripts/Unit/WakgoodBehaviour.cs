@@ -15,7 +15,7 @@ public class WakgoodBehaviour : MonoBehaviour
     private void Start()
     {
         IngameManager.instance.SetWakgoodBehaviour(this);
-        GetComponent<UnitStats>().playerUnitInit("우왁굳");
+        GetComponent<UnitStats>().PlayerUnitInit("우왁굳");
         _unitCombat.weaponType = WeaponType.Wak;
     }
 

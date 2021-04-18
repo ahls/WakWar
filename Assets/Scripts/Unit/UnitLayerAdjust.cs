@@ -12,6 +12,7 @@ public class UnitLayerAdjust : MonoBehaviour
     {
         _numLayers = _sprites.Length;
         _layerOrders = new int[_numLayers];
+
         for (int i = 0; i < _numLayers; i++)
         {
             _layerOrders[i] = _sprites[i].sortingOrder;
@@ -22,11 +23,10 @@ public class UnitLayerAdjust : MonoBehaviour
     private void FixedUpdate()
     {
         float currentY = transform.position.y;
+
         for (int i = 0; i < _numLayers; i++)
         {
-
-
-            _sprites[i].sortingOrder =  _layerOrders[i]- (int)(currentY * 100);
+            _sprites[i].sortingOrder = _layerOrders[i] - (int)(currentY * 100);
         }
     }
 }

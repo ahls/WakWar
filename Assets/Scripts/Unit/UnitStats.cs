@@ -9,16 +9,16 @@ public class UnitStats : MonoBehaviour
 
     //플레이어 소유주
     public bool Selectable { get; set; } = false;
-    public faction ownedFaction { get; set; }
+    public Faction OwnedFaction { get; set; }
 
     //이동속도
-    public float moveSpeed { get; set; } = 0.01f;
+    public float MoveSpeed { get; set; } = 0.01f;
     
 
     [SerializeField] private Rigidbody2D _rigid;
-    [SerializeField] private GameObject selectionCircle;
-    [SerializeField] private Text PlayerNameText;
-    [SerializeField] private Transform DoNotRotate;
+    [SerializeField] private GameObject _selectionCircle;
+    [SerializeField] private Text _playerNameText;
+    [SerializeField] private Transform _doNotRotate;
     private Animator _animator;
     
     private Vector3 _targetPos;
@@ -42,17 +42,17 @@ public class UnitStats : MonoBehaviour
         if (_isMoving)
         {
             Move();
-            stuckCheck();
+            StuckCheck();
         }
        
     }
 
-    public void playerUnitInit(string playerName)
+    public void PlayerUnitInit(string playerName)
     {
         Selectable = true;
-        selectionCircle.SetActive(false);
-        PlayerNameText.text = playerName;
-        GetComponent<UnitCombat>().ownedFaction = ownedFaction;
+        _selectionCircle.SetActive(false);
+        _playerNameText.text = playerName;
+        GetComponent<UnitCombat>().ownedFaction = OwnedFaction;
     }
 
     public void MoveToTarget(Vector3 target)
@@ -66,16 +66,16 @@ public class UnitStats : MonoBehaviour
 
         //애니메이션 부분
         _animator.SetBool("Move", true);
-        _animator.speed = moveSpeed * 100f;
+        _animator.speed = MoveSpeed * 100f;
         transform.rotation = _direction.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        DoNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+        _doNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
     }
 
     private void Move()
     {
         if (Vector2.Distance(this.transform.position, _targetPos) > 0.001f)
         {
-            _rigid.MovePosition(Vector2.MoveTowards(this.transform.position, _targetPos, moveSpeed));
+            _rigid.MovePosition(Vector2.MoveTowards(this.transform.position, _targetPos, MoveSpeed));
         }
         else
         {
@@ -93,17 +93,17 @@ public class UnitStats : MonoBehaviour
         _direction = Vector3.zero;
     }
 
-    public void setSelectionCircleState(bool value)
+    public void SetSelectionCircleState(bool value)
     {
         if (!Selectable)
         {
             return;
         }
 
-        selectionCircle.SetActive(value);
+        _selectionCircle.SetActive(value);
     }
 
-    private void stuckCheck()
+    private void StuckCheck()
     {
         if ((_lastPosition - (Vector2)transform.position).magnitude < STUCK_DISPLACEMENT)
         {

@@ -13,7 +13,7 @@ public class tesUnitSetup : MonoBehaviour
     private void Awake()
     {
         if(CanControl)
-        GetComponent<UnitStats>().playerUnitInit("Dango");
+        GetComponent<UnitStats>().PlayerUnitInit("Dango");
         UnitCombat UC = GetComponent<UnitCombat>();
         UC.resultDamage = dmg;
         UC.resultRange = range;
@@ -25,7 +25,7 @@ public class tesUnitSetup : MonoBehaviour
         UC.attackImage = image;
         UC.healthMax = hp;
         UC.attackTorque = torque;
-        GetComponent<UnitStats>().moveSpeed = ms;
+        GetComponent<UnitStats>().MoveSpeed = ms;
     }
     void Start()
     {

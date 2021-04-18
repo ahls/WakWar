@@ -90,7 +90,7 @@ public class TwitchClient : MonoBehaviour
         }
 
         GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
-        instance.GetComponent<UnitStats>().playerUnitInit(userName);
+        instance.GetComponent<UnitStats>().PlayerUnitInit(userName);
         instance.GetComponent<UnitCombat>().playerSetup(inputClass);
 
 

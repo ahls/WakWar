@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum faction { player, enemy, both }//유닛 컴뱃에 부여해서 피아식별
+public enum Faction { Player, Enemy, Both }//유닛 컴뱃에 부여해서 피아식별
 
 public class UnitCombat : MonoBehaviour
 {
@@ -61,8 +61,8 @@ public class UnitCombat : MonoBehaviour
 
 
     //타입
-    public faction ownedFaction = faction.enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
-    public faction targetFaction;                       //공격타겟
+    public Faction ownedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
+    public Faction targetFaction;                       //공격타겟
     public WeaponType weaponType;
     private int weaponIndex;
     private GameObject _effect;
@@ -86,7 +86,7 @@ public class UnitCombat : MonoBehaviour
     public void playerSetup(WeaponType inputWeaponType)
     {
         weaponType = inputWeaponType;
-        ownedFaction = faction.player;
+        ownedFaction = Faction.Player;
         HealthBarColor(Color.green);
 
     }
@@ -268,7 +268,7 @@ public class UnitCombat : MonoBehaviour
     {
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().setup(this, attackTarget.position, effectPrefab.name,attackTorque);
+        _effect.GetComponent<AttackEffect>().Setup(this, attackTarget.position, effectPrefab.name,attackTorque);
 
     }
 
@@ -283,6 +283,7 @@ public class UnitCombat : MonoBehaviour
     {
         attackTimer = 1 / resultSpeed;
     }
+
     public void UpdatePlaybackSpeed()
     {
         _animator.speed = Mathf.Max(resultSpeed, 1f);
@@ -348,26 +349,29 @@ public class UnitCombat : MonoBehaviour
         healthBar.value = healthCurrent;
         if(healthCurrent<= 0)
         {
-            death();
+            Death();
         }
 
     }
+
     private void HealthBarColor(Color newColor)
     {
        healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
 
     }
-    private void death()
+
+    private void Death()
     {
         _animator.SetTrigger("Die");
         _isDead = true;
         _unitstats._isMoving = false;
-        _unitstats.setSelectionCircleState(false);
+        _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);
-        StartCoroutine(deathDelay());
+        StartCoroutine(DeathDelay());
     }
-    IEnumerator deathDelay()
+
+    private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(2);
         gameObject.SetActive(false);

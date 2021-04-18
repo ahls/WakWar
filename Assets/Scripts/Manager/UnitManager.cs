@@ -58,7 +58,7 @@ public class UnitManager : MonoBehaviour
             {
                 foreach (GameObject selectedUnit in _selectedUnitList)
                 {
-                    selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(false);
+                    selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(false);
                 }
 
                 _selectedUnitList.Clear();
@@ -92,7 +92,7 @@ public class UnitManager : MonoBehaviour
 
                 if (tempStats != null && tempStats.Selectable)
                 {
-                    tempStats.setSelectionCircleState(true);
+                    tempStats.SetSelectionCircleState(true);
                     _selectedUnitList.Add(selectingUnit.gameObject);
                     _selectedUnitCount++;
 
@@ -129,14 +129,14 @@ public class UnitManager : MonoBehaviour
                 //부대 선택
                 foreach (var selectedUnit in _selectedUnitList)
                 {
-                    selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(false);
+                    selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(false);
                 }
                 _selectedUnitList = _unitSquads[i].ToList();
                 foreach (var selectedUnit in _selectedUnitList)
                 {
                     if (selectedUnit.GetComponent<UnitStats>().Selectable)
                     {
-                        selectedUnit.GetComponent<UnitStats>().setSelectionCircleState(true);
+                        selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(true);
                     }
                     else
                     {

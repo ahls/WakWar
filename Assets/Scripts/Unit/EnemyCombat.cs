@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCombat : MonoBehaviour
 {
-    [SerializeField] private BossAttackPattern [] attackPatterns;
+    [SerializeField] private BossAttackPattern [] _attackPatterns;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,6 @@ public class EnemyCombat : MonoBehaviour
     }
     public void BossAttack(int patternIndex)
     {
-        attackPatterns[patternIndex].patternCalled();
+        _attackPatterns[patternIndex].PatternCalled();
     }
 }
