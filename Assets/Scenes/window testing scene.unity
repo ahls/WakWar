@@ -2073,6 +2073,7 @@ GameObject:
   - component: {fileID: 403535083}
   - component: {fileID: 403535082}
   - component: {fileID: 403535081}
+  - component: {fileID: 403535084}
   m_Layer: 5
   m_Name: tempDialogue
   m_TagString: Untagged
@@ -2115,6 +2116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 1710710650}
   _bubbleTail: {fileID: 601857257}
+  _dialogID: 0
+  _dialogIndex: 0
 --- !u!114 &403535082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,6 +2155,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403535079}
   m_CullTransparentMesh: 0
+--- !u!95 &403535084
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403535079}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b2624683f35c55499c575c994a120ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &452153998 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5484659015161531336, guid: f165f0db6d31c4a46a7a56fd9a66e64c,
@@ -2521,7 +2543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &601857258
@@ -6305,33 +6327,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770202023}
   m_CullTransparentMesh: 0
---- !u!1 &1777722022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6764091278536084027, guid: 8bfd1ba38ce5d8c409a75f580828a181,
-    type: 3}
-  m_PrefabInstance: {fileID: 1903102497830095482}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1777722025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777722022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f87713df8e1014146840b66c12af2e8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetSize: 2
-  _targetLocaiton: {x: 0, y: 0}
-  _screenVector: {x: 0, y: 0}
-  _camera: {fileID: 0}
-  _screenRatio: 0
-  _maxX: 0
-  _maxY: 0
-  _minX: 0
-  _minY: 0
 --- !u!1 &1778098916
 GameObject:
   m_ObjectHideFlags: 0
