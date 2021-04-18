@@ -77,10 +77,10 @@ public class WeaponContainer
 
     public static void Load(string path)
     {
-        TextAsset _xml = Resources.Load<TextAsset>(path);
+        TextAsset xml = Resources.Load<TextAsset>(path);
         XmlSerializer serializer = new XmlSerializer(typeof(WeaponContainer));
 
-        StringReader reader = new StringReader(_xml.text);
+        StringReader reader = new StringReader(xml.text);
 
         WeaponContainer tempContainer = serializer.Deserialize(reader) as WeaponContainer;
 

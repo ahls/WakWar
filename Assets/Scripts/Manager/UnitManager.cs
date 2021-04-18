@@ -20,6 +20,7 @@ public class UnitManager : MonoBehaviour
     private void Start()
     {
         IngameManager.instance.SetUnitManager(this);
+
         for (int i = 0; i < 10; i++)
         {
             _unitSquads.Add(new List<GameObject>());
@@ -40,14 +41,14 @@ public class UnitManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _startLocation = cursorLocation();
+            _startLocation = CursorLocation();
             _selectionBox.SetActive(true);
             _selectionBox.transform.position = _startLocation;
         }
 
         if (Input.GetMouseButton(0))
         {
-            _selectionBox.transform.localScale = cursorLocation() - _startLocation;
+            _selectionBox.transform.localScale = CursorLocation() - _startLocation;
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -64,7 +65,7 @@ public class UnitManager : MonoBehaviour
             }
 
             _selectionBox.SetActive(false);
-            float3 endLocation = cursorLocation();
+            float3 endLocation = CursorLocation();
 
             //오버랩박스 크기 만듬
             float2 centerOfBox = new float2((endLocation.x + _startLocation.x) / 2f, (endLocation.y + _startLocation.y) / 2f);
@@ -110,7 +111,7 @@ public class UnitManager : MonoBehaviour
         {
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
-                selectedUnit.GetComponent<UnitStats>().MoveToTarget(cursorLocation());
+                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation());
             }
         }
     }
@@ -139,7 +140,7 @@ public class UnitManager : MonoBehaviour
                     }
                     else
                     {
-                        deselectUnit(selectedUnit);
+                        DeselectUnit(selectedUnit);
                     }
                 }
                 return;
@@ -148,11 +149,13 @@ public class UnitManager : MonoBehaviour
         }
         
     }
-    private float3 cursorLocation()
+
+    private float3 CursorLocation()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
-    public void deselectUnit(GameObject unitToDeselect)
+
+    public void DeselectUnit(GameObject unitToDeselect)
     {
         _selectedUnitList.Remove(unitToDeselect);
     }

@@ -13,17 +13,14 @@ public class TwitchClient : MonoBehaviour
     #region 변수
 
     //####### 서버 관련
-    public Client client;
-    private string Channel_Name = "wakpanzeebot";
-
+    public Client Client;
+    private string _channelName = "wakpanzeebot";
 
     //####### 유닛 생성 관련
     public GameObject UnitBase;
-    string[] UnitClasses = new string[3] {"전사","사수","지원가"};
-    Dictionary<string, GameObject> twitchPlayerList = new Dictionary<string, GameObject>();
-    private int openSlots = 12; //초기 시작 유닛 수 여기서 설정
-
-
+    private string[] _unitClasses = new string[3] {"전사","사수","지원가"};
+    private Dictionary<string, GameObject> _twitchPlayerDic = new Dictionary<string, GameObject>();
+    private int _openSlots = 12; //초기 시작 유닛 수 여기서 설정
 
     #endregion
     // Start is called before the first frame update
@@ -34,19 +31,19 @@ public class TwitchClient : MonoBehaviour
         //밑에 토큰은 그냥 귀찮아서 냅뒀어요 ㅋㅋㅋ....
         ConnectionCredentials credentials = new ConnectionCredentials("wakpanzeebot", "be3yyp8bjqln1izy9mxa0gf5r4t6au");
 
-        client = new Client();
-        client.Initialize(credentials, Channel_Name);
-        client.Connect();
+        Client = new Client();
+        Client.Initialize(credentials, _channelName);
+        Client.Connect();
         Debug.Log("클라이언트 연결!");
         //이벤트 셋업
-        client.OnMessageReceived += MyMessageInputFunction;
+        Client.OnMessageReceived += MyMessageInputFunction;
 
     }
 
     private void MyMessageInputFunction(object sender, OnMessageReceivedArgs e)
     {
 
-        if (openSlots > 0 && e.ChatMessage.Message.StartsWith("!참가 "))
+        if (_openSlots > 0 && e.ChatMessage.Message.StartsWith("!참가 "))
         {//게임 참가 메커니즘
             if(e.ChatMessage.Message.Length < 4)
             {//커맨드 입력이 이상하게 됨. 
@@ -55,34 +52,35 @@ public class TwitchClient : MonoBehaviour
             string userName = e.ChatMessage.DisplayName;
             string UnitClass = e.ChatMessage.Message.Substring(4);
 
-            if (!twitchPlayerList.ContainsKey(userName))
+            if (!_twitchPlayerDic.ContainsKey(userName))
             {//딕셔너리에 이름이 없을경우에만 새로 추가됨
-                if (UnitClasses.Contains(UnitClass))
+                if (_unitClasses.Contains(UnitClass))
                 {//고른 직업이 존재할경우
-                    client.SendMessage(client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
-                    unitCreation(userName, UnitClass);
-                    openSlots--;
+                    Client.SendMessage(Client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
+                    UnitCreation(userName, UnitClass);
+                    _openSlots--;
                 }
             }
             else
             {//딕셔너리에 이름이 있는경우 
-                client.SendMessage(client.JoinedChannels[0], $"{userName}님은 이미 게임에 참가 하셨습니다.");
+                Client.SendMessage(Client.JoinedChannels[0], $"{userName}님은 이미 게임에 참가 하셨습니다.");
             }
         }
     }
-    public void flushPlayerList()
+
+    public void FlushPlayerDic()
     {
-        twitchPlayerList.Clear();
+        _twitchPlayerDic.Clear();
     }
 
-    private void unitCreation(string userName, string unitClass)
+    private void UnitCreation(string userName, string unitClass)
     {
         WeaponType inputClass;
-        if(unitClass == UnitClasses[0])
+        if(unitClass == _unitClasses[0])
         {
             inputClass = WeaponType.Warrior;
         }
-        else if(unitClass == UnitClasses[1])
+        else if(unitClass == _unitClasses[1])
         {
             inputClass = WeaponType.Shooter;
         }
@@ -98,13 +96,13 @@ public class TwitchClient : MonoBehaviour
 
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
         IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
-        twitchPlayerList.Add(userName, instance);
+        _twitchPlayerDic.Add(userName, instance);
         instance.GetComponent<UnitCombat>().UnEquipWeapon();
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
     }
 
-    public void openEnrolling(int numSlots)
+    public void OpenEnrolling(int numSlots)
     {
-        openSlots = numSlots;
+        _openSlots = numSlots;
     }
 }

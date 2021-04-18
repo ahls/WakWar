@@ -38,10 +38,10 @@ public class DialogueXML
 
     public static void Load(string path)
     {
-        TextAsset _xml = Resources.Load<TextAsset>(path);
+        TextAsset xml = Resources.Load<TextAsset>(path);
         XmlSerializer serializer = new XmlSerializer(typeof(DialogueXML));
 
-        StringReader reader = new StringReader(_xml.text);
+        StringReader reader = new StringReader(xml.text);
 
         DialogueXML instance = serializer.Deserialize(reader) as DialogueXML;
         reader.Close();

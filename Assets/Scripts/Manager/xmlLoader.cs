@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class xmlLoader : MonoBehaviour
+public class XMLLoader : MonoBehaviour
 {
-    public const string weaponPath = "weapons";
-    public const string itemPath = "items";
-    public const string StagePath = "stage_xml";
+    public const string WEAPON_PATH = "weapons";
+    public const string ITEM_PATH = "items";
+    public const string STAGE_PATH = "stage_xml";
 
     // Start is called before the first frame update
     void Awake()
     {
-        WeaponContainer.Load(weaponPath);
-        ItemContainer.Load(itemPath);
-        StageXML.Load(StagePath);
+        WeaponContainer.Load(WEAPON_PATH);
+        ItemContainer.Load(ITEM_PATH);
+        StageXML.Load(STAGE_PATH);
     }
 
 }

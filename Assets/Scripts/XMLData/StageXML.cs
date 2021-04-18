@@ -39,10 +39,10 @@ public class StageXML
 
     public static void Load(string path)
     {
-        TextAsset _xml = Resources.Load<TextAsset>(path);
+        TextAsset xml = Resources.Load<TextAsset>(path);
         XmlSerializer serializer = new XmlSerializer(typeof(StageXML));
 
-        StringReader reader = new StringReader(_xml.text);
+        StringReader reader = new StringReader(xml.text);
 
         StageXML instance = serializer.Deserialize(reader) as StageXML;
         reader.Close();

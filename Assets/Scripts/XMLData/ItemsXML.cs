@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+
 public class PulledItem
 {
     [XmlElement("id")]
@@ -37,7 +38,7 @@ public struct Item
         value = _input.value;
         
         imgSrc = _input.imageSrc;
-        if(type == ItemType.weapon)
+        if(type == ItemType.Weapon)
         {
             weaponID = _input.weaponID;
         }
@@ -63,10 +64,10 @@ public class ItemContainer
 
     public static void Load(string path)
     {
-        TextAsset _xml = Resources.Load<TextAsset>(path);
+        TextAsset xml = Resources.Load<TextAsset>(path);
         XmlSerializer serializer = new XmlSerializer(typeof(ItemContainer));
 
-        StringReader reader = new StringReader(_xml.text);
+        StringReader reader = new StringReader(xml.text);
 
         ItemContainer instance = serializer.Deserialize(reader) as ItemContainer;
         reader.Close();
@@ -77,13 +78,13 @@ public class ItemContainer
             Items.DB[_item.itemID] = new Item(_item);
             switch (_item.itemType)
             {
-                case ItemType.potion:
+                case ItemType.Potion:
                     Items.consumableIDs.Add(_item.itemID);
                     break;
-                case ItemType.weapon:
+                case ItemType.Weapon:
                     Items.weaponIDs.Add(_item.itemID);
                     break;
-                case ItemType.relic:
+                case ItemType.Relic:
                     Items.relicIDs.Add(_item.itemID);
                     break;
                 default:
