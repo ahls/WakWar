@@ -364,7 +364,7 @@ public class UnitCombat : MonoBehaviour
         _unitstats._isMoving = false;
         _unitstats.setSelectionCircleState(false);
         _unitstats.Selectable = false;
-        IngameManager.UnitManager.deselectUnit(gameObject);
+        IngameManager.UnitManager.DeselectUnit(gameObject);
         StartCoroutine(deathDelay());
     }
     IEnumerator deathDelay()

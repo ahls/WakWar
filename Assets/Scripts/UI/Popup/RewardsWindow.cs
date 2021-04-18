@@ -106,7 +106,7 @@ public class RewardsWindow : MonoBehaviour
 
                 break;
             case rewardType.reinforcement:
-                IngameManager.TwitchClient.openEnrolling(testingLevelValue+additionalReinforce);
+                IngameManager.TwitchClient.OpenEnrolling(testingLevelValue+additionalReinforce);
                 break;
             default:
                 break;

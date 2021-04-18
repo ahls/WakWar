@@ -5,8 +5,8 @@ using System.IO;
 
 public class ResourceManager
 {
-    private string assetBundlePath = "Assets/StreamingAssets/WakAsset";
-    private AssetBundle assetBundle;
+    private string _assetBundlePath = "Assets/StreamingAssets/WakAsset";
+    private AssetBundle _assetBundle;
 
     private Dictionary<string, GameObject> _loadedObjectDic = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> _loadedTexture = new Dictionary<string, Sprite>();
@@ -14,22 +14,22 @@ public class ResourceManager
     public ResourceManager()
     {
 #if UNITY_EDITOR
-        assetBundlePath = "Assets/StreamingAssets/WakAsset";
+        _assetBundlePath = "Assets/StreamingAssets/WakAsset";
 #else
         assetBundlePath = Application.dataPath + "/StreamingAssets/WakAsset";
 #endif
-        if (assetBundle == null)
+        if (_assetBundle == null)
         {
-            AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(assetBundlePath));
-            assetBundle = request.assetBundle;
+            AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(_assetBundlePath));
+            _assetBundle = request.assetBundle;
             //AssetBundle.LoadFromFile(assetBundlePath);
-            preloadTextures();
+            PreloadTextures();
         }
     }
 
     public GameObject LoadPrefab(string path, bool isUI = false)
     {
-        if (assetBundle == null)
+        if (_assetBundle == null)
         {
             throw new Exception("AseetBundle is Null");
         }
@@ -46,7 +46,7 @@ public class ResourceManager
             return Global.ObjectPoolManager.CreatObject(_loadedObjectDic[path], isUI);
         }
 
-        var prefab = assetBundle.LoadAsset<GameObject>(path);
+        var prefab = _assetBundle.LoadAsset<GameObject>(path);
 
         _loadedObjectDic[path] = prefab;
 
@@ -55,7 +55,7 @@ public class ResourceManager
 
     public Sprite LoadTexture(string path, bool isUI = false)
     {
-        if (assetBundle == null)
+        if (_assetBundle == null)
         {
             throw new Exception("AseetBundle is Null");
         }
@@ -63,16 +63,16 @@ public class ResourceManager
         return _loadedTexture[path];
 
     }
-    private void preloadTextures()
+
+    private void PreloadTextures()
     {
-        
-        foreach (var path in assetBundle.GetAllAssetNames())
+        foreach (var path in _assetBundle.GetAllAssetNames())
         {
-            Sprite[] _sprites;
+            Sprite[] sprites;
             if(path.Contains("sprites/weapon/img_"))//빌드에서도 적용 되는지 확인 필요
             {
-                _sprites = assetBundle.LoadAssetWithSubAssets<Sprite>(path);
-                foreach (var subsprite in _sprites)
+                sprites = _assetBundle.LoadAssetWithSubAssets<Sprite>(path);
+                foreach (var subsprite in sprites)
                 {
                     _loadedTexture[subsprite.name] = subsprite;
                 }
