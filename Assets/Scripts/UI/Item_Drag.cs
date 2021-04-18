@@ -40,7 +40,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public bool compareType(ItemType slottype)
     {
-        return (slottype == _itemType || slottype == ItemType.any);
+        return (slottype == _itemType || slottype == ItemType.Any);
     }
     public void setType(ItemType _type)
     {
