@@ -2113,6 +2113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c49175d92af6140afdc1c556ee5767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _text: {fileID: 1710710650}
+  _bubbleTail: {fileID: 601857257}
 --- !u!114 &403535082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6321,6 +6323,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87713df8e1014146840b66c12af2e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetSize: 2
+  _targetLocaiton: {x: 0, y: 0}
+  _screenVector: {x: 0, y: 0}
+  _camera: {fileID: 0}
+  _screenRatio: 0
+  _maxX: 0
+  _maxY: 0
+  _minX: 0
+  _minY: 0
 --- !u!1 &1778098916
 GameObject:
   m_ObjectHideFlags: 0
