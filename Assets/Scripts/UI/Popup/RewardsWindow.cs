@@ -3,73 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum RewardType
+public enum rewardType
 {
-    Equipment,
-    Reinforcement,
-    Consumable,
-    Relic
+    equipment,
+    reinforcement,
+    consumable,
+    relic
 }
 
 public class RewardsWindow : MonoBehaviour
 {
 
-    [SerializeField] private GameObject categoryPanel;
-    [SerializeField] private GameObject[] slots;
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private Text[] rewardText;
+    [SerializeField] GameObject categoryPanel;
+    [SerializeField] GameObject[] slots;
+    [SerializeField] GameObject itemPrefab;
+    [SerializeField] Text[] rewardText;
 
-    private RewardType[] _rewardTypes = new RewardType[3];
-    public int TestingLevelValue;
-    public int AdditionalReinforce = 0;
-    private const int LOWER_ITEM_COUNT_VALUE = 10, UPPER_ITEM_COUNT_VALUE = 100;
-
+    private rewardType[] rewardTypes = new rewardType[3];
+    public int testingLevelValue;
+    public int additionalReinforce = 0;
+    private const int lowerConstant = 10, upperConstant = 100;
+    
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
-    public void SetRewards()
+    public void setRewards()
     {
 
         categoryPanel.SetActive(true);
         for (int i = 0; i < 3; i++)
         {
-            int randomPicker = Random.Range(0, 10);
+            int randomPicker = Random.Range(0,10);
             if (randomPicker < 3)
             {
-                _rewardTypes[i] = RewardType.Equipment;
+                rewardTypes[i] = rewardType.equipment;
                 rewardText[i].text = "장비";
             }
             else if (randomPicker < 6)
             {
 
-                _rewardTypes[i] = RewardType.Reinforcement;
+                rewardTypes[i] = rewardType.reinforcement;
                 rewardText[i].text = "증원";
             }
             else if (randomPicker < 9)
             {
 
-                _rewardTypes[i] = RewardType.Consumable;
+                rewardTypes[i] = rewardType.consumable;
                 rewardText[i].text = "소모품";
             }
             else
             {
 
-                _rewardTypes[i] = RewardType.Relic;
+                rewardTypes[i] = rewardType.relic;
                 rewardText[i].text = "유물";
             }
         }
     }
 
-    public void OnButtonClicked(int index)
+    public void onButtonClicked(int index)
     {
         categoryPanel.SetActive(false);// 선택창 숨김
 
@@ -85,47 +85,46 @@ public class RewardsWindow : MonoBehaviour
 
 
         int chosenItemID;
-        switch (_rewardTypes[index])
+        switch (rewardTypes[index])
         {
-            case RewardType.Consumable:
+            case rewardType.consumable:
                 chosenItemID = Items.consumableIDs[Random.Range(0, Items.consumableIDs.Count)];
-                LayItems(chosenItemID);
+                layItems(chosenItemID);
                 break;
-            case RewardType.Equipment:
+            case rewardType.equipment:
                 chosenItemID = Items.weaponIDs[Random.Range(0, Items.weaponIDs.Count)];
-                LayItems(chosenItemID);
+                layItems(chosenItemID);
                 break;
-            case RewardType.Relic:
+            case rewardType.relic:
                 chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count)];
                 Debug.Log(chosenItemID);
                 GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
                 newItem.GetComponent<Item_Data>().Setup(chosenItemID);
                 newItem.transform.SetParent(slots[0].transform);
                 newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
-                slots[0].GetComponent<Item_Slot>().CurrentNumber++;
+                slots[0].GetComponent<Item_Slot>().currentNumber++;
 
                 break;
-            case RewardType.Reinforcement:
-                IngameManager.TwitchClient.OpenEnrolling(TestingLevelValue + AdditionalReinforce);
+            case rewardType.reinforcement:
+                IngameManager.TwitchClient.OpenEnrolling(testingLevelValue+additionalReinforce);
                 break;
             default:
                 break;
         }
 
     }
-
-    private void LayItems(int itemID)
+    private void layItems(int itemID)
     {
         Debug.Log(itemID);
         int itemValue = Items.DB[itemID].value;
-        int numItems = (TestingLevelValue * LOWER_ITEM_COUNT_VALUE / itemValue) + 1; // 지급될 아이템 갯수
+        int numItems = (testingLevelValue * lowerConstant / itemValue)+1; // 지급될 아이템 갯수
         Debug.Log($"{numItems}개의 {itemID}");
-
+        
         for (int i = 0; i < numItems; i++)
         {
             GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
-            newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
-            slots[i].GetComponent<Item_Slot>().CurrentNumber++;
+            newItem.GetComponent<Item_Data>().Setup(itemID,slots[i].transform);
+            slots[i].GetComponent<Item_Slot>().currentNumber++;
         }
     }
 }
