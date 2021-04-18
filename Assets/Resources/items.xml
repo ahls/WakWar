@@ -352,7 +352,7 @@
 		</item>
 		<item>
 			<id>30001</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>조그마한 치킨 조각</name>
 			<desc>유닛당 얻는 스탯 x2
       
@@ -362,13 +362,13 @@
 		</item>
 		<item>
 			<id>30002</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>흐물흐물한 잔디</name>
 			<Image>null</Image>
 		</item>
 		<item>
 			<id>30003</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>기생충의 이빨</name>
 			<desc>모든 유닛 방어력 관통(+3) 추가
       
@@ -381,7 +381,7 @@
 		</item>
 		<item>
 			<id>30004</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>객관안</name>
 			<desc>사수 공격력 20% 증가
       
@@ -391,7 +391,7 @@
 		</item>
 		<item>
 			<id>30005</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>잊혀진 도네이션</name>
 			<desc>지원가 스킬 쿨타임 20% 감소
       
@@ -401,7 +401,7 @@
 		</item>
 		<item>
 			<id>30006</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>관뚜껑 방패</name>
 			<desc>전사 방어력 20% 증가
       
@@ -412,7 +412,7 @@
 		</item>
 		<item>
 			<id>30007</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>낡은 닌탑</name>
 			<desc>사수, 지원가 이동속도 15% 증가
       
@@ -424,7 +424,7 @@
 		</item>
 		<item>
 			<id>30008</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>의문의 프로틴</name>
 			<desc>지원가, 전사 최대체력 15% 증가
       
@@ -434,7 +434,7 @@
 		</item>
 		<item>
 			<id>30009</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>부서진 회초리</name>
 			<desc>전사, 사수 공격속도 15% 증가
       
@@ -443,7 +443,7 @@
 		</item>
 		<item>
 			<id>30010</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>천사인형</name>
 			<desc>다음 층으로 이동할 때 전체 최대체력의 10% 회복
       
@@ -452,7 +452,7 @@
 		</item>
 		<item>
 			<id>30011</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>잘린 채찍</name>
 			<desc>모든 유닛 이동속도 20% 증가
       
@@ -462,7 +462,7 @@
 		</item>
 		<item>
 			<id>30012</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>강아지 인형</name>
 			<desc>다음 층 시작시 30초간 최대체력의 20% 보호막 생성
       
@@ -471,7 +471,7 @@
 		</item>
 		<item>
 			<id>30013</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>녹슨 철가방</name>
 			<desc>층 이동 시 최대 체력 5% 회복, 이동속도 10% 증가
       
@@ -482,7 +482,7 @@
 		</item>
 		<item>
 			<id>30014</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>노예 증서</name>
 			<desc>공격 속도, 이동 속도 10% 증가
       
@@ -493,7 +493,7 @@
 		</item>
 		<item>
 			<id>30015</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>현상수배서</name>
 			<desc>사수 공격 속도, 공격력 13% 증가
       
@@ -507,13 +507,13 @@
 		</item>
 		<item>
 			<id>30016</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>NONE</name>
 			<Image>null</Image>
 		</item>
 		<item>
 			<id>30017</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>난민의 증표</name>
 			<desc>팬치 유입을 보상으로 선택 할 시 
 팬치 유입량 + 5
@@ -523,7 +523,7 @@
 		</item>
 		<item>
 			<id>30018</id>
-			<type>relic</type>
+			<type>Relic</type>
 			<name>새벽반-지</name>
 			<desc>방 전투 후, 
 죽은 팬치 셋을 1/3 체력을 남기고 부활시킴
