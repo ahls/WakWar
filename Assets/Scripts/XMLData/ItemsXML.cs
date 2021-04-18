@@ -63,10 +63,10 @@ public class ItemContainer
 
     public static void Load(string path)
     {
-        TextAsset _xml = Resources.Load<TextAsset>(path);
+        TextAsset xml = Resources.Load<TextAsset>(path);
         XmlSerializer serializer = new XmlSerializer(typeof(ItemContainer));
 
-        StringReader reader = new StringReader(_xml.text);
+        StringReader reader = new StringReader(xml.text);
 
         ItemContainer instance = serializer.Deserialize(reader) as ItemContainer;
         reader.Close();
