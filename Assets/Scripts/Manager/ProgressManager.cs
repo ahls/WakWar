@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CurrentEvent { Dialog, StartCombat, EndCombat, LoadStage }
+public enum CurrentEvent { Dialog, StartCombat, EndCombat, LoadStage, RoomReward, BossReward }
 public class ProgressManager : MonoBehaviour
 {
     private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
     private int _currentProgressIndex = -1;
+    private List<GameObject> _enemyList = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +48,10 @@ public class ProgressManager : MonoBehaviour
             case CurrentEvent.EndCombat:
                 EndCombat();
                 break;
+            case CurrentEvent.RoomReward:
+                break;
+            case CurrentEvent.BossReward:
+                break;
         }
     }
     public void DialogOnClick()
@@ -72,6 +77,14 @@ public class ProgressManager : MonoBehaviour
 
     }
 
+    public void EnemyDisabled(GameObject disabledEnemy)
+    {
+        _enemyList.Remove(disabledEnemy);
+        if (_enemyList.Count == 0)
+        {
+            NextSequence();
+        }
+    }
     public void Restart()
     {
         _currentProgressIndex = 0;

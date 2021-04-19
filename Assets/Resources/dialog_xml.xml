@@ -6,11 +6,15 @@
       <dialogueList>
         <dialogue>
           <tailLocation>-500</tailLocation>
-          <text>이것은 어떻게 출력될까?</text>
+          <text>현재 작업중인 대화창 입니다.</text>
         </dialogue>
         <dialogue>
           <tailLocation>500</tailLocation>
-          <text>시퀀스 마지막 대사</text>
+          <text>어때요! 신기하지 않나요?</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>500</tailLocation>
+          <text>슬슬 모양이 잡혀가고 있어요!</text>
         </dialogue>
       </dialogueList>
     </Dialogue>

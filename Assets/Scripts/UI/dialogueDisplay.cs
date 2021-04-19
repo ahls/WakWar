@@ -46,6 +46,7 @@ public class DialogueDisplay : MonoBehaviour
         _dialogID = dialogueID;
         _text.text = "";
         _animator.SetBool("Open", true);
+        LoadNextText();
     }
 
 }
