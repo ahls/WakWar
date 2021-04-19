@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProgressData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProgressSequences>
+    <!--
+    <Sequence>
+      <eventType>1000</eventType> 이벤트 종류 Dialog, StartCombat, EndCombat, LoadStage 
+      <value>1000</value> Dialog 일떄 XXYY, LoadStage 일떄 AABBB, 나머지일떄 아무것도 없음
+    </Sequence>
+    -->
+    <Sequence>
+      <eventType>Dialog</eventType>
+      <value>1000</value>
+    </Sequence>
+    <Sequence>
+      <eventType>Dialog</eventType>
+      <value>1001</value>
+    </Sequence>
+    <Sequence>
+      <eventType>StartCombat</eventType>
+    </Sequence>
+
+  </ProgressSequences>
+</ProgressData>

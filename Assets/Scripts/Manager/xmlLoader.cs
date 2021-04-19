@@ -8,6 +8,7 @@ public class XMLLoader : MonoBehaviour
     public const string ITEM_PATH = "items";
     public const string STAGE_PATH = "stage_xml";
     public const string DIALOG_PATH = "dialog_xml";
+    public const string PROGRESS_PATH = "progress_xml";
     // Start is called before the first frame update
     void Awake()
     {
@@ -15,6 +16,7 @@ public class XMLLoader : MonoBehaviour
         ItemContainer.Load(ITEM_PATH);
         StageXML.Load(STAGE_PATH);
         DialogueXML.Load(DIALOG_PATH);
+        ProgressXML.Load(PROGRESS_PATH);
     }
 
 }

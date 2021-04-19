@@ -6,7 +6,7 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour
 {
     #region 변수
-    public bool ControlOn { get; set; } = true;
+    public bool ControlOn { get; set; } = false;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
