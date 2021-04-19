@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DialogueData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Dialogues>
+    <Dialogue>
+      <id>1000</id>
+      <dialogueList>
+        <dialogue>
+          <tailLocation>-500</tailLocation>
+          <text>이것은 어떻게 출력될까?</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>500</tailLocation>
+          <text>시퀀스 마지막 대사</text>
+        </dialogue>
+      </dialogueList>
+    </Dialogue>
+    <Dialogue>
+      <id>1001</id>
+      <dialogueList>
+        <dialogue>
+          <tailLocation>500</tailLocation>
+          <text>시퀀스 첫 대사</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>-500</tailLocation>
+          <text>가</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>-500</tailLocation>
+          <text>나</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>-500</tailLocation>
+          <text>다</text>
+        </dialogue>
+        <dialogue>
+          <tailLocation>-500</tailLocation>
+          <text>마지막 대사</text>
+        </dialogue>
+      </dialogueList>
+    </Dialogue>
+  </Dialogues>
+</DialogueData>

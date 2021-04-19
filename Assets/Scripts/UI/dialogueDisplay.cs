@@ -13,6 +13,7 @@ public class DialogueDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Dialog dispaly is awake");
         if (IngameManager.DialogueDisplay == null)
         {
             IngameManager.instance.SetDialogue(this);
@@ -33,7 +34,7 @@ public class DialogueDisplay : MonoBehaviour
         else
         {
             _text.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
-            _bubbleTail.position = new Vector2(Dialogues.DB[_dialogID][_dialogIndex].TailLocation, -100);
+            _bubbleTail.localPosition = new Vector2(Dialogues.DB[_dialogID][_dialogIndex].TailLocation, -100);
             _dialogIndex++;
         }
         return true;

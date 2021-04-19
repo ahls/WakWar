@@ -8,7 +8,7 @@ using System.IO;
 public class DialogueData
 {
     [XmlElement("id")]
-    public int DialogueID;
+    public int DialogueID;//XXYY, XX: 층, YY: 순서
     [XmlArray("dialogueList")]
     [XmlArrayItem("dialogue")]
     public List<Dialogue> DialogueList = new List<Dialogue>();
@@ -26,6 +26,7 @@ public class Dialogue
 public class Dialogues
 {
     public static Dictionary<int, List<Dialogue>> DB = new Dictionary<int, List<Dialogue>>();
+    
 }
 
 [XmlRoot("DialogueData")]
