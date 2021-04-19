@@ -20,6 +20,9 @@ public class IngameManager : MonoBehaviour
     public static UIInventory UIInventory => _uiInventory;
     public static ProgressManager ProgressManager => _progressManager;
     public static DialogueDisplay DialogueDisplay => _dialogueDisplay;
+    public static EncounterManager encounterManager => _encounterManager;
+
+
     private static IngameManager _instance;
     private static UnitManager _unitManager;
     private static TwitchClient _twitchClient;
@@ -27,6 +30,7 @@ public class IngameManager : MonoBehaviour
     private static UIInventory _uiInventory;
     private static ProgressManager _progressManager;
     private static DialogueDisplay _dialogueDisplay;
+    private static EncounterManager _encounterManager;
     private void Awake()
     {
         _instance = this;
@@ -57,5 +61,9 @@ public class IngameManager : MonoBehaviour
     public void SetProgressManager(ProgressManager progressManager)
     {
         _progressManager = progressManager;
+    }
+    public void SetEncounterManager(EncounterManager encounterManager)
+    {
+        _encounterManager = encounterManager;
     }
 }
