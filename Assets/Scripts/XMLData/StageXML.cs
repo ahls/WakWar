@@ -29,6 +29,10 @@ public class EnemyData
     public float Position_y;
 }
 
+public class Stages
+{
+    public static Dictionary<int, StageData> DB = new Dictionary<int, StageData>();
+}
 [XmlRoot("StageData")]
 [XmlInclude(typeof(EnemyData))]
 public class StageXML 
@@ -46,5 +50,9 @@ public class StageXML
 
         StageXML instance = serializer.Deserialize(reader) as StageXML;
         reader.Close();
+        foreach (var item in instance.stageDatas)
+        {
+            Stages.DB[item.StageID] = item;
+        }
     }
 }
