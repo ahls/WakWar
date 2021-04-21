@@ -7,10 +7,12 @@ public class UnitManager : MonoBehaviour
 {
     #region 변수
     public bool ControlOn { get; set; } = false;
+    private bool _attackMode = false;
+    private bool _leftClicked, _rightClicked;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
-    private float3 _startLocation;
+    private Vector2 _startLocation;
     private short _selectedUnitCount = 0;       //유닛 선택이
     private bool _selectOneOnly = false;        //클릭인지
     private const float CLICK_THRESHOLD = 0.1f;  //확인할떄 쓰임
@@ -31,6 +33,7 @@ public class UnitManager : MonoBehaviour
     {
         if (ControlOn)
         {
+            ClickDetection();
             SelectUnitControl();
             UnitMoveControl();
             SquadControl();
@@ -39,7 +42,11 @@ public class UnitManager : MonoBehaviour
 
     private void SelectUnitControl()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(_attackMode)
+        {//공격모드 활서오하 되있으면 무시
+            return;
+        }
+        if (_leftClicked)
         {
             _startLocation = CursorLocation();
             _selectionBox.SetActive(true);
@@ -65,7 +72,7 @@ public class UnitManager : MonoBehaviour
             }
 
             _selectionBox.SetActive(false);
-            float3 endLocation = CursorLocation();
+            Vector2 endLocation = CursorLocation();
 
             //오버랩박스 크기 만듬
             float2 centerOfBox = new float2((endLocation.x + _startLocation.x) / 2f, (endLocation.y + _startLocation.y) / 2f);
@@ -107,8 +114,13 @@ public class UnitManager : MonoBehaviour
 
     private void UnitMoveControl()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (_rightClicked)
         {
+            if(_attackMode)
+            {//공격모드상태에서 우클릭 누르면 취소됨
+                _attackMode = false;
+                return;
+            }
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
                 selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation());
@@ -150,7 +162,32 @@ public class UnitManager : MonoBehaviour
         
     }
 
-    private float3 CursorLocation()
+
+    private void AttackOrder()
+    {
+        if (_leftClicked && _attackMode)
+        {
+            if (_selectedUnitList.Count == 0)   return; // 현재 선택된 유닛 없으면 리턴
+            Collider2D unitsInRange = Physics2D.OverlapCircle(CursorLocation(), 0.05f);
+            if(unitsInRange != null)
+            {//범위에내 유닛이 있을경우 점사
+                
+            }
+            else
+            {//범위내 없을경우 어택땅
+
+            }
+        }
+    }
+    private void AttackModeChecker()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            _attackMode = true;
+        }
+    }
+
+    private Vector2 CursorLocation()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -158,5 +195,11 @@ public class UnitManager : MonoBehaviour
     public void DeselectUnit(GameObject unitToDeselect)
     {
         _selectedUnitList.Remove(unitToDeselect);
+    }
+
+    private void ClickDetection()
+    {
+        _leftClicked = Input.GetMouseButtonDown(0);
+        _rightClicked = Input.GetMouseButtonDown(1);
     }
 }
