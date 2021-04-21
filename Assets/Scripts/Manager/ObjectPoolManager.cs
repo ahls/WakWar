@@ -21,7 +21,7 @@ public class ObjectPoolManager : MonoBehaviour
     public void CanvasObjectPooling(string path, GameObject gameObject)
     {
         gameObject.SetActive(false);
-        gameObject.transform.parent = _disableCanvas.transform;
+        gameObject.transform.SetParent(_disableCanvas.transform);
 
         if (!_canvasObjectPoolDic.TryGetValue(path, out ObjectPoolData objectData))
         {
