@@ -7,34 +7,31 @@ public class tesUnitSetup : MonoBehaviour
     public bool CanControl = false;
     public float  range,  AOE, projSpeed,ms;
     public int hp,dmg,AP;
-    public Sprite image;
+    public int weaponID;
     public float torque;
-   
-    private void Awake()
+    private bool used = false;
+    UnitCombat UC;
+    private void Start()
     {
         if(CanControl)
         GetComponent<UnitStats>().PlayerUnitInit("Dango");
-        UnitCombat UC = GetComponent<UnitCombat>();
-        UC.TotalDamage = dmg;
-        UC.TotalRange = range;
-        UC.TotalAP = AP;
-        UC.TotalAOE = AOE;
-        UC.ProjectileSpeed = projSpeed;
+         UC = GetComponent<UnitCombat>();
         UC.BaseAS = 3;
         UC.BaseArmor = 0;
-        UC.AttackImage = image;
         UC.HealthMax = hp;
         UC.AttackTorque = torque;
         GetComponent<UnitStats>().MoveSpeed = ms;
     }
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
-        
+        if (!used)
+        {
+            if (Time.time > 1)
+            {
+                UC.EquipWeapon(weaponID);
+                used = true;
+            }
+        }
     }
 }

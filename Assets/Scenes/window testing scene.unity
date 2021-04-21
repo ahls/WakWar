@@ -4596,11 +4596,11 @@ MonoBehaviour:
   range: 0.3
   AOE: 0
   projSpeed: 10
-  ms: 0.015
+  ms: 0.01
   hp: 10
   dmg: 1
   AP: 0
-  image: {fileID: 0}
+  weaponID: 100000
   torque: 0
 --- !u!1001 &1245672603
 PrefabInstance:
@@ -4759,11 +4759,11 @@ MonoBehaviour:
   range: 0.3
   AOE: 0
   projSpeed: 10
-  ms: 0.02
+  ms: 0.01
   hp: 10
   dmg: 1
   AP: 0
-  image: {fileID: 0}
+  weaponID: 100000
   torque: 0
 --- !u!1 &1260999488
 GameObject:
@@ -7975,7 +7975,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  image: {fileID: 0}
+  weaponID: 100000
   torque: 0
 --- !u!114 &7414589560290133562
 MonoBehaviour:

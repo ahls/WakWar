@@ -16,7 +16,7 @@ public class ResourceManager
 #if UNITY_EDITOR
         _assetBundlePath = "Assets/StreamingAssets/WakAsset";
 #else
-        assetBundlePath = Application.dataPath + "/StreamingAssets/WakAsset";
+        _assetBundlePath = Application.dataPath + "/StreamingAssets/WakAsset";
 #endif
         if (_assetBundle == null)
         {
