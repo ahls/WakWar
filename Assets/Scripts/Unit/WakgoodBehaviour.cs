@@ -32,24 +32,24 @@ public class WakgoodBehaviour : MonoBehaviour
                 _panzees.x+=numDelta;
                 WakStats[0] += numDelta;
                 //전사 유닛 추가스탯: 체력, 방어력
-                _unitCombat.armor+= numDelta;
-                _unitCombat.healthMax+= numDelta;
+                _unitCombat.BaseArmor+= numDelta;
+                _unitCombat.HealthMax+= numDelta;
 
                 break;
             case WeaponType.Shooter:
                 _panzees.y += numDelta;
                 WakStats[1] += numDelta;
                 //사수 유닛 추가스탯: 방어관통, 추뎀
-                _unitCombat.armorPiercing+= numDelta;
-                _unitCombat.attackDamage+= numDelta;
+                _unitCombat.BaseAP+= numDelta;
+                _unitCombat.BaseDamage+= numDelta;
 
                 break;
             case WeaponType.Supporter:
                 _panzees.z += numDelta;
                 WakStats[2] += numDelta;
-                //지원가 유닛 추가스탯:  사거리, 공속
-                _unitCombat.attackSpeed += 0.05f * numDelta;
-                _unitCombat.attackRange += 0.05f * numDelta;
+                //지원가 유닛 추가스탯:  이속, 공속
+                _unitCombat.BaseAS += 0.05f * numDelta;
+                _unitCombat.BaseRange += 0.05f * numDelta;
                 break;
             default:
                 break;

@@ -30,7 +30,7 @@ public class BossAttackPattern : MonoBehaviour
             UnitCombat selectedUnitCombat = unit.GetComponent<UnitCombat>();
             if (selectedUnitCombat != null)
             {
-                if (selectedUnitCombat.targetFaction != TargetFaction)
+                if (selectedUnitCombat.TargetFaction != TargetFaction)
                 {
                     selectedUnitCombat.TakeDamage(Damage);
                 }

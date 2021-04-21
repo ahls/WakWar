@@ -53,7 +53,7 @@ public class UnitStats : MonoBehaviour
         Selectable = true;
         _selectionCircle.SetActive(false);
         _playerNameText.text = playerName;
-        GetComponent<UnitCombat>().ownedFaction = OwnedFaction;
+        GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
     }
 
     public void MoveToTarget(Vector2 target)

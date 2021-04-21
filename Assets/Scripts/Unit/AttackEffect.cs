@@ -31,7 +31,7 @@ public class AttackEffect : MonoBehaviour
         _attackerInfo = attacker;
 
         _damage = _attackerInfo.resultDamage;
-        _targetFaction = _attackerInfo.targetFaction;
+        _targetFaction = _attackerInfo.TargetFaction;
         _aoe = attacker.resultAOE;
         _AP = _attackerInfo.resultAP;
         _destination = destination;
@@ -79,7 +79,7 @@ public class AttackEffect : MonoBehaviour
             if (targetCombat != null)
             {
 
-                if (_targetFaction == targetCombat.ownedFaction || _targetFaction == Faction.Both)
+                if (_targetFaction == targetCombat.OwnedFaction || _targetFaction == Faction.Both)
                 {
                     targetCombat.TakeDamage(_damage, _AP);
                 }

@@ -20,10 +20,10 @@ public class tesUnitSetup : MonoBehaviour
         UC.resultAP = AP;
         UC.resultAOE = AOE;
         UC.projectileSpeed = projSpeed;
-        UC.attackSpeed = 3;
-        UC.armor = 0;
+        UC.BaseAS = 3;
+        UC.BaseArmor = 0;
         UC.attackImage = image;
-        UC.healthMax = hp;
+        UC.HealthMax = hp;
         UC.attackTorque = torque;
         GetComponent<UnitStats>().MoveSpeed = ms;
     }

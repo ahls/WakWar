@@ -37,33 +37,33 @@ public class UnitCombat : MonoBehaviour
     public GameObject effectPrefab;
 
     //체력
-    public int healthMax { get; set; } = 10;
-    public bool _isDead { get; set; } = false;
-    private int healthCurrent;
+    public int HealthMax { get; set; } = 10;
+    public bool IsDead { get; set; } = false;
+    private int _healthCurrent;
     [SerializeField] private Slider healthBar;
 
     //공격관련
-    public int attackDamage { get; set; }
-    public float attackRange { get; set; }
-    public float attackSpeed { get; set; } // 초당 공격
-    public float attackArea { get; set; }
-    public int armorPiercing { get; set; }
+    public int BaseDamage { get; set; }
+    public float BaseRange { get; set; }
+    public float BaseAS { get; set; } // 초당 공격
+    public float BaseAOE { get; set; }
+    public int BaseAP { get; set; }
 
     //타겟 관련
     public Transform AttackTarget;
-    private int searchCooldown = 15;
-    private int searchTimer;
+    private int _searchCooldown = 15;
+    private int _searchTimer;
     private static int searchAssign = 0;
     public bool AttackGround = false;
 
 
     //방어력
-    public int armor { get; set; }
+    public int BaseArmor { get; set; }
 
 
     //타입
-    public Faction ownedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
-    public Faction targetFaction;                       //공격타겟
+    public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
+    public Faction TargetFaction;                       //공격타겟
     public WeaponType weaponType;
     private int weaponIndex;
     private GameObject _effect;
@@ -87,7 +87,7 @@ public class UnitCombat : MonoBehaviour
     public void playerSetup(WeaponType inputWeaponType)
     {
         weaponType = inputWeaponType;
-        ownedFaction = Faction.Player;
+        OwnedFaction = Faction.Player;
         HealthBarColor(Color.green);
 
     }
@@ -96,12 +96,12 @@ public class UnitCombat : MonoBehaviour
     private void Start()
     {
         _unitstats = GetComponent<UnitStats>();
-        healthCurrent = healthMax;
-        healthBar.maxValue = healthMax;
+        _healthCurrent = HealthMax;
+        healthBar.maxValue = HealthMax;
         HealthBarUpdate();
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
-        searchTimer = searchAssign++ % searchCooldown;
-        searchAssign %= searchCooldown;
+        _searchTimer = searchAssign++ % _searchCooldown;
+        searchAssign %= _searchCooldown;
 
         ActionStat = ActionStats.Idle;
         _animator = GetComponent<Animator>();
@@ -147,7 +147,7 @@ public class UnitCombat : MonoBehaviour
                 }
             case ActionStats.Attack:
                 {
-                    if (AttackTarget != null && AttackTarget.gameObject.activeSelf)
+                    if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
                     {
                         if (attackTimer > 0)
                         {
@@ -229,11 +229,11 @@ public class UnitCombat : MonoBehaviour
     }
     public void UpdateStats()
     {
-        resultDamage = attackDamage + Weapons.DB[weaponIndex].damage;
-        resultAOE = attackArea + Weapons.DB[weaponIndex].AttackArea;
-        resultRange = attackRange + Weapons.DB[weaponIndex].AttackRange;
-        resultSpeed = attackSpeed + Weapons.DB[weaponIndex].AttackSpeed;
-        resultArmor = armor + Weapons.DB[weaponIndex].Armor;
+        resultDamage = BaseDamage + Weapons.DB[weaponIndex].damage;
+        resultAOE = BaseAOE + Weapons.DB[weaponIndex].AttackArea;
+        resultRange = BaseRange + Weapons.DB[weaponIndex].AttackRange;
+        resultSpeed = BaseAS+ Weapons.DB[weaponIndex].AttackSpeed;
+        resultArmor = BaseArmor + Weapons.DB[weaponIndex].Armor;
         
     }
     #endregion
@@ -275,7 +275,7 @@ public class UnitCombat : MonoBehaviour
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
             if (selectedCombat != null)
             {
-                if (selectedCombat.ownedFaction != ownedFaction)
+                if (selectedCombat.OwnedFaction != OwnedFaction)
                 {
                     AttackTarget = selectedCombat.transform;
                     ActionStat = ActionStats.Attack;
@@ -288,7 +288,7 @@ public class UnitCombat : MonoBehaviour
 
     private void SearchShell()
     {
-        if (searchTimer <= 0)
+        if (_searchTimer <= 0)
         {
             ResetSearchTimer();//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
 
@@ -303,7 +303,7 @@ public class UnitCombat : MonoBehaviour
         }
         else
         {
-            searchTimer--;
+            _searchTimer--;
         }
     }
 
@@ -314,7 +314,7 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetSearchTimer()
     {
-        searchTimer = searchCooldown;
+        _searchTimer = _searchCooldown;
     }
 
     private float OffSetToTarget()
@@ -331,7 +331,7 @@ public class UnitCombat : MonoBehaviour
     /// <param name="damageAmount"></param>
     public void TakeDamage(int damageAmount)
     {
-        healthCurrent -= (damageAmount);
+        _healthCurrent -= (damageAmount);
         HealthBarUpdate();
     }
     /// <summary>
@@ -341,14 +341,14 @@ public class UnitCombat : MonoBehaviour
     /// <param name="armorPierce"></param>
     public void TakeDamage(int dmg, int armorPierce)
     {
-        healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
+        _healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
         HealthBarUpdate();
     }
 
     private void HealthBarUpdate()
     {
-        healthBar.value = healthCurrent;
-        if(healthCurrent<= 0)
+        healthBar.value = _healthCurrent;
+        if(_healthCurrent<= 0)
         {
             Death();
         }
@@ -364,7 +364,7 @@ public class UnitCombat : MonoBehaviour
     private void Death()
     {
         _animator.SetTrigger("Die");
-        _isDead = true;
+        IsDead = true;
         _unitstats._isMoving = false;
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
