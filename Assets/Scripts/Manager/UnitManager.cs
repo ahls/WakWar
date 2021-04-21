@@ -37,6 +37,8 @@ public class UnitManager : MonoBehaviour
             SelectUnitControl();
             UnitMoveControl();
             SquadControl();
+            AttackModeChecker();
+            AttackOrder();
         }
     }
 
@@ -124,6 +126,7 @@ public class UnitManager : MonoBehaviour
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
                 selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation());
+                selectedUnit.GetComponent<UnitCombat>().AttackGround = false;
             }
         }
     }
@@ -175,10 +178,8 @@ public class UnitManager : MonoBehaviour
                 foreach (var currentUnit in _selectedUnitList)
                 {
                     UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
-                    currentUnitCombat.attackTarget = targetUnit.transform;
-                    currentUnit.GetComponent<UnitStats>().MoveToTarget(Vector3.MoveTowards(targetUnit.transform.position, 
-                                                                                           currentUnit.transform.position,
-                                                                                           currentUnitCombat.resultRange));
+                    currentUnitCombat.AttackTarget = targetUnit.transform;
+                    currentUnitCombat.MoveIntoRange();
                 }
             }
             else
@@ -186,6 +187,7 @@ public class UnitManager : MonoBehaviour
                 foreach (var currentUnit in _selectedUnitList)
                 {
                     currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc);
+                    currentUnit.GetComponent<UnitCombat>().AttackGround = true;
                     //대상찾는 스크립트 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
             }

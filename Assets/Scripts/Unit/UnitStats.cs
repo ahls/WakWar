@@ -10,7 +10,7 @@ public class UnitStats : MonoBehaviour
     //플레이어 소유주
     public bool Selectable { get; set; } = false;
     public Faction OwnedFaction { get; set; }
-
+    private UnitCombat _unitCombat;
     //이동속도
     public float MoveSpeed { get; set; } = 0.01f;
     
@@ -35,6 +35,7 @@ public class UnitStats : MonoBehaviour
     void Awake()
     {
         _animator = GetComponent<Animator>();
+        _unitCombat = GetComponent<UnitCombat>();
     }
 
     private void FixedUpdate()
@@ -61,8 +62,8 @@ public class UnitStats : MonoBehaviour
         _direction = (Vector2)(_targetPos - transform.position);
         _direction = _direction.normalized;
         var distance = Vector2.Distance(this.transform.position, _targetPos);
-
         _isMoving = true;
+        _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
 
         //애니메이션 부분
         _animator.SetBool("Move", true);

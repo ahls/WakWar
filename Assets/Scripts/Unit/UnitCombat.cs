@@ -50,10 +50,11 @@ public class UnitCombat : MonoBehaviour
     public int armorPiercing { get; set; }
 
     //타겟 관련
-    public Transform attackTarget;
+    public Transform AttackTarget;
     private int searchCooldown = 15;
     private int searchTimer;
     private static int searchAssign = 0;
+    public bool AttackGround = false;
 
 
     //방어력
@@ -108,16 +109,21 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        if (_unitstats._isMoving)
-        {
-            ActionStat = ActionStats.Move;
-        }
+        //if (_unitstats._isMoving)
+        //{
+        //    ActionStat = ActionStats.Move;
+        //}
+    }
+
+    private void FixedUpdate()
+    {
 
         switch (ActionStat)
         {
             case ActionStats.Idle:
                 {
-                    if (attackTarget != null)
+                    SearchShell();
+                    if (AttackTarget != null)
                     {
                         ActionStat = ActionStats.Attack;
                     }
@@ -125,6 +131,14 @@ public class UnitCombat : MonoBehaviour
                 }
             case ActionStats.Move:
                 {
+                    if(AttackGround)
+                    {
+                        SearchShell();
+                        if(AttackTarget!= null)
+                        {//대상을 찾은 경우
+                            MoveIntoRange();
+                        }
+                    }
                     if (!_unitstats._isMoving)
                     {
                         ActionStat = ActionStats.Idle;
@@ -133,7 +147,7 @@ public class UnitCombat : MonoBehaviour
                 }
             case ActionStats.Attack:
                 {
-                    if (attackTarget != null && attackTarget.gameObject.activeSelf)
+                    if (AttackTarget != null && AttackTarget.gameObject.activeSelf)
                     {
                         if (attackTimer > 0)
                         {
@@ -141,63 +155,24 @@ public class UnitCombat : MonoBehaviour
                         }
                         else
                         {
-                            if ((attackTarget.position - transform.position).magnitude <= resultRange)
+                            if ((AttackTarget.position - transform.position).magnitude <= resultRange)
                             {//적이 사정거리 내에 있을경우
                                 Attack();
                             }
                             else
                             {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
-
+                                MoveIntoRange();
                             }
 
                         }
                     }
                     else
                     {//타겟이 없거나 비활성화 되어있으면 바로 타겟 비우고 대기상태로 변환
-                        attackTarget = null;
+                        AttackTarget = null;
                         ActionStat = ActionStats.Idle;
                     }
                 }
-                break;
-
-            default:
-                {
-                    break;
-                }
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        switch (ActionStat)
-        {
-            case ActionStats.Idle:
-                {
-                    if (searchTimer <= 0)
-                    {
-                        ResetSearchTimer();//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
-
-                        if (!_unitstats._isMoving && attackTarget != null && OffSetToTarget() > resultRange)
-                        {//움직이고 있지 않으며, 현재 타겟이 사정거리 밖으로 나가면 대상 취소
-                            attackTarget = null;
-                        }
-
-                        if (attackTarget == null)
-                        {
-                            Search();
-                        }
-                    }
-                    else
-                    {
-                        searchTimer--;
-                    }
-
-                    break;
-                }
-            default:
-                {
-                    break;
-                }
+                break;                
         }
     }
 
@@ -268,7 +243,7 @@ public class UnitCombat : MonoBehaviour
     {
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, attackTarget.position, effectPrefab.name,attackTorque);
+        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,attackTorque);
 
     }
 
@@ -302,13 +277,39 @@ public class UnitCombat : MonoBehaviour
             {
                 if (selectedCombat.ownedFaction != ownedFaction)
                 {
-                    attackTarget = selectedCombat.transform;
+                    AttackTarget = selectedCombat.transform;
                     ActionStat = ActionStats.Attack;
                     return;
                 }
             }
         }
 
+    }
+
+    private void SearchShell()
+    {
+        if (searchTimer <= 0)
+        {
+            ResetSearchTimer();//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
+
+            //if (AttackTarget != null && !AttackTarget.gameObject.activeSelf)
+            //{//
+            //    AttackTarget = null;
+            //}
+            if (AttackTarget == null)
+            {
+                Search();
+            }
+        }
+        else
+        {
+            searchTimer--;
+        }
+    }
+
+    public void MoveIntoRange()
+    {
+        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, resultRange));
     }
 
     private void ResetSearchTimer()
@@ -318,7 +319,7 @@ public class UnitCombat : MonoBehaviour
 
     private float OffSetToTarget()
     {
-        return (attackTarget.position - transform.position).magnitude;
+        return (AttackTarget.position - transform.position).magnitude;
     }
 
     #endregion
