@@ -1347,10 +1347,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 8734485823546053197, guid: d76a9e4e6513620459dc12131df1c907,
     type: 3}
-  healthBar: {fileID: 3964886467147534754}
-  attackTarget: {fileID: 0}
-  ownedFaction: 0
-  targetFaction: 1
+  _healthBar: {fileID: 3964886467147534754}
+  AttackTarget: {fileID: 0}
+  AttackGround: 0
+  OwnedFaction: 1
+  TargetFaction: 0
   weaponType: 0
   _equippedImage: {fileID: 2989731452029694304}
 --- !u!114 &8252109871089551390

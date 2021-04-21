@@ -12,6 +12,7 @@ public class UnitManager : MonoBehaviour
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
+    [SerializeField] private Texture2D _attackCursor,_normalCursor;
     private Vector2 _startLocation;
     private short _selectedUnitCount = 0;       //유닛 선택이
     private bool _selectOneOnly = false;        //클릭인지
@@ -22,7 +23,7 @@ public class UnitManager : MonoBehaviour
     private void Start()
     {
         IngameManager.instance.SetUnitManager(this);
-
+        Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
         for (int i = 0; i < 10; i++)
         {
             _unitSquads.Add(new List<GameObject>());
@@ -121,6 +122,7 @@ public class UnitManager : MonoBehaviour
             if (_attackMode)
             {//공격모드상태에서 우클릭 누르면 취소됨
                 _attackMode = false;
+                Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
                 return;
             }
             foreach (GameObject selectedUnit in _selectedUnitList)
@@ -191,6 +193,7 @@ public class UnitManager : MonoBehaviour
                     //대상찾는 스크립트 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
             }
+            Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
         }
     }
     private void AttackModeChecker()
@@ -198,6 +201,7 @@ public class UnitManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _attackMode = true;
+            Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.ForceSoftware);
         }
     }
 

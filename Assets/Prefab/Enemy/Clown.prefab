@@ -1554,10 +1554,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectPrefab: {fileID: 8734485823546053197, guid: d76a9e4e6513620459dc12131df1c907,
     type: 3}
-  healthBar: {fileID: 408419183171366038}
-  attackTarget: {fileID: 0}
-  ownedFaction: 1
-  targetFaction: 0
+  _healthBar: {fileID: 408419183171366038}
+  AttackTarget: {fileID: 0}
+  AttackGround: 0
+  OwnedFaction: 1
+  TargetFaction: 0
   weaponType: 0
   _equippedImage: {fileID: 0}
 --- !u!114 &4882216306343817342
@@ -1573,9 +1574,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigid: {fileID: 7770443256608772299}
-  selectionCircle: {fileID: 0}
-  PlayerNameText: {fileID: 0}
-  DoNotRotate: {fileID: 9152116159101713270}
+  _selectionCircle: {fileID: 0}
+  _playerNameText: {fileID: 0}
+  _doNotRotate: {fileID: 0}
   _isMoving: 0
 --- !u!114 &8371356473361272695
 MonoBehaviour:
