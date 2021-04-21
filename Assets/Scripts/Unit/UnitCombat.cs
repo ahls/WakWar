@@ -155,7 +155,7 @@ public class UnitCombat : MonoBehaviour
                         }
                         else
                         {
-                            if ((AttackTarget.position - transform.position).magnitude <= TotalRange)
+                            if (OffSetToTargetBound() <= TotalRange)
                             {//적이 사정거리 내에 있을경우
                                 Attack();
                             }
@@ -204,6 +204,7 @@ public class UnitCombat : MonoBehaviour
         {
             _animator.SetTrigger("Regular");
         }
+        UpdateStats();
     }
 
     public void UnEquipWeapon()
@@ -249,6 +250,7 @@ public class UnitCombat : MonoBehaviour
 
     public void Attack()
     {
+        Debug.Log("공격 스크립트 불려옴" + gameObject.name);
         UpdatePlaybackSpeed();
         _animator.SetTrigger("Attack");        
         ResetAttackTimer();
@@ -317,9 +319,10 @@ public class UnitCombat : MonoBehaviour
         _searchTimer = _searchCooldown;
     }
 
-    private float OffSetToTarget()
+    private float OffSetToTargetBound()
     {
-        return (AttackTarget.position - transform.position).magnitude;
+        Vector2 targetBoundLoc = AttackTarget.GetComponent<Collider2D>().ClosestPoint(transform.position);
+        return (targetBoundLoc - (Vector2)transform.position).magnitude;
     }
 
     #endregion

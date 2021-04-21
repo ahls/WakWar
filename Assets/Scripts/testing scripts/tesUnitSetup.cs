@@ -16,7 +16,7 @@ public class tesUnitSetup : MonoBehaviour
         if(CanControl)
         GetComponent<UnitStats>().PlayerUnitInit("Dango");
          UC = GetComponent<UnitCombat>();
-        UC.BaseAS = 3;
+        UC.BaseAS = 0;
         UC.BaseArmor = 0;
         UC.HealthMax = hp;
         UC.AttackTorque = torque;

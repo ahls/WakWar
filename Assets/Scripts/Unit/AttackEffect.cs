@@ -35,8 +35,10 @@ public class AttackEffect : MonoBehaviour
         _aoe = attacker.TotalAOE;
         _AP = _attackerInfo.TotalAP;
         _destination = destination;
-        _projectileImage.sprite = attacker.AttackImage;
-
+        if (attacker.AttackImage != null)
+        {
+            _projectileImage.sprite = attacker.AttackImage;
+        }
         Vector2 offsetToTarget = destination - transform.position;
         _rigidBody.velocity = offsetToTarget.normalized * attacker.ProjectileSpeed;
         _rigidBody.AddTorque(torque);

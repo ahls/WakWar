@@ -194,6 +194,7 @@ public class UnitManager : MonoBehaviour
                 }
             }
             Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
+            _attackMode = false;
         }
     }
     private void AttackModeChecker()
