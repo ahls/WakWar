@@ -127,7 +127,7 @@ public class UnitManager : MonoBehaviour
             }
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
-                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation());
+                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation(),true);
                 selectedUnit.GetComponent<UnitCombat>().AttackGround = false;
             }
         }
@@ -188,7 +188,7 @@ public class UnitManager : MonoBehaviour
             {//범위내 없을경우 어택땅
                 foreach (var currentUnit in _selectedUnitList)
                 {
-                    currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc);
+                    currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc,true);
                     currentUnit.GetComponent<UnitCombat>().AttackGround = true;
                     //대상찾는 스크립트 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
@@ -198,7 +198,7 @@ public class UnitManager : MonoBehaviour
     }
     private void AttackModeChecker()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && _selectedUnitList.Count>0)
         {
             _attackMode = true;
             Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.ForceSoftware);

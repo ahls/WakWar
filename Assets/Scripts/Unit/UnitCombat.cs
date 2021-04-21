@@ -309,7 +309,7 @@ public class UnitCombat : MonoBehaviour
 
     public void MoveIntoRange()
     {
-        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, TotalRange));
+        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, TotalRange),false);
     }
 
     private void ResetSearchTimer()
