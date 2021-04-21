@@ -42,7 +42,7 @@ public class UnitManager : MonoBehaviour
 
     private void SelectUnitControl()
     {
-        if(_attackMode)
+        if (_attackMode)
         {//공격모드 활서오하 되있으면 무시
             return;
         }
@@ -116,7 +116,7 @@ public class UnitManager : MonoBehaviour
     {
         if (_rightClicked)
         {
-            if(_attackMode)
+            if (_attackMode)
             {//공격모드상태에서 우클릭 누르면 취소됨
                 _attackMode = false;
                 return;
@@ -131,9 +131,9 @@ public class UnitManager : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            if(Input.GetKeyDown((KeyCode)i+48))
+            if (Input.GetKeyDown((KeyCode)i + 48))
             {
-                if(Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKey(KeyCode.LeftControl))
                 {//부대 지정
                     _unitSquads[i] = _selectedUnitList.ToList();
                     return;
@@ -156,10 +156,10 @@ public class UnitManager : MonoBehaviour
                     }
                 }
                 return;
-                
+
             }
         }
-        
+
     }
 
 
@@ -167,21 +167,33 @@ public class UnitManager : MonoBehaviour
     {
         if (_leftClicked && _attackMode)
         {
-            if (_selectedUnitList.Count == 0)   return; // 현재 선택된 유닛 없으면 리턴
-            Collider2D unitsInRange = Physics2D.OverlapCircle(CursorLocation(), 0.05f);
-            if(unitsInRange != null)
+            if (_selectedUnitList.Count == 0) return; // 현재 선택된 유닛 없으면 리턴
+            Vector2 cursorLoc = CursorLocation();
+            Collider2D targetUnit = Physics2D.OverlapCircle(cursorLoc, 0.05f);
+            if (targetUnit != null)
             {//범위에내 유닛이 있을경우 점사
-                
+                foreach (var currentUnit in _selectedUnitList)
+                {
+                    UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
+                    currentUnitCombat.attackTarget = targetUnit.transform;
+                    currentUnit.GetComponent<UnitStats>().MoveToTarget(Vector3.MoveTowards(targetUnit.transform.position, 
+                                                                                           currentUnit.transform.position,
+                                                                                           currentUnitCombat.resultRange));
+                }
             }
             else
             {//범위내 없을경우 어택땅
-
+                foreach (var currentUnit in _selectedUnitList)
+                {
+                    currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc);
+                    //대상찾는 스크립트 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                }
             }
         }
     }
     private void AttackModeChecker()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             _attackMode = true;
         }

@@ -55,9 +55,9 @@ public class UnitStats : MonoBehaviour
         GetComponent<UnitCombat>().ownedFaction = OwnedFaction;
     }
 
-    public void MoveToTarget(Vector3 target)
+    public void MoveToTarget(Vector2 target)
     {
-        _targetPos = (Vector2)target;
+        _targetPos = target;
         _direction = (Vector2)(_targetPos - transform.position);
         _direction = _direction.normalized;
         var distance = Vector2.Distance(this.transform.position, _targetPos);
