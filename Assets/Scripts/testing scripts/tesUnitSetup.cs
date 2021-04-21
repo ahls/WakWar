@@ -15,16 +15,16 @@ public class tesUnitSetup : MonoBehaviour
         if(CanControl)
         GetComponent<UnitStats>().PlayerUnitInit("Dango");
         UnitCombat UC = GetComponent<UnitCombat>();
-        UC.resultDamage = dmg;
-        UC.resultRange = range;
-        UC.resultAP = AP;
-        UC.resultAOE = AOE;
-        UC.projectileSpeed = projSpeed;
+        UC.TotalDamage = dmg;
+        UC.TotalRange = range;
+        UC.TotalAP = AP;
+        UC.TotalAOE = AOE;
+        UC.ProjectileSpeed = projSpeed;
         UC.BaseAS = 3;
         UC.BaseArmor = 0;
-        UC.attackImage = image;
+        UC.AttackImage = image;
         UC.HealthMax = hp;
-        UC.attackTorque = torque;
+        UC.AttackTorque = torque;
         GetComponent<UnitStats>().MoveSpeed = ms;
     }
     void Start()

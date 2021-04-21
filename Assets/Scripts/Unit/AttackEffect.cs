@@ -30,21 +30,21 @@ public class AttackEffect : MonoBehaviour
 
         _attackerInfo = attacker;
 
-        _damage = _attackerInfo.resultDamage;
+        _damage = _attackerInfo.TotalDamage;
         _targetFaction = _attackerInfo.TargetFaction;
-        _aoe = attacker.resultAOE;
-        _AP = _attackerInfo.resultAP;
+        _aoe = attacker.TotalAOE;
+        _AP = _attackerInfo.TotalAP;
         _destination = destination;
-        _projectileImage.sprite = attacker.attackImage;
+        _projectileImage.sprite = attacker.AttackImage;
 
         Vector2 offsetToTarget = destination - transform.position;
-        _rigidBody.velocity = offsetToTarget.normalized * attacker.projectileSpeed;
+        _rigidBody.velocity = offsetToTarget.normalized * attacker.ProjectileSpeed;
         _rigidBody.AddTorque(torque);
 
         // 거리 / 투사체 속도 = 목표까지 걸리는 시간
         // 목표까지 걸리는 시간 * 50(초당 프레임) = 목표까지 도달하는데 걸리는 fixedUpdate 프레임 수 
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
-        _lifeTime = (int)(50 * offsetToTarget.magnitude / attacker.projectileSpeed);
+        _lifeTime = (int)(50 * offsetToTarget.magnitude / attacker.ProjectileSpeed);
     }
 
     private void FixedUpdate()

@@ -40,7 +40,7 @@ public class UnitCombat : MonoBehaviour
     public int HealthMax { get; set; } = 10;
     public bool IsDead { get; set; } = false;
     private int _healthCurrent;
-    [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider _healthBar;
 
     //공격관련
     public int BaseDamage { get; set; }
@@ -53,7 +53,7 @@ public class UnitCombat : MonoBehaviour
     public Transform AttackTarget;
     private int _searchCooldown = 15;
     private int _searchTimer;
-    private static int searchAssign = 0;
+    private static int _searchAssign = 0;
     public bool AttackGround = false;
 
 
@@ -65,23 +65,23 @@ public class UnitCombat : MonoBehaviour
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
     public WeaponType weaponType;
-    private int weaponIndex;
+    private int _weaponIndex;
     private GameObject _effect;
-    public Sprite attackImage { get; set; }
-    public float attackTorque { get; set; } = 0;
+    public Sprite AttackImage { get; set; }
+    public float AttackTorque { get; set; } = 0;
     private UnitStats _unitstats;
     [SerializeField] private SpriteRenderer _equippedImage;
     private Animator _animator;
     //장비 장착후 스탯
-    public int resultDamage { get; set; }
-    public float resultRange { get; set; }
-    public float resultAOE { get; set; }
-    public int resultAP { get; set; }
-    public float projectileSpeed { get; set; }
+    public int TotalDamage { get; set; }
+    public float TotalRange { get; set; }
+    public float TotalAOE { get; set; }
+    public int TotalAP { get; set; }
+    public float ProjectileSpeed { get; set; }
 
-    private float resultSpeed= 2;
-    private float attackTimer = 0; // 0일때 공격 가능
-    private int resultArmor;
+    private float _totalAS= 2;
+    private float _attackTimer = 0; // 0일때 공격 가능
+    private int _totalArmor;
 
     
     public void playerSetup(WeaponType inputWeaponType)
@@ -97,11 +97,11 @@ public class UnitCombat : MonoBehaviour
     {
         _unitstats = GetComponent<UnitStats>();
         _healthCurrent = HealthMax;
-        healthBar.maxValue = HealthMax;
+        _healthBar.maxValue = HealthMax;
         HealthBarUpdate();
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
-        _searchTimer = searchAssign++ % _searchCooldown;
-        searchAssign %= _searchCooldown;
+        _searchTimer = _searchAssign++ % _searchCooldown;
+        _searchAssign %= _searchCooldown;
 
         ActionStat = ActionStats.Idle;
         _animator = GetComponent<Animator>();
@@ -149,13 +149,13 @@ public class UnitCombat : MonoBehaviour
                 {
                     if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
                     {
-                        if (attackTimer > 0)
+                        if (_attackTimer > 0)
                         {
-                            attackTimer -= Time.deltaTime;
+                            _attackTimer -= Time.deltaTime;
                         }
                         else
                         {
-                            if ((AttackTarget.position - transform.position).magnitude <= resultRange)
+                            if ((AttackTarget.position - transform.position).magnitude <= TotalRange)
                             {//적이 사정거리 내에 있을경우
                                 Attack();
                             }
@@ -180,8 +180,8 @@ public class UnitCombat : MonoBehaviour
 
     public void EquipWeapon(int weaponID)
     {       
-        weaponIndex = weaponID;
-        _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[weaponIndex].equipImage);
+        _weaponIndex = weaponID;
+        _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
         
         //장비 이미지 바꾸는 코드
         if (100200 <= weaponID && weaponID <= 100203)
@@ -217,23 +217,23 @@ public class UnitCombat : MonoBehaviour
         {
             case WeaponType.Warrior:
             case WeaponType.Wak:
-                weaponIndex = 10;
+                _weaponIndex = 10;
                 break;
             case WeaponType.Shooter:
-                weaponIndex = 20;
+                _weaponIndex = 20;
                 break;
             case WeaponType.Supporter:
-                weaponIndex = 30;
+                _weaponIndex = 30;
                 break;
         }
     }
     public void UpdateStats()
     {
-        resultDamage = BaseDamage + Weapons.DB[weaponIndex].damage;
-        resultAOE = BaseAOE + Weapons.DB[weaponIndex].AttackArea;
-        resultRange = BaseRange + Weapons.DB[weaponIndex].AttackRange;
-        resultSpeed = BaseAS+ Weapons.DB[weaponIndex].AttackSpeed;
-        resultArmor = BaseArmor + Weapons.DB[weaponIndex].Armor;
+        TotalDamage = BaseDamage + Weapons.DB[_weaponIndex].damage;
+        TotalAOE = BaseAOE + Weapons.DB[_weaponIndex].AttackArea;
+        TotalRange = BaseRange + Weapons.DB[_weaponIndex].AttackRange;
+        _totalAS = BaseAS+ Weapons.DB[_weaponIndex].AttackSpeed;
+        _totalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
         
     }
     #endregion
@@ -243,7 +243,7 @@ public class UnitCombat : MonoBehaviour
     {
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,attackTorque);
+        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,AttackTorque);
 
     }
 
@@ -256,12 +256,12 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetAttackTimer()
     {
-        attackTimer = 1 / resultSpeed;
+        _attackTimer = 1 / _totalAS;
     }
 
     public void UpdatePlaybackSpeed()
     {
-        _animator.speed = Mathf.Max(resultSpeed, 1f);
+        _animator.speed = Mathf.Max(_totalAS, 1f);
     }
     #endregion
 
@@ -269,7 +269,7 @@ public class UnitCombat : MonoBehaviour
 
     private void Search()
     {
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, resultRange);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange);
         foreach (Collider2D selected in inRange)
         {
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
@@ -309,7 +309,7 @@ public class UnitCombat : MonoBehaviour
 
     public void MoveIntoRange()
     {
-        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, resultRange));
+        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, TotalRange));
     }
 
     private void ResetSearchTimer()
@@ -341,13 +341,13 @@ public class UnitCombat : MonoBehaviour
     /// <param name="armorPierce"></param>
     public void TakeDamage(int dmg, int armorPierce)
     {
-        _healthCurrent -= (dmg - Mathf.Clamp(resultArmor - armorPierce, 0, 999));
+        _healthCurrent -= (dmg - Mathf.Clamp(_totalArmor - armorPierce, 0, 999));
         HealthBarUpdate();
     }
 
     private void HealthBarUpdate()
     {
-        healthBar.value = _healthCurrent;
+        _healthBar.value = _healthCurrent;
         if(_healthCurrent<= 0)
         {
             Death();
@@ -357,7 +357,7 @@ public class UnitCombat : MonoBehaviour
 
     private void HealthBarColor(Color newColor)
     {
-       healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
+       _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
 
     }
 
