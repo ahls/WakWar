@@ -56,7 +56,7 @@ public class UnitStats : MonoBehaviour
         GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
     }
 
-    public void MoveToTarget(Vector2 target,bool ordered)
+    public void MoveToTarget(Vector2 target,bool removeCurrentTarget = true)
     {
         _targetPos = target;
         _direction = (Vector2)(_targetPos - transform.position);
@@ -64,7 +64,7 @@ public class UnitStats : MonoBehaviour
         var distance = Vector2.Distance(this.transform.position, _targetPos);
         _isMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
-        if(ordered)
+        if(removeCurrentTarget)
         {
             _unitCombat.AttackTarget = null;
         }
