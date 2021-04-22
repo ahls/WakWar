@@ -80,10 +80,10 @@ public class AttackEffect : MonoBehaviour
             UnitCombat targetCombat = target.GetComponent<UnitCombat>();
             if (targetCombat != null)
             {
-                Debug.Log("Damage Taking");
                 if (_targetFaction == targetCombat.OwnedFaction || _targetFaction == Faction.Both)
                 {
-                    Debug.Log("Take damage being called");
+                    //Debug.Log(_attackerInfo.gameObject.name + " dealt damage to " + targetCombat.gameObject.name + _damage);
+
                     targetCombat.TakeDamage(_damage, _AP);
                 }
             }

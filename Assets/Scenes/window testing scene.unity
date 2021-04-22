@@ -7605,7 +7605,7 @@ MonoBehaviour:
   ms: 0.01
   AS: 1
   hp: 15
-  dmg: 3
+  dmg: 5
   AP: 0
   weaponID: 0
   torque: 0
@@ -8066,12 +8066,12 @@ PrefabInstance:
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.282
       objectReference: {fileID: 0}
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.174
       objectReference: {fileID: 0}
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
@@ -8117,6 +8117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LinearDrag
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7770443256608772299, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8221494682217568640, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}

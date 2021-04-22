@@ -127,7 +127,6 @@ public class UnitCombat : MonoBehaviour
                     {
                         if (AttackTarget != null)
                         {
-                            Debug.Log(TotalRange +" for " +gameObject.name);
                             if (OffSetToTargetBound() <= TotalRange)
                             {//적이 사정거리 내에 들어온경우 공격
                                 _unitstats._isMoving = false;
@@ -279,7 +278,6 @@ public class UnitCombat : MonoBehaviour
     #region 공격관련
     public void Fire()
     {
-        Debug.Log("Attack Fired by " + gameObject.name);
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
@@ -293,7 +291,7 @@ public class UnitCombat : MonoBehaviour
 
         UpdatePlaybackSpeed();
         _animator.SetTrigger("Attack");
-        _unitstats.RotateDirection(transform.position.x - AttackTarget.transform.position.x < 0);
+        _unitstats.RotateDirection( AttackTarget.transform.position.x - transform.position.x > 0);
     }
 
     private void ResetAttackTimer()
