@@ -24,7 +24,6 @@ public class tesUnitSetup : MonoBehaviour
         UC.BaseRange = range;
         UC.BaseAS = AS;
         UC.BaseDamage = dmg;
-        Debug.Log(gameObject.name + "'s range has been set");
         GetComponent<UnitStats>().MoveSpeed = ms;
         UC.UpdateStats();
     }

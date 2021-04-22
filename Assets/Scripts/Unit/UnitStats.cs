@@ -28,7 +28,7 @@ public class UnitStats : MonoBehaviour
     //private IEnumerator _moveCoroutine;
     public bool _isMoving = false;
     private int _stuckCounter = 0;
-    private const float STUCK_DISPLACEMENT = 0.005f; 
+    private const float STUCK_DISPLACEMENT = 0.0001f; 
     private Vector2 _lastPosition;
     #endregion
 
