@@ -16,7 +16,7 @@ public class UnitCombat : MonoBehaviour
 
     #region 변수
 
-    private ActionStats _actionStat;
+    public ActionStats _actionStat;
 
     public ActionStats ActionStat
     {
@@ -26,8 +26,8 @@ public class UnitCombat : MonoBehaviour
         }
         set
         {
-            ResetAttackTimer();
-            ResetSearchTimer();
+            //ResetAttackTimer();
+            //ResetSearchTimer();
 
             _actionStat = value;
         }
@@ -65,7 +65,7 @@ public class UnitCombat : MonoBehaviour
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
     public WeaponType weaponType;
-    private int _weaponIndex;
+    private int _weaponIndex = 0;
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
     public float AttackTorque { get; set; } = 0;
@@ -99,6 +99,7 @@ public class UnitCombat : MonoBehaviour
         _healthCurrent = HealthMax;
         _healthBar.maxValue = HealthMax;
         HealthBarUpdate();
+
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
         _searchTimer = _searchAssign++ % _searchCooldown;
         _searchAssign %= _searchCooldown;
@@ -117,62 +118,85 @@ public class UnitCombat : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        switch (ActionStat)
+        if (!IsDead)
         {
-            case ActionStats.Idle:
-                {
-                    SearchShell();
-                    if (AttackTarget != null)
+            switch (ActionStat)
+            {
+
+                case ActionStats.Move:
                     {
-                        ActionStat = ActionStats.Attack;
-                    }
-                    break;
-                }
-            case ActionStats.Move:
-                {
-                    if(AttackGround)
-                    {
-                        SearchShell();
-                        if(AttackTarget!= null)
-                        {//대상을 찾은 경우
-                            MoveIntoRange();
-                        }
-                    }
-                    if (!_unitstats._isMoving)
-                    {
-                        ActionStat = ActionStats.Idle;
-                    }
-                    break;
-                }
-            case ActionStats.Attack:
-                {
-                    if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
-                    {
-                        if (_attackTimer > 0)
+                        if (AttackTarget != null)
                         {
-                            _attackTimer -= Time.deltaTime;
+                            Debug.Log(TotalRange +" for " +gameObject.name);
+                            if (OffSetToTargetBound() <= TotalRange)
+                            {//적이 사정거리 내에 들어온경우 공격
+                                _unitstats._isMoving = false;
+                                ActionStat = ActionStats.Attack;
+                            }
+                            else
+                            {
+                                MoveIntoRange();
+                            }
                         }
                         else
                         {
-                            if (OffSetToTargetBound() <= TotalRange)
-                            {//적이 사정거리 내에 있을경우
-                                Attack();
+                            if (AttackGround)
+                            {
+                                SearchShell();
+                                if (AttackTarget != null)
+                                {//대상을 찾은 경우
+                                    MoveIntoRange();
+                                }
                             }
-                            else
-                            {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
-                                MoveIntoRange();
+                            if (!_unitstats._isMoving)
+                            {
+                                ActionStat = ActionStats.Idle;
                             }
-
                         }
+                        break;
                     }
-                    else
-                    {//타겟이 없거나 비활성화 되어있으면 바로 타겟 비우고 대기상태로 변환
-                        AttackTarget = null;
-                        ActionStat = ActionStats.Idle;
+
+                case ActionStats.Idle:
+                    {
+                        if (AttackTarget != null)
+                        {
+                            ActionStat = ActionStats.Attack;
+                        }
+                        else
+                        {
+                            SearchShell();
+                        }
+
+                        break;
+                    }
+                default: break;
+            }
+            _attackTimer -= Time.deltaTime;
+            if (ActionStat == ActionStats.Attack)
+            {
+                if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
+                {
+                    if (_attackTimer <= 0)
+                    {
+                        if (OffSetToTargetBound() <= TotalRange)
+                        {//적이 사정거리 내에 있을경우
+                            _animator.SetBool("Move", false);
+                            _unitstats._isMoving = false;
+                            Attack();
+                        }
+                        else
+                        {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
+                            MoveIntoRange();
+                        }
+
                     }
                 }
-                break;                
+                else
+                {//타겟이 없거나 비활성화 되어있으면 바로 타겟 비우고 대기상태로 변환
+                    AttackTarget = null;
+                    ActionStat = ActionStats.Idle;
+                }
+            }
         }
     }
 
@@ -230,18 +254,33 @@ public class UnitCombat : MonoBehaviour
     }
     public void UpdateStats()
     {
-        TotalDamage = BaseDamage + Weapons.DB[_weaponIndex].damage;
-        TotalAOE = BaseAOE + Weapons.DB[_weaponIndex].AttackArea;
-        TotalRange = BaseRange + Weapons.DB[_weaponIndex].AttackRange;
-        _totalAS = BaseAS+ Weapons.DB[_weaponIndex].AttackSpeed;
-        _totalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
-        
+        if (_weaponIndex == 0)
+        {
+            TotalDamage = BaseDamage;
+            TotalAOE = BaseAOE;
+            TotalRange = BaseRange;
+            _totalAS = BaseAS;
+            _totalArmor = BaseArmor;
+            ProjectileSpeed = 1;
+
+        }
+        else
+        {
+            TotalDamage = BaseDamage + Weapons.DB[_weaponIndex].damage;
+            TotalAOE = BaseAOE + Weapons.DB[_weaponIndex].AttackArea;
+            TotalRange = BaseRange + Weapons.DB[_weaponIndex].AttackRange;
+            _totalAS = BaseAS + Weapons.DB[_weaponIndex].AttackSpeed;
+            _totalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
+            ProjectileSpeed = Weapons.DB[_weaponIndex].projSpeed;
+        }
     }
     #endregion
 
     #region 공격관련
     public void Fire()
     {
+        Debug.Log("Attack Fired by " + gameObject.name);
+        if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
         _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,AttackTorque);
@@ -250,10 +289,11 @@ public class UnitCombat : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("공격 스크립트 불려옴" + gameObject.name);
-        UpdatePlaybackSpeed();
-        _animator.SetTrigger("Attack");        
         ResetAttackTimer();
+
+        UpdatePlaybackSpeed();
+        _animator.SetTrigger("Attack");
+        _unitstats.RotateDirection(transform.position.x - AttackTarget.transform.position.x < 0);
     }
 
     private void ResetAttackTimer()
@@ -271,7 +311,7 @@ public class UnitCombat : MonoBehaviour
 
     private void Search()
     {
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + 0.3f);
         foreach (Collider2D selected in inRange)
         {
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
@@ -368,6 +408,7 @@ public class UnitCombat : MonoBehaviour
     {
         _animator.SetTrigger("Die");
         IsDead = true;
+        GetComponent<Rigidbody2D>().simulated = false;
         _unitstats._isMoving = false;
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;

@@ -54,15 +54,6 @@ public class UnitManager : MonoBehaviour
             _startLocation = CursorLocation();
             _selectionBox.SetActive(true);
             _selectionBox.transform.position = _startLocation;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            _selectionBox.transform.localScale = CursorLocation() - _startLocation;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
             //쉬프트 안누르고 있으면 선택 해제 안함
             if (!Input.GetKey(KeyCode.LeftShift))
             {
@@ -74,6 +65,15 @@ public class UnitManager : MonoBehaviour
                 _selectedUnitList.Clear();
             }
 
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            _selectionBox.transform.localScale = CursorLocation() - _startLocation;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
             _selectionBox.SetActive(false);
             Vector2 endLocation = CursorLocation();
 

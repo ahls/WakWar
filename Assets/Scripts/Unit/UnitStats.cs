@@ -18,7 +18,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigid;
     [SerializeField] private GameObject _selectionCircle;
     [SerializeField] private Text _playerNameText;
-    [SerializeField] private Transform _doNotRotate;
+    [SerializeField] private Transform _rotatingPart;
     private Animator _animator;
     
     private Vector3 _targetPos;
@@ -72,8 +72,7 @@ public class UnitStats : MonoBehaviour
         //애니메이션 부분
         _animator.SetBool("Move", true);
         _animator.speed = MoveSpeed * 100f;
-        transform.rotation = _direction.x < 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
-        _doNotRotate.localEulerAngles=_direction.x < 0 ? new Vector3(0, 180, 0) : new Vector3(0, 0, 0);
+        RotateDirection(_direction.x > 0);
     }
 
     private void Move()
@@ -110,13 +109,14 @@ public class UnitStats : MonoBehaviour
 
     private void StuckCheck()
     {
-        if ((_lastPosition - (Vector2)transform.position).magnitude < STUCK_DISPLACEMENT)
+        if ((_lastPosition - (Vector2)transform.position).magnitude < STUCK_DISPLACEMENT && _unitCombat.ActionStat == UnitCombat.ActionStats.Move)
         {
             if (_stuckCounter == 10)
             {//안움직인지 10/50 초 가 지나면
                 _stuckCounter = 0;
                 _animator.SetBool("Move", false);   
                 _isMoving = false;
+                _unitCombat.ActionStat = UnitCombat.ActionStats.Idle;
             }
             else
             {
@@ -128,5 +128,11 @@ public class UnitStats : MonoBehaviour
             _stuckCounter = 0;
         }
         _lastPosition = transform.position;
+    }
+    public void RotateDirection(bool facingRight)
+    {
+        Debug.Log("rotating is being called" + facingRight+ " for " + gameObject.name);
+        float currentZ = _rotatingPart.localEulerAngles.z;
+        _rotatingPart.localEulerAngles = facingRight ? new Vector3(0, 180, currentZ) : new Vector3(0, 0, currentZ);
     }
 }
