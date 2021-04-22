@@ -134,5 +134,9 @@ public class UnitStats : MonoBehaviour
         //Debug.Log("rotating is being called" + facingRight+ " for " + gameObject.name);
         float currentZ = _rotatingPart.localEulerAngles.z;
         _rotatingPart.localEulerAngles = facingRight ? new Vector3(0, 180, currentZ) : new Vector3(0, 0, currentZ);
+        if(gameObject.name == "Clown")
+        {
+            Debug.Log(_rotatingPart.localEulerAngles);
+        }
     }
 }

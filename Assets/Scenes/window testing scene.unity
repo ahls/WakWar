@@ -2859,7 +2859,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: -5
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -3533,6 +3533,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 811698991}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &828755682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8141039710118617438, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 936394085}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &841696665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,6 +3935,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4882216306343817342, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
+        type: 3}
+      propertyPath: _rotatingPart
+      value: 
+      objectReference: {fileID: 828755682}
     - target: {fileID: 8221494682217568640, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
       propertyPath: m_Name
