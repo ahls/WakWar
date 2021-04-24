@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class XMLLoader : MonoBehaviour
+public class XMLLoader
 {
     public const string WEAPON_PATH = "weapons";
     public const string ITEM_PATH = "items";
@@ -10,7 +10,8 @@ public class XMLLoader : MonoBehaviour
     public const string DIALOG_PATH = "dialog_xml";
     public const string PROGRESS_PATH = "progress_xml";
     // Start is called before the first frame update
-    void Awake()
+
+    public XMLLoader()
     {
         WeaponContainer.Load(WEAPON_PATH);
         ItemContainer.Load(ITEM_PATH);

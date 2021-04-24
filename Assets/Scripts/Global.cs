@@ -16,12 +16,14 @@ public class Global : MonoBehaviour
         }
     }
 
+    public static XMLLoader XMLLoader => _xmlLoader;
     public static ResourceManager ResourceManager => _resourceManager;
     public static ObjectPoolManager ObjectPoolManager => _objectPoolManager;
     public static UIManager UIManager => _uiManager;
     public static UIPopupManager UIPopupManager => _uiPopupManager;
 
     private static Global _instance;
+    private static XMLLoader _xmlLoader;
     private static ResourceManager _resourceManager;
     private static ObjectPoolManager _objectPoolManager;
     private static UIManager _uiManager;
@@ -42,6 +44,7 @@ public class Global : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        _xmlLoader = new XMLLoader();
         _resourceManager = new ResourceManager();
         _objectPoolManager = new ObjectPoolManager(_disableObject, _disableCanvas);
     }
