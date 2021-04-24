@@ -131,12 +131,15 @@ public class UnitStats : MonoBehaviour
     }
     public void RotateDirection(bool facingRight)
     {
-        //Debug.Log("rotating is being called" + facingRight+ " for " + gameObject.name);
-        float currentZ = _rotatingPart.localEulerAngles.z;
-        _rotatingPart.localEulerAngles = facingRight ? new Vector3(0, 180, currentZ) : new Vector3(0, 0, currentZ);
-        if(gameObject.name == "Clown")
+        var originalScale = _rotatingPart.localScale;
+
+        float yScale = Mathf.Abs(originalScale.y); 
+
+        if (facingRight)
         {
-            Debug.Log(_rotatingPart.localEulerAngles);
+            yScale *= -1;
         }
+
+        _rotatingPart.localScale = new Vector3(1, yScale, 1);
     }
 }
