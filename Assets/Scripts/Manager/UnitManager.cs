@@ -125,6 +125,24 @@ public class UnitManager : MonoBehaviour
                 Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
                 return;
             }
+
+            int layerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+            var hitEnemy = Physics2D.Raycast(CursorLocation(), transform.forward, float.MaxValue, layerMask);
+            if (hitEnemy && _selectedUnitList.Count > 0)
+            {
+                Debug.Log(hitEnemy.transform.name);
+
+                foreach (var currentUnit in _selectedUnitList)
+                {
+                    UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
+                    currentUnitCombat.AttackTarget = hitEnemy.transform;
+                    currentUnitCombat.MoveIntoRange();
+                }
+
+                return;
+            }
+
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
                 selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation(),true);
@@ -199,7 +217,7 @@ public class UnitManager : MonoBehaviour
     }
     private void AttackModeChecker()
     {
-        if (Input.GetKeyDown(KeyCode.A) && _selectedUnitList.Count>0)
+        if (Input.GetKeyDown(KeyCode.A) && _selectedUnitList.Count > 0)
         {
             _attackMode = true;
             Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.ForceSoftware);
