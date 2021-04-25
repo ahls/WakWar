@@ -291,7 +291,7 @@ public class UnitCombat : MonoBehaviour
 
         UpdatePlaybackSpeed();
         _animator.SetTrigger("Attack");
-        _unitstats.RotateDirection( AttackTarget.transform.position.x - transform.position.x > 0);
+        _unitstats.RotateDirection( AttackTarget.transform.position.x - transform.position.x);
     }
 
     private void ResetAttackTimer()

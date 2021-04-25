@@ -1253,6 +1253,9 @@ GameObject:
   - component: {fileID: 3565577381062980783}
   - component: {fileID: 3994128196793667038}
   - component: {fileID: 8540832228534089311}
+  - component: {fileID: 8813445204598802514}
+  - component: {fileID: 198015398689248426}
+  - component: {fileID: 7117980849781753040}
   m_Layer: 0
   m_Name: Panzee
   m_TagString: Untagged
@@ -1314,6 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionStat: 0
   effectPrefab: {fileID: 8734485823546053197, guid: d76a9e4e6513620459dc12131df1c907,
     type: 3}
   _healthBar: {fileID: 3964886467147534754}
@@ -1335,11 +1339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigid: {fileID: 3565577381062980783}
   _selectionCircle: {fileID: 3964886468405007638}
   _playerNameText: {fileID: 3964886468389457795}
-  _rotatingPart: {fileID: 8363145969454056403}
   _isMoving: 0
+  _rotatingPart: {fileID: 8363145969454056403}
 --- !u!50 &3565577381062980783
 Rigidbody2D:
   serializedVersion: 4
@@ -1353,7 +1356,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 50
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1397,6 +1400,86 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.03}
   m_Size: {x: 0.4, y: 0.2}
   m_Direction: 1
+--- !u!114 &8813445204598802514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &198015398689248426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radius: 0.2
+  height: 1
+  repathRate: 0.5
+  canSearch: 1
+  canMove: 1
+  maxSpeed: 0.5
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  orientation: 1
+  enableRotation: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.3
+  pickNextWaypointDist: 0.3
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
+--- !u!114 &7117980849781753040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3cf4ada2655cd4cb7dfbc78b06b052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 1133210836170616081
+  updateError: 0.2
+  checkTime: 0.2
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0
