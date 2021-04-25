@@ -59,8 +59,7 @@ public class UnitStats : MonoBehaviour
             if (_aiPath.reachedDestination)
             {
 
-                _animator.SetBool("Move", false);
-                _isMoving = false;
+                StopMoving();
             }
         }
        
@@ -98,6 +97,11 @@ public class UnitStats : MonoBehaviour
         _isMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
         _aiPath.SearchPath();
+        if (removeCurrentTarget)
+        {
+            _unitCombat.AttackTarget = null;
+        }
+
         //애니메이션 부분
         _animator.SetBool("Move", true);
         _animator.speed = _aiPath.maxSpeed * runningSpeed;
@@ -106,6 +110,13 @@ public class UnitStats : MonoBehaviour
     public void SetMoveToTarget(Vector2 target)
     {
         _aiPath.destination = target;
+    }
+    public void StopMoving()
+    {
+        _isMoving = false;
+        _animator.SetBool("Move", false);
+        _aiPath.destination = transform.position;
+        _aiPath.SearchPath();
     }
     private void Move()
     {

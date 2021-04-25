@@ -285,8 +285,8 @@
 		<weapon>
 			<id>200101</id>
 			<name>단궁</name>
-			<damage>1.2</damage>
-			<range>2</range>
+			<damage>5</damage>
+			<range>1.2</range>
 			<speed>0.9</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>2</armorPiercing>

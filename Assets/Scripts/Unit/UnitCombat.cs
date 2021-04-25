@@ -129,7 +129,7 @@ public class UnitCombat : MonoBehaviour
                         {
                             if (OffSetToTargetBound() <= TotalRange)
                             {//적이 사정거리 내에 들어온경우 공격
-                                _unitstats._isMoving = false;
+                                _unitstats.StopMoving();
                                 ActionStat = ActionStats.Attack;
                             }
                             else
@@ -206,6 +206,7 @@ public class UnitCombat : MonoBehaviour
     {       
         _weaponIndex = weaponID;
         Debug.Log(_weaponIndex);
+        Debug.Log(Weapons.DB[_weaponIndex].name);
         _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
         
         //장비 이미지 바꾸는 코드
