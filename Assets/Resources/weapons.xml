@@ -19,7 +19,7 @@
 			<id>20</id>
 			<name>돌맹이</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>0.5</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -27,13 +27,13 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>2</armor>
-			<class>Warrior</class>
+			<class>Shooter</class>
 		</weapon>
 		<weapon>
 			<id>30</id>
 			<name>손뼉</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>0.3</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -41,7 +41,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>2</armor>
-			<class>Warrior</class>
+			<class>Supporter</class>
 		</weapon>
 		<weapon>
 			<id>100000</id>
@@ -216,7 +216,7 @@
 			<id>200000</id>
 			<name>너프건</name>
 			<damage>5</damage>
-			<range>2.5</range>
+			<range>1</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -230,7 +230,7 @@
 			<id>200001</id>
 			<name>BB탄총</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>1.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -244,7 +244,7 @@
 			<id>200002</id>
 			<name>화승총</name>
 			<damage>10</damage>
-			<range>3</range>
+			<range>1.5</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -258,7 +258,7 @@
 			<id>200003</id>
 			<name>5-퍼레이터</name>
 			<damage>15</damage>
-			<range>5</range>
+			<range>2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -272,7 +272,7 @@
 			<id>200100</id>
 			<name>장난감활</name>
 			<damage>3</damage>
-			<range>2</range>
+			<range>1</range>
 			<speed>0.9</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -285,7 +285,7 @@
 		<weapon>
 			<id>200101</id>
 			<name>단궁</name>
-			<damage>5</damage>
+			<damage>1.2</damage>
 			<range>2</range>
 			<speed>0.9</speed>
 			<aoe>0.01</aoe>
@@ -300,7 +300,7 @@
 			<id>200102</id>
 			<name>각궁</name>
 			<damage>8</damage>
-			<range>2.5</range>
+			<range>1.4</range>
 			<speed>0.9</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>4</armorPiercing>
@@ -314,7 +314,7 @@
 			<id>200103</id>
 			<name>컴파운드 보우</name>
 			<damage>12</damage>
-			<range>2.5</range>
+			<range>1.5</range>
 			<speed>0.9</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>6</armorPiercing>
@@ -328,7 +328,7 @@
 			<id>200200</id>
 			<name>야구공</name>
 			<damage>2</damage>
-			<range>2</range>
+			<range>1</range>
 			<speed>1.4</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -342,7 +342,7 @@
 			<id>200201</id>
 			<name>부메랑</name>
 			<damage>4</damage>
-			<range>2</range>
+			<range>1</range>
 			<speed>1.4</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -356,7 +356,7 @@
 			<id>200202</id>
 			<name>표창</name>
 			<damage>6</damage>
-			<range>2</range>
+			<range>1</range>
 			<speed>1.4</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>1</armorPiercing>
@@ -370,7 +370,7 @@
 			<id>200203</id>
 			<name>수류탄</name>
 			<damage>15</damage>
-			<range>2</range>
+			<range>1</range>
 			<speed>1.4</speed>
 			<aoe>0.3</aoe>
 			<armorPiercing>2</armorPiercing>

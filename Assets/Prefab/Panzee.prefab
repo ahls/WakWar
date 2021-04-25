@@ -1343,7 +1343,7 @@ MonoBehaviour:
   _playerNameText: {fileID: 3964886468389457795}
   _isMoving: 0
   _rotatingPart: {fileID: 8363145969454056403}
-  runningSpeed: 0
+  runningSpeed: 2
 --- !u!50 &3565577381062980783
 Rigidbody2D:
   serializedVersion: 4

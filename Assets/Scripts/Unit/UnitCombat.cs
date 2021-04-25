@@ -205,6 +205,7 @@ public class UnitCombat : MonoBehaviour
     public void EquipWeapon(int weaponID)
     {       
         _weaponIndex = weaponID;
+        Debug.Log(_weaponIndex);
         _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
         
         //장비 이미지 바꾸는 코드
