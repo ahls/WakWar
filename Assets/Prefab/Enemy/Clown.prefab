@@ -99,8 +99,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5828600543083379836}
   m_Bounds:
-    m_Center: {x: -0.0658208, y: -0.103308365, z: 0}
-    m_Extent: {x: 0.04874419, y: 0.033036828, z: 0}
+    m_Center: {x: -0.02107456, y: -0.12838362, z: 0}
+    m_Extent: {x: 0.040177494, y: 0.04390283, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1266279569769453562
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3121012953454282687}
   m_Bounds:
-    m_Center: {x: -0.019675761, y: -0.13065594, z: 0}
-    m_Extent: {x: 0.07932728, y: 0.10015091, z: 0}
+    m_Center: {x: -0.03235902, y: -0.107557125, z: 0}
+    m_Extent: {x: 0.08011985, y: 0.10007324, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2399618580816981942
@@ -409,8 +409,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6104827592981703776}
   m_Bounds:
-    m_Center: {x: 0.013597816, y: -0.11317414, z: 0}
-    m_Extent: {x: 0.048733667, y: 0.032056168, z: 0}
+    m_Center: {x: -0.020946372, y: -0.12833405, z: 0}
+    m_Extent: {x: 0.037206523, y: 0.047733158, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3088826912674801966
@@ -512,8 +512,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 419379736210962787}
   m_Bounds:
-    m_Center: {x: -0.019759566, y: -0.1252014, z: 0}
-    m_Extent: {x: 0.09723466, y: 0.097173035, z: 0}
+    m_Center: {x: -0.030492261, y: -0.15388307, z: 0}
+    m_Extent: {x: 0.097467616, y: 0.09732927, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3107188885463523543
@@ -720,8 +720,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 7691998951228578039}
   m_Bounds:
-    m_Center: {x: -0.018687591, y: -0.12817357, z: 0}
-    m_Extent: {x: 0.10191868, y: 0.10951485, z: 0}
+    m_Center: {x: -0.03925641, y: -0.12999958, z: 0}
+    m_Extent: {x: 0.096428454, y: 0.11216549, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4060148865490602522
@@ -1107,8 +1107,8 @@ MonoBehaviour:
   - {fileID: 306329668866728596}
   - {fileID: 7691998951228578039}
   m_Bounds:
-    m_Center: {x: -0.019139871, y: -0.1282842, z: 0}
-    m_Extent: {x: 0.10347195, y: 0.1481248, z: 0}
+    m_Center: {x: -0.03683853, y: -0.12666792, z: 0}
+    m_Extent: {x: 0.10158402, y: 0.14974108, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &6821885108964950256
@@ -1403,8 +1403,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 6579254247398375188}
   m_Bounds:
-    m_Center: {x: -0.020812958, y: -0.12869573, z: 0}
-    m_Extent: {x: 0.14937136, y: 0.1510768, z: 0}
+    m_Center: {x: -0.02105625, y: -0.12821905, z: 0}
+    m_Extent: {x: 0.14880566, y: 0.15066893, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8221494682217568640
@@ -1422,6 +1422,9 @@ GameObject:
   - component: {fileID: 1849124289518635976}
   - component: {fileID: 4882216306343817342}
   - component: {fileID: 8371356473361272695}
+  - component: {fileID: 2060827568}
+  - component: {fileID: 2060827569}
+  - component: {fileID: 2060827570}
   m_Layer: 0
   m_Name: Clown
   m_TagString: Untagged
@@ -1506,9 +1509,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.3}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0.3}
+  m_Size: {x: 0.3, y: 0.6}
+  m_Direction: 0
 --- !u!114 &1849124289518635976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,11 +1546,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigid: {fileID: 7770443256608772299}
   _selectionCircle: {fileID: 0}
   _playerNameText: {fileID: 0}
-  _rotatingPart: {fileID: 8141039710118617438}
   _isMoving: 0
+  _rotatingPart: {fileID: 8141039710118617438}
+  runningSpeed: 0
 --- !u!114 &8371356473361272695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +1572,93 @@ MonoBehaviour:
   - {fileID: 4274438507931283159}
   - {fileID: 5469254956156010958}
   - {fileID: 6387942090951177443}
+--- !u!114 &2060827568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221494682217568640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanControl: 0
+  range: 0.2
+  AOE: 0.01
+  projSpeed: 1
+  ms: 0.005
+  AS: 1
+  hp: 15
+  dmg: 5
+  AP: 0
+  weaponID: 0
+  torque: 0
+--- !u!114 &2060827569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221494682217568640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radius: 0.3
+  height: 2
+  repathRate: 0.5
+  canSearch: 1
+  canMove: 1
+  maxSpeed: 0.5
+  gravity: {x: NaN, y: NaN, z: NaN}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  centerOffsetCompatibility: NaN
+  orientation: 1
+  enableRotation: 0
+  targetCompatibility: {fileID: 0}
+  maxAcceleration: -2.5
+  rotationSpeed: 360
+  slowdownDistance: 0.6
+  pickNextWaypointDist: 2
+  endReachedDistance: 0.2
+  alwaysDrawGizmos: 0
+  slowWhenNotFacingTarget: 1
+  whenCloseToDestination: 0
+  constrainInsideGraph: 0
+--- !u!114 &2060827570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221494682217568640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &8562571837569888424
 GameObject:
   m_ObjectHideFlags: 0

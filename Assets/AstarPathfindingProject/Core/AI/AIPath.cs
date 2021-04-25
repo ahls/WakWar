@@ -71,7 +71,7 @@ namespace Pathfinding {
 		/// In the Unity inspector there are two modes: Default and Custom. In the Default mode this field is set to -2.5 which means that it takes about 0.4 seconds for the agent to reach its top speed.
 		/// In the Custom mode you can set the acceleration to any positive value.
 		/// </summary>
-		public float maxAcceleration = -2.5f;
+		public float maxAcceleration = 100f;
 
 		/// <summary>
 		/// Rotation speed in degrees per second.

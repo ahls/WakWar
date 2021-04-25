@@ -134,7 +134,8 @@ public class UnitCombat : MonoBehaviour
                             }
                             else
                             {
-                                MoveIntoRange();
+                                _unitstats.SetMoveToTarget(AttackTarget.position);
+                                //MoveIntoRange();
                             }
                         }
                         else

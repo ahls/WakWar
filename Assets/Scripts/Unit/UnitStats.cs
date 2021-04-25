@@ -23,11 +23,11 @@ public class UnitStats : MonoBehaviour
     private Vector3 _targetPos;
     private Vector3 _direction;
     public bool _isMoving = false;
-
+    
     //그래픽 관련
     [SerializeField] private Transform _rotatingPart;
     private Animator _animator;
-
+    public float runningSpeed = 0.75f;//애니메이션 재생 속도 
     //이동 멈춤 관련
     //private int _stuckCounter = 0;
     //private const float STUCK_DISPLACEMENT = 0.0001f; 
@@ -56,7 +56,7 @@ public class UnitStats : MonoBehaviour
             //Move();
             //StuckCheck();
             
-            if (_rigid.velocity.magnitude == 0)
+            if (_aiPath.reachedDestination)
             {
 
                 _animator.SetBool("Move", false);
@@ -97,11 +97,15 @@ public class UnitStats : MonoBehaviour
         _aiPath.destination = target;
         _isMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
-
+        _aiPath.SearchPath();
         //애니메이션 부분
         _animator.SetBool("Move", true);
-        _animator.speed = MoveSpeed * 100f;
+        _animator.speed = _aiPath.maxSpeed * runningSpeed;
         RotateDirection(_aiPath.destination.x - transform.position.x);
+    }
+    public void SetMoveToTarget(Vector2 target)
+    {
+        _aiPath.destination = target;
     }
     private void Move()
     {
