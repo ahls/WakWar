@@ -53,11 +53,13 @@ public class UnitCombat : MonoBehaviour
     public static bool AIenabled = false;
     public Transform AttackTarget;
     public float SearchRange = 0;
+    public bool AttackGround { get; set; } = false;
+    public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
+    public WeaponType PreferredTarget; //선호하는 공격클래스. 
     private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
-    public bool AttackGround { get; set; } = false;
-    public WeaponType PreferredTarget;
+    private float _AIsearchTimer = 0;
 
     //방어력
     public int BaseArmor { get; set; }
@@ -455,6 +457,18 @@ public class UnitCombat : MonoBehaviour
         Vector2 unitBoundLoc = GetComponent<Collider2D>().ClosestPoint(AttackTarget.position);
         return (targetBoundLoc - unitBoundLoc).magnitude;
     }
+
+    private void EnemySearchAI()
+    {
+        if (!AIenabled) return;
+        if(SeekTarget && AttackTarget == null && _AIsearchTimer < Time.time)
+        {
+            _unitstats.MoveToTarget(IngameManager.WakgoodBehaviour.transform.position);
+            AttackGround = true;
+            _AIsearchTimer = Time.time + 5f;
+        }
+    }
+
 
     #endregion
 

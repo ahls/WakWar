@@ -8,6 +8,7 @@ public enum PopupID
     UIInventory,
     UIUnitWindow,
     UIItemToolTip,
+    UIShop,
 }
 
 public class UIPopupManager : MonoBehaviour
