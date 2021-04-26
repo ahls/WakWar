@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
-
+using UnityEngine.SceneManagement; 
 public class WakgoodBehaviour : MonoBehaviour
 {
     #region 함수
@@ -55,5 +55,9 @@ public class WakgoodBehaviour : MonoBehaviour
                 break;
         }
         //_unitCombat.UpdateStats();
+    }
+    private void OnDisable()
+    {
+        IngameManager.ProgressManager.EndCombat();
     }
 }

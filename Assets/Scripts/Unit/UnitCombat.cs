@@ -53,7 +53,7 @@ public class UnitCombat : MonoBehaviour
     public static bool AIenabled = false;
     public Transform AttackTarget;
     public float SearchRange = 0;
-    private int _searchCooldown = 15;
+    private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
     public bool AttackGround { get; set; } = false;
@@ -66,7 +66,7 @@ public class UnitCombat : MonoBehaviour
     //타입
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
-    public WeaponType weaponType;
+    public WeaponType weaponType = WeaponType.Null;
     private int _weaponIndex = 0;
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
@@ -329,29 +329,93 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 탐색 관련
-
+    /// <summary>
+    /// 현재 각 서치마다 이터레이션을 두번 돌립니다. 범위 내에 유닛 찾기, 그리고 그 유닛 내에서 가장 가까운 적 찾기.
+    /// 혹시 너무 무겁다면 탐색범위를 줄이고 빈도를 낮추는 방식으로 가야할 것 같습니다.
+    /// </summary>
     private void Search()
     {
         if(!AIenabled)
-        {
+        {//AI 켜져있나 확인
             AttackTarget = null;
             return;
         }
+
+        Transform BestTarget = null;
+        List<Transform> listInRange = new List<Transform>();
+
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + SearchRange);
-        foreach (Collider2D selected in inRange)
-        {
-            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
-            if (selectedCombat != null && selectedCombat != this)
+        if (PreferredTarget != WeaponType.Null)
+        {//선호대상이 있는경우
+            List<Transform> preferredList = new List<Transform>();
+
+            foreach (Collider2D selected in inRange)
             {
-                if (selectedCombat.OwnedFaction == TargetFaction)
+                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+                if (selectedCombat != null && selectedCombat != this)
                 {
-                    AttackTarget = selectedCombat.transform;
-                    ActionStat = ActionStats.Attack;
-                    return;
+                    if (selectedCombat.OwnedFaction == TargetFaction)
+                    { 
+                        if(selectedCombat.weaponType == PreferredTarget)
+                        {
+                            preferredList.Add(selected.transform);
+                        }
+                        else
+                        {
+                            listInRange.Add(selected.transform);
+                        }
+
+
+                    }
                 }
+            }
+            BestTarget = ReturnClosestUnit(preferredList);
+            if(BestTarget == null)
+            {
+            BestTarget = ReturnClosestUnit(listInRange);
+            }
+
+        }
+        else
+        {//선호대상이 없는경우
+            foreach (Collider2D selected in inRange)
+            {
+                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+                if (selectedCombat != null && selectedCombat != this)
+                {
+                    if (selectedCombat.OwnedFaction == TargetFaction)
+                    {
+                        listInRange.Add(selected.transform);
+
+                    }
+                }
+            }
+            BestTarget = ReturnClosestUnit(listInRange);
+        }
+
+
+        if (BestTarget != null)
+        { AttackTarget = BestTarget;
+            ActionStat = ActionStats.Attack;
+        }
+
+    }
+    private Transform ReturnClosestUnit(List<Transform> inputList)
+    {
+        Transform currentBestTarget = null;
+        float closestDistance = float.PositiveInfinity;
+        foreach (var currentUnit in inputList)
+        {
+            float currentDistance = (currentUnit.position - transform.position).magnitude;
+
+            if (currentDistance< closestDistance )
+            {
+                closestDistance = currentDistance;
+                currentBestTarget = currentUnit;
             }
         }
 
+        return currentBestTarget;
     }
 
     private void SearchShell()

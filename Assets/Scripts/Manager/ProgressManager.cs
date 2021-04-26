@@ -71,7 +71,7 @@ public class ProgressManager : MonoBehaviour
         UnitCombat.AIenabled = true;
     }
 
-    private void EndCombat()
+    public void EndCombat()
     {//AI 및 조작 종료
         IngameManager.UnitManager.ControlOn = false;
         UnitCombat.AIenabled = false;

@@ -9,7 +9,8 @@ public enum WeaponType
     Warrior,
     Shooter,
     Supporter,
-    Wak
+    Wak,
+    Null
 }
 
 public class PulledWeapon
