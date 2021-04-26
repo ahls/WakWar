@@ -244,8 +244,8 @@
 		<item>
 			<id>20600</id>
 			<type>Weapon</type>
-			<name>응원봉</name>
-			<desc>꺄아악! 어빠~~~! 왁두 오빠~~~~~~</desc>
+			<name>뿅망치</name>
+			<desc>이거 맞으면 너 나한테 뿅간다 ㅋㅋ ....죄송</desc>
 			<value>10</value>
 			<Image>null</Image>
 			<weaponID>300000</weaponID>

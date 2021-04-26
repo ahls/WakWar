@@ -207,8 +207,16 @@ public class UnitCombat : MonoBehaviour
         _weaponIndex = weaponID;
         Debug.Log(_weaponIndex);
         Debug.Log(Weapons.DB[_weaponIndex].name);
+        if (Weapons.DB[_weaponIndex].projImage != "null")
+        {
+            AttackImage = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].projImage);
+        }
+        else
+        {
+            _equippedImage.sprite = null;
+        }
         _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
-        
+
         //장비 이미지 바꾸는 코드
         if (100200 <= weaponID && weaponID <= 100203)
         {

@@ -221,7 +221,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_0</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>bullet_0</Psrc>
 			<projectileSpeed>8</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -235,7 +235,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_1</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>bullet_1</Psrc>
 			<projectileSpeed>8</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -249,7 +249,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_2</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>bullet_2</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -263,7 +263,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_3</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>bullet_3</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -277,8 +277,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>bow_0</Esrc>
-			<Psrc>null</Psrc>
-			<projectileSpeed>6</projectileSpeed>
+			<Psrc>arrow_0</Psrc>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
 		</weapon>
@@ -291,8 +291,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>2</armorPiercing>
 			<Esrc>bow_1</Esrc>
-			<Psrc>null</Psrc>
-			<projectileSpeed>7</projectileSpeed>
+			<Psrc>arrow_1</Psrc>
+			<projectileSpeed>3</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
 		</weapon>
@@ -305,8 +305,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>4</armorPiercing>
 			<Esrc>bow_2</Esrc>
-			<Psrc>null</Psrc>
-			<projectileSpeed>7</projectileSpeed>
+			<Psrc>arrow_2</Psrc>
+			<projectileSpeed>4</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
 		</weapon>
@@ -319,8 +319,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>6</armorPiercing>
 			<Esrc>bow_3</Esrc>
-			<Psrc>null</Psrc>
-			<projectileSpeed>7</projectileSpeed>
+			<Psrc>arrow_3</Psrc>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
 		</weapon>
@@ -333,7 +333,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>throwable_0</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>thrown_0</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -347,7 +347,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>throwable_1</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>thrown_1</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -361,7 +361,7 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>1</armorPiercing>
 			<Esrc>throwable_2</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>thrown_2</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -375,14 +375,14 @@
 			<aoe>0.3</aoe>
 			<armorPiercing>2</armorPiercing>
 			<Esrc>throwable_3</Esrc>
-			<Psrc>null</Psrc>
+			<Psrc>thrown_3</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
 		</weapon>
 		<weapon>
 			<id>300000</id>
-			<name>응원봉</name>
+			<name>뿅망치</name>
 			<damage>2</damage>
 			<range>0.1</range>
 			<speed>0.77</speed>
@@ -452,7 +452,7 @@
 		</weapon>
 		<weapon>
 			<id>300101</id>
-			<name>지휘봉</name>
+			<name>응원봉</name>
 			<damage>-20</damage>
 			<range>1</range>
 			<speed>1</speed>
@@ -466,7 +466,7 @@
 		</weapon>
 		<weapon>
 			<id>300102</id>
-			<name>깃대</name>
+			<name>요술봉</name>
 			<damage>-35</damage>
 			<range>1</range>
 			<speed>1</speed>

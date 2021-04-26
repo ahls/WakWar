@@ -17,6 +17,7 @@ public class AttackEffect : MonoBehaviour
     [SerializeField] private SpriteRenderer _projectileImage;
     [SerializeField] private Rigidbody2D _rigidBody;
 
+    private static Vector3 _height= new Vector2(0, 0.1f);
     private string _name;
 
     /// <summary>
@@ -35,11 +36,9 @@ public class AttackEffect : MonoBehaviour
         _aoe = attacker.TotalAOE;
         _AP = _attackerInfo.TotalAP;
         _destination = destination;
-        if (attacker.AttackImage != null)
-        {
-            _projectileImage.sprite = attacker.AttackImage;
-        }
+        _projectileImage.sprite = attacker.AttackImage;
         Vector2 offsetToTarget = destination - transform.position;
+        transform.rotation = Quaternion.LookRotation(Vector3.back,offsetToTarget);
         _rigidBody.velocity = offsetToTarget.normalized * attacker.ProjectileSpeed;
         _rigidBody.AddTorque(torque);
 
@@ -48,6 +47,8 @@ public class AttackEffect : MonoBehaviour
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
         _lifeTime = (int)(50 * offsetToTarget.magnitude / attacker.ProjectileSpeed);
 
+
+        transform.position += _height;
     }
 
     private void FixedUpdate()

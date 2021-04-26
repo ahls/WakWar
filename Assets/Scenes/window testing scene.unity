@@ -2651,6 +2651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpdateRate: 1
+  _counterMax: 0
+  _counter: 0
 --- !u!114 &576610508
 MonoBehaviour:
   m_ObjectHideFlags: 0
