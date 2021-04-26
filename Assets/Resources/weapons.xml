@@ -23,17 +23,17 @@
 			<id>20</id>
 			<name>돌맹이</name>
 			<damage>3</damage>
-			<range>1</range>
+			<range>0.7</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>null</Esrc>
 			<Psrc>thrown_rock</Psrc>
-			<projectileSpeed>1</projectileSpeed>
+			<projectileSpeed>0.75</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
       <target>Enemy</target>
-			<heightDelta>0.1</heightDelta>
+			<heightDelta>0.07</heightDelta>
 			<torq>300</torq>
 		</weapon>
 		<weapon>

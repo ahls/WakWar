@@ -50,12 +50,14 @@ public class UnitCombat : MonoBehaviour
     public int BaseAP { get; set; }
 
     //타겟 관련
+    public static bool AIenabled = false;
     public Transform AttackTarget;
+    public float SearchRange = 0;
     private int _searchCooldown = 15;
     private int _searchTimer;
     private static int _searchAssign = 0;
     public bool AttackGround { get; set; } = false;
-
+    public WeaponType PreferredTarget;
 
     //방어력
     public int BaseArmor { get; set; }
@@ -330,7 +332,12 @@ public class UnitCombat : MonoBehaviour
 
     private void Search()
     {
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + 0.3f);
+        if(!AIenabled)
+        {
+            AttackTarget = null;
+            return;
+        }
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + SearchRange);
         foreach (Collider2D selected in inRange)
         {
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();

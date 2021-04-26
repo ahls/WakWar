@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    private bool _aiON = false;
+    private static bool _aiON = false;
     private UnitCombat _unitCombat;
-    
+
+
+    public WeaponType PreferredClass;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +21,10 @@ public class EnemyAI : MonoBehaviour
     {
         
     }
-    
 
-    
+
+    public void EnableEnemyAI(bool state)
+    {
+        _aiON = state;
+    }
 }
