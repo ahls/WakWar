@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2841667188
+CRC: 494341120
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5fb610dcb1f720770ce664175d032926
+    Hash: 02c6294818fa68a435ddcec08e81ac33
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 5a02ec6b6084974b48e577daf8cfb59b
+    Hash: 0eae74eb3468ea31c69e23fd5c3d4b90
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -79,6 +79,7 @@ Assets:
 - Assets/Resources/weapons/axe1.png
 - Assets/Prefab/inventory/Character Slot.prefab
 - Assets/Resources/weapons/shield0.png
+- Assets/Sprites/Weapon/img_blunt.png
 - Assets/Sprites/Weapon/img_gun.png
 - Assets/Prefab/inventory/Item Base.prefab
 - Assets/Resources/weapons/sword2.png
@@ -86,7 +87,9 @@ Assets:
 - Assets/Sprites/Weapon/img_arrow.png
 - Assets/Resources/weapons/sword1.png
 - Assets/Resources/weapons/sword3.png
+- Assets/Sprites/Weapon/img_thrown.png
 - Assets/Sprites/Weapon/img_sword.png
+- Assets/Sprites/Weapon/img_throwable.png
 - Assets/Resources/weapons/shield1.png
 - Assets/Resources/weapons/axe3.png
 - Assets/Sprites/Weapon/img_instruments.png
@@ -98,9 +101,11 @@ Assets:
 - Assets/Sprites/Weapon/img_shield.png
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/WakAsset/UI/UIWakWindow.prefab
+- Assets/Sprites/Weapon/img_bullet.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Resources/weapons/axe0.png
 - Assets/Prefab/AttackEffect.prefab
 - Assets/Resources/weapons/shield3.png
+- Assets/Sprites/Weapon/img_wand.png
 - Assets/Resources/weapons/sword0.png
 Dependencies: []

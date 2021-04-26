@@ -38,13 +38,17 @@ public class PulledWeapon
     public int Armor;
     [XmlElement("class")]
     public WeaponType weaponType;
+    [XmlElement("heightDelta")]
+    public float heightDelta;
+    [XmlElement("torq")]
+    public int torque;
 }
 
 public struct Weapon
 {
     public string name;
-    public int damage,AP,Armor;
-    public float AttackRange, AttackSpeed, AttackArea, projSpeed;
+    public int damage,AP,Armor, torque;
+    public float AttackRange, AttackSpeed, AttackArea, projSpeed, heightDelta;
     public string equipImage, projImage;
     public WeaponType weaponType;
 
@@ -61,6 +65,8 @@ public struct Weapon
         equipImage = _input.equipImage;
         projImage = _input.projImage;
         weaponType = _input.weaponType;
+        heightDelta = _input.heightDelta;
+        torque = _input.torque;
     }
 }
 public class Weapons

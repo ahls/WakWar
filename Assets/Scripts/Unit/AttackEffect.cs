@@ -14,21 +14,26 @@ public class AttackEffect : MonoBehaviour
     private Faction _targetFaction;
     private GameObject _onHitEffect;
     private int _lifeTime;//착탄지점에 도착했는지 여부를 검사할때 쓰일거
-    [SerializeField] private SpriteRenderer _projectileImage;
     [SerializeField] private Rigidbody2D _rigidBody;
 
-    private static Vector3 _height= new Vector2(0, 0.1f);
     private string _name;
+
+    //그래픽
+    [SerializeField] private SpriteRenderer _projectileImage;
+    private float _heightDelta = 0.1f;
+    private float _deltaDelta;
+
+
+
 
     /// <summary>
     /// 셋업 하기 전에 공격자 위치로 미리 불러와야 합니다.
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker, Vector3 destination, string name, float torque)
+    public void Setup(UnitCombat attacker, Vector3 destination,string name, int torque, float initDelta)
     {
         _name = name;
-
         _attackerInfo = attacker;
 
         _damage = _attackerInfo.TotalDamage;
@@ -47,8 +52,12 @@ public class AttackEffect : MonoBehaviour
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
         _lifeTime = (int)(50 * offsetToTarget.magnitude / attacker.ProjectileSpeed);
 
-
-        transform.position += _height;
+        if (_lifeTime > 0 && _heightDelta > 0)
+        {//투사체 포물선 그리게
+            _heightDelta = initDelta;
+            transform.position += new Vector3(0, 0.1f, 0);
+            _deltaDelta = _heightDelta * -2 / _lifeTime;
+        }
     }
 
     private void FixedUpdate()
@@ -69,6 +78,9 @@ public class AttackEffect : MonoBehaviour
         else
         {
             _lifeTime--;
+            _heightDelta += _deltaDelta;
+            transform.position += new Vector3(0, _heightDelta, 0);
+
         }
 
     }

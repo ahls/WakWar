@@ -9,11 +9,13 @@
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
-      <Esrc>null</Esrc>
+			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>20</id>
@@ -24,10 +26,12 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>null</Esrc>
-			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<Psrc>thrown_rock</Psrc>
+			<projectileSpeed>1</projectileSpeed>
 			<armor>2</armor>
 			<class>Shooter</class>
+			<heightDelta>0.1</heightDelta>
+			<torq>300</torq>
 		</weapon>
 		<weapon>
 			<id>30</id>
@@ -39,9 +43,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100000</id>
@@ -51,11 +57,13 @@
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
-      <Esrc>sword_0</Esrc>
+			<Esrc>sword_0</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100001</id>
@@ -67,9 +75,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>sword_1</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>3</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100002</id>
@@ -81,9 +91,11 @@
 			<armorPiercing>1</armorPiercing>
 			<Esrc>sword_2</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100003</id>
@@ -95,9 +107,11 @@
 			<armorPiercing>2</armorPiercing>
 			<Esrc>sword_3</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>5</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100100</id>
@@ -109,9 +123,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>axe_0</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100101</id>
@@ -123,10 +139,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>axe_1</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
-			<desc>조약돌 두개, 나뭇가지 두개.</desc>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100102</id>
@@ -138,9 +155,11 @@
 			<armorPiercing>1</armorPiercing>
 			<Esrc>axe_2</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>6</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100103</id>
@@ -152,9 +171,11 @@
 			<armorPiercing>2</armorPiercing>
 			<Esrc>axe_3</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>8</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100200</id>
@@ -166,9 +187,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>shield_0</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100201</id>
@@ -180,9 +203,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>shield_1</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100202</id>
@@ -194,9 +219,11 @@
 			<armorPiercing>1</armorPiercing>
 			<Esrc>shield_2</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>6</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>100203</id>
@@ -208,9 +235,11 @@
 			<armorPiercing>2</armorPiercing>
 			<Esrc>shield_3</Esrc>
 			<Psrc>null</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>8</armor>
 			<class>Warrior</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200000</id>
@@ -222,9 +251,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_0</Esrc>
 			<Psrc>bullet_0</Psrc>
-			<projectileSpeed>8</projectileSpeed>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200001</id>
@@ -236,9 +267,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_1</Esrc>
 			<Psrc>bullet_1</Psrc>
-			<projectileSpeed>8</projectileSpeed>
+			<projectileSpeed>3</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200002</id>
@@ -250,9 +283,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_2</Esrc>
 			<Psrc>bullet_2</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200003</id>
@@ -264,9 +299,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_3</Esrc>
 			<Psrc>bullet_3</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>6</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200100</id>
@@ -278,9 +315,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>bow_0</Esrc>
 			<Psrc>arrow_0</Psrc>
-			<projectileSpeed>2</projectileSpeed>
+			<projectileSpeed>1.5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.02</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200101</id>
@@ -292,9 +331,11 @@
 			<armorPiercing>2</armorPiercing>
 			<Esrc>bow_1</Esrc>
 			<Psrc>arrow_1</Psrc>
-			<projectileSpeed>3</projectileSpeed>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.02</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200102</id>
@@ -306,9 +347,11 @@
 			<armorPiercing>4</armorPiercing>
 			<Esrc>bow_2</Esrc>
 			<Psrc>arrow_2</Psrc>
-			<projectileSpeed>4</projectileSpeed>
+			<projectileSpeed>2.5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.02</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200103</id>
@@ -320,9 +363,11 @@
 			<armorPiercing>6</armorPiercing>
 			<Esrc>bow_3</Esrc>
 			<Psrc>arrow_3</Psrc>
-			<projectileSpeed>5</projectileSpeed>
+			<projectileSpeed>3</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.02</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>200200</id>
@@ -334,9 +379,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>throwable_0</Esrc>
 			<Psrc>thrown_0</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>1</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.05</heightDelta>
+			<torq>400</torq>
 		</weapon>
 		<weapon>
 			<id>200201</id>
@@ -348,9 +395,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>throwable_1</Esrc>
 			<Psrc>thrown_1</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.05</heightDelta>
+			<torq>500</torq>
 		</weapon>
 		<weapon>
 			<id>200202</id>
@@ -362,9 +411,11 @@
 			<armorPiercing>1</armorPiercing>
 			<Esrc>throwable_2</Esrc>
 			<Psrc>thrown_2</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.05</heightDelta>
+			<torq>700</torq>
 		</weapon>
 		<weapon>
 			<id>200203</id>
@@ -375,10 +426,12 @@
 			<aoe>0.3</aoe>
 			<armorPiercing>2</armorPiercing>
 			<Esrc>throwable_3</Esrc>
-			<Psrc>thrown_3</Psrc>
-			<projectileSpeed>10</projectileSpeed>
+			<Psrc>throwable_3</Psrc>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+			<heightDelta>0.05</heightDelta>
+			<torq>500</torq>
 		</weapon>
 		<weapon>
 			<id>300000</id>
@@ -393,6 +446,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300001</id>
@@ -407,6 +462,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300002</id>
@@ -421,6 +478,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300003</id>
@@ -435,6 +494,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300100</id>
@@ -449,10 +510,12 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300101</id>
-			<name>응원봉</name>
+			<name>지휘봉</name>
 			<damage>-20</damage>
 			<range>1</range>
 			<speed>1</speed>
@@ -463,10 +526,12 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300102</id>
-			<name>요술봉</name>
+			<name>응원봉</name>
 			<damage>-35</damage>
 			<range>1</range>
 			<speed>1</speed>
@@ -477,6 +542,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>3000103</id>
@@ -491,6 +558,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300200</id>
@@ -505,6 +574,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300201</id>
@@ -519,6 +590,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300202</id>
@@ -533,6 +606,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 		<weapon>
 			<id>300203</id>
@@ -547,6 +622,8 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+			<heightDelta>0</heightDelta>
+			<torq>0</torq>
 		</weapon>
 	</weapons>
 </weaponCollection>

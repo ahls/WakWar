@@ -72,6 +72,8 @@ public class UnitCombat : MonoBehaviour
     private UnitStats _unitstats;
     [SerializeField] private SpriteRenderer _equippedImage;
     private Animator _animator;
+    private float _heightDelta;
+    private int _torque;
     //장비 장착후 스탯
     public int TotalDamage { get; set; }
     public float TotalRange { get; set; }
@@ -261,6 +263,7 @@ public class UnitCombat : MonoBehaviour
                 _weaponIndex = 30;
                 break;
         }
+        UpdateStats();
     }
     public void UpdateStats()
     {
@@ -272,7 +275,8 @@ public class UnitCombat : MonoBehaviour
             _totalAS = BaseAS;
             _totalArmor = BaseArmor;
             ProjectileSpeed = 1;
-
+            _heightDelta = 0;
+            _torque = 0;
         }
         else
         {
@@ -282,6 +286,8 @@ public class UnitCombat : MonoBehaviour
             _totalAS = BaseAS + Weapons.DB[_weaponIndex].AttackSpeed;
             _totalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
             ProjectileSpeed = Weapons.DB[_weaponIndex].projSpeed;
+            _heightDelta = Weapons.DB[_weaponIndex].heightDelta;
+            _torque = Weapons.DB[_weaponIndex].torque;
         }
     }
     #endregion
@@ -292,7 +298,7 @@ public class UnitCombat : MonoBehaviour
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,AttackTorque);
+        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,_torque,_heightDelta);
 
     }
 
