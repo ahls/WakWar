@@ -16,7 +16,7 @@ public class UnitCombat : MonoBehaviour
 
     #region 변수
 
-    public ActionStats _actionStat;
+    private ActionStats _actionStat;
 
     public ActionStats ActionStat
     {
@@ -54,7 +54,7 @@ public class UnitCombat : MonoBehaviour
     private int _searchCooldown = 15;
     private int _searchTimer;
     private static int _searchAssign = 0;
-    public bool AttackGround = false;
+    public bool AttackGround { get; set; } = false;
 
 
     //방어력
@@ -150,7 +150,7 @@ public class UnitCombat : MonoBehaviour
                                     MoveIntoRange();
                                 }
                             }
-                            if (!_unitstats._isMoving)
+                            if (!_unitstats.IsMoving)
                             {
                                 ActionStat = ActionStats.Idle;
                             }
@@ -182,8 +182,7 @@ public class UnitCombat : MonoBehaviour
                     {
                         if (OffSetToTargetBound() <= TotalRange)
                         {//적이 사정거리 내에 있을경우
-                            _animator.SetBool("Move", false);
-                            _unitstats._isMoving = false;
+                            _unitstats.StopMoving();
                             Attack();
                         }
                         else
@@ -207,8 +206,6 @@ public class UnitCombat : MonoBehaviour
     public void EquipWeapon(int weaponID)
     {       
         _weaponIndex = weaponID;
-        Debug.Log(_weaponIndex);
-        Debug.Log(Weapons.DB[_weaponIndex].name);
         if (Weapons.DB[_weaponIndex].projImage != "null")
         {
             AttackImage = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].projImage);
@@ -217,8 +214,14 @@ public class UnitCombat : MonoBehaviour
         {
             _equippedImage.sprite = null;
         }
-        _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
-
+        if (Weapons.DB[_weaponIndex].equipImage != "null")
+        {
+            _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
+        }
+        else
+        {
+            _equippedImage.sprite = null;
+        }
         //장비 이미지 바꾸는 코드
         if (100200 <= weaponID && weaponID <= 100203)
         {
@@ -288,6 +291,7 @@ public class UnitCombat : MonoBehaviour
             ProjectileSpeed = Weapons.DB[_weaponIndex].projSpeed;
             _heightDelta = Weapons.DB[_weaponIndex].heightDelta;
             _torque = Weapons.DB[_weaponIndex].torque;
+            TargetFaction = Weapons.DB[_weaponIndex].targetFaction;
         }
     }
     #endregion
@@ -330,9 +334,9 @@ public class UnitCombat : MonoBehaviour
         foreach (Collider2D selected in inRange)
         {
             UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
-            if (selectedCombat != null)
+            if (selectedCombat != null && selectedCombat != this)
             {
-                if (selectedCombat.OwnedFaction != OwnedFaction)
+                if (selectedCombat.OwnedFaction == TargetFaction)
                 {
                     AttackTarget = selectedCombat.transform;
                     ActionStat = ActionStats.Attack;
@@ -377,7 +381,8 @@ public class UnitCombat : MonoBehaviour
     private float OffSetToTargetBound()
     {
         Vector2 targetBoundLoc = AttackTarget.GetComponent<Collider2D>().ClosestPoint(transform.position);
-        return (targetBoundLoc - (Vector2)transform.position).magnitude;
+        Vector2 unitBoundLoc = GetComponent<Collider2D>().ClosestPoint(AttackTarget.position);
+        return (targetBoundLoc - unitBoundLoc).magnitude;
     }
 
     #endregion
@@ -399,7 +404,14 @@ public class UnitCombat : MonoBehaviour
     /// <param name="armorPierce"></param>
     public void TakeDamage(int dmg, int armorPierce)
     {
-        _healthCurrent -= (dmg - Mathf.Clamp(_totalArmor - armorPierce, 0, 999));
+        if (dmg > 0)
+        {
+            _healthCurrent -= (dmg - Mathf.Clamp(_totalArmor - armorPierce, 0, 999));
+        }
+        else if(dmg< 0)
+        {
+            _healthCurrent -= Mathf.Min(dmg + _healthCurrent, HealthMax);
+        }
         HealthBarUpdate();
     }
 
@@ -421,10 +433,10 @@ public class UnitCombat : MonoBehaviour
 
     private void Death()
     {
+        _unitstats.StopMoving();
         _animator.SetTrigger("Die");
         IsDead = true;
         GetComponent<Rigidbody2D>().simulated = false;
-        _unitstats._isMoving = false;
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);

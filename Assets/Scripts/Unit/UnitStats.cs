@@ -22,7 +22,7 @@ public class UnitStats : MonoBehaviour
     private Rigidbody2D _rigid;
     private Vector3 _targetPos;
     private Vector3 _direction;
-    public bool _isMoving = false;
+    public bool IsMoving { get; set; } = false;
     
     //그래픽 관련
     [SerializeField] private Transform _rotatingPart;
@@ -51,7 +51,7 @@ public class UnitStats : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_isMoving)
+        if (IsMoving)
         {
             //Move();
             //StuckCheck();
@@ -94,7 +94,7 @@ public class UnitStats : MonoBehaviour
     public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
     {
         _aiPath.destination = target;
-        _isMoving = true;
+        IsMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
         _aiPath.SearchPath();
         if (removeCurrentTarget)
@@ -113,7 +113,7 @@ public class UnitStats : MonoBehaviour
     }
     public void StopMoving()
     {
-        _isMoving = false;
+        IsMoving = false;
         _animator.SetBool("Move", false);
         _aiPath.destination = transform.position;
         _aiPath.SearchPath();
@@ -127,7 +127,7 @@ public class UnitStats : MonoBehaviour
         else
         {
             _animator.SetBool("Move", false);
-            _isMoving = false;
+            IsMoving = false;
 
             ResetTarget();
         }

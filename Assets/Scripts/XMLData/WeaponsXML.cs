@@ -38,6 +38,8 @@ public class PulledWeapon
     public int Armor;
     [XmlElement("class")]
     public WeaponType weaponType;
+    [XmlElement("target")]
+    public Faction targetFaction;
     [XmlElement("heightDelta")]
     public float heightDelta;
     [XmlElement("torq")]
@@ -51,7 +53,7 @@ public struct Weapon
     public float AttackRange, AttackSpeed, AttackArea, projSpeed, heightDelta;
     public string equipImage, projImage;
     public WeaponType weaponType;
-
+    public Faction targetFaction;
     public Weapon(PulledWeapon _input)
     {
         name = _input.weaponName;
@@ -67,6 +69,7 @@ public struct Weapon
         weaponType = _input.weaponType;
         heightDelta = _input.heightDelta;
         torque = _input.torque;
+        targetFaction = _input.targetFaction;
     }
 }
 public class Weapons

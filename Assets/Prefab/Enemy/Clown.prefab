@@ -1524,12 +1524,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionStat: 0
   effectPrefab: {fileID: 8734485823546053197, guid: d76a9e4e6513620459dc12131df1c907,
     type: 3}
   _healthBar: {fileID: 408419183171366038}
   AttackTarget: {fileID: 0}
-  AttackGround: 0
   OwnedFaction: 1
   TargetFaction: 0
   weaponType: 0
@@ -1548,7 +1546,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectionCircle: {fileID: 0}
   _playerNameText: {fileID: 0}
-  _isMoving: 0
   _rotatingPart: {fileID: 8141039710118617438}
   runningSpeed: 0.75
 --- !u!114 &8371356473361272695
@@ -1585,7 +1582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanControl: 0
-  range: 0.2
+  range: 0.25
   AOE: 0.01
   projSpeed: 1
   ms: 0.005

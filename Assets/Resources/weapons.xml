@@ -12,24 +12,27 @@
 			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
-			<armor>2</armor>
+			<armor>0</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
+      
 		</weapon>
 		<weapon>
 			<id>20</id>
 			<name>돌맹이</name>
 			<damage>3</damage>
-			<range>0.5</range>
+			<range>1</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>null</Esrc>
 			<Psrc>thrown_rock</Psrc>
 			<projectileSpeed>1</projectileSpeed>
-			<armor>2</armor>
+			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.1</heightDelta>
 			<torq>300</torq>
 		</weapon>
@@ -44,8 +47,9 @@
 			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
-			<armor>2</armor>
+			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -62,6 +66,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -78,6 +83,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>3</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -94,6 +100,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -110,6 +117,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>5</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -126,6 +134,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -142,6 +151,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -158,6 +168,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>6</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -174,6 +185,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>8</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -190,6 +202,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>2</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -206,6 +219,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>4</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -222,6 +236,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>6</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -238,6 +253,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>8</armor>
 			<class>Warrior</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -254,6 +270,7 @@
 			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -270,6 +287,7 @@
 			<projectileSpeed>3</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -286,6 +304,7 @@
 			<projectileSpeed>5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -302,6 +321,7 @@
 			<projectileSpeed>6</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -315,9 +335,10 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>bow_0</Esrc>
 			<Psrc>arrow_0</Psrc>
-			<projectileSpeed>1.5</projectileSpeed>
+			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
-			<class>Shooter</class>
+      <class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -331,9 +352,10 @@
 			<armorPiercing>2</armorPiercing>
 			<Esrc>bow_1</Esrc>
 			<Psrc>arrow_1</Psrc>
-			<projectileSpeed>2</projectileSpeed>
+			<projectileSpeed>2.5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -347,9 +369,10 @@
 			<armorPiercing>4</armorPiercing>
 			<Esrc>bow_2</Esrc>
 			<Psrc>arrow_2</Psrc>
-			<projectileSpeed>2.5</projectileSpeed>
+			<projectileSpeed>3</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -363,9 +386,10 @@
 			<armorPiercing>6</armorPiercing>
 			<Esrc>bow_3</Esrc>
 			<Psrc>arrow_3</Psrc>
-			<projectileSpeed>3</projectileSpeed>
+			<projectileSpeed>3.5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -382,6 +406,7 @@
 			<projectileSpeed>1</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.05</heightDelta>
 			<torq>400</torq>
 		</weapon>
@@ -395,10 +420,11 @@
 			<armorPiercing>0</armorPiercing>
 			<Esrc>throwable_1</Esrc>
 			<Psrc>thrown_1</Psrc>
-			<projectileSpeed>2</projectileSpeed>
+			<projectileSpeed>1.5</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
-			<heightDelta>0.05</heightDelta>
+      <target>Enemy</target>
+			<heightDelta>0.01</heightDelta>
 			<torq>500</torq>
 		</weapon>
 		<weapon>
@@ -414,7 +440,8 @@
 			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
-			<heightDelta>0.05</heightDelta>
+      <target>Enemy</target>
+			<heightDelta>0.01</heightDelta>
 			<torq>700</torq>
 		</weapon>
 		<weapon>
@@ -430,6 +457,7 @@
 			<projectileSpeed>2</projectileSpeed>
 			<armor>0</armor>
 			<class>Shooter</class>
+      <target>Enemy</target>
 			<heightDelta>0.05</heightDelta>
 			<torq>500</torq>
 		</weapon>
@@ -446,6 +474,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -462,6 +491,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -478,6 +508,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -494,6 +525,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -501,8 +533,8 @@
 			<id>300100</id>
 			<name>효자손</name>
 			<damage>-10</damage>
-			<range>1</range>
-			<speed>1</speed>
+			<range>0.7</range>
+			<speed>0.5</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>wand_0</Esrc>
@@ -510,6 +542,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -517,8 +550,8 @@
 			<id>300101</id>
 			<name>지휘봉</name>
 			<damage>-20</damage>
-			<range>1</range>
-			<speed>1</speed>
+			<range>0.7</range>
+			<speed>0.5</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>wand_1</Esrc>
@@ -526,6 +559,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -533,8 +567,8 @@
 			<id>300102</id>
 			<name>응원봉</name>
 			<damage>-35</damage>
-			<range>1</range>
-			<speed>1</speed>
+			<range>0.7</range>
+			<speed>0.5</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>wand_2</Esrc>
@@ -542,15 +576,16 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
 		<weapon>
-			<id>3000103</id>
+			<id>300103</id>
 			<name>요술봉</name>
 			<damage>-50</damage>
-			<range>1</range>
-			<speed>1</speed>
+			<range>0.7</range>
+			<speed>0.5</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>wand_3</Esrc>
@@ -558,6 +593,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -574,6 +610,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -590,6 +627,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -606,6 +644,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>
@@ -622,6 +661,7 @@
 			<projectileSpeed>10</projectileSpeed>
 			<armor>0</armor>
 			<class>Supporter</class>
+      <target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
 		</weapon>

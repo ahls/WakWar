@@ -22,6 +22,10 @@ public class UnitLayerAdjust : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        layerUpdate();
+    }
+    private void layerUpdate()
+    {
         float currentY = transform.position.y;
 
         for (int i = 0; i < _numLayers; i++)

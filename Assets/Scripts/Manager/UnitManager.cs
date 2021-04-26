@@ -212,6 +212,9 @@ public class UnitManager : MonoBehaviour
                 }
             }
             Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
+        }
+        if(_attackMode && Input.GetMouseButtonUp(0))
+        {
             _attackMode = false;
         }
     }
