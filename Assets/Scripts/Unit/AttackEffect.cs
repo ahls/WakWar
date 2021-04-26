@@ -52,11 +52,17 @@ public class AttackEffect : MonoBehaviour
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
         _lifeTime = (int)(50 * offsetToTarget.magnitude / attacker.ProjectileSpeed);
 
-        if (_lifeTime > 0 && _heightDelta > 0)
+        if (_lifeTime > 0 && initDelta > 0)
         {//투사체 포물선 그리게
+
             _heightDelta = initDelta;
-            transform.position += new Vector3(0, 0.1f, 0);
+            transform.position += new Vector3(0, 0.15f, 0);
             _deltaDelta = _heightDelta * -2 / _lifeTime;
+        }
+        else
+        {
+            _deltaDelta = 0;
+            _heightDelta = 0;
         }
     }
 

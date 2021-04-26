@@ -1236,7 +1236,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 100000
+  weaponID: 200200
   torque: 0
 --- !u!1001 &177847099
 PrefabInstance:
@@ -2650,9 +2650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4077dd2a6ab582a479a61304c643d0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpdateRate: 1
-  _counterMax: 0
-  _counter: 0
 --- !u!114 &576610508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2908,12 +2905,12 @@ PrefabInstance:
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.595
+      value: 0.923
       objectReference: {fileID: 0}
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.986
+      value: -1.516
       objectReference: {fileID: 0}
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
