@@ -9,8 +9,10 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public Transform ParentToReturn;
     public bool Equipped = false;
+    public bool SellingItem = false; //상점에서 파는 아이템일경우 true
     private RectTransform _rectTransform;
     private ItemType _itemType;
+    
 
     // Start is called before the first frame update
     void Start()

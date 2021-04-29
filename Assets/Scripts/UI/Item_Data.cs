@@ -8,9 +8,9 @@ public enum ItemType { Potion, Weapon, Relic, Money, Any }
 public class Item_Data : MonoBehaviour, IPointerDownHandler
 {
     #region 변수
-    public int TestID;
     public int ItemID { get; set; }
     private int _enchantID;
+    public int Price; //0이면 비매품 
     #endregion
 
     private void Start()
@@ -33,7 +33,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
             transform.SetParent(parent);
             transform.position = parent.position;
         }
-        GetComponent<RectTransform>().sizeDelta = new Vector2(116, 116);
+        GetComponent<RectTransform>().sizeDelta = new Vector2(58, 58);
         transform.localScale = Vector3.one;
     }
 

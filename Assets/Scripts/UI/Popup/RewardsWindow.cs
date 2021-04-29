@@ -110,11 +110,9 @@ public class RewardsWindow : MonoBehaviour
     }
     private void LayItems(int itemID)
     {
-        Debug.Log(itemID);
         int itemValue = Items.DB[itemID].value;
         int numItems = (TestingLevelValue * lowerConstant / itemValue) + 1; // 지급될 아이템 갯수
-        Debug.Log($"{numItems}개의 {itemID}");
-
+        
         for (int i = 0; i < numItems; i++)
         {
             GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
