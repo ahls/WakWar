@@ -6,18 +6,18 @@ public class UIShop : UIPopup
 {
     [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform [] _tradeSlots;
-
+    [SerializeField] private GameObject sellingPanel;
     public override PopupID GetPopupID() { return PopupID.UIShop; }
 
     public override void SetInfo()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        IngameManager.instance.SetShop(this);
     }
 
     // Update is called once per frame
@@ -25,6 +25,7 @@ public class UIShop : UIPopup
     {
         if(Input.GetKeyDown(KeyCode.D))
         {
+            Global.UIPopupManager.ForceAddQueue(this);
             CreateItems();
         }
         
@@ -43,6 +44,11 @@ public class UIShop : UIPopup
 
             GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
             newItem.GetComponent<Item_Data>().Setup(newItemID, _tradeSlots[i]);
+            newItem.GetComponent<Item_Drag>().SellingItem = true;
         }
+    }
+    public void ToggleSellingWindow(bool state)
+    {
+        sellingPanel.SetActive(state);
     }
 }

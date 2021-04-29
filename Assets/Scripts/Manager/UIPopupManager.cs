@@ -34,9 +34,6 @@ public class UIPopupManager : MonoBehaviour
         currentPopup.transform.localPosition = Vector3.zero;
 
         var uiPopupScript = currentPopup.GetComponent<UIPopup>();
-        Debug.Log(currentPopup);
-        Debug.Log(uiPopupScript);
-        Debug.Log(param);
         if (param != null)
         {
             uiPopupScript.Param = param; 
@@ -71,5 +68,9 @@ public class UIPopupManager : MonoBehaviour
         }
 
         return null;
+    }
+    public void ForceAddQueue(UIPopup popup)
+    {
+        _popupQueue.Add(popup);
     }
 }

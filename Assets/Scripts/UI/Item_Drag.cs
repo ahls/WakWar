@@ -23,11 +23,6 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         ParentToReturn = _rectTransform.parent;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     #region 헬퍼 함수
 
     public void placeItem(Transform parentToBe)
@@ -58,9 +53,16 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
 
+
             //raycast ignore to allow item_slot to be accessible.
             _canvasGroup.blocksRaycasts = false;
             _canvasGroup.alpha = 0.7f;
+            Debug.Log(Global.UIPopupManager.FindPopup(PopupID.UIShop));
+            if(!SellingItem && Global.UIPopupManager.FindPopup(PopupID.UIShop)!=null)
+            {
+                IngameManager.UIShop.ToggleSellingWindow(true);
+            }
+
         }
     }
 
@@ -86,6 +88,12 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             //setting the raycast option
             _canvasGroup.blocksRaycasts = true;
             _canvasGroup.alpha = 1f;
+
+            //상점 판매칸 닫는 스크립트
+            if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
+            {
+                IngameManager.UIShop.ToggleSellingWindow(false);
+            }
         }
     }
 }

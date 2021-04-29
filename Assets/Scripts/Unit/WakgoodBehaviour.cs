@@ -58,6 +58,6 @@ public class WakgoodBehaviour : MonoBehaviour
     }
     private void OnDisable()
     {
-        IngameManager.ProgressManager.EndCombat();
+        //IngameManager.ProgressManager.EndCombat();
     }
 }

@@ -33,6 +33,12 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     int itemPrice = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value/2;//반값에 팔림
                     IngameManager.UIInventory.AddMoney(itemPrice);
                     Global.ObjectPoolManager.ObjectPooling(draggedItem.gameObject.name, draggedItem.gameObject);
+
+                    //상점 판매칸 닫는 스크립트
+                    if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
+                    {
+                        IngameManager.UIShop.ToggleSellingWindow(false);
+                    }
                 }
 
                 else if (draggedItem.compareType(_slotType))
@@ -42,12 +48,12 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     if (draggedItem.SellingItem)
                     {
                         int itemPrice = -Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value;
-                        if(!IngameManager.UIInventory.AddMoney(itemPrice))//TODO: 상점에서 돈빼는 스크립트, 돈이 충분하면 true, 부족하면 false 로 나오게 써야함
+                        if(!IngameManager.UIInventory.AddMoney(itemPrice))
                         {
-                            
                             Global.UIManager.PushNotiMsg("소지금이 부족합니다.", 1f);
                             return;
                         }
+                        draggedItem.SellingItem = false;
                     }
 
 
