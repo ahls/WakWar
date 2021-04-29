@@ -34,7 +34,9 @@ public class UIPopupManager : MonoBehaviour
         currentPopup.transform.localPosition = Vector3.zero;
 
         var uiPopupScript = currentPopup.GetComponent<UIPopup>();
-
+        Debug.Log(currentPopup);
+        Debug.Log(uiPopupScript);
+        Debug.Log(param);
         if (param != null)
         {
             uiPopupScript.Param = param; 
