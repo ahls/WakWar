@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <itemCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<items>
+    <item>
+      <id>10000</id>
+      <type>Money</type>
+      <name>금화</name>
+      <desc>반짝반짝 빛나는 금화입니다. 상점에서 사용 할 수 있습니다.</desc>
+      <value>1</value>
+      <Image>null</Image>
+    </item>
 		<item>
-			<id>10000</id>
+			<id>10001</id>
 			<type>Potion</type>
 			<name>회복 물약</name>
 			<desc>모든 캐릭터의 체력을 10% 회복합니다.</desc>
@@ -10,7 +18,7 @@
 			<Image>null</Image>
 		</item>
 		<item>
-			<id>10001</id>
+			<id>10002</id>
 			<type>Potion</type>
 			<name>회복의 영약</name>
 			<desc>모든 캐릭터를 체력을 50% 회복합니다</desc>
@@ -18,7 +26,7 @@
 			<Image>null</Image>
 		</item>
 		<item>
-			<id>10002</id>
+			<id>10003</id>
 			<type>Potion</type>
 			<name>경험 물약</name>
 			<desc>레벨이 낮은 다섯 팬치의 레벨을 상승시킵니다.</desc>

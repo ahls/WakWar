@@ -30,7 +30,8 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                         return;
                     }
                     //상점에 진열된 아이템이 아닐경우, 돈을 주고 아이템 삭제
-                    //TODO: 돈주는 함수추가해야함
+                    int itemPrice = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value/2;//반값에 팔림
+                    IngameManager.UIInventory.AddMoney(itemPrice);
                     Global.ObjectPoolManager.ObjectPooling(draggedItem.gameObject.name, draggedItem.gameObject);
                 }
 
@@ -40,13 +41,12 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     //상점 구매 로직
                     if (draggedItem.SellingItem)
                     {
-                        if(true)//TODO: 상점에서 돈빼는 스크립트, 돈이 충분하면 true, 부족하면 false 로 나오게 써야함
+                        int itemPrice = -Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value;
+                        if(!IngameManager.UIInventory.AddMoney(itemPrice))//TODO: 상점에서 돈빼는 스크립트, 돈이 충분하면 true, 부족하면 false 로 나오게 써야함
                         {
                             
-                        }
-                        else
-                        {//돈이 없는경우
                             Global.UIManager.PushNotiMsg("소지금이 부족합니다.", 1f);
+                            return;
                         }
                     }
 
@@ -74,7 +74,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                 else
                 {
 
-                    Global.UIManager.PushNotiMsg("잘못된 타입 입니다.", 1f);
+                    Global.UIManager.PushNotiMsg("그곳에 둘 수 없는 아이템 입니다.", 1f);
                 }
 
             }

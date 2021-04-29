@@ -5,8 +5,9 @@ using UnityEngine;
 public class UIInventory : UIPopup
 {
     [SerializeField] private Item_Slot[] _itemSlots;
+    [SerializeField] private GameObject _itemPrefab;
     public override PopupID GetPopupID() { return PopupID.UIInventory; }
-    public int MoneyLocation = -1; //돈의 위치 인덱스. 돈이 없을경우 -1 로 설정
+    private int _moneyLocation = -1; //돈의 위치 인덱스. 돈이 없을경우 -1 로 설정
     public override void SetInfo()
     {
     }
@@ -49,13 +50,33 @@ public class UIInventory : UIPopup
     /// <returns></returns>
     public bool AddMoney(int amount)
     {
-        if(MoneyLocation == -1)
+        if(_moneyLocation == -1)
         {//돈의 위치가 없는경우
-            getEmptySlot(1);
+            if(amount <0 )
+            {//돈이 아예 없는데 차감하려 할 경우
+                return false;
+            }
+
+            _moneyLocation = getEmptySlot(1);
+
+            GameObject newMoney = Global.ResourceManager.LoadPrefab(_itemPrefab.name);
+            newMoney.GetComponent<Item_Data>().Setup(10000, _itemSlots[_moneyLocation].transform);
+            _itemSlots[_moneyLocation].CurrentNumber = amount;
+            return true;
         }
-        if(amount > 0)
-        {
-            
+        else if(amount > 0)
+        {//추가시
+            _itemSlots[_moneyLocation].CurrentNumber += amount;
+            return true;
+        }
+        else
+        {//차감시
+            if(_itemSlots[_moneyLocation].CurrentNumber < -amount)
+            {//돈이 모자르면
+                return false;
+            }
+
+            _itemSlots[_moneyLocation].CurrentNumber += amount;
             return true;
         }
     }
