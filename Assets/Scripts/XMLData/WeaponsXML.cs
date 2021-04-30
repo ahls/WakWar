@@ -76,6 +76,7 @@ public struct Weapon
 public class Weapons
 {
     public static Dictionary<int, Weapon> DB = new Dictionary<int, Weapon>();
+    public const string attackPrefab = "AttackEffect";
 }
 
 [XmlRoot("weaponCollection")]

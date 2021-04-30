@@ -34,8 +34,6 @@ public class UnitCombat : MonoBehaviour
     }
 
 
-    public GameObject effectPrefab;
-
     //체력
     public int HealthMax { get; set; } = 10;
     public bool IsDead { get; set; } = false;
@@ -304,9 +302,9 @@ public class UnitCombat : MonoBehaviour
     public void Fire()
     {
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
-        _effect = Global.ResourceManager.LoadPrefab(effectPrefab.name);
+        _effect = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position, effectPrefab.name,_torque,_heightDelta);
+        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position,_torque,_heightDelta);
 
     }
 
