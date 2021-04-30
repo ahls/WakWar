@@ -35,6 +35,9 @@ public class WakWindow : UIPopup
         IngameManager.WakgoodBehaviour.WakStats[1] = 0;
         IngameManager.WakgoodBehaviour.WakStats[2] = 0;
     }
+    public override void PostInitialize()
+    {
+    }
 
     public void UpdateStat(DisplayStat statType, int newValue)
     {

@@ -11,6 +11,9 @@ public class UIInventory : UIPopup
     public override void SetInfo()
     {
     }
+    public override void PostInitialize()
+    {
+    }
 
     private void Start()
     {

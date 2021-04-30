@@ -11,7 +11,9 @@ public class UIShop : UIPopup
 
     public override void SetInfo()
     {
-        //throw new System.NotImplementedException();
+    }
+    public override void PostInitialize()
+    {
     }
 
     // Start is called before the first frame update

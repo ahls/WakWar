@@ -7,6 +7,7 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 {
     public abstract PopupID GetPopupID();
     public abstract void SetInfo();
+    public abstract void PostInitialize();
 
     protected RectTransform _rectTransform;
 
@@ -21,7 +22,6 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
     {
         SetInfo();
     }
-
     public object Param { get; set; }
 
     protected object GetParam()
