@@ -74,7 +74,7 @@
 			<name>무릎망치</name>
 			<desc>병원에서 무릎의 반사를 검사할때 쓰인다. 반사신경이 좋으면 의사선생님의 공격을 피해보자.</desc>
 			<value>10</value>
-			<Image>I_axe0</Image>
+			<Image>I_axe00</Image>
 			<weaponID>100100</weaponID>
 		</item>
 		<item>
@@ -147,7 +147,7 @@
 			<name>너프건</name>
 			<desc>아무리 용감한 사람이라도 움찔 합니다.</desc>
 			<value>10</value>
-			<Image>null</Image>
+			<Image>I_gun0</Image>
 			<weaponID>200000</weaponID>
 		</item>
 		<item>
@@ -156,7 +156,7 @@
 			<name>BB탄총</name>
 			<desc>BB탄이라고 무시하면 큰코 다칩니다.</desc>
 			<value>30</value>
-			<Image>null</Image>
+			<Image>I_gun1</Image>
 			<weaponID>200001</weaponID>
 		</item>
 		<item>
@@ -165,7 +165,7 @@
 			<name>화승총</name>
 			<desc>불 붙이는 중.....</desc>
 			<value>75</value>
-			<Image>null</Image>
+			<Image>I_gun2</Image>
 			<weaponID>200002</weaponID>
 		</item>
 		<item>
@@ -174,7 +174,7 @@
 			<name>5-퍼레이터</name>
 			<desc>당신의 샷발이 얼마나 구데기인지 보여주는 총입니다.</desc>
 			<value>100</value>
-			<Image>null</Image>
+			<Image>I_gun3</Image>
 			<weaponID>200003</weaponID>
 		</item>
 		<item>
@@ -219,7 +219,7 @@
 			<name>야구공</name>
 			<desc>"자아아 궁내 체고의 씽카볼 투순데"</desc>
 			<value>10</value>
-			<Image>null</Image>
+			<Image>I_throw0</Image>
 			<weaponID>200200</weaponID>
 		</item>
 		<item>
@@ -228,7 +228,7 @@
 			<name>부메랑</name>
 			<desc>돌아올땐 화면의 수직방향으로 서서 날아오기 때문에 보이지 않습니다. 절대로 구현하기 귀찮았던게 아닙니다.</desc>
 			<value>30</value>
-			<Image>null</Image>
+			<Image>I_throw1</Image>
 			<weaponID>200201</weaponID>
 		</item>
 		<item>
@@ -237,7 +237,7 @@
 			<name>표창</name>
 			<desc>옆동네 겐X가 자주 쓰는 무기입니다.</desc>
 			<value>75</value>
-			<Image>null</Image>
+			<Image>I_throw2</Image>
 			<weaponID>200202</weaponID>
 		</item>
 		<item>
@@ -246,7 +246,7 @@
 			<name>수류탄</name>
 			<desc>"이거슨 수류탄이여!!"</desc>
 			<value>100</value>
-			<Image>null</Image>
+			<Image>I_throw3</Image>
 			<weaponID>200203</weaponID>
 		</item>
 		<item>
@@ -255,7 +255,7 @@
 			<name>뿅망치</name>
 			<desc>이거 맞으면 너 나한테 뿅간다 ㅋㅋ ....죄송</desc>
 			<value>10</value>
-			<Image>null</Image>
+			<Image>I_blunt0</Image>
 			<weaponID>300000</weaponID>
 		</item>
 		<item>
@@ -265,7 +265,7 @@
 			<desc>이번 영상 개웃기네 ㅋ
 "GWANG-GO is CRAZY"</desc>
 			<value>30</value>
-			<Image>null</Image>
+			<Image>I_blunt1</Image>
 			<weaponID>300001</weaponID>
 		</item>
 		<item>
@@ -274,7 +274,7 @@
 			<name>쌍절곤</name>
 			<desc>"니가 그렇게 싸움을 잘해? 옥상으로 올라와."</desc>
 			<value>75</value>
-			<Image>null</Image>
+			<Image>I_blunt2</Image>
 			<weaponID>300002</weaponID>
 		</item>
 		<item>
@@ -283,7 +283,7 @@
 			<name>모닝스타</name>
 			<desc>이름의 유래는 맞았을때 아침에도 별(morning star) 이라는 설도 있고... 아... 안물어봤다고..? 알았어...</desc>
 			<value>100</value>
-			<Image>null</Image>
+			<Image>I_blunt3</Image>
 			<weaponID>300003</weaponID>
 		</item>
 		<item>
@@ -292,7 +292,7 @@
 			<name>효자손</name>
 			<desc>이걸 보면 등이 간지러워집니다. 왜일까요?</desc>
 			<value>10</value>
-			<Image>null</Image>
+			<Image>I_wand0</Image>
 			<weaponID>300100</weaponID>
 		</item>
 		<item>
@@ -301,7 +301,7 @@
 			<name>지휘봉</name>
 			<desc>오솔레미오~~~~~~~ 켁켁</desc>
 			<value>30</value>
-			<Image>null</Image>
+			<Image>I_wand1</Image>
 			<weaponID>300101</weaponID>
 		</item>
 		<item>
@@ -310,7 +310,7 @@
 			<name>깃대</name>
 			<desc>윗동네 한 왕자가 쓰는 듯합니다.</desc>
 			<value>75</value>
-			<Image>null</Image>
+			<Image>I_wand2</Image>
 			<weaponID>300102</weaponID>
 		</item>
 		<item>
@@ -319,7 +319,7 @@
 			<name>요술봉</name>
 			<desc>해뤼뽀터!</desc>
 			<value>100</value>
-			<Image>null</Image>
+			<Image>I_wand3</Image>
 			<weaponID>300103</weaponID>
 		</item>
 		<item>
@@ -328,7 +328,7 @@
 			<name>탬버린</name>
 			<desc>2. 왁굳이 언급하기 전에 타 스트리머 언급을 하지 말아주세요.</desc>
 			<value>10</value>
-			<Image>null</Image>
+			<Image>I_inst0</Image>
 			<weaponID>300200</weaponID>
 		</item>
 		<item>
@@ -337,16 +337,16 @@
 			<name>리코더</name>
 			<desc>플라스틱으로 만들어진 리코더. 삑사리가 쉽게 납니다.</desc>
 			<value>30</value>
-			<Image>null</Image>
+			<Image>I_inst1</Image>
 			<weaponID>300201</weaponID>
 		</item>
 		<item>
 			<id>20802</id>
 			<type>Weapon</type>
 			<name>하모니카</name>
-			<desc>대충 불어도 듣기 괜찮은 소리가 나는 신기한 악기입니다. 고대인들은 옥수수로 이 악기를 만들었다고 합니다.</desc>
+			<desc>옥수수 하모니카 알면 틀딱이라던데... 당신은 틀딱이신가요?</desc>
 			<value>75</value>
-			<Image>null</Image>
+			<Image>I_inst2</Image>
 			<weaponID>300202</weaponID>
 		</item>
 		<item>
@@ -355,7 +355,7 @@
 			<name>기타</name>
 			<desc>나비보벳따우 보보벳띠~~</desc>
 			<value>100</value>
-			<Image>null</Image>
+			<Image>I_inst3</Image>
 			<weaponID>300203</weaponID>
 		</item>
 		<item>
