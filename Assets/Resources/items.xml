@@ -7,7 +7,7 @@
       <name>금화</name>
       <desc>반짝반짝 빛나는 금화입니다. 상점에서 사용 할 수 있습니다.</desc>
       <value>1</value>
-      <Image>null</Image>
+      <Image>I_coin</Image>
     </item>
 		<item>
 			<id>10001</id>
@@ -38,7 +38,7 @@
 			<name>나무검</name>
 			<desc>목검입니다. 너무 세게 휘두르면 부러질수 있으니까 살살 치세요.</desc>
 			<value>10</value>
-			<Image>sword0</Image>
+			<Image>I_sword0</Image>
 			<weaponID>100000</weaponID>
 		</item>
 		<item>
@@ -47,7 +47,7 @@
 			<name>돌검</name>
 			<desc>검신 전체가 돌로 이루어져 있습니다. 이걸 나무검과 같은 속도로 휘두르다니... 엄청난 팔 힘 이군요.</desc>
 			<value>30</value>
-			<Image>sword1</Image>
+			<Image>I_sword1</Image>
 			<weaponID>100001</weaponID>
 		</item>
 		<item>
@@ -56,7 +56,7 @@
 			<name>철검</name>
 			<desc>팡훈이가 좋아하는 검은? 감옥에 철검! 엌ㅋㅋ</desc>
 			<value>75</value>
-			<Image>sword2</Image>
+			<Image>I_sword2</Image>
 			<weaponID>100002</weaponID>
 		</item>
 		<item>
@@ -65,7 +65,7 @@
 			<name>다이아검</name>
 			<desc>아쉽게도 레벨 30이 안되서 좋은 인첸트는 못바르겠네요...</desc>
 			<value>100</value>
-			<Image>sword3</Image>
+			<Image>I_sword3</Image>
 			<weaponID>100003</weaponID>
 		</item>
 		<item>
@@ -74,7 +74,7 @@
 			<name>무릎망치</name>
 			<desc>병원에서 무릎의 반사를 검사할때 쓰인다. 반사신경이 좋으면 의사선생님의 공격을 피해보자.</desc>
 			<value>10</value>
-			<Image>axe0</Image>
+			<Image>I_axe0</Image>
 			<weaponID>100100</weaponID>
 		</item>
 		<item>
@@ -83,7 +83,7 @@
 			<name>돌도끼</name>
 			<desc>조약돌 두개, 나뭇가지 두개.</desc>
 			<value>30</value>
-			<Image>axe1</Image>
+			<Image>I_axe1</Image>
 			<weaponID>100101</weaponID>
 		</item>
 		<item>
@@ -92,7 +92,7 @@
 			<name>소방도끼</name>
 			<desc>위협적인 빨간색을 띄고 있지만, 사실 소방용 이라는 걸 나타내기 위한 색입니다.</desc>
 			<value>75</value>
-			<Image>axe2</Image>
+			<Image>I_axe2</Image>
 			<weaponID>100102</weaponID>
 		</item>
 		<item>
@@ -101,7 +101,7 @@
 			<name>전투도끼</name>
 			<desc>"히얼스... 쟈니!"</desc>
 			<value>100</value>
-			<Image>axe3</Image>
+			<Image>I_axe3</Image>
 			<weaponID>100103</weaponID>
 		</item>
 		<item>
@@ -110,7 +110,7 @@
 			<name>종이박스</name>
 			<desc>취급주의 스티커를 붙여놓아서 적들이 살살 때릴것만 같습니다.</desc>
 			<value>10</value>
-			<Image>shield0</Image>
+			<Image>I_shield0</Image>
 			<weaponID>100200</weaponID>
 		</item>
 		<item>
@@ -119,7 +119,7 @@
 			<name>나무문짝</name>
 			<desc>생동감 넘치는 "노크 농담"을 할수 있습니다.</desc>
 			<value>30</value>
-			<Image>shield1</Image>
+			<Image>I_shield1</Image>
 			<weaponID>100201</weaponID>
 		</item>
 		<item>
@@ -129,7 +129,7 @@
 			<desc>"이거 방탄유리야!"
 손잡이는 안달려있습니다.</desc>
 			<value>75</value>
-			<Image>shield2</Image>
+			<Image>I_shield2</Image>
 			<weaponID>100202</weaponID>
 		</item>
 		<item>
@@ -138,7 +138,7 @@
 			<name>호쾌남의 방패</name>
 			<desc>팬치만 믿으라구!</desc>
 			<value>100</value>
-			<Image>shield3</Image>
+			<Image>I_shield3</Image>
 			<weaponID>100203</weaponID>
 		</item>
 		<item>
@@ -183,7 +183,7 @@
 			<name>장난감활</name>
 			<desc>플라스틱으로 이루어진 활입니다. 같이 딸려온 화살에는 고무 빨판이 붙어있습니다. 떼면 더 아프지 않을까요..?</desc>
 			<value>10</value>
-			<Image>bow0</Image>
+			<Image>I_bow0</Image>
 			<weaponID>200100</weaponID>
 		</item>
 		<item>
@@ -192,7 +192,7 @@
 			<name>단궁</name>
 			<desc>투박한 구조를 지닌 나무 활입니다. 제작시 낚싯대 보다 많은 양의 줄을 요구합니다.</desc>
 			<value>30</value>
-			<Image>bow1</Image>
+			<Image>I_bow1</Image>
 			<weaponID>200101</weaponID>
 		</item>
 		<item>
@@ -201,7 +201,7 @@
 			<name>각궁</name>
 			<desc>나무로 된 활 끝에 단단한 뿔이 달린 있는 곡궁입니다.</desc>
 			<value>75</value>
-			<Image>bow2</Image>
+			<Image>I_bow2</Image>
 			<weaponID>200102</weaponID>
 		</item>
 		<item>
@@ -210,7 +210,7 @@
 			<name>컴파운드 보우</name>
 			<desc>도르레의 원리를 이용하여 유지력, 파괴력, 정확도를 향상시킨 활입니다. 활 시위를 당기는데 어마무지한 힘이 듭니다.</desc>
 			<value>100</value>
-			<Image>bow3</Image>
+			<Image>I_bow3</Image>
 			<weaponID>200103</weaponID>
 		</item>
 		<item>

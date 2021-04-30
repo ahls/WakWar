@@ -21,12 +21,11 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
     public void Setup(int ID, Transform parent = null)
     {
         ItemID = ID;
-        Debug.Log($"아이템 데이터 스크립트:{Items.DB[ItemID].imgSrc}");
-        Debug.Log(Items.DB[ItemID].name);
-        string tempsource = "weapons/" + Items.DB[ItemID].imgSrc;
-        Debug.Log(tempsource);
-//        GetComponent<Image>().sprite = Resources.Load<Sprite>("weapons/" + Items.DB[itemID].imgSrc);
-        GetComponent<Image>().sprite = Resources.Load<Sprite>(tempsource);//리소스 매니져로 불러오는 방법 물어보기
+        string imgSrc = Items.DB[ItemID].imgSrc;
+        if (imgSrc != "Null")
+        {
+            GetComponent<Image>().sprite = Global.ResourceManager.LoadTexture(imgSrc);
+        }
         GetComponent<Item_Drag>().setType(Items.DB[ItemID].type);
         if(parent != null)
         {
