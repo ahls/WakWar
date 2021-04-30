@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 4295001492206922444}
   - component: {fileID: 4295001492206922451}
   m_Layer: 0
-  m_Name: Shop Window
+  m_Name: UIShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 4295001492309819277}
   - component: {fileID: 4295001492309819276}
   m_Layer: 0
-  m_Name: Button
+  m_Name: close button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +630,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4295001492309819277}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4295001492206922451}
+        m_MethodName: Pop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4295001492349184196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,6 +1387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: empty Slot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6820597928760405855, guid: f165f0db6d31c4a46a7a56fd9a66e64c,
+        type: 3}
+      propertyPath: _slotType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f165f0db6d31c4a46a7a56fd9a66e64c, type: 3}
