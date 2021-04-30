@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIInventory : UIPopup
 {
     [SerializeField] private Item_Slot[] _itemSlots;
-    [SerializeField] private GameObject _itemPrefab;
     public override PopupID GetPopupID() { return PopupID.UIInventory; }
     private int _moneyLocation = -1; //돈의 위치 인덱스. 돈이 없을경우 -1 로 설정
     public override void SetInfo()
@@ -62,7 +61,7 @@ public class UIInventory : UIPopup
 
             _moneyLocation = getEmptySlot(1);
 
-            GameObject newMoney = Global.ResourceManager.LoadPrefab(_itemPrefab.name);
+            GameObject newMoney = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
             newMoney.GetComponent<Item_Data>().Setup(10000, _itemSlots[_moneyLocation].transform);
             _itemSlots[_moneyLocation].CurrentNumber = amount;
             return true;

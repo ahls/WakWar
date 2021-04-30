@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class testItemGiver : MonoBehaviour
 {
-    public GameObject itemPrefab;
     private InputField _inputField;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,7 @@ public class testItemGiver : MonoBehaviour
                 List<Transform> itemslot = IngameManager.UIInventory.getEmptySlots(1);
                 if (itemslot.Count != 0)
                 {
-                    GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
+                    GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
                     newItem.GetComponent<Item_Data>().Setup(givenInput,itemslot[0]);
 
                 }

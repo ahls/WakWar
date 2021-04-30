@@ -14,10 +14,6 @@ public class XMLLoader
     public XMLLoader()
     {
         WeaponContainer.Load(WEAPON_PATH);
-        foreach (var item in Weapons.DB.Keys)
-        {
-            Debug.Log(item.ToString() + ": " +Weapons.DB[item].name);
-        }
         ItemContainer.Load(ITEM_PATH);
         StageXML.Load(STAGE_PATH);
         DialogueXML.Load(DIALOG_PATH);

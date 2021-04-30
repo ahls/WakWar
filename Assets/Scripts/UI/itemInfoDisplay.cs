@@ -29,8 +29,7 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
 
     public void SetLocation(Vector2 mouseLocation)
     {
-        Debug.Log(mouseLocation);
-        rectTransform.position = mouseLocation + new Vector2(-2,2);
+        rectTransform.position = mouseLocation + new Vector2(0,-10);
         rectTransform.SetAsLastSibling();
     }
 
@@ -71,40 +70,40 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
             switch ((param.item.weaponID / 10000) + (param.item.weaponID % 1000)/100 )
             {
                 case 10:
-                    descriptionText += "검 (전사)\n";
+                    descriptionText += "<b>검</b> (전사)\n";
                     break;
                 case 11:
-                    descriptionText += "도끼 (전사)\n";
+                    descriptionText += "<b>도끼</b> (전사)\n";
                     break;
                 case 12:
-                    descriptionText += "거대 방패 (전사)\n";
+                    descriptionText += "<b>거대 방패</b> (전사)\n";
                     break;
                 case 20:
-                    descriptionText += "총 (사수)\n";
+                    descriptionText += "<b>총</b> (사수)\n";
                     break;
                 case 21:
-                    descriptionText += "활 (사수)\n";
+                    descriptionText += "<b>활</b> (사수)\n";
                     break;
                 case 22:
-                    descriptionText += "투척무기 (사수)\n";
+                    descriptionText += "<b>투척무기</b> (사수)\n";
                     break;
                 case 30:
-                    descriptionText += "둔기 (지원가)\n";
+                    descriptionText += "<b>둔기</b> (지원가)\n";
                     break;
                 case 31:
-                    descriptionText += "지팡이 (지원가)\n";
+                    descriptionText += "<b>지팡이</b> (지원가)\n";
                     break;
                 case 32:
-                    descriptionText += "악기 (지원가)\n";
+                    descriptionText += "<b>악기</b> (지원가)\n";
                     break;
                 default:
                     descriptionText += "line71 확인:" + ((param.item.weaponID / 10000) + (param.item.weaponID % 1000) / 100).ToString() + "\n";
                     break;
             }
-            descriptionText += "공격력: " + weapon.damage.ToString();
-            descriptionText += "      공격속도: " + weapon.AttackSpeed.ToString()+'\n';
-            descriptionText += "방어력: " + weapon.Armor.ToString();
-            descriptionText += "      사정거리: " + weapon.AttackRange.ToString() + "\n\n" + param.item.desc;
+            descriptionText += "공격력 :  " + weapon.damage.ToString();
+            descriptionText += "       공격속도 :  " + weapon.AttackSpeed.ToString()+'\n';
+            descriptionText += "방어력 :  " + weapon.Armor.ToString();
+            descriptionText += "       사정거리 :  " + weapon.AttackRange.ToString() + "\n\n<i>" + param.item.desc + "</i>";
             _desc.text = descriptionText;
 
         }

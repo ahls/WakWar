@@ -241,5 +241,13 @@ public class UnitManager : MonoBehaviour
     {
         _leftClicked = Input.GetMouseButtonDown(0);
         _rightClicked = Input.GetMouseButtonDown(1);
+        if(Input.GetKeyDown(KeyCode.S))
+        {//스탑명령 여기에 추가
+            _attackMode = false;
+            foreach(var unit in _selectedUnitList)
+            {
+                unit.GetComponent<UnitStats>().MoveToTarget(unit.transform.position);
+            }
+        }
     }
 }

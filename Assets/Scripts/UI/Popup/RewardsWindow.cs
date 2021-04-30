@@ -16,7 +16,6 @@ public class RewardsWindow : MonoBehaviour
 
     [SerializeField] private GameObject categoryPanel;
     [SerializeField] private GameObject[] slots;
-    [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Text[] rewardText;
 
     private rewardType[] _rewardTypes = new rewardType[3];
@@ -74,7 +73,7 @@ public class RewardsWindow : MonoBehaviour
             Transform tempTransform = slots[i].transform;
             if (tempTransform.childCount != 0)
             {
-                Global.ObjectPoolManager.ObjectPooling(itemPrefab.name, slots[i].transform.GetChild(0).gameObject);
+                Global.ObjectPoolManager.ObjectPooling(Items.PREFAB_NAME, slots[i].transform.GetChild(0).gameObject);
             }
         }
 
@@ -93,7 +92,7 @@ public class RewardsWindow : MonoBehaviour
             case rewardType.relic:
                 chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count)];
                 Debug.Log(chosenItemID);
-                GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
+                GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
                 newItem.GetComponent<Item_Data>().Setup(chosenItemID);
                 newItem.transform.SetParent(slots[0].transform);
                 newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
@@ -115,7 +114,7 @@ public class RewardsWindow : MonoBehaviour
         
         for (int i = 0; i < numItems; i++)
         {
-            GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
+            GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
             slots[i].GetComponent<Item_Slot>().CurrentNumber++;
         }

@@ -53,6 +53,7 @@ public class Items
 {
     static public List<int> weaponIDs = new List<int>(), relicIDs = new List<int>(), consumableIDs = new List<int>();
     static public Dictionary<int, Item> DB = new Dictionary<int, Item>();
+    public const string PREFAB_NAME = "item base";
 }
 
 [XmlRoot("itemCollection")]

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIShop : UIPopup
 {
-    [SerializeField] private GameObject itemPrefab;
     [SerializeField] private Transform [] _tradeSlots;
     [SerializeField] private GameObject sellingPanel;
     public override PopupID GetPopupID() { return PopupID.UIShop; }
@@ -44,7 +43,7 @@ public class UIShop : UIPopup
             int newItemID = 20000 + (Random.Range(0, 9) * 100) + Random.Range(0, 2);
             //아이템 생성
 
-            GameObject newItem = Global.ResourceManager.LoadPrefab(itemPrefab.name);
+            GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(newItemID, _tradeSlots[i]);
             newItem.GetComponent<Item_Drag>().SellingItem = true;
         }

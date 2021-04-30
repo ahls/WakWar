@@ -72,21 +72,15 @@ public class ResourceManager
     {
         foreach (var path in _assetBundle.GetAllAssetNames())
         {
-                Debug.Log("Current Path: " + path);
             Sprite[] sprites;
             if(path.Contains("sprites/textures"))//빌드에서도 적용 되는지 확인 필요
             {
                 sprites = _assetBundle.LoadAssetWithSubAssets<Sprite>(path);
                 foreach (var subsprite in sprites)
                 {
-                    Debug.Log("    subpath: " + subsprite.name);
                     _loadedTexture[subsprite.name] = subsprite;
                 }
             }
-        }
-        foreach (var item in _loadedTexture.Keys)
-        {
-            Debug.Log(_loadedTexture[item].name);
         }
     }
 }
