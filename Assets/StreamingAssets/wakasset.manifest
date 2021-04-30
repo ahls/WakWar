@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2441294176
+CRC: 2031321021
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7bbb41a81283d59f28ca949d7479b241
+    Hash: a0ae2c15d072b2db1d4107b0cbf47135
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 71b9166f4e715af16001aad07cb510fc
+    Hash: b4b2a464b2a2610d3a22ee7b83d1d720
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -59,6 +59,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2ee6cd8e73f383347b6a3bb4e0420ebd, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
 - Class: 115
@@ -131,6 +133,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun0.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst2.png
+- Assets/WakAsset/UI/UIShop.prefab
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 Dependencies: []

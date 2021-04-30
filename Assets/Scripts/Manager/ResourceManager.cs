@@ -23,7 +23,6 @@ public class ResourceManager
             AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(_assetBundlePath));
             _assetBundle = request.assetBundle;
             //AssetBundle.LoadFromFile(assetBundlePath);
-            Debug.Log("프리로딩 텍스쳐");
             PreloadTextures();
         }
     }

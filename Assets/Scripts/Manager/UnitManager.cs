@@ -208,7 +208,6 @@ public class UnitManager : MonoBehaviour
                 {
                     currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc,true);
                     currentUnit.GetComponent<UnitCombat>().AttackGround = true;
-                    //대상찾는 스크립트 추가하기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
             }
             Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
