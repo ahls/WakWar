@@ -11,7 +11,8 @@ public class UnitCombat : MonoBehaviour
     {
         Idle,
         Move,
-        Attack
+        Attack,
+        Stun
     }
 
     #region 변수
@@ -39,6 +40,7 @@ public class UnitCombat : MonoBehaviour
     public bool IsDead { get; set; } = false;
     private int _healthCurrent;
     [SerializeField] private Slider _healthBar;
+    private int _stunTimer = 0;
 
     //공격관련
     public int BaseDamage { get; set; }
@@ -76,6 +78,7 @@ public class UnitCombat : MonoBehaviour
     private Animator _animator;
     private float _heightDelta;
     private int _torque;
+
     //장비 장착후 스탯
     public int TotalDamage { get; set; }
     public float TotalRange { get; set; }
@@ -174,6 +177,19 @@ public class UnitCombat : MonoBehaviour
                             SearchShell();
                         }
 
+                        break;
+                    }
+                case ActionStats.Stun:
+                    {
+                        if(_stunTimer > 0)
+                        {
+                            _stunTimer--;
+                            return;
+                        }
+                        else
+                        {
+                            ActionStat = ActionStats.Idle;
+                        }
                         break;
                     }
                 default: break;
@@ -299,6 +315,11 @@ public class UnitCombat : MonoBehaviour
             TargetFaction = Weapons.DB[_weaponIndex].targetFaction;
         }
     }
+
+    public int GetItemRank()
+    {
+        return _weaponIndex % 10;
+    }
     #endregion
 
     #region 공격관련
@@ -328,6 +349,12 @@ public class UnitCombat : MonoBehaviour
     public void UpdatePlaybackSpeed()
     {
         _animator.speed = Mathf.Max(_totalAS, 1f);
+    }
+    public void AddStun(int numFrames)
+    {
+        _unitstats.StopMoving();
+        ActionStat = ActionStats.Stun;
+        _stunTimer += numFrames;
     }
     #endregion
 

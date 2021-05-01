@@ -19,14 +19,14 @@ public abstract class SkillBase : MonoBehaviour
         _cooldownModifier = Mathf.Max(0.3f, _cooldownModifier); //최대 70퍼센트까지 감소 가능
         _totalCD = BaseCD * _cooldownModifier;
     }
-    public void UseSkill(Transform target,int passinValue)
+    public void UseSkill(UnitCombat caster)
     {
         if(Time.time > _timeReady)
         {
             _timeReady = _totalCD + Time.time;
-            SkillEffect(target, passinValue);
+            SkillEffect(caster);
         }
     }
-    protected abstract void SkillEffect(Transform target,int s);
+    protected abstract void SkillEffect(UnitCombat caster);
     protected abstract void ForceStop();
 }

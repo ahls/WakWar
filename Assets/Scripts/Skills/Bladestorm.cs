@@ -13,7 +13,6 @@ public class Bladestorm : SkillBase
     protected override void ForceStop()
     {
         _durationTimer = -1;
-        gameObject.SetActive(false);
     }
     /// <summary>
     /// 스킬설명: 타겟은 자신, 인트는 초당 데미지
@@ -22,11 +21,12 @@ public class Bladestorm : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="damage"></param>
-    protected override void SkillEffect(Transform target,int damage)
+    protected override void SkillEffect(UnitCombat caster)
     {
+
         _durationTimer = SKILL_DURATION;
         _caster = transform;
-        _damage = damage;
+        _damage = caster.TotalDamage - (2-caster.GetItemRank());
     }
 
     private void FixedUpdate()

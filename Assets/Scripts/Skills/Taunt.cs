@@ -14,15 +14,31 @@ public class Taunt : SkillBase
 
 
     /// <summary>
-    /// 스킬설명: 타겟은 자신, 인트는 방어력 보너스
+    /// 스킬설명: 인트는 방어력 보너스
     /// 4초간 지속되며 일정거리 내에 있는 적들의 타겟을 자신으로 강제설정한다
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    protected override void SkillEffect(Transform target, int s)
+    protected override void SkillEffect(UnitCombat caster)
     {
-        _caster = target.GetComponent<UnitCombat>();
-        _bonus = s;
+        _caster = caster;
+        switch (caster.GetItemRank())
+        {
+            case 0:
+                _bonus = (int)((caster.BaseArmor +15) * 15);
+                break;
+            case 1:
+                _bonus = (int)((caster.BaseArmor + 20) * 30);
+                break;
+            case 2:
+                _bonus = (int)((caster.BaseArmor + 25) * 45);
+                break;
+            case 3:
+                _bonus = (int)((caster.BaseArmor + 30) * 60);
+                break;
+            default:
+                break;
+        }
         _caster.BaseArmor += _bonus;
 
 

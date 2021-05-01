@@ -15,12 +15,12 @@ public class ArrowRain : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    protected override void SkillEffect(Transform caster, int dmg)
+    protected override void SkillEffect(UnitCombat caster)
     {
         UnitCombat uc = caster.GetComponent<UnitCombat>();
         if(uc.AttackTarget == null)
         {//현재 공격대상이 없으면 바로 머리위로 화살비 쏟아냄
-            transform.position = caster.position;
+            transform.position = caster.transform.position;
         }
        else
         {
@@ -28,7 +28,7 @@ public class ArrowRain : SkillBase
         }
         transform.rotation = Quaternion.identity;
 
-
+        int dmg = caster.TotalDamage;
         for (int i = 0; i < NUM_ARROWS; i++)
         {
             transform.rotation = Quaternion.AngleAxis(60 * i, Vector3.forward);
