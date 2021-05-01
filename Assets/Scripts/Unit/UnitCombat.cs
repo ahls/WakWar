@@ -53,7 +53,7 @@ public class UnitCombat : MonoBehaviour
     public float SearchRange = 0;
     public bool AttackGround { get; set; } = false;
     public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
-    public WeaponType PreferredTarget; //선호하는 공격클래스. 
+    public ClassType PreferredTarget; //선호하는 공격클래스. 
     private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
@@ -66,7 +66,7 @@ public class UnitCombat : MonoBehaviour
     //타입
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
-    public WeaponType weaponType = WeaponType.Null;
+    public ClassType weaponType = ClassType.Null;
     private int _weaponIndex = 0;
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
@@ -87,8 +87,11 @@ public class UnitCombat : MonoBehaviour
     private float _attackTimer = 0; // 0일때 공격 가능
     private int _totalArmor;
 
+
+    //스킬관련
+    private SkillBase _skillBase;
     
-    public void playerSetup(WeaponType inputWeaponType)
+    public void playerSetup(ClassType inputWeaponType)
     {
         weaponType = inputWeaponType;
         OwnedFaction = Faction.Player;
@@ -257,14 +260,14 @@ public class UnitCombat : MonoBehaviour
         _equippedImage.sprite = null;
         switch (weaponType)
         {
-            case WeaponType.Warrior:
-            case WeaponType.Wak:
+            case ClassType.Warrior:
+            case ClassType.Wak:
                 _weaponIndex = 10;
                 break;
-            case WeaponType.Shooter:
+            case ClassType.Shooter:
                 _weaponIndex = 20;
                 break;
-            case WeaponType.Supporter:
+            case ClassType.Supporter:
                 _weaponIndex = 30;
                 break;
         }
@@ -345,7 +348,7 @@ public class UnitCombat : MonoBehaviour
         List<Transform> listInRange = new List<Transform>();
 
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + SearchRange);
-        if (PreferredTarget != WeaponType.Null)
+        if (PreferredTarget != ClassType.Null)
         {//선호대상이 있는경우
             List<Transform> preferredList = new List<Transform>();
 

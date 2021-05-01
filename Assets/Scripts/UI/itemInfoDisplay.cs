@@ -67,33 +67,33 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
         {//무기일경우 아이템 타입, 공격력, 공속, 방어, 사정거리 표시 후 플레이버 텍스트 추가
             string descriptionText = "";
             Weapon weapon= Weapons.DB[param.item.weaponID];
-            switch ((param.item.weaponID / 10000) + (param.item.weaponID % 1000)/100 )
+            switch (weapon.weaponType)
             {
-                case 10:
+                case WeaponType.Sword:
                     descriptionText += "<b>검</b> (전사)\n";
                     break;
-                case 11:
+                case WeaponType.Axe:
                     descriptionText += "<b>도끼</b> (전사)\n";
                     break;
-                case 12:
+                case WeaponType.Shield:
                     descriptionText += "<b>거대 방패</b> (전사)\n";
                     break;
-                case 20:
+                case WeaponType.Gun:
                     descriptionText += "<b>총</b> (사수)\n";
                     break;
-                case 21:
+                case WeaponType.Bow:
                     descriptionText += "<b>활</b> (사수)\n";
                     break;
-                case 22:
+                case WeaponType.Throw:
                     descriptionText += "<b>투척무기</b> (사수)\n";
                     break;
-                case 30:
+                case WeaponType.Blunt:
                     descriptionText += "<b>둔기</b> (지원가)\n";
                     break;
-                case 31:
+                case WeaponType.Wand:
                     descriptionText += "<b>지팡이</b> (지원가)\n";
                     break;
-                case 32:
+                case WeaponType.Instrument:
                     descriptionText += "<b>악기</b> (지원가)\n";
                     break;
                 default:

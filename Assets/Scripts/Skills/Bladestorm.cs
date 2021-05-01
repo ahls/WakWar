@@ -31,7 +31,6 @@ public class Bladestorm : SkillBase
 
     private void FixedUpdate()
     {
-        transform.position = _caster.position;
         if(_durationTimer%50 == 0)
         {
             Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
@@ -46,6 +45,7 @@ public class Bladestorm : SkillBase
         }
         if(_durationTimer>0)
         {
+            transform.position = _caster.position;
             _durationTimer--;
         }
         else

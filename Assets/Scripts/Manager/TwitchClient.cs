@@ -75,18 +75,18 @@ public class TwitchClient : MonoBehaviour
 
     private void UnitCreation(string userName, string unitClass)
     {
-        WeaponType inputClass;
+        ClassType inputClass;
         if(unitClass == _unitClasses[0])
         {
-            inputClass = WeaponType.Warrior;
+            inputClass = ClassType.Warrior;
         }
         else if(unitClass == _unitClasses[1])
         {
-            inputClass = WeaponType.Shooter;
+            inputClass = ClassType.Shooter;
         }
         else
         {
-            inputClass = WeaponType.Supporter;
+            inputClass = ClassType.Supporter;
         }
 
         GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);

@@ -60,7 +60,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     if (assgiendUnit != null)
                     {//유닛과 연결되어있을경우, 
                         int tempWeaponIndex = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].weaponID;
-                        if (Weapons.DB[tempWeaponIndex].weaponType == assgiendUnit.weaponType || assgiendUnit.weaponType == WeaponType.Wak)
+                        if (Weapons.DB[tempWeaponIndex].Class == assgiendUnit.weaponType || assgiendUnit.weaponType == ClassType.Wak)
                         {
                             assgiendUnit.EquipWeapon(tempWeaponIndex);
                             draggedItem.placeItem(transform);

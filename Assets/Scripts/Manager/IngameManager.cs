@@ -21,7 +21,8 @@ public class IngameManager : MonoBehaviour
     public static UIShop UIShop => _uiShop;
     public static ProgressManager ProgressManager => _progressManager;
     public static DialogueDisplay DialogueDisplay => _dialogueDisplay;
-    public static EncounterManager encounterManager => _encounterManager;
+    public static EncounterManager EncounterManager => _encounterManager;
+    public static SkillManager SkillManager => _skillManager;
 
 
     private static IngameManager _instance;
@@ -33,6 +34,7 @@ public class IngameManager : MonoBehaviour
     private static ProgressManager _progressManager;
     private static DialogueDisplay _dialogueDisplay;
     private static EncounterManager _encounterManager;
+    private static SkillManager _skillManager;
     private void Awake()
     {
         _instance = this;
@@ -71,5 +73,9 @@ public class IngameManager : MonoBehaviour
     public void SetShop(UIShop uiShop)
     {
         _uiShop = uiShop;
+    }
+    public void SetSkillManager(SkillManager skillManager)
+    {
+        _skillManager = skillManager;
     }
 }

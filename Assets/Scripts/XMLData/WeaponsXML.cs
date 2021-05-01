@@ -4,13 +4,25 @@ using UnityEngine;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
-public enum WeaponType
+public enum ClassType
 {
     Warrior,
     Shooter,
     Supporter,
     Wak,
     Null
+}
+public enum WeaponType
+{
+    Axe,
+    Sword,
+    Shield,
+    Bow,
+    Gun,
+    Throw,
+    Blunt,
+    Wand,
+    Instrument
 }
 
 public class PulledWeapon
@@ -38,13 +50,15 @@ public class PulledWeapon
     [XmlElement("armor")]
     public int Armor;
     [XmlElement("class")]
-    public WeaponType weaponType;
+    public ClassType _class;
     [XmlElement("target")]
     public Faction targetFaction;
     [XmlElement("heightDelta")]
     public float heightDelta;
     [XmlElement("torq")]
     public int torque;
+    [XmlElement("type")]
+    public WeaponType weaponType;
 }
 
 public struct Weapon
@@ -53,6 +67,7 @@ public struct Weapon
     public int damage,AP,Armor, torque;
     public float AttackRange, AttackSpeed, AttackArea, projSpeed, heightDelta;
     public string equipImage, projImage;
+    public ClassType Class;
     public WeaponType weaponType;
     public Faction targetFaction;
     public Weapon(PulledWeapon _input)
@@ -67,10 +82,11 @@ public struct Weapon
         projSpeed = _input.projSpeed;
         equipImage = _input.equipImage;
         projImage = _input.projImage;
-        weaponType = _input.weaponType;
+        Class = _input._class;
         heightDelta = _input.heightDelta;
         torque = _input.torque;
         targetFaction = _input.targetFaction;
+        weaponType = _input.weaponType;
     }
 }
 public class Weapons

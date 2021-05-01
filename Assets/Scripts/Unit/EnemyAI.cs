@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     private UnitCombat _unitCombat;
 
 
-    public WeaponType PreferredClass;
+    public ClassType PreferredClass;
 
     // Start is called before the first frame update
     void Start()

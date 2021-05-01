@@ -28,9 +28,9 @@ public class WakWindow : UIPopup
     {
         _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();
 
-        UpdateStat(WeaponType.Warrior, IngameManager.WakgoodBehaviour.WakStats[0]);
-        UpdateStat(WeaponType.Shooter, IngameManager.WakgoodBehaviour.WakStats[1]);
-        UpdateStat(WeaponType.Supporter, IngameManager.WakgoodBehaviour.WakStats[2]);
+        UpdateStat(ClassType.Warrior, IngameManager.WakgoodBehaviour.WakStats[0]);
+        UpdateStat(ClassType.Shooter, IngameManager.WakgoodBehaviour.WakStats[1]);
+        UpdateStat(ClassType.Supporter, IngameManager.WakgoodBehaviour.WakStats[2]);
         IngameManager.WakgoodBehaviour.WakStats[0] = 0;
         IngameManager.WakgoodBehaviour.WakStats[1] = 0;
         IngameManager.WakgoodBehaviour.WakStats[2] = 0;
@@ -74,21 +74,21 @@ public class WakWindow : UIPopup
         }
     }
 
-    public void UpdateStat(WeaponType weaponType, int newValue )
+    public void UpdateStat(ClassType weaponType, int newValue )
     {
         switch (weaponType)
         {
-            case WeaponType.Warrior:
+            case ClassType.Warrior:
                 {
                     _warrierCount.text = newValue.ToString();
                     break;
                 }
-            case WeaponType.Shooter:
+            case ClassType.Shooter:
                 {
                     _shooterCount.text = newValue.ToString();
                     break;
                 }
-            case WeaponType.Supporter:
+            case ClassType.Supporter:
                 {
                     _supporterCount.text = newValue.ToString();
                     break;

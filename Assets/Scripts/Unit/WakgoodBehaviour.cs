@@ -16,7 +16,7 @@ public class WakgoodBehaviour : MonoBehaviour
     {
         IngameManager.instance.SetWakgoodBehaviour(this);
         GetComponent<UnitStats>().PlayerUnitInit("우왁굳");
-        _unitCombat.weaponType = WeaponType.Wak;
+        _unitCombat.weaponType = ClassType.Wak;
     }
 
     private void Awake()
@@ -24,11 +24,11 @@ public class WakgoodBehaviour : MonoBehaviour
         _unitCombat = GetComponent<UnitCombat>();
     }
 
-    public void AddPanzeeStat(WeaponType panzeeClass, int numDelta)
+    public void AddPanzeeStat(ClassType panzeeClass, int numDelta)
     {
         switch (panzeeClass)
         {
-            case WeaponType.Warrior:
+            case ClassType.Warrior:
                 _panzees.x+=numDelta;
                 WakStats[0] += numDelta;
                 //전사 유닛 추가스탯: 체력, 방어력
@@ -36,7 +36,7 @@ public class WakgoodBehaviour : MonoBehaviour
                 _unitCombat.HealthMax+= numDelta;
 
                 break;
-            case WeaponType.Shooter:
+            case ClassType.Shooter:
                 _panzees.y += numDelta;
                 WakStats[1] += numDelta;
                 //사수 유닛 추가스탯: 방어관통, 추뎀
@@ -44,7 +44,7 @@ public class WakgoodBehaviour : MonoBehaviour
                 _unitCombat.BaseDamage+= numDelta;
 
                 break;
-            case WeaponType.Supporter:
+            case ClassType.Supporter:
                 _panzees.z += numDelta;
                 WakStats[2] += numDelta;
                 //지원가 유닛 추가스탯:  이속, 공속

@@ -26,28 +26,28 @@ public class PanzeeWindow : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            addToList("thinggy", gameObject, WeaponType.Shooter);
+            addToList("thinggy", gameObject, ClassType.Shooter);
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            addToList("11", gameObject, WeaponType.Warrior);
+            addToList("11", gameObject, ClassType.Warrior);
         }
     }
 
-    public void addToList(string name, GameObject unit, WeaponType unitClass)
+    public void addToList(string name, GameObject unit, ClassType unitClass)
     {
         Transform tempParent;
         switch (unitClass)
         {
-            case WeaponType.Warrior:
+            case ClassType.Warrior:
                 tempParent = slotLists[0];
                 contentCounter[0]++;
                 break;
-            case WeaponType.Shooter:
+            case ClassType.Shooter:
                 tempParent = slotLists[1];
                 contentCounter[1]++;
                 break;
-            case WeaponType.Supporter:
+            case ClassType.Supporter:
                 tempParent = slotLists[2];
                 contentCounter[2]++;
                 break;
