@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class SkillBase : MonoBehaviour
 {
     public float BaseCD { get; set; }
-    private float _cooldownModifier;
-    private float _totalCD;
-    private float _timeReady = 0;
+    protected float _cooldownModifier;
+    protected float _totalCD;
+    protected float _timeReady = 0;
 
     /// <summary>
     /// 퍼센트로 입력, 1이 100프로

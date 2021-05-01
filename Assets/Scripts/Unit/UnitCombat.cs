@@ -86,9 +86,9 @@ public class UnitCombat : MonoBehaviour
     public int TotalAP { get; set; }
     public float ProjectileSpeed { get; set; }
 
-    private float _totalAS= 2;
+    public float TotalAS { get; set; }
     private float _attackTimer = 0; // 0일때 공격 가능
-    private int _totalArmor;
+    public int TotalArmor { get; set; }
 
 
     //스킬관련
@@ -296,8 +296,8 @@ public class UnitCombat : MonoBehaviour
             TotalDamage = BaseDamage;
             TotalAOE = BaseAOE;
             TotalRange = BaseRange;
-            _totalAS = BaseAS;
-            _totalArmor = BaseArmor;
+            TotalAS = BaseAS;
+            TotalArmor = BaseArmor;
             ProjectileSpeed = 1;
             _heightDelta = 0;
             _torque = 0;
@@ -307,8 +307,8 @@ public class UnitCombat : MonoBehaviour
             TotalDamage = BaseDamage + Weapons.DB[_weaponIndex].damage;
             TotalAOE = BaseAOE + Weapons.DB[_weaponIndex].AttackArea;
             TotalRange = BaseRange + Weapons.DB[_weaponIndex].AttackRange;
-            _totalAS = BaseAS + Weapons.DB[_weaponIndex].AttackSpeed;
-            _totalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
+            TotalAS = BaseAS + Weapons.DB[_weaponIndex].AttackSpeed;
+            TotalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
             ProjectileSpeed = Weapons.DB[_weaponIndex].projSpeed;
             _heightDelta = Weapons.DB[_weaponIndex].heightDelta;
             _torque = Weapons.DB[_weaponIndex].torque;
@@ -343,12 +343,12 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetAttackTimer()
     {
-        _attackTimer = 1 / _totalAS;
+        _attackTimer = 1 / TotalAS;
     }
 
     public void UpdatePlaybackSpeed()
     {
-        _animator.speed = Mathf.Max(_totalAS, 1f);
+        _animator.speed = Mathf.Max(TotalAS, 1f);
     }
     public void AddStun(int numFrames)
     {
@@ -519,7 +519,7 @@ public class UnitCombat : MonoBehaviour
     {
         if (dmg > 0)
         {
-            _healthCurrent -= (dmg - Mathf.Clamp(_totalArmor - armorPierce, 0, 999));
+            _healthCurrent -= (dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, 999));
         }
         else if(dmg< 0)
         {

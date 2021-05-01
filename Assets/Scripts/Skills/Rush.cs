@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Taunt : SkillBase
+public class Rush : SkillBase
 {
-    private const float SKILL_DURATION = 4;
+    private const float SKILL_DURATION = 5;
     private UnitCombat _caster;
-    private int _bonus = 0;
+    private float _bonus = 0;
     private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//단발성 스킬이라 필요 없음
 
@@ -24,44 +24,28 @@ public class Taunt : SkillBase
         switch (caster.GetItemRank())
         {
             case 0:
-                _bonus = (int)(caster.TotalArmor * 0.15);
+                _bonus = caster.TotalAS * 0.2f;
                 break;
             case 1:
-                _bonus = (int)(caster.TotalArmor * 0.3);
+                _bonus = caster.TotalAS * 0.4f;
                 break;
             case 2:
-                _bonus = (int)(caster.TotalArmor * 0.45);
+                _bonus = caster.TotalAS * 0.6f;
                 break;
             case 3:
-                _bonus = (int)(caster.TotalArmor * 0.6);
+                _bonus = caster.TotalAS * 0.7f;
                 break;
             default:
                 break;
         }
-        _caster.BaseArmor += _bonus;
+        caster.BaseAS += _bonus;
 
-
-        Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
-        foreach (var hitUnit in hitByAttack)
-        {
-            UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
-            if (hitCombat != null && hitCombat.OwnedFaction == Faction.Enemy)
-            {
-                hitCombat.AttackTarget = _caster.transform;
-            }
-        }
         StartCoroutine(Effect());
     }
     IEnumerator Effect()
     {
-        yield return new WaitForSeconds(4);
-        _caster.BaseArmor -= _bonus;
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        yield return new WaitForSeconds(SKILL_DURATION);
+        _caster.TotalAS -= _bonus;
     }
 
 }
