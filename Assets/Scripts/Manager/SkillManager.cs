@@ -18,20 +18,28 @@ public class SkillManager : MonoBehaviour
     {
         
     }
-    public GameObject GetSkill(string skillName)
+    public GameObject GetSkill(WeaponType type)
     {
-        switch (skillName)
+        switch (type)
         {
-            case "BladeStorm":
+            case WeaponType.Axe:
                 return BladeStormPrefab;
-            case "Taunt":
-                return TauntPrefab;
-            case "Charge":
+            case WeaponType.Sword:
                 return ChargePrefab;
-            case "Snipe":
-                return SnipePrefab;
-            case "ArrowRain":
+            case WeaponType.Shield:
+                return TauntPrefab;
+            case WeaponType.Bow:
                 return ArrowRainPrefab;
+            case WeaponType.Gun:
+                return SnipePrefab;
+            case WeaponType.Throw:
+                return RushPrefab;
+            case WeaponType.Blunt:
+                return StunPrefab;
+            case WeaponType.Wand:
+                return HealPrefab;
+            case WeaponType.Instrument:
+                return FinalePrefab;
             default:
                 return null;
         }
