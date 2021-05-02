@@ -38,10 +38,11 @@ public class CameraControl : MonoBehaviour
         float scrollValue = Input.mouseScrollDelta.y * SCROLL_MULTIPLIER;
         if (scrollValue != 0)
         {
-            _targetSize = Mathf.Clamp(_targetSize + scrollValue, 1, 2);
-            if (scrollValue < 0 && _targetSize > 1f)
+            _targetSize = Mathf.Clamp(_targetSize - scrollValue, 1, 2);
+            if (scrollValue > 0 && _targetSize > 1f)
             {//줌인할때 마우스 중심으로 줌인
-                _targetLocaiton = _camera.ScreenToWorldPoint(mousePos);
+
+                _targetLocaiton = Vector2.MoveTowards(_targetLocaiton,_camera.ScreenToWorldPoint(mousePos),(_targetSize/4));
             }
         }
         _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _targetSize, LERP_SPEED);
