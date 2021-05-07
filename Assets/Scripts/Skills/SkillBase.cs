@@ -5,25 +5,23 @@ using UnityEngine;
 public abstract class SkillBase : MonoBehaviour
 {
     public float BaseCD { get; set; }
-    protected float _cooldownModifier;
-    protected float _totalCD;
+    public float TotalCD { get; set; }
     protected float _timeReady = 0;
 
     /// <summary>
-    /// 퍼센트로 입력, 1이 100프로
+    /// 기본 쿨탐에서 주어진 skillHasteAmount 값만큼 쿨탐 제거
     /// </summary>
-    /// <param name="amount"></param>
-    public void CooldownOffset(float amount)
+    /// <param name="skillHasteAmount"></param>
+    /// <returns></returns>
+    public void CooldownReductionSetup(float skillHasteAmount)
     {
-        _cooldownModifier += amount;
-        _cooldownModifier = Mathf.Max(0.3f, _cooldownModifier); //최대 70퍼센트까지 감소 가능
-        _totalCD = BaseCD * _cooldownModifier;
+        TotalCD = BaseCD * skillHasteAmount;
     }
     public void UseSkill(UnitCombat caster)
     {
         if(Time.time > _timeReady)
         {
-            _timeReady = _totalCD + Time.time;
+            _timeReady = TotalCD + Time.time;
             SkillEffect(caster);
         }
     }

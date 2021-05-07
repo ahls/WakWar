@@ -42,14 +42,14 @@ public class TwitchClient : MonoBehaviour
 
     private void MyMessageInputFunction(object sender, OnMessageReceivedArgs e)
     {
+        string userName = e.ChatMessage.DisplayName;
 
         if (_openSlots > 0 && e.ChatMessage.Message.StartsWith("!참가 "))
         {//게임 참가 메커니즘
-            if(e.ChatMessage.Message.Length < 4)
+            if (e.ChatMessage.Message.Length < 4)
             {//커맨드 입력이 이상하게 됨. 
                 return;
             }
-            string userName = e.ChatMessage.DisplayName;
             string UnitClass = e.ChatMessage.Message.Substring(4);
 
             if (!_twitchPlayerDic.ContainsKey(userName))
@@ -65,6 +65,21 @@ public class TwitchClient : MonoBehaviour
             {//딕셔너리에 이름이 있는경우 
                 Client.SendMessage(Client.JoinedChannels[0], $"{userName}님은 이미 게임에 참가 하셨습니다.");
             }
+        }
+        else if (e.ChatMessage.Message.StartsWith("!힘"))
+        {
+            if (_twitchPlayerDic.ContainsKey(userName) && )
+            {//힘찍으면 최대체력 및 체젠
+                _twitchPlayerDic[userName].GetComponent<UnitCombat>().
+            }
+        }
+        else if (e.ChatMessage.Message.StartsWith("!민"))
+        {
+
+        }
+        else if (e.ChatMessage.Message.StartsWith("!지"))
+        {
+
         }
     }
 

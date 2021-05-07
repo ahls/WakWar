@@ -92,7 +92,8 @@ public class UnitCombat : MonoBehaviour
 
 
     //스킬관련
-    private SkillBase _skillBase;
+    public SkillBase Skill;
+
     
     public void playerSetup(ClassType inputWeaponType)
     {

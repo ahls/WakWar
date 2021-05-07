@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public enum DisplayStat { Level, Mxhealth, CrntHealth, Str, Agi, Inte, Dmg, Range, AtkSpd, MvSpd, Amr, Ap }
+public enum DisplayStat { Level, Mxhealth, CrntHealth, Str, Agi, Inte, Dmg, CD, AtkSpd, Regen, Amr, Ap }
 
 public class panzeeInventory : MonoBehaviour
 {
@@ -45,8 +45,6 @@ public class panzeeInventory : MonoBehaviour
     {
         try
         {
-
-
             switch (statType)
             {
                 case DisplayStat.Level:
@@ -77,9 +75,9 @@ public class panzeeInventory : MonoBehaviour
                 case DisplayStat.Ap:
                     updateDisplay(61, 2, newValue);
                     break;
-                case DisplayStat.Range:
+                case DisplayStat.CD:
                 case DisplayStat.AtkSpd:
-                case DisplayStat.MvSpd:
+                case DisplayStat.Regen:
                     updateStat(statType, (float)newValue);
                     break;
                 default:
@@ -97,14 +95,14 @@ public class panzeeInventory : MonoBehaviour
 
         switch (statType)
         {
-            case DisplayStat.Range:
+            case DisplayStat.AtkSpd:
                 updateDisplay(64, newValue);
                 break;
 
-            case DisplayStat.AtkSpd:
+            case DisplayStat.CD:
                 updateDisplay(73, newValue);
                 break;
-            case DisplayStat.MvSpd:
+            case DisplayStat.Regen:
                 updateDisplay(82, newValue);
                 break;
             default:

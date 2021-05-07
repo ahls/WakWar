@@ -39,6 +39,7 @@ public class Taunt : SkillBase
                 break;
         }
         _caster.BaseArmor += _bonus;
+        _caster.UpdateStats();
 
 
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
@@ -56,7 +57,7 @@ public class Taunt : SkillBase
     {
         yield return new WaitForSeconds(4);
         _caster.BaseArmor -= _bonus;
-
+        _caster.UpdateStats();
     }
     // Start is called before the first frame update
     void Start()

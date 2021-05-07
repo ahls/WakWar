@@ -10,7 +10,10 @@ public class Snipe : SkillBase
     {
         _goodToShoot = false;
     }
-
+    /// <summary>
+    /// 자체에 스턴걸고 시간 후에 평타 공격력의 10배 데미지를 방어무시로 때려박음.
+    /// </summary>
+    /// <param name="caster"></param>
     protected override void SkillEffect(UnitCombat caster)
     {
         caster.AddStun(50);

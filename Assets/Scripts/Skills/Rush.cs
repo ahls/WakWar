@@ -39,6 +39,7 @@ public class Rush : SkillBase
                 break;
         }
         caster.BaseAS += _bonus;
+        _caster.UpdateStats();
 
         StartCoroutine(Effect());
     }
@@ -46,6 +47,7 @@ public class Rush : SkillBase
     {
         yield return new WaitForSeconds(SKILL_DURATION);
         _caster.TotalAS -= _bonus;
+        _caster.UpdateStats();
     }
 
 }
