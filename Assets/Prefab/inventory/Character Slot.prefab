@@ -259,11 +259,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\uD798:\t\t \uBBFC:\t\t\t\uC9C0:\n\uB808\uBCA8: \t\t  \uCCB4\uB825: \n\n\uD53C\uD574:\t\t     
-    \uBC29\uC5B4:\t\t   \uAD00\uD1B5:\n\uAC70\uB9AC:\t\t      \uACF5\uC18D:     \t  
-    \uC774\uC18D:"
+    \uBC29\uC5B4:\t\t   \uAD00\uD1B5:\n\uACF5\uC18D:\t\t      \uCFE8\uAC10:     \t  
+    \uD68C\uBCF5:"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 33cec886bd582f04c9ab34434e82a13b, type: 2}
-  m_sharedMaterial: {fileID: 416994780048346398, guid: 33cec886bd582f04c9ab34434e82a13b,
+  m_fontAsset: {fileID: 11400000, guid: 7a7b55f22dc3bba41a862b49b95e8c22, type: 2}
+  m_sharedMaterial: {fileID: 806847482723469716, guid: 7a7b55f22dc3bba41a862b49b95e8c22,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -470,6 +470,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slotType: 1
+  IsTradingSpot: 0
 --- !u!1 &7920214169062537340
 GameObject:
   m_ObjectHideFlags: 0

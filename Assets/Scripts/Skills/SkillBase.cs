@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class SkillBase : MonoBehaviour
 {
-    public float BaseCD { get; set; }
+    public float BaseCD { get; set; } = 60;
     public float TotalCD { get; set; }
     protected float _timeReady = 0;
 

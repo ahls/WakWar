@@ -63,9 +63,9 @@ public class WakWindow : UIPopup
                     _armorValue.text = newValue.ToString();
                     break;
                 }
-            case DisplayStat.Range:
+            case DisplayStat.CD:
             case DisplayStat.AtkSpd:
-            case DisplayStat.MvSpd:
+            case DisplayStat.Regen:
                 {
                     break;
                 }
@@ -102,17 +102,17 @@ public class WakWindow : UIPopup
     {
         switch (statType)
         {
-            case DisplayStat.Range:
+            case DisplayStat.AtkSpd:
                 {
                     _rangeValue.text = newValue.ToString();
                     break;
                 }
-            case DisplayStat.AtkSpd:
+            case DisplayStat.CD:
                 {
                     _attackSpeedValue.text = newValue.ToString();
                     break;
                 }
-            case DisplayStat.MvSpd:
+            case DisplayStat.Regen:
                 {
                     _moveSpeedValue.text = newValue.ToString();
                     break;

@@ -68,17 +68,25 @@ public class TwitchClient : MonoBehaviour
         }
         else if (e.ChatMessage.Message.StartsWith("!힘"))
         {
-            if (_twitchPlayerDic.ContainsKey(userName) && )
-            {//힘찍으면 최대체력 및 체젠
-                _twitchPlayerDic[userName].GetComponent<UnitCombat>().
+            if (_twitchPlayerDic.ContainsKey(userName))
+            {
+                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseStr();
             }
         }
         else if (e.ChatMessage.Message.StartsWith("!민"))
         {
+            if (_twitchPlayerDic.ContainsKey(userName))
+            {
+                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseAgi();
+            }
 
         }
         else if (e.ChatMessage.Message.StartsWith("!지"))
         {
+            if (_twitchPlayerDic.ContainsKey(userName))
+            {
+                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseInt();
+            }
 
         }
     }
