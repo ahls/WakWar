@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 539514699
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: wakasset
+      Dependencies: {}

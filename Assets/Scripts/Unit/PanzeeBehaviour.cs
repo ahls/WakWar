@@ -17,12 +17,12 @@ public class PanzeeBehaviour : MonoBehaviour
 
 
     //레벨 당 스탯 양 --- 유물로 업그레이드 가능하게 할거라 퍼블릭으로 두겟습니다.
-    public int StrMaxHP = 5;
-    public float StrRegen = 0.05f;
+    public static int StrMaxHP = 5;
+    public static float StrRegen = 0.05f;
 
-    public float AgiAS = 0.05f;
+    public static float AgiAS = 0.05f;
 
-    public float IntCD = 0.05f;
+    public static float IntCD = 0.05f;
 
 
     //비전투 관련 스탯

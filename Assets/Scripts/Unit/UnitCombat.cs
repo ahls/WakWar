@@ -563,4 +563,44 @@ public class UnitCombat : MonoBehaviour
         gameObject.SetActive(false);
     }
     #endregion
+
+    #region 스킬관련
+    private void ChangeSkill()
+    {
+        GameObject skillObject = Skill.gameObject;
+        Destroy(Skill);
+        switch (Weapons.DB[_weaponIndex].weaponType)
+        {
+            case WeaponType.Axe:
+                skillObject.AddComponent<Bladestorm>();
+                break;
+            case WeaponType.Sword:
+                //skillObject.AddComponent<>();
+                break;
+            case WeaponType.Shield:
+                skillObject.AddComponent<Taunt>();
+                break;
+            case WeaponType.Bow:
+                skillObject.AddComponent<ArrowRain>();
+                break;
+            case WeaponType.Gun:
+                skillObject.AddComponent<Snipe>();
+                break;
+            case WeaponType.Throw:
+                skillObject.AddComponent<Rush>();
+                break;
+            case WeaponType.Blunt:
+                skillObject.AddComponent<Stun>();
+                break;
+            case WeaponType.Wand:
+                skillObject.AddComponent<MassHeal>();
+                break;
+            case WeaponType.Instrument:
+                skillObject.AddComponent<Finale>();
+                break;
+            default:
+                break;
+        }
+    }
+    #endregion
 }

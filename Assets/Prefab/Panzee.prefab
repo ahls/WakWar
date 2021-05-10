@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 8813445204598802514}
   - component: {fileID: 198015398689248426}
   - component: {fileID: 1718074191863204450}
+  - component: {fileID: 5905776270648692461}
   m_Layer: 0
   m_Name: Panzee
   m_TagString: Untagged
@@ -1326,6 +1327,7 @@ MonoBehaviour:
   TargetFaction: 0
   weaponType: 0
   _equippedImage: {fileID: 2989731452029694304}
+  Skill: {fileID: 0}
 --- !u!114 &8252109871089551390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,6 +1492,22 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 0
   debug: 0
+--- !u!114 &5905776270648692461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f047c69d13d96a64eb8a2c8502dd61c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StrMaxHP: 5
+  StrRegen: 0.05
+  AgiAS: 0.05
+  IntCD: 0.05
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0
