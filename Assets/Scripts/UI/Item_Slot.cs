@@ -33,7 +33,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     int itemPrice = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value/2;//반값에 팔림
                     IngameManager.UIInventory.AddMoney(itemPrice);
                     Global.ObjectPoolManager.ObjectPooling(draggedItem.gameObject.name, draggedItem.gameObject);
-
+                    Global.AudioManager.PlayOnce("SellItem");
                     //상점 판매칸 닫는 스크립트
                     if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
                     {

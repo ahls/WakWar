@@ -33,6 +33,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             Equipped = false;
         }
         ParentToReturn = parentToBe;
+        Global.AudioManager.PlayOnce("MoveItem");
     }
 
     public bool compareType(ItemType slottype)
@@ -57,7 +58,6 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             //raycast ignore to allow item_slot to be accessible.
             _canvasGroup.blocksRaycasts = false;
             _canvasGroup.alpha = 0.7f;
-            Debug.Log(Global.UIPopupManager.FindPopup(PopupID.UIShop));
             if(!SellingItem && Global.UIPopupManager.FindPopup(PopupID.UIShop)!=null)
             {
                 IngameManager.UIShop.ToggleSellingWindow(true);

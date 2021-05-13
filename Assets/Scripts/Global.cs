@@ -21,6 +21,7 @@ public class Global : MonoBehaviour
     public static ObjectPoolManager ObjectPoolManager => _objectPoolManager;
     public static UIManager UIManager => _uiManager;
     public static UIPopupManager UIPopupManager => _uiPopupManager;
+    public static AudioManager AudioManager => _audioManager;
 
     private static Global _instance;
     private static XMLLoader _xmlLoader;
@@ -28,7 +29,7 @@ public class Global : MonoBehaviour
     private static ObjectPoolManager _objectPoolManager;
     private static UIManager _uiManager;
     private static UIPopupManager _uiPopupManager;
-
+    private static AudioManager _audioManager;
     [SerializeField] private GameObject _disableObject;
     [SerializeField] private GameObject _disableCanvas;
 
@@ -47,6 +48,8 @@ public class Global : MonoBehaviour
         _xmlLoader = new XMLLoader();
         _resourceManager = new ResourceManager();
         _objectPoolManager = new ObjectPoolManager(_disableObject, _disableCanvas);
+        _audioManager = new AudioManager();
+
     }
 
     public void ChangeScene(string sceneName)

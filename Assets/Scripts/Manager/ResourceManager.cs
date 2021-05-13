@@ -10,6 +10,7 @@ public class ResourceManager
 
     private Dictionary<string, GameObject> _loadedObjectDic = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> _loadedTexture = new Dictionary<string, Sprite>();
+    private Dictionary<string,AudioClip> _loadedAudio = new Dictionary<string, AudioClip>();
 
     public ResourceManager()
     {
@@ -23,7 +24,7 @@ public class ResourceManager
             AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(_assetBundlePath));
             _assetBundle = request.assetBundle;
             //AssetBundle.LoadFromFile(assetBundlePath);
-            PreloadTextures();
+            PreloadResources();
         }
     }
 
@@ -33,7 +34,7 @@ public class ResourceManager
         {
             throw new Exception("AseetBundle is Null");
         }
-       
+
         if (_loadedObjectDic.ContainsKey(path))
         {
             var pooledObject = Global.ObjectPoolManager.GetObject(path);
@@ -53,33 +54,53 @@ public class ResourceManager
         return Global.ObjectPoolManager.CreatObject(prefab, isUI);
     }
 
-    public Sprite LoadTexture(string path, bool isUI = false)
+    public Sprite LoadTexture(string path)
     {
         if (_assetBundle == null)
         {
             throw new Exception("AseetBundle is Null");
         }
-        else if(!_loadedTexture.ContainsKey(path))
+        else if (!_loadedTexture.ContainsKey(path))
         {
-            return null;   
+            return null;
         }
         return _loadedTexture[path];
 
     }
+    public AudioClip LoadAudio(string path)
+    {
+        if (_assetBundle == null)
+        {
+            throw new Exception("AssetBundle is Null");
+        }
+        else if (!_loadedAudio.ContainsKey(path))
+        {
+            return null;
+        }
+        return _loadedAudio[path];
+    }
 
-    private void PreloadTextures()
+
+    private void PreloadResources()
     {
         foreach (var path in _assetBundle.GetAllAssetNames())
         {
-            Sprite[] sprites;
-            if(path.Contains("sprites/textures"))//빌드에서도 적용 되는지 확인 필요
+            if (path.Contains("sprites/textures"))//빌드에서도 적용 되는지 확인 필요
             {
+                Sprite[] sprites;
                 sprites = _assetBundle.LoadAssetWithSubAssets<Sprite>(path);
                 foreach (var subsprite in sprites)
                 {
                     _loadedTexture[subsprite.name] = subsprite;
                 }
             }
+            else if(path.Contains("audio/"))
+            {
+                AudioClip audioClip = _assetBundle.LoadAsset<AudioClip>(path);
+                _loadedAudio[audioClip.name] = audioClip;
+            }
         }
     }
+
+
 }
