@@ -33,9 +33,31 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             Equipped = false;
         }
         ParentToReturn = parentToBe;
-        Global.AudioManager.PlayOnce("MoveItem");
+        playSound();
     }
 
+
+    private void playSound()
+    {
+        switch (_itemType)
+        {
+            case ItemType.Potion:
+                break;
+            case ItemType.Weapon:
+                Global.AudioManager.PlayOnce("MoveItem");
+                break;
+            case ItemType.Relic:
+                Global.AudioManager.PlayOnce("MoveRelic");
+                break;
+            case ItemType.Money:
+                Global.AudioManager.PlayOnce("MoveCoin");
+                break;
+            case ItemType.Any:
+                break;
+            default:
+                break;
+        }
+    }
     public bool compareType(ItemType slottype)
     {
         return (slottype == _itemType || slottype == ItemType.Any);

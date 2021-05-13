@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3592558953
+CRC: 2130980464
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 995ce79f7de2c0e9c6b65cc5cad327e9
+    Hash: 2157fc82fb512ffa9976c63c455569ec
   TypeTreeHash:
     serializedVersion: 2
     Hash: e2ba8d0a0d9b03465f8196687767b352
@@ -96,6 +96,7 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_gun.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow2.png
 - Assets/Prefab/inventory/Item Base.prefab
+- Assets/Audio/SellItem.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst3.png
@@ -121,9 +122,10 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_bow.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst1.png
+- Assets/Audio/Swing.mp3
 - Assets/Sprites/textures/ItemIcon/General/I_coin.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_wand3.png
-- Assets/Audio/SellItem.mp3
+- Assets/Audio/MoveCoin.mp3
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/WakAsset/PooledPrefab/AudioPlayer.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe2.png
@@ -146,4 +148,5 @@ Assets:
 - Assets/WakAsset/UI/UIShop.prefab
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
+- Assets/Audio/MoveRelic.mp3
 Dependencies: []
