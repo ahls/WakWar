@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2130980464
+CRC: 1994045193
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2157fc82fb512ffa9976c63c455569ec
+    Hash: 9779e98cee38ad6c307e72d784b2340e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e2ba8d0a0d9b03465f8196687767b352
+    Hash: 8f2dc341b373e506dd0f9cf2160205ef
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -84,6 +84,7 @@ ClassTypes:
 - Class: 225
   Script: {instanceID: 0}
 Assets:
+- Assets/Audio/Blunt.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe1.png
@@ -94,9 +95,12 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_blunt.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt3.png
 - Assets/Sprites/textures/Equipped/img_gun.png
+- Assets/Audio/GunFire.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow2.png
 - Assets/Prefab/inventory/Item Base.prefab
 - Assets/Audio/SellItem.mp3
+- Assets/Audio/ToyFire.mp3
+- Assets/Audio/Squeak.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst3.png
@@ -115,6 +119,7 @@ Assets:
 - Assets/Audio/Cut.wav
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe3.png
+- Assets/Audio/BowShot.mp3
 - Assets/Sprites/textures/Equipped/img_instruments.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png
 - Assets/Sprites/textures/Equipped/img_axe.png

@@ -22,15 +22,16 @@ public class AttackEffect : MonoBehaviour
     private GameObject _onHitEffect;
 
 
-
+    public string _impactAudio;
 
     /// <summary>
     /// 셋업 하기 전에 공격자 위치로 미리 불러와야 합니다.
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker, Vector3 destination, int torque, float initDelta)
+    public void Setup(UnitCombat attacker, Vector3 destination, int torque, float initDelta, string attackSound)
     {
+        _impactAudio = attackSound;
         Setup(  attacker.TotalDamage, 
                 attacker.TotalAOE, 
                 attacker.TotalAP, 
@@ -72,15 +73,19 @@ public class AttackEffect : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        _lifeTime--;
         if (_lifeTime == 0)
         {
             DealDamage();
-
+            if (_impactAudio != "null")
+            {
+                Global.AudioManager.PlayOnce(_impactAudio, true);
+                _impactAudio = "null";
+            }
             Global.ObjectPoolManager.ObjectPooling(Weapons.attackPrefab, this.gameObject);
         }
         else
         {
-            _lifeTime--;
             _heightDelta += _deltaDelta;
             transform.position += new Vector3(0, _heightDelta, 0);
 

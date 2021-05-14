@@ -47,6 +47,10 @@ public class PulledWeapon
     public string projImage;
     [XmlElement("projectileSpeed")]
     public float projSpeed;
+    [XmlElement("projectileSound")]
+    public string projSound;
+    [XmlElement("impactSound")]
+    public string impctSound;
     [XmlElement("armor")]
     public int Armor;
     [XmlElement("class")]
@@ -66,7 +70,7 @@ public struct Weapon
     public string name;
     public int damage,AP,Armor, torque;
     public float AttackRange, AttackSpeed, AttackArea, projSpeed, heightDelta;
-    public string equipImage, projImage;
+    public string equipImage, projImage, projSound, impctSound;
     public ClassType Class;
     public WeaponType weaponType;
     public Faction targetFaction;
@@ -87,6 +91,8 @@ public struct Weapon
         torque = _input.torque;
         targetFaction = _input.targetFaction;
         weaponType = _input.weaponType;
+        impctSound = _input.impctSound;
+        projSound = _input.projSound;
     }
 }
 public class Weapons

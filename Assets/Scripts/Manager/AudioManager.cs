@@ -7,16 +7,16 @@ public class AudioManager
     public const string AUDIO_PLAYER_NAME = "AudioPlayer";
     // Start is called before the first frame update
 
-    public void PlayOnce(string audioName)
+    public void PlayOnce(string audioName, bool randomPitch = false)
     {
         AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
-        audioPlayer.init(audioName);
+        audioPlayer.init(audioName, randomPitch:randomPitch);
     }
-    public void PlayOnceAt(string audioName,Vector2 location)
+    public void PlayOnceAt(string audioName,Vector2 location, bool randomPitch =false)
     {
         AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.transform.position = location;
-        audioPlayer.init(audioName);
+        audioPlayer.init(audioName,randomPitch:randomPitch);
     }
     public void PlayLoop(string audioName, float duration)
     {

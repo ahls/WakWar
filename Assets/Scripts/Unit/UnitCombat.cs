@@ -48,6 +48,8 @@ public class UnitCombat : MonoBehaviour
     public float BaseAS { get; set; } // 초당 공격
     public float BaseAOE { get; set; }
     public int BaseAP { get; set; }
+    private string _attackAudio = "null";
+    private string _impactAudio = "null";
 
     //타겟 관련
     public static bool AIenabled = false;
@@ -265,6 +267,9 @@ public class UnitCombat : MonoBehaviour
         {
             _animator.SetTrigger("Regular");
         }
+        //공격 사운드
+        _attackAudio = Weapons.DB[_weaponIndex].projSound;
+        _impactAudio = Weapons.DB[_weaponIndex].impctSound;
         UpdateStats();
     }
 
@@ -329,8 +334,12 @@ public class UnitCombat : MonoBehaviour
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position,_torque,_heightDelta);
+        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position,_torque,_heightDelta,_impactAudio);
 
+        if (_attackAudio != "null")
+        {
+            Global.AudioManager.PlayOnceAt(_attackAudio, transform.position, true);
+        }
     }
 
     public void Attack()

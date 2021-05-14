@@ -12,12 +12,14 @@
 			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Axe</weaponType>
+			<weaponType>Axe</weaponType>
 		</weapon>
 		<weapon>
 			<id>20</id>
@@ -30,14 +32,15 @@
 			<Esrc>null</Esrc>
 			<Psrc>thrown_rock</Psrc>
 			<projectileSpeed>0.75</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.07</heightDelta>
 			<torq>300</torq>
-      <weaponType>Throw</weaponType>
-
-    </weapon>
+			<weaponType>Throw</weaponType>
+		</weapon>
 		<weapon>
 			<id>30</id>
 			<name>손뼉</name>
@@ -49,12 +52,14 @@
 			<Esrc>null</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Instrument</weaponType>
+			<weaponType>Instrument</weaponType>
 		</weapon>
 		<weapon>
 			<id>100000</id>
@@ -67,12 +72,14 @@
 			<Esrc>sword_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>2</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Sword</weaponType>
+			<weaponType>Sword</weaponType>
 		</weapon>
 		<weapon>
 			<id>100001</id>
@@ -85,12 +92,14 @@
 			<Esrc>sword_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>3</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Sword</weaponType>
+			<weaponType>Sword</weaponType>
 		</weapon>
 		<weapon>
 			<id>100002</id>
@@ -103,12 +112,14 @@
 			<Esrc>sword_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>4</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Sword</weaponType>
+			<weaponType>Sword</weaponType>
 		</weapon>
 		<weapon>
 			<id>100003</id>
@@ -121,12 +132,14 @@
 			<Esrc>sword_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>5</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Sword</weaponType>
+			<weaponType>Sword</weaponType>
 		</weapon>
 		<weapon>
 			<id>100100</id>
@@ -139,12 +152,14 @@
 			<Esrc>axe_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>2</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Axe</weaponType>
+			<weaponType>Axe</weaponType>
 		</weapon>
 		<weapon>
 			<id>100101</id>
@@ -157,12 +172,14 @@
 			<Esrc>axe_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>4</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Axe</weaponType>
+			<weaponType>Axe</weaponType>
 		</weapon>
 		<weapon>
 			<id>100102</id>
@@ -175,12 +192,14 @@
 			<Esrc>axe_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>6</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Axe</weaponType>
+			<weaponType>Axe</weaponType>
 		</weapon>
 		<weapon>
 			<id>100103</id>
@@ -193,12 +212,14 @@
 			<Esrc>axe_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>8</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Axe</weaponType>
+			<weaponType>Axe</weaponType>
 		</weapon>
 		<weapon>
 			<id>100200</id>
@@ -211,12 +232,14 @@
 			<Esrc>shield_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>2</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Shield</weaponType>
+			<weaponType>Shield</weaponType>
 		</weapon>
 		<weapon>
 			<id>100201</id>
@@ -229,12 +252,14 @@
 			<Esrc>shield_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>4</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Shield</weaponType>
+			<weaponType>Shield</weaponType>
 		</weapon>
 		<weapon>
 			<id>100202</id>
@@ -247,12 +272,14 @@
 			<Esrc>shield_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>6</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Shield</weaponType>
+			<weaponType>Shield</weaponType>
 		</weapon>
 		<weapon>
 			<id>100203</id>
@@ -265,12 +292,14 @@
 			<Esrc>shield_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>8</armor>
 			<class>Warrior</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Shield</weaponType>
+			<weaponType>Shield</weaponType>
 		</weapon>
 		<weapon>
 			<id>200000</id>
@@ -283,12 +312,14 @@
 			<Esrc>gun_0</Esrc>
 			<Psrc>bullet_0</Psrc>
 			<projectileSpeed>2</projectileSpeed>
+			<projectileSound>ToyFire</projectileSound>
+			<impactSound>Squeak</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Gun</weaponType>
+			<weaponType>Gun</weaponType>
 		</weapon>
 		<weapon>
 			<id>200001</id>
@@ -301,12 +332,14 @@
 			<Esrc>gun_1</Esrc>
 			<Psrc>bullet_1</Psrc>
 			<projectileSpeed>3</projectileSpeed>
+			<projectileSound>ToyFire</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Gun</weaponType>
+			<weaponType>Gun</weaponType>
 		</weapon>
 		<weapon>
 			<id>200002</id>
@@ -319,12 +352,14 @@
 			<Esrc>gun_2</Esrc>
 			<Psrc>bullet_2</Psrc>
 			<projectileSpeed>5</projectileSpeed>
+			<projectileSound>GunFire</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Gun</weaponType>
+			<weaponType>Gun</weaponType>
 		</weapon>
 		<weapon>
 			<id>200003</id>
@@ -337,12 +372,14 @@
 			<Esrc>gun_3</Esrc>
 			<Psrc>bullet_3</Psrc>
 			<projectileSpeed>6</projectileSpeed>
+			<projectileSound>GunFire</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Gun</weaponType>
+			<weaponType>Gun</weaponType>
 		</weapon>
 		<weapon>
 			<id>200100</id>
@@ -355,14 +392,15 @@
 			<Esrc>bow_0</Esrc>
 			<Psrc>arrow_0</Psrc>
 			<projectileSpeed>2</projectileSpeed>
+			<projectileSound>BowShot</projectileSound>
+			<impactSound>Squeak</impactSound>
 			<armor>0</armor>
-      <class>Shooter</class>
-      <target>Enemy</target>
+			<class>Shooter</class>
+			<target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
-      <weaponType>Bow</weaponType>
-
-    </weapon>
+			<weaponType>Bow</weaponType>
+		</weapon>
 		<weapon>
 			<id>200101</id>
 			<name>단궁</name>
@@ -374,12 +412,14 @@
 			<Esrc>bow_1</Esrc>
 			<Psrc>arrow_1</Psrc>
 			<projectileSpeed>2.5</projectileSpeed>
+			<projectileSound>BowShot</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
-      <weaponType>Bow</weaponType>
+			<weaponType>Bow</weaponType>
 		</weapon>
 		<weapon>
 			<id>200102</id>
@@ -392,12 +432,14 @@
 			<Esrc>bow_2</Esrc>
 			<Psrc>arrow_2</Psrc>
 			<projectileSpeed>3</projectileSpeed>
+			<projectileSound>BowShot</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
-      <weaponType>Bow</weaponType>
+			<weaponType>Bow</weaponType>
 		</weapon>
 		<weapon>
 			<id>200103</id>
@@ -410,12 +452,14 @@
 			<Esrc>bow_3</Esrc>
 			<Psrc>arrow_3</Psrc>
 			<projectileSpeed>3.5</projectileSpeed>
+			<projectileSound>BowShot</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.02</heightDelta>
 			<torq>0</torq>
-      <weaponType>Bow</weaponType>
+			<weaponType>Bow</weaponType>
 		</weapon>
 		<weapon>
 			<id>200200</id>
@@ -428,12 +472,14 @@
 			<Esrc>throwable_0</Esrc>
 			<Psrc>thrown_0</Psrc>
 			<projectileSpeed>1</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.05</heightDelta>
 			<torq>400</torq>
-      <weaponType>Throw</weaponType>
+			<weaponType>Throw</weaponType>
 		</weapon>
 		<weapon>
 			<id>200201</id>
@@ -446,12 +492,14 @@
 			<Esrc>throwable_1</Esrc>
 			<Psrc>thrown_1</Psrc>
 			<projectileSpeed>1.5</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.01</heightDelta>
 			<torq>500</torq>
-      <weaponType>Throw</weaponType>
+			<weaponType>Throw</weaponType>
 		</weapon>
 		<weapon>
 			<id>200202</id>
@@ -464,12 +512,14 @@
 			<Esrc>throwable_2</Esrc>
 			<Psrc>thrown_2</Psrc>
 			<projectileSpeed>2</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>Cut</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.01</heightDelta>
 			<torq>700</torq>
-      <weaponType>Throw</weaponType>
+			<weaponType>Throw</weaponType>
 		</weapon>
 		<weapon>
 			<id>200203</id>
@@ -482,12 +532,14 @@
 			<Esrc>throwable_3</Esrc>
 			<Psrc>throwable_3</Psrc>
 			<projectileSpeed>2</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0.05</heightDelta>
 			<torq>500</torq>
-      <weaponType>Throw</weaponType>
+			<weaponType>Throw</weaponType>
 		</weapon>
 		<weapon>
 			<id>300000</id>
@@ -500,12 +552,14 @@
 			<Esrc>blunt_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Squeak</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Blunt</weaponType>
+			<weaponType>Blunt</weaponType>
 		</weapon>
 		<weapon>
 			<id>300001</id>
@@ -518,12 +572,14 @@
 			<Esrc>blunt_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Blunt</weaponType>
+			<weaponType>Blunt</weaponType>
 		</weapon>
 		<weapon>
 			<id>300002</id>
@@ -536,12 +592,14 @@
 			<Esrc>blunt_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Blunt</weaponType>
+			<weaponType>Blunt</weaponType>
 		</weapon>
 		<weapon>
 			<id>300003</id>
@@ -554,12 +612,14 @@
 			<Esrc>blunt_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>Swing</projectileSound>
+			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Enemy</target>
+			<target>Enemy</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Blunt</weaponType>
+			<weaponType>Blunt</weaponType>
 		</weapon>
 		<weapon>
 			<id>300100</id>
@@ -572,12 +632,14 @@
 			<Esrc>wand_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Wand</weaponType>
+			<weaponType>Wand</weaponType>
 		</weapon>
 		<weapon>
 			<id>300101</id>
@@ -590,12 +652,14 @@
 			<Esrc>wand_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Wand</weaponType>
+			<weaponType>Wand</weaponType>
 		</weapon>
 		<weapon>
 			<id>300102</id>
@@ -608,12 +672,14 @@
 			<Esrc>wand_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Wand</weaponType>
+			<weaponType>Wand</weaponType>
 		</weapon>
 		<weapon>
 			<id>300103</id>
@@ -626,12 +692,14 @@
 			<Esrc>wand_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Wand</weaponType>
+			<weaponType>Wand</weaponType>
 		</weapon>
 		<weapon>
 			<id>300200</id>
@@ -644,12 +712,14 @@
 			<Esrc>inst_0</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Instrument</weaponType>
+			<weaponType>Instrument</weaponType>
 		</weapon>
 		<weapon>
 			<id>300201</id>
@@ -662,12 +732,14 @@
 			<Esrc>inst_1</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Instrument</weaponType>
+			<weaponType>Instrument</weaponType>
 		</weapon>
 		<weapon>
 			<id>300202</id>
@@ -680,12 +752,14 @@
 			<Esrc>inst_2</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Instrument</weaponType>
+			<weaponType>Instrument</weaponType>
 		</weapon>
 		<weapon>
 			<id>300203</id>
@@ -698,12 +772,14 @@
 			<Esrc>inst_3</Esrc>
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
+			<projectileSound>null</projectileSound>
+			<impactSound>null</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
-      <target>Player</target>
+			<target>Player</target>
 			<heightDelta>0</heightDelta>
 			<torq>0</torq>
-      <weaponType>Instrument</weaponType>
+			<weaponType>Instrument</weaponType>
 		</weapon>
 	</weapons>
 </weaponCollection>

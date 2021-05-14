@@ -2624,7 +2624,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 200000
+  weaponID: 300000
   torque: 0
 --- !u!1 &635290517
 GameObject:
@@ -5270,7 +5270,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 20
+  weaponID: 100001
   torque: 0
 --- !u!1 &1260999488
 GameObject:
