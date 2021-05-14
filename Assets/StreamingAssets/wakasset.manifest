@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1994045193
+CRC: 1003392382
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9779e98cee38ad6c307e72d784b2340e
+    Hash: be591f042f58975af661267044a20872
   TypeTreeHash:
     serializedVersion: 2
     Hash: 8f2dc341b373e506dd0f9cf2160205ef
@@ -116,7 +116,6 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_thrown.png
 - Assets/Sprites/textures/Equipped/img_sword.png
 - Assets/Sprites/textures/Equipped/img_throwable.png
-- Assets/Audio/Cut.wav
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe3.png
 - Assets/Audio/BowShot.mp3
@@ -145,6 +144,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe00.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow1.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
+- Assets/Audio/Cut.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw0.png
 - Assets/WakAsset/PooledPrefab/AttackEffect.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield3.png
