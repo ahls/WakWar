@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1003392382
+CRC: 1823139499
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: be591f042f58975af661267044a20872
+    Hash: f0de8e9dfd81916cd4b3a0c043081f86
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8f2dc341b373e506dd0f9cf2160205ef
+    Hash: 7861cc7d1b0afce85b12ecea535d2f84
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -62,13 +62,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: a293571c9399249459d5ab81acccd3af, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 2ee6cd8e73f383347b6a3bb4e0420ebd, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: a293571c9399249459d5ab81acccd3af, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -137,6 +137,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun1.png
 - Assets/Sprites/textures/Equipped/img_shield.png
 - Assets/WakAsset/UI/UIItemToolTip.prefab
+- Assets/Audio/MovePotion.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst0.png
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/Audio/MoveItem.mp3

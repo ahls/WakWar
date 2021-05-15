@@ -42,6 +42,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         switch (_itemType)
         {
             case ItemType.Potion:
+                Global.AudioManager.PlayOnce("MovePotion");
                 break;
             case ItemType.Weapon:
                 Global.AudioManager.PlayOnce("MoveItem");
