@@ -6,7 +6,7 @@ using UnityEngine;
 public class UnitManager : MonoBehaviour
 {
     #region 변수
-    public bool ControlOn { get; set; } = false;
+    public bool ControlOn { get; set; } = true;
     private bool _attackMode = false;
     private bool _leftClicked, _rightClicked;
     private List<GameObject> _selectedUnitList = new List<GameObject>();
@@ -143,10 +143,36 @@ public class UnitManager : MonoBehaviour
                 return;
             }
 
+            //Vector2 squadOffset = Vector3.zero;
+            //var ang = 360f / (_selectedUnitList.Count - 1);
+            //int currentUnitNumber = 0;
+
+            GameObject leader = null;
+            float minDistance = float.MaxValue;
+
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
-                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation(),true);
+                var unitDistance = Vector2.Distance(selectedUnit.transform.position, CursorLocation());
+                if (unitDistance < minDistance)
+                {
+                    leader = selectedUnit;
+                    minDistance = unitDistance;
+                }
+            }
+
+            Debug.Log(leader.name);
+
+            foreach (GameObject selectedUnit in _selectedUnitList)
+            {
+                //if (currentUnitNumber != 0)
+                //{
+                //    float angle = ang * currentUnitNumber * Mathf.Deg2Rad;
+                //    squadOffset = new Vector2(Mathf.Cos(angle) * 0.2f, Mathf.Sin(angle) * 0.2f);
+                //}
+
+                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation(), true);
                 selectedUnit.GetComponent<UnitCombat>().AttackGround = false;
+                //currentUnitNumber++;
             }
         }
     }
