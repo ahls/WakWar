@@ -2,8 +2,6 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using Pathfinding;
-using Pathfinding.RVO;
-
 public class UnitStats : MonoBehaviour
 {
     #region 변수
@@ -15,10 +13,11 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private GameObject _selectionCircle;
     [SerializeField] private Text _playerNameText;
 
+
+
     //이동관련
-    //private AIPath _aiPath;
-    //private AIDestinationSetter _aiDestSetter;
-    [SerializeField] private RVOController controller; 
+    private AIPath _aiPath;
+    private AIDestinationSetter _aiDestSetter;
     public float MoveSpeed { get; set; } = 0.01f;
     private Rigidbody2D _rigid;
     private Vector3 _targetPos;
@@ -29,6 +28,14 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private Transform _rotatingPart;
     private Animator _animator;
     public float runningSpeed = 0.75f;//애니메이션 재생 속도 
+    //이동 멈춤 관련
+    //private int _stuckCounter = 0;
+    //private const float STUCK_DISPLACEMENT = 0.0001f; 
+    //private Vector2 _lastPosition;
+
+
+
+
 
     #endregion
 
@@ -37,16 +44,25 @@ public class UnitStats : MonoBehaviour
         _animator = GetComponent<Animator>();
         _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
-        //_aiPath = GetComponent<AIPath>();
-        //_aiDestSetter = GetComponent<AIDestinationSetter>();
+        _aiPath = GetComponent<AIPath>();
+        _aiDestSetter = GetComponent<AIDestinationSetter>();
+
     }
 
     private void FixedUpdate()
     {
         if (IsMoving)
         {
-            Move();
-        }  
+            //Move();
+            //StuckCheck();
+            
+            if (_aiPath.reachedDestination)
+            {
+
+                StopMoving();
+            }
+        }
+       
     }
 
     public void PlayerUnitInit(string playerName)
@@ -56,15 +72,31 @@ public class UnitStats : MonoBehaviour
         _playerNameText.text = playerName;
         GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
     }
-  
-    public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
+    /*
+    public void MoveToTarget(Vector2 target,bool removeCurrentTarget = true)
     {
         _targetPos = target;
-        controller.SetTarget(target, 0.5f, 0.5f);
-        //_aiPath.destination = target;
+        _direction = (Vector2)(_targetPos - transform.position);
+        _direction = _direction.normalized;
+        var distance = Vector2.Distance(this.transform.position, _targetPos);
+        _isMoving = true;
+        _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
+        if(removeCurrentTarget)
+        {
+            _unitCombat.AttackTarget = null;
+        }
+
+        //애니메이션 부분
+        _animator.SetBool("Move", true);
+        _animator.speed = MoveSpeed * 100f;
+        RotateDirection(_direction.x > 0);
+    }*/
+    public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
+    {
+        _aiPath.destination = target;
         IsMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
-        //_aiPath.SearchPath();
+        _aiPath.SearchPath();
         if (removeCurrentTarget)
         {
             _unitCombat.AttackTarget = null;
@@ -72,60 +104,38 @@ public class UnitStats : MonoBehaviour
 
         //애니메이션 부분
         _animator.SetBool("Move", true);
-        _animator.speed = 0.5f * runningSpeed;
-
-        //_animator.speed = _aiPath.maxSpeed * runningSpeed;
-        //RotateDirection(_aiPath.destination.x - transform.position.x);
-        _rigid.mass = 10;
+        _animator.speed = _aiPath.maxSpeed * runningSpeed;
+        RotateDirection(_aiPath.destination.x - transform.position.x);
     }
-
     public void SetMoveToTarget(Vector2 target)
     {
-        //_aiPath.destination = target;
+        _aiPath.destination = target;
     }
-
     public void StopMoving()
     {
         IsMoving = false;
         _animator.SetBool("Move", false);
-        ResetTarget();
-        //_aiPath.destination = transform.position;
-        //_aiPath.SearchPath();
-
-        _rigid.mass = 1;
+        _aiPath.destination = transform.position;
+        _aiPath.SearchPath();
     }
-
     private void Move()
     {
-        if (_targetPos == Vector3.zero)
+        if (Vector2.Distance(this.transform.position, _targetPos) > 0.001f)
         {
-            return;
+            _rigid.MovePosition(Vector2.MoveTowards(this.transform.position, _targetPos, MoveSpeed));
         }
-
-        var targetDelta = controller.CalculateMovementDelta(transform.position, 10.0f * Time.deltaTime);
-        var moveValue = (targetDelta.normalized * 0.5f * Time.deltaTime);
-
-        //this.transform.position += moveValue;
-        _rigid.MovePosition(this.transform.position + moveValue);
-
-        int layerMask = 1 << LayerMask.NameToLayer("Ally");
-
-        var hit = Physics2D.Raycast(_targetPos, transform.forward, float.MaxValue, layerMask);
-        Debug.DrawRay(_targetPos, transform.forward * 15f, Color.red);
-
-        if (Vector2.Distance(this.transform.position, _targetPos) < 0.2f)
+        else
         {
-            StopMoving();
-        }
-    }
+            _animator.SetBool("Move", false);
+            IsMoving = false;
 
-    public void Shoved(Vector3 shovedPower)
-    {
-        _rigid.AddForce(shovedPower);
+            ResetTarget();
+        }
     }
 
     private void ResetTarget()
     {
+        //_moveTime = 0;
         _targetPos = Vector3.zero;
         _direction = Vector3.zero;
     }
@@ -139,7 +149,30 @@ public class UnitStats : MonoBehaviour
 
         _selectionCircle.SetActive(value);
     }
-
+    /*
+    private void StuckCheck()
+    {
+        if ((_lastPosition - (Vector2)transform.position).magnitude < STUCK_DISPLACEMENT && _unitCombat.ActionStat == UnitCombat.ActionStats.Move)
+        {
+            if (_stuckCounter == 10)
+            {//안움직인지 10/50 초 가 지나면
+                _stuckCounter = 0;
+                _animator.SetBool("Move", false);   
+                _isMoving = false;
+                _unitCombat.ActionStat = UnitCombat.ActionStats.Idle;
+            }
+            else
+            {
+                _stuckCounter++;
+            }
+        }
+        else
+        {
+            _stuckCounter = 0;
+        }
+        _lastPosition = transform.position;
+    }
+    */
     public void RotateDirection(float xVelocity)
     {
         var originalScale = _rotatingPart.localScale;
