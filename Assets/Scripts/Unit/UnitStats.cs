@@ -17,8 +17,6 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private Text _playerNameText;
 
     //이동관련
-    //private AIPath _aiPath;
-    //private AIDestinationSetter _aiDestSetter;
     [SerializeField] private RVOController controller;
     public float MoveSpeed { get; set; } = 0.01f;
     private Rigidbody2D _rigid;
@@ -51,8 +49,6 @@ public class UnitStats : MonoBehaviour
         _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
         _seeker = GetComponent<Seeker>();
-        //_aiPath = GetComponent<AIPath>();
-        //_aiDestSetter = GetComponent<AIDestinationSetter>();
     }
 
     private void FixedUpdate()
@@ -75,10 +71,10 @@ public class UnitStats : MonoBehaviour
     {
         _targetPos = target;
         controller.SetTarget(target, 0.5f, 0.5f);
-        //_aiPath.destination = target;
+
         IsMoving = true;
         _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
-        //_aiPath.SearchPath();
+
         if (removeCurrentTarget)
         {
             _unitCombat.AttackTarget = null;
@@ -88,15 +84,11 @@ public class UnitStats : MonoBehaviour
         _animator.SetBool("Move", true);
         _animator.speed = 0.5f * runningSpeed;
 
-        //_animator.speed = _aiPath.maxSpeed * runningSpeed;
-        //RotateDirection(_aiPath.destination.x - transform.position.x);
-
         RecalculatePath();
     }
 
     public void SetMoveToTarget(Vector2 target)
     {
-        //_aiPath.destination = target;
     }
 
     public void StopMoving()
@@ -104,8 +96,6 @@ public class UnitStats : MonoBehaviour
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
-        //_aiPath.destination = transform.position;
-        //_aiPath.SearchPath();
     }
 
     private void Move()
@@ -166,23 +156,6 @@ public class UnitStats : MonoBehaviour
         transform.position = pos;
 
         RotateDirection(movementDelta.x);
-
-        //if (_targetPos == Vector3.zero)
-        //{
-        //    return;
-        //}
-        //
-        //var targetDelta = controller.CalculateMovementDelta(transform.position, 10.0f * Time.deltaTime);
-        //var moveValue = (targetDelta.normalized * 0.5f * Time.deltaTime);
-        //
-        ////this.transform.position += moveValue;
-        //_rigid.MovePosition(this.transform.position + moveValue);
-        //
-        //int layerMask = 1 << LayerMask.NameToLayer("Ally");
-        //
-        //var hit = Physics2D.Raycast(_targetPos, transform.forward, float.MaxValue, layerMask);
-        //Debug.DrawRay(_targetPos, transform.forward * 15f, Color.red);
-        //
 
         if (Vector2.Distance(this.transform.position, _targetPos) < 0.2f)
         {
