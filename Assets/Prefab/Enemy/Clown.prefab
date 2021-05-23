@@ -1508,7 +1508,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.3}
@@ -1535,6 +1535,7 @@ MonoBehaviour:
   TargetFaction: 0
   weaponType: 0
   _equippedImage: {fileID: 0}
+  Skill: {fileID: 0}
 --- !u!114 &4882216306343817342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,6 +1553,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   _rotatingPart: {fileID: 8141039710118617438}
   runningSpeed: 0.75
+  repathRate: 1
+  moveNextDist: 1
 --- !u!114 &8371356473361272695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,8 +1680,7 @@ MonoBehaviour:
   heightBackingField: 2
   centerBackingField: 1
   locked: 0
-  lockWhenNotMoving: 1
-  lockMovingValue: 0.001
+  lockWhenNotMoving: 0
   agentTimeHorizon: 2
   obstacleTimeHorizon: 2
   maxNeighbours: 10
@@ -1695,13 +1697,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8221494682217568640}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3cf4ada2655cd4cb7dfbc78b06b052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 8432807427135052264
+  uniqueID: 8607096976588914756
   updateError: 1
   checkTime: 1
 --- !u!1 &8562571837569888424
