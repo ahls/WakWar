@@ -1553,8 +1553,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   _rotatingPart: {fileID: 8141039710118617438}
   runningSpeed: 0.75
-  repathRate: 1
-  moveNextDist: 1
+  RepathRate: 1
+  MoveNextDist: 1
 --- !u!114 &8371356473361272695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   agentTimeHorizon: 2
   obstacleTimeHorizon: 2
   maxNeighbours: 10
-  layer: 1
+  layer: 8
   collidesWith: -1
   wallAvoidForce: 1
   wallAvoidFalloff: 1
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 8607096976588914756
+  uniqueID: 8802182046104760724
   updateError: 1
   checkTime: 1
 --- !u!1 &8562571837569888424

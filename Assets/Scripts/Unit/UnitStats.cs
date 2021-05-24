@@ -20,6 +20,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private RVOController controller;
     public float MoveSpeed { get; set; } = 0.01f;
     private Rigidbody2D _rigid;
+    private CircleCollider2D _collider;
     private Vector3 _targetPos;
     private Vector3 _direction;
     public bool IsMoving { get; set; } = false;
@@ -49,6 +50,7 @@ public class UnitStats : MonoBehaviour
         _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
         _seeker = GetComponent<Seeker>();
+        _collider = GetComponent<CircleCollider2D>();
     }
 
     private void FixedUpdate()
@@ -84,6 +86,11 @@ public class UnitStats : MonoBehaviour
         _animator.SetBool("Move", true);
         _animator.speed = 0.5f * runningSpeed;
 
+        _collider.radius = 0.2f;
+        _collider.isTrigger = true;
+        controller.layer = RVOLayer.MovingAlly;
+        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly ^ RVOLayer.Ally;
+
         RecalculatePath();
     }
 
@@ -96,6 +103,30 @@ public class UnitStats : MonoBehaviour
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
+
+        _collider.isTrigger = false;
+        controller.layer = RVOLayer.Ally;
+        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly;
+
+        StartCoroutine(ColliderSizeUP());
+    }
+
+    private IEnumerator ColliderSizeUP()
+    {
+        _collider.radius = 0;
+        while (true)
+        {
+            _collider.radius += 0.01f;
+
+            if (_collider.radius >= 0.2f)
+            {
+                _collider.radius = 0.2f;
+                break;
+            }
+            yield return new WaitForSeconds(0.01f);
+        }
+
+        _collider.radius = 0.2f;
     }
 
     private void Move()
