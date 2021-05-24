@@ -84,6 +84,9 @@ public class UnitStats : MonoBehaviour
         _animator.SetBool("Move", true);
         _animator.speed = 0.5f * runningSpeed;
 
+        controller.layer = RVOLayer.MovingAlly;
+        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly ^ RVOLayer.Ally;
+
         RecalculatePath();
     }
 
@@ -96,6 +99,8 @@ public class UnitStats : MonoBehaviour
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
+        controller.layer = RVOLayer.Ally;
+        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly;
     }
 
     private void Move()
