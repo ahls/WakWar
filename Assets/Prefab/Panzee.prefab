@@ -1253,9 +1253,9 @@ GameObject:
   - component: {fileID: 8252109871089551390}
   - component: {fileID: 3565577381062980783}
   - component: {fileID: 3994128196793667038}
-  - component: {fileID: 8540832228534089311}
   - component: {fileID: 1718074191863204450}
   - component: {fileID: 5905776270648692461}
+  - component: {fileID: 3295226144841598140}
   m_Layer: 10
   m_Name: Panzee
   m_TagString: Untagged
@@ -1372,8 +1372,8 @@ MonoBehaviour:
   controller: {fileID: 1718074191863204450}
   _rotatingPart: {fileID: 8363145969454056403}
   runningSpeed: 2
-  repathRate: 1
-  moveNextDist: 1
+  RepathRate: 1
+  MoveNextDist: 1
 --- !u!50 &3565577381062980783
 Rigidbody2D:
   serializedVersion: 4
@@ -1415,22 +1415,6 @@ MonoBehaviour:
   - {fileID: 4068964447474577886}
   - {fileID: 6640610026269112796}
   - {fileID: 2989731452029694304}
---- !u!70 &8540832228534089311
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5900826945032943484}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.2}
-  m_Size: {x: 0.3, y: 0.5}
-  m_Direction: 0
 --- !u!114 &1718074191863204450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1452,8 +1436,8 @@ MonoBehaviour:
   agentTimeHorizon: 1
   obstacleTimeHorizon: 2
   maxNeighbours: 10
-  layer: 1
-  collidesWith: -1
+  layer: 4
+  collidesWith: 2147483631
   wallAvoidForce: 1
   wallAvoidFalloff: 1
   priority: 0.2
@@ -1465,15 +1449,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5900826945032943484}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3cf4ada2655cd4cb7dfbc78b06b052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 5178191067984176695
+  uniqueID: 2150301594687551966
   updateError: 1
   checkTime: 0.2
+--- !u!58 &3295226144841598140
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!1 &6251575182977640243
 GameObject:
   m_ObjectHideFlags: 0
