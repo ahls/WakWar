@@ -2742,6 +2742,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panzee (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 6361440001431307234
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: uniqueID
@@ -3147,6 +3157,11 @@ PrefabInstance:
       propertyPath: uniqueID
       value: 2582670986572956567
       objectReference: {fileID: 0}
+    - target: {fileID: 1718074191863204450, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: collidesWith
+      value: 2147483631
+      objectReference: {fileID: 0}
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3171,6 +3186,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panzee (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 6675510616157492604
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -3305,6 +3330,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panzee (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 8032532995264247032
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -3943,7 +3978,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1976555207}
   m_HandleRect: {fileID: 1976555206}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4340,6 +4375,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panzee (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 4333401872805589973
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -5925,6 +5970,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: healer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 2251880426898838378
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -8437,6 +8492,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panzee
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: uniqueID
+      value: 5695814406576172724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5905776270648692461, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7117980849781753040, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
