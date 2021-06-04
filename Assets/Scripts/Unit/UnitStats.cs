@@ -89,7 +89,7 @@ public class UnitStats : MonoBehaviour
         _collider.radius = 0.2f;
         _collider.isTrigger = true;
         controller.layer = RVOLayer.MovingAlly;
-        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly ^ RVOLayer.Ally;
+        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.Ally;
 
         RecalculatePath();
     }
