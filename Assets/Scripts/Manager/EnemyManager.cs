@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private List<GameObject> _enemyList;
+    private List<GameObject> _enemyList = new List<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
         IngameManager.instance.SetEnemyManager(this);
     }
