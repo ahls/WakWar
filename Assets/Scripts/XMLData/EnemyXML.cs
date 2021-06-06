@@ -18,8 +18,11 @@ public class EnemyDatas
     public static Dictionary<int, EnemyData> DB = new Dictionary<int, EnemyData>();
 }
 
+[XmlRoot("EnemyDatas")]
 public class EnemyXML
 {
+    [XmlArray("Enemys")]
+    [XmlArrayItem("Enemy")]
     public List<EnemyData> enemyDatas = new List<EnemyData>();
 
     public static void Load(string path)
