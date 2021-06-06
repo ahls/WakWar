@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageManager : MonoBehaviour
+public class StageManager
 {
     public int CurrentStageFloor { get; private set; } = 0;
     public int CurrentStageRoom { get; private set; } = 0;
