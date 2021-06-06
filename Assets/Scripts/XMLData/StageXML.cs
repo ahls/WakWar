@@ -14,12 +14,12 @@ public class StageData
     [XmlElement("room")]
     public int Room;
     [XmlArray("enemyList")]
-    [XmlArrayItem("enemyData")]
-    public List<EnemyData> EnemyDatas = new List<EnemyData>();
+    [XmlArrayItem("stageEnemyData")]
+    public List<StageEnemyData> EnemyDatas = new List<StageEnemyData>();
 }
 
-[XmlType("enemyData")]
-public class EnemyData
+[XmlType("stageEnemyData")]
+public class StageEnemyData
 {
     [XmlElement("id")]
     public int EnemyID;
@@ -34,7 +34,7 @@ public class Stages
     public static Dictionary<int, StageData> DB = new Dictionary<int, StageData>();
 }
 [XmlRoot("StageData")]
-[XmlInclude(typeof(EnemyData))]
+[XmlInclude(typeof(StageEnemyData))]
 public class StageXML 
 {
     [XmlArray("Stages")]
