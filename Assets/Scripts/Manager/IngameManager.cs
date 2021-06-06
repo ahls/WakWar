@@ -23,6 +23,8 @@ public class IngameManager : MonoBehaviour
     public static DialogueDisplay DialogueDisplay => _dialogueDisplay;
     public static EncounterManager EncounterManager => _encounterManager;
     public static SkillManager SkillManager => _skillManager;
+    public static EnemyManager EnemyManager => _enemyManager;
+    public static StageManager StageManager => _stageManager;
 
 
     private static IngameManager _instance;
@@ -35,9 +37,12 @@ public class IngameManager : MonoBehaviour
     private static DialogueDisplay _dialogueDisplay;
     private static EncounterManager _encounterManager;
     private static SkillManager _skillManager;
+    private static EnemyManager _enemyManager;
+    private static StageManager _stageManager;
     private void Awake()
     {
         _instance = this;
+        _stageManager = new StageManager();
     }
 
     public void SetUnitManager(UnitManager unitManager)
@@ -77,5 +82,9 @@ public class IngameManager : MonoBehaviour
     public void SetSkillManager(SkillManager skillManager)
     {
         _skillManager = skillManager;
+    }
+    public void SetEnemyManager(EnemyManager enemyManager)
+    {
+        _enemyManager = enemyManager;
     }
 }
