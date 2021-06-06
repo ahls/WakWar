@@ -42,7 +42,7 @@ public class IngameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
-        _stageManage = new StageManager;
+        _stageManager = new StageManager();
     }
 
     public void SetUnitManager(UnitManager unitManager)
