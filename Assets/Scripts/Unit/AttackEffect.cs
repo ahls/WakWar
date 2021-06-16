@@ -11,9 +11,13 @@ public class AttackEffect : MonoBehaviour
     private float _aoe;
     private Vector3 _destination;
     private Faction _targetFaction;
+    private UnitCombat _attacker;
     private int _lifeTime;//착탄지점에 도착했는지 여부를 검사할때 쓰일거
     [SerializeField] private Rigidbody2D _rigidBody;
 
+    private float _critChance = 0f;
+    private float _critMult = 1f;
+    private float _lifeDrain = 0f;
 
     //그래픽
     [SerializeField] private SpriteRenderer _projectileImage;
@@ -29,18 +33,18 @@ public class AttackEffect : MonoBehaviour
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker, Vector3 destination, int torque, float initDelta, string attackSound)
+    public void Setup(UnitCombat attacker, Vector3 destination, string attackSound)
     {
         _impactAudio = attackSound;
+        _attacker = attacker;
         Setup(  attacker.TotalDamage, 
                 attacker.TotalAOE, 
                 attacker.TotalAP, 
                 attacker.AttackImage, 
                 attacker.ProjectileSpeed, 
-                torque, initDelta, destination, 
-                attacker.TargetFaction);
+                destination, attacker.TargetFaction);
     }
-    public void Setup(int dmg, float aoe,int ap,Sprite projImage,float projSpeed,int torque,float initHDelta, Vector3 destination,Faction targetFaction)
+    public void Setup(int dmg, float aoe,int ap,Sprite projImage,float projSpeed, Vector3 destination,Faction targetFaction)
     {
         _damage = dmg;
         _targetFaction = targetFaction;
@@ -51,25 +55,11 @@ public class AttackEffect : MonoBehaviour
         Vector2 offsetToTarget = destination - transform.position;
         transform.rotation = Quaternion.LookRotation(Vector3.back, offsetToTarget);
         _rigidBody.velocity = offsetToTarget.normalized * projSpeed;
-        _rigidBody.AddTorque(torque);
 
         // 거리 / 투사체 속도 = 목표까지 걸리는 시간
         // 목표까지 걸리는 시간 * 50(초당 프레임) = 목표까지 도달하는데 걸리는 fixedUpdate 프레임 수 
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
         _lifeTime = (int)(50 * offsetToTarget.magnitude / projSpeed);
-
-        if (_lifeTime > 0 && initHDelta > 0)
-        {//투사체 포물선 그리게
-
-            _heightDelta = initHDelta;
-            transform.position += new Vector3(0, 0.15f, 0);
-            _deltaDelta = _heightDelta * -2 / _lifeTime;
-        }
-        else
-        {
-            _deltaDelta = 0;
-            _heightDelta = 0;
-        }
     }
     private void FixedUpdate()
     {
@@ -82,6 +72,7 @@ public class AttackEffect : MonoBehaviour
                 Global.AudioManager.PlayOnce(_impactAudio, true);
                 _impactAudio = "null";
             }
+            ResetAdditionalProperties();
             Global.ObjectPoolManager.ObjectPooling(Weapons.attackPrefab, this.gameObject);
         }
         else
@@ -104,10 +95,62 @@ public class AttackEffect : MonoBehaviour
                 if (_targetFaction == targetCombat.OwnedFaction || _targetFaction == Faction.Both)
                 {
                     //Debug.Log(_attackerInfo.gameObject.name + " dealt damage to " + targetCombat.gameObject.name + _damage);
-
+                    
+                    if(_critChance > 0)
+                    {//크리티컬 확률이 있으면 확인
+                        if(Random.Range(0,1) >= _critChance)
+                        {
+                            targetCombat.TakeDamage((int)(_damage *  _critMult), _AP);
+                            LifeSteal(_critMult * _lifeDrain);
+                        }
+                    }
                     targetCombat.TakeDamage(_damage, _AP);
+                    LifeSteal(_lifeDrain);
                 }
             }
         }
+    }
+
+
+
+
+
+    private void LifeSteal(float drainAmount)
+    {
+        if(_lifeDrain > 0)
+        {
+            _attacker.TakeDamage((int)(-_damage * drainAmount));
+        }
+    }
+    public void AddTrajectory(int torq, float initHDelta)
+    {
+        _rigidBody.AddTorque(torq);
+
+        if (_lifeTime > 0 && initHDelta > 0)
+        {//투사체 포물선 그리게
+
+            _heightDelta = initHDelta;
+            transform.position += new Vector3(0, 0.15f, 0);
+            _deltaDelta = _heightDelta * -2 / _lifeTime;
+        }
+    }
+    public void AddHitEffect(float chance, float multi, float lifeDrain,UnitCombat attacker = null)
+    {
+        _critChance = chance;
+        _critMult = multi;
+        _lifeDrain = lifeDrain;
+        if (attacker != null)
+        {
+            _attacker = attacker;
+        }
+    }
+    private void ResetAdditionalProperties()
+    {
+        _attacker = null;
+        _critChance = 0f;
+        _critMult = 1f;
+        _lifeDrain = 0f;
+        _heightDelta = 0f;
+        _deltaDelta = 0f;
     }
 }

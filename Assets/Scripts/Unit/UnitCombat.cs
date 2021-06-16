@@ -18,7 +18,6 @@ public class UnitCombat : MonoBehaviour
     #region 변수
 
     private ActionStats _actionStat;
-
     public ActionStats ActionStat
     {
         get
@@ -50,6 +49,11 @@ public class UnitCombat : MonoBehaviour
     public int BaseAP { get; set; }
     private string _attackAudio = "null";
     private string _impactAudio = "null";
+
+    public float CritChance { get; set; } = 0f;
+    public float CritDmg { get; set; } = 1.5f;
+    public float LifeSteal { get; set; } = 0f;
+
 
     //타겟 관련
     public static bool AIenabled = false;
@@ -334,7 +338,17 @@ public class UnitCombat : MonoBehaviour
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
-        _effect.GetComponent<AttackEffect>().Setup(this, AttackTarget.position,_torque,_heightDelta,_impactAudio);
+
+        AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
+        attackEffectScript.Setup(this, AttackTarget.position,_impactAudio);
+        if (_torque > 0 || _heightDelta > 0)
+        {
+            attackEffectScript.AddTrajectory(_torque, _heightDelta);
+        }
+        if(LifeSteal > 0 || CritChance > 0)
+        {
+            attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
+        }
 
         if (_attackAudio != "null")
         {

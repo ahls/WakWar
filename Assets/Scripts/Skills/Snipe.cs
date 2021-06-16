@@ -28,7 +28,7 @@ public class Snipe : SkillBase
         {
             GameObject bullet = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
             bullet.transform.position = transform.position;
-            bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, 3, 0, 0,uc.AttackTarget.position, uc.TargetFaction);
+            bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, 3,uc.AttackTarget.position, uc.TargetFaction);
         }
     }
 }

@@ -35,7 +35,9 @@ public class ArrowRain : SkillBase
             Vector2 arrowLandingLocation = transform.position + transform.up * AOE;
             GameObject arrow = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
             arrow.transform.position = transform.position;
-            arrow.GetComponent<AttackEffect>().Setup(dmg,ARROW_AOE,AP,uc.AttackImage,0.1f,180,0.2f, arrowLandingLocation, uc.TargetFaction);
+            AttackEffect attackEffect = arrow.GetComponent<AttackEffect>();
+            attackEffect.Setup(dmg,ARROW_AOE,AP,uc.AttackImage,0.1f, arrowLandingLocation, uc.TargetFaction);
+            attackEffect.AddTrajectory(180, 0.2f);
         }
     }
 
