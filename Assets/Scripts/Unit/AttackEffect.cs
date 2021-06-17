@@ -45,7 +45,7 @@ public class AttackEffect : MonoBehaviour
                 destination, attacker.TargetFaction);
     }
     public void Setup(int dmg, float aoe,int ap,Sprite projImage,float projSpeed, Vector3 destination,Faction targetFaction)
-    {
+    {``
         _damage = dmg;
         _targetFaction = targetFaction;
         _aoe = aoe;
