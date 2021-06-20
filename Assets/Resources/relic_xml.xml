@@ -2,11 +2,71 @@
 <RelicData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Relics>
     <Relic>
-      <id>1000</id>
+      <!--치킨조각-->
+      <id>30001</id><!--아이템 ID와 동일-->
+      <class>0</class><!-- 0 은 비적용, 1: 왁, 2: 전사, 3: 사수, 4: 지원가-->
+      <relicEffects>
+        <relicEffect>  <!--넣을 수 있는 효과: 
+                          "Damage", "AttackSpeed", "CritChance","AP"
+                          "MaxHP", "Armor", "Regen", 
+                          "CDReduction", "MovementSpeed"
+                          
+                          외에 특수 - "StateMultiplier", "GoldPerKill", "BonusPanzee", "ShowRewards"
+                          정수여야 하는 부분에 실수가 들어가면 반올림 대신 소수점 뒤에 있는 숫자를 버립니다.-->
+          <effectType>StatMultiplier</effectType>
+          <value>2</value>
+        </relicEffect>
+        <relicEffect>
+          <effectType>Damage</effectType>
+          <value>5</value> 
+        </relicEffect>
+        <relicEffect>
+          <effectType>Damage</effectType>
+          <value>5</value>
+        </relicEffect>
+      </relicEffects>
+    </Relic>
+    <Relic>
+      <!--흐물 잔디-->
+      <id>30002</id>
+      <class>0</class>
       <relicEffects>
         <relicEffect>
-          <effectType>DMG</effectType>
+          <effectType>Damage</effectType>
           <value>5</value>
+        </relicEffect>
+      </relicEffects>
+    </Relic>
+    <Relic>
+      <!--기생충 이빨-->
+      <id>30003</id>
+      <class>1234</class>
+      <relicEffects>
+        <relicEffect>
+          <effectType>AP</effectType>
+          <value>5</value>
+        </relicEffect>
+      </relicEffects>
+    </Relic>
+    <Relic>
+      <!--객관안-->
+      <id>30004</id>
+      <class>3</class>
+      <relicEffects>
+        <relicEffect>
+          <effectType>Damage</effectType>
+          <value>0.2</value>
+        </relicEffect>
+      </relicEffects>
+    </Relic>
+    <Relic>
+      <!--잊혀진 도네이션-->
+      <id>30005</id>
+      <class>4</class>
+      <relicEffects>
+        <relicEffect>
+          <effectType>CDReduction</effectType>
+          <value>0.2</value>
         </relicEffect>
       </relicEffects>
     </Relic>

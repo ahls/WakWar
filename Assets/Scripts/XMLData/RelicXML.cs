@@ -9,6 +9,8 @@ public class RelicData
 {
     [XmlElement("id")]
     public string RelicID;
+    [XmlElement("class")]
+    public int Classes;
     [XmlArray("relicEffects")]
     [XmlArrayItem("relicEffect")]
     public List<RelicEffect> RelicEffects = new List<RelicEffect>();
