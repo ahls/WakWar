@@ -50,7 +50,11 @@ public class UnitStats : MonoBehaviour
         _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
         _seeker = GetComponent<Seeker>();
-        _collider = GetComponent<CircleCollider2D>();
+
+        if (controller.layer == RVOLayer.Ally)
+        {
+            _collider = GetComponent<CircleCollider2D>();
+        }
     }
 
     private void FixedUpdate()
@@ -86,10 +90,14 @@ public class UnitStats : MonoBehaviour
         _animator.SetBool("Move", true);
         _animator.speed = 0.5f * runningSpeed;
 
-        _collider.radius = 0.2f;
-        _collider.isTrigger = true;
-        controller.layer = RVOLayer.MovingAlly;
-        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.Ally;
+
+        if (controller.layer == RVOLayer.Ally)
+        {
+            _collider.radius = 0.2f;
+            _collider.isTrigger = true;
+            controller.layer = RVOLayer.MovingAlly;
+            controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.Ally;
+        }
 
         RecalculatePath();
     }
@@ -104,11 +112,14 @@ public class UnitStats : MonoBehaviour
         _animator.SetBool("Move", false);
         ResetTarget();
 
-        _collider.isTrigger = false;
-        controller.layer = RVOLayer.Ally;
-        controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly;
+        if (controller.layer == RVOLayer.MovingAlly)
+        {
+            _collider.isTrigger = false;
+            controller.layer = RVOLayer.Ally;
+            controller.collidesWith = (RVOLayer)(-1) ^ RVOLayer.MovingAlly;
 
-        StartCoroutine(ColliderSizeUP());
+            StartCoroutine(ColliderSizeUP());
+        }
     }
 
     private IEnumerator ColliderSizeUP()
