@@ -43,7 +43,6 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
             var param = new ItemInfoDisplay.Param();
             param.item = Items.DB[ItemID];
             param.position = eventData.position;
-            Debug.Log(param.item);
             Global.UIPopupManager.Push(PopupID.UIItemToolTip, param);
         }
     }

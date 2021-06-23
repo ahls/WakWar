@@ -36,8 +36,6 @@ public class UIPopupManager : MonoBehaviour
         var uiPopupScript = currentPopup.GetComponent<UIPopup>();
         if (param != null)
         {
-            Debug.Log(param);
-            Debug.Log(uiPopupScript.Param);
             uiPopupScript.Param = param; 
         }
         uiPopupScript.PostInitialize();
