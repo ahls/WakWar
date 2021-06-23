@@ -111,7 +111,7 @@ public class UnitStats : MonoBehaviour
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
-
+        Debug.Log(controller);
         if (controller.layer == RVOLayer.MovingAlly)
         {
             _collider.isTrigger = false;

@@ -160,7 +160,7 @@ public class UnitManager : MonoBehaviour
                 }
             }
 
-            Debug.Log(leader.name);
+            //Debug.Log(leader.name);
 
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
