@@ -33,11 +33,11 @@ public class AttackEffect : MonoBehaviour
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker, Vector3 destination, string attackSound)
+    public void Setup(UnitCombat attacker,int damage, Vector3 destination, string attackSound)
     {
         _impactAudio = attackSound;
         _attacker = attacker;
-        Setup(  attacker.TotalDamage, 
+        Setup(  damage, 
                 attacker.TotalAOE, 
                 attacker.TotalAP, 
                 attacker.AttackImage, 

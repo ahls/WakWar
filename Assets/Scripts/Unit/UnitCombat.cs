@@ -36,7 +36,9 @@ public class UnitCombat : MonoBehaviour
 
     //체력
     public int HealthMax { get; set; } = 10;
+    private float _healthInversed;
     public bool IsDead { get; set; } = false;
+    public bool CanBeKilled { get; set; } = true;
     private int _healthCurrent;
     [SerializeField] private Slider _healthBar;
     private int _stunTimer = 0;
@@ -74,8 +76,8 @@ public class UnitCombat : MonoBehaviour
     //타입
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
-    public ClassType weaponType = ClassType.Null;
-    private int _weaponIndex = 0;
+    public ClassType weaponType = ClassType.Null;       //클래스 타입
+    private int _weaponIndex = 0;                       //무기 번호
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
     public float AttackTorque { get; set; } = 0;
@@ -324,8 +326,12 @@ public class UnitCombat : MonoBehaviour
             _torque = Weapons.DB[_weaponIndex].torque;
             TargetFaction = Weapons.DB[_weaponIndex].targetFaction;
         }
+        _healthInversed = 1 / HealthMax;
     }
-
+    /// <summary>
+    /// 0부터 3까지의 단계
+    /// </summary>
+    /// <returns></returns>
     public int GetItemRank()
     {
         return _weaponIndex % 10;
@@ -340,7 +346,17 @@ public class UnitCombat : MonoBehaviour
         _effect.transform.position = transform.position;
 
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
-        attackEffectScript.Setup(this, AttackTarget.position,_impactAudio);
+        if (_weaponIndex * 0.1  == 10000) // 무기가 검인경우 공격데미지 수정
+        {
+            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position, _impactAudio);
+        }
+        else
+        {
+            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position, _impactAudio);
+        }
+
+
+        
         if (_torque > 0 || _heightDelta > 0)
         {
             attackEffectScript.AddTrajectory(_torque, _heightDelta);
@@ -532,6 +548,19 @@ public class UnitCombat : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         _healthCurrent -= (damageAmount);
+
+
+        if(_healthCurrent <= 0)
+        {
+            if(CanBeKilled == false)
+            {
+                _healthCurrent = 1;
+            }
+            else
+            {
+                Death();
+            }
+        }
         HealthBarUpdate();
     }
     /// <summary>
@@ -549,17 +578,24 @@ public class UnitCombat : MonoBehaviour
         {
             _healthCurrent -= Mathf.Min(dmg + _healthCurrent, HealthMax);
         }
+
+        if (_healthCurrent <= 0)
+        {
+            if (CanBeKilled == false)
+            {
+                _healthCurrent = 1;
+            }
+            else
+            {
+                Death();
+            }
+        }
         HealthBarUpdate();
     }
 
     private void HealthBarUpdate()
     {
         _healthBar.value = _healthCurrent;
-        if(_healthCurrent<= 0)
-        {
-            Death();
-        }
-
     }
 
     private void HealthBarColor(Color newColor)
@@ -624,6 +660,15 @@ public class UnitCombat : MonoBehaviour
             default:
                 break;
         }
+    }
+    private int CalculateBerserkDamage()
+    {
+
+        float maxDmgBonus= 1+(GetItemRank()+1) * 0.5f; // 50%, 100% 150% 200% 퍼센트의 추뎀
+        int additionalDmg = Mathf.FloorToInt(maxDmgBonus * (HealthMax - _healthCurrent) * _healthInversed);
+
+        return additionalDmg;
+
     }
     #endregion
 }
