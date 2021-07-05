@@ -14,7 +14,9 @@ public class tesUnitSetup : MonoBehaviour
     private void Start()
     {
         if (CanControl)
-        { GetComponent<UnitStats>().PlayerUnitInit("Dango"); }
+        { GetComponent<UnitStats>().PlayerUnitInit("Dango");
+            GetComponent<UnitCombat>().playerSetup(ClassType.Warrior);
+        }
 
          UC = GetComponent<UnitCombat>();
         UC.BaseAS = 0;

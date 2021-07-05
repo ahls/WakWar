@@ -9,6 +9,10 @@ public class AudioManager
 
     public void PlayOnce(string audioName, bool randomPitch = false)
     {
+        if(audioName == "")
+        {
+            return;
+        }
         AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.init(audioName, randomPitch:randomPitch);
     }

@@ -42,6 +42,7 @@ public class UnitCombat : MonoBehaviour
     private int _healthCurrent;
     [SerializeField] private Slider _healthBar;
     private int _stunTimer = 0;
+    private string _deathSound = "";
 
     //공격관련
     public int BaseDamage { get; set; }
@@ -108,7 +109,7 @@ public class UnitCombat : MonoBehaviour
         weaponType = inputWeaponType;
         OwnedFaction = Faction.Player;
         HealthBarColor(Color.green);
-
+        _deathSound = "panzeeDeath0";
     }
 
     #endregion
@@ -610,6 +611,7 @@ public class UnitCombat : MonoBehaviour
         _animator.SetTrigger("Die");
         IsDead = true;
         GetComponent<Rigidbody2D>().simulated = false;
+        Global.AudioManager.PlayOnce(_deathSound,true);
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);
