@@ -92,7 +92,7 @@ public class RewardsWindow : MonoBehaviour
             case rewardType.relic:
                 chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count)];
                 Debug.Log(chosenItemID);
-                GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
+                GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
                 newItem.GetComponent<Item_Data>().Setup(chosenItemID);
                 newItem.transform.SetParent(slots[0].transform);
                 newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
@@ -114,7 +114,7 @@ public class RewardsWindow : MonoBehaviour
         
         for (int i = 0; i < numItems; i++)
         {
-            GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
+            GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
             slots[i].GetComponent<Item_Slot>().CurrentNumber++;
         }

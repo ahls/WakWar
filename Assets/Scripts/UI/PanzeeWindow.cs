@@ -55,7 +55,7 @@ public class PanzeeWindow : MonoBehaviour
                 return;
         }
         contentBoxResize();
-        GameObject newSlot = Global.ResourceManager.LoadPrefab(slotPrefab.name);
+        GameObject newSlot = Global.ObjectManager.SpawnObject(slotPrefab.name);
         newSlot.GetComponent<panzeeInventory>().Setup(name,unit,tempParent);
     }
 

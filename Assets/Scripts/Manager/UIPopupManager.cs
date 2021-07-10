@@ -28,7 +28,7 @@ public class UIPopupManager : MonoBehaviour
             Pop(findPopup);
         }
 
-        var currentPopup = Global.ResourceManager.LoadPrefab(id.ToString(), true);
+        var currentPopup = Global.ObjectManager.SpawnObject(id.ToString(), true);
         currentPopup.transform.SetParent(this.transform);
         currentPopup.transform.SetAsLastSibling();
         currentPopup.transform.localPosition = Vector3.zero;

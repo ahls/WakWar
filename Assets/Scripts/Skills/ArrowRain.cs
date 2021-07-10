@@ -33,7 +33,7 @@ public class ArrowRain : SkillBase
         {
             transform.rotation = Quaternion.AngleAxis(60 * i, Vector3.forward);
             Vector2 arrowLandingLocation = transform.position + transform.up * AOE;
-            GameObject arrow = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
+            GameObject arrow = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
             arrow.transform.position = transform.position;
             AttackEffect attackEffect = arrow.GetComponent<AttackEffect>();
             attackEffect.Setup(dmg,ARROW_AOE,AP,uc.AttackImage,0.1f, arrowLandingLocation, uc.TargetFaction);

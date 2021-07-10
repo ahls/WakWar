@@ -26,7 +26,7 @@ public class Snipe : SkillBase
         yield return new WaitForSeconds(1);
         if(_goodToShoot && uc.AttackTarget != null)
         {
-            GameObject bullet = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
+            GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
             bullet.transform.position = transform.position;
             bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, 3,uc.AttackTarget.position, uc.TargetFaction);
         }

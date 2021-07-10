@@ -14,12 +14,12 @@ public class UIManager : MonoBehaviour
     {
         Global.instance.SetUIManager(this);
         UIDraggable.SetupDraggableWindow(_canvas);
-        //_notifyText = Global.ResourceManager.LoadPrefab("NotifyText");
+        //_notifyText = Global.ObjectManager.SpawnObject("NotifyText");
     }
 
     public void PushNotiMsg(string text, float lifeTime)
     {
-        var notiMsgObject = Global.ResourceManager.LoadPrefab("NotifyText", true);
+        var notiMsgObject = Global.ObjectManager.SpawnObject("NotifyText", true);
         notiMsgObject.transform.SetParent(_canvas.transform);
         notiMsgObject.SetActive(true);
         notiMsgObject.GetComponent<UINotifyText>().SetInfo(text, lifeTime);

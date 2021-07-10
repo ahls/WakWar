@@ -43,7 +43,7 @@ public class UIShop : UIPopup
             int newItemID = 20000 + (Random.Range(0, 9) * 100) + Random.Range(0, 2);
             //아이템 생성
 
-            GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
+            GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(newItemID, _tradeSlots[i]);
             newItem.GetComponent<Item_Drag>().SellingItem = true;
         }

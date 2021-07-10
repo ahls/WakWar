@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
 
     public void SpawnEnemy(int id, Vector2 pos)
     {
-        var enemyObject = Global.ResourceManager.LoadPrefab(EnemyDatas.DB[id].Name);
+        var enemyObject = Global.ObjectManager.SpawnObject(EnemyDatas.DB[id].Name);
         enemyObject.transform.parent = this.transform;
         enemyObject.transform.position = pos;
 

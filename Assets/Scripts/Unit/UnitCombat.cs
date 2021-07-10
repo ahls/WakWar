@@ -343,7 +343,7 @@ public class UnitCombat : MonoBehaviour
     public void Fire()
     {
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
-        _effect = Global.ResourceManager.LoadPrefab(Weapons.attackPrefab);
+        _effect = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
 
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();

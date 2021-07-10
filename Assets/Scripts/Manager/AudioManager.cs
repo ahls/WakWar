@@ -13,18 +13,18 @@ public class AudioManager
         {
             return;
         }
-        AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
+        AudioPlayer audioPlayer = Global.ObjectManager.SpawnObject(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.init(audioName, randomPitch:randomPitch);
     }
     public void PlayOnceAt(string audioName,Vector2 location, bool randomPitch =false)
     {
-        AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
+        AudioPlayer audioPlayer = Global.ObjectManager.SpawnObject(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.transform.position = location;
         audioPlayer.init(audioName,randomPitch:randomPitch);
     }
     public void PlayLoop(string audioName, float duration)
     {
-        AudioPlayer audioPlayer = Global.ResourceManager.LoadPrefab(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
+        AudioPlayer audioPlayer = Global.ObjectManager.SpawnObject(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.init(audioName, true, duration);
     }
     

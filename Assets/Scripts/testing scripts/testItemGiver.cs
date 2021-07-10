@@ -24,7 +24,7 @@ public class testItemGiver : MonoBehaviour
                 List<Transform> itemslot = IngameManager.UIInventory.getEmptySlots(1);
                 if (itemslot.Count != 0)
                 {
-                    GameObject newItem = Global.ResourceManager.LoadPrefab(Items.PREFAB_NAME);
+                    GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
                     newItem.GetComponent<Item_Data>().Setup(givenInput,itemslot[0]);
 
                 }
