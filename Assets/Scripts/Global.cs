@@ -19,6 +19,7 @@ public class Global : MonoBehaviour
     public static XMLLoader XMLLoader => _xmlLoader;
     public static ResourceManager ResourceManager => _resourceManager;
     public static ObjectPoolManager ObjectPoolManager => _objectPoolManager;
+    public static ObjectManager ObjectManager => _objectManager;
     public static UIManager UIManager => _uiManager;
     public static UIPopupManager UIPopupManager => _uiPopupManager;
     public static AudioManager AudioManager => _audioManager;
@@ -27,6 +28,7 @@ public class Global : MonoBehaviour
     private static XMLLoader _xmlLoader;
     private static ResourceManager _resourceManager;
     private static ObjectPoolManager _objectPoolManager;
+    private static ObjectManager _objectManager;
     private static UIManager _uiManager;
     private static UIPopupManager _uiPopupManager;
     private static AudioManager _audioManager;
@@ -48,6 +50,7 @@ public class Global : MonoBehaviour
         _xmlLoader = new XMLLoader();
         _resourceManager = new ResourceManager();
         _objectPoolManager = new ObjectPoolManager(_disableObject, _disableCanvas);
+        _objectManager = new ObjectManager();
         _audioManager = new AudioManager();
 
     }
