@@ -73,7 +73,7 @@ public class AttackEffect : MonoBehaviour
                 _impactAudio = "null";
             }
             ResetAdditionalProperties();
-            Global.ObjectPoolManager.ObjectPooling(Weapons.attackPrefab, this.gameObject);
+            Global.ObjectManager.ReleaseObject(Weapons.attackPrefab, this.gameObject);
         }
         else
         {

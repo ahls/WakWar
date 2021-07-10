@@ -60,6 +60,6 @@ public class Effect : MonoBehaviour
     {
         StopAllCoroutines();
 
-        Global.ObjectPoolManager.ObjectPooling(_prefabName, gameObject);
+        Global.ObjectManager.ReleaseObject(_prefabName, gameObject);
     }
 }

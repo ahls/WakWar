@@ -47,7 +47,7 @@ public class AudioPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         if (wasLoop)            _audioSource.Stop();
-        Global.ObjectPoolManager.ObjectPooling(AudioManager.AUDIO_PLAYER_NAME, gameObject);
+        Global.ObjectManager.ReleaseObject(AudioManager.AUDIO_PLAYER_NAME, gameObject);
 
     }
 }

@@ -73,7 +73,7 @@ public class RewardsWindow : MonoBehaviour
             Transform tempTransform = slots[i].transform;
             if (tempTransform.childCount != 0)
             {
-                Global.ObjectPoolManager.ObjectPooling(Items.PREFAB_NAME, slots[i].transform.GetChild(0).gameObject);
+                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, slots[i].transform.GetChild(0).gameObject);
             }
         }
 

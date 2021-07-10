@@ -43,7 +43,7 @@ public abstract class UIPopup : MonoBehaviour, IDragHandler, IBeginDragHandler, 
     public void Pop()
     {
         Global.UIPopupManager.Pop(this);
-        Global.ObjectPoolManager.CanvasObjectPooling(this.GetPopupID().ToString(), this.gameObject);
+        Global.ObjectManager.ReleaseCanvasObject(this.GetPopupID().ToString(), this.gameObject);
     }
 
     public void OnDrag(PointerEventData eventData)
