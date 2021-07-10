@@ -258,7 +258,7 @@ public class UnitManager : MonoBehaviour
             var hitEnemy = Physics2D.Raycast(CursorLocation(), transform.forward, float.MaxValue, layerMask);
             if (hitEnemy)
             {
-                Cursor.SetCursor(_aimingCursor, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(_aimingCursor, new Vector2(_aimingCursor.width / 2, _aimingCursor.height / 2), CursorMode.Auto);
                 return;
             }
             else
