@@ -12,7 +12,7 @@ public class UnitManager : MonoBehaviour
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;
-    [SerializeField] private Texture2D _attackCursor,_normalCursor;
+    [SerializeField] private Texture2D _attackCursor,_normalCursor, _aimingCursor;
     private Vector2 _startLocation;
     private short _selectedUnitCount = 0;       //유닛 선택이
     private bool _selectOneOnly = false;        //클릭인지
@@ -248,7 +248,27 @@ public class UnitManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && _selectedUnitList.Count > 0)
         {
             _attackMode = true;
-            Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.ForceSoftware);
+            //Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.ForceSoftware);
+        }
+
+        if (_attackMode)
+        {
+            int layerMask = 1 << LayerMask.NameToLayer("Enemy");
+
+            var hitEnemy = Physics2D.Raycast(CursorLocation(), transform.forward, float.MaxValue, layerMask);
+            if (hitEnemy)
+            {
+                Cursor.SetCursor(_aimingCursor, Vector2.zero, CursorMode.Auto);
+                return;
+            }
+            else
+            {
+                Cursor.SetCursor(_attackCursor, Vector2.zero, CursorMode.Auto);
+            }
+        }
+        else
+        {
+            Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
         }
     }
 
