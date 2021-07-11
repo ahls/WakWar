@@ -12,7 +12,7 @@ public class Finale : SkillBase
         _bonusAmount = 0;
     }
 
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
         foreach (var uc in _affectedUnits)
         {

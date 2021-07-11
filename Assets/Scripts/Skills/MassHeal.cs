@@ -11,7 +11,7 @@ public class MassHeal : SkillBase
     /// 현재 힐 대상 혹은 자기 주변에 광역으로 힐을 뿌립니다. 
     /// </summary>
     /// <param name="caster"></param>
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
         Vector2 destination;
         if(caster.AttackTarget!=null)

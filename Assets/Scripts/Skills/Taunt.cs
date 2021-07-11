@@ -18,7 +18,7 @@ public class Taunt : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
         _caster = caster;
         switch (caster.GetItemRank())

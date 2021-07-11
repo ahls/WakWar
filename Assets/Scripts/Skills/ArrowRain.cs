@@ -15,7 +15,7 @@ public class ArrowRain : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
         UnitCombat uc = caster.GetComponent<UnitCombat>();
         if(uc.AttackTarget == null)

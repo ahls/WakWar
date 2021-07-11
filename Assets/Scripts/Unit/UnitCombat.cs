@@ -274,6 +274,9 @@ public class UnitCombat : MonoBehaviour
         {
             _animator.SetTrigger("Regular");
         }
+
+        ChangeSkill();
+
         //공격 사운드
         _attackAudio = Weapons.DB[_weaponIndex].projSound;
         _impactAudio = Weapons.DB[_weaponIndex].impctSound;
@@ -628,40 +631,49 @@ public class UnitCombat : MonoBehaviour
     #region 스킬관련
     private void ChangeSkill()
     {
-        GameObject skillObject = Skill.gameObject;
-        Destroy(Skill);
+        if (Skill != null)
+        {
+            Destroy(Skill);
+        }
+        
+        GameObject skillObject = Instantiate(Global.ObjectManager.SpawnObject("skillcarrier"), transform);
         switch (Weapons.DB[_weaponIndex].weaponType)
         {
             case WeaponType.Axe:
-                skillObject.AddComponent<Bladestorm>();
+                Skill = skillObject.AddComponent<Bladestorm>();
                 break;
             case WeaponType.Sword:
                 //skillObject.AddComponent<>();
                 break;
             case WeaponType.Shield:
-                skillObject.AddComponent<Taunt>();
+                Skill = skillObject.AddComponent<Taunt>();
                 break;
             case WeaponType.Bow:
-                skillObject.AddComponent<ArrowRain>();
+                Skill = skillObject.AddComponent<ArrowRain>();
                 break;
             case WeaponType.Gun:
-                skillObject.AddComponent<Snipe>();
+                Skill = skillObject.AddComponent<Snipe>();
                 break;
             case WeaponType.Throw:
-                skillObject.AddComponent<Rush>();
+                Skill = skillObject.AddComponent<Rush>();
+                Skill.SkillEffect(this);
                 break;
             case WeaponType.Blunt:
-                skillObject.AddComponent<Stun>();
+                Skill = skillObject.AddComponent<Stun>();
                 break;
             case WeaponType.Wand:
-                skillObject.AddComponent<MassHeal>();
+                Skill = skillObject.AddComponent<MassHeal>();
                 break;
             case WeaponType.Instrument:
-                skillObject.AddComponent<Finale>();
+                Skill = skillObject.AddComponent<Finale>();
                 break;
             default:
                 break;
         }
+    }
+    public void useSkill()
+    {
+        
     }
     private int CalculateBerserkDamage()
     {

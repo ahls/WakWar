@@ -21,7 +21,7 @@ public class Bladestorm : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="damage"></param>
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
 
         _durationTimer = SKILL_DURATION;

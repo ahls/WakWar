@@ -19,12 +19,14 @@ public abstract class SkillBase : MonoBehaviour
     }
     public void UseSkill(UnitCombat caster)
     {
+        print(this.name);
         if(Time.time > _timeReady)
         {
+            Debug.Log("Skill Was able to be used");
             _timeReady = TotalCD + Time.time;
             SkillEffect(caster);
         }
     }
-    protected abstract void SkillEffect(UnitCombat caster);
+    public abstract void SkillEffect(UnitCombat caster);
     protected abstract void ForceStop();
 }

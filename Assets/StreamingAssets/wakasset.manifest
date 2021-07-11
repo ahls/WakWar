@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2540488848
+CRC: 654188647
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 402152aba697b468d15ac8358c90530f
+    Hash: 790a96966264e23adb2ee3e319cee36e
   TypeTreeHash:
     serializedVersion: 2
     Hash: 463ea070d9b620d8ac0cbeceefa673d6
@@ -153,6 +153,7 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_throwable.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe3.png
+- Assets/Prefab/Skill/skillcarrier.prefab
 - Assets/Audio/BowShot.mp3
 - Assets/Sprites/textures/Equipped/img_instruments.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png

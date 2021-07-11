@@ -16,7 +16,7 @@ public class Stun : SkillBase
     /// 주변 적들에게 스턴을 겁니당
     /// </summary>
     /// <param name="caster"></param>
-    protected override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitCombat caster)
     {
         int stunAmount = (int)((caster.GetItemRank() * 0.5f + 1.5f) * 50);
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);

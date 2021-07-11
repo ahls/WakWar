@@ -11,7 +11,7 @@ public class tesUnitSetup : MonoBehaviour
     public float torque;
     private bool used = false;
     UnitCombat UC;
-    private void Start()
+    private void Awake()
     {
         if (CanControl)
         { GetComponent<UnitStats>().PlayerUnitInit("Dango");

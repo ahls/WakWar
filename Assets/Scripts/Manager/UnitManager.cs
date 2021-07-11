@@ -275,4 +275,8 @@ public class UnitManager : MonoBehaviour
             }
         }
     }
+    public List<GameObject> GetSelectedUnits()
+    {
+        return _selectedUnitList;
+    }
 }
