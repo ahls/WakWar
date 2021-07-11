@@ -10,6 +10,18 @@ public class Snipe : SkillBase
     {
         _goodToShoot = false;
     }
+
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
+
     /// <summary>
     /// 자체에 스턴걸고 시간 후에 평타 공격력의 10배 데미지를 방어무시로 때려박음.
     /// </summary>

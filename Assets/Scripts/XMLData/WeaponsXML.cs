@@ -14,8 +14,8 @@ public enum ClassType
 }
 public enum WeaponType
 {
-    Axe,
     Sword,
+    Axe,
     Shield,
     Bow,
     Gun,
@@ -61,7 +61,7 @@ public class PulledWeapon
     public float heightDelta;
     [XmlElement("torq")]
     public int torque;
-    [XmlElement("type")]
+    [XmlElement("weaponType")]
     public WeaponType weaponType;
 }
 

@@ -11,6 +11,16 @@ public class Finale : SkillBase
     {
         _bonusAmount = 0;
     }
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
 
     public override void SkillEffect(UnitCombat caster)
     {

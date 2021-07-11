@@ -11,6 +11,18 @@ public class Stun : SkillBase
     {
         _goodToShoot = false;
     }
+
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
+
     /// <summary>
     /// 광역스턴
     /// 주변 적들에게 스턴을 겁니당

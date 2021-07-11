@@ -2,44 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Berserk : SkillBase
+public class Rush : SkillBase
 {
-    private const float SKILL_DURATION = 4;
+    private const float SKILL_DURATION = 5;
     private UnitCombat _caster;
     private float _bonus = 0;
     private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//단발성 스킬이라 필요 없음
 
-
-    public new void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitCombat caster)
     {
-        print(this.name);
         if (Time.time > _timeReady)
         {
-            Debug.Log("Skill Was able to be used");
+            Debug.Log("RUSH IS ON Use");
+
             _timeReady = TotalCD + Time.time;
             SkillEffect(caster);
         }
     }
+
+
     /// <summary>
-    /// 스킬설명: 
+    /// 스킬설명: 인트는 공격속도 보너스
+    /// 4초간 지속되며 일정거리 내에 있는 적들의 타겟을 자신으로 강제설정한다
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
     public override void SkillEffect(UnitCombat caster)
     {
-        Debug.Log("RUSH IS ON Use");
         _caster = caster;
-        _bonus = caster.GetItemRank() * 0.2f + 0.1f;
+        switch (caster.GetItemRank())
+        {
+            case 0:
+                _bonus = caster.TotalAS * 0.2f;
+                break;
+            case 1:
+                _bonus = caster.TotalAS * 0.4f;
+                break;
+            case 2:
+                _bonus = caster.TotalAS * 0.6f;
+                break;
+            case 3:
+                _bonus = caster.TotalAS * 0.7f;
+                break;
+            default:
+                break;
+        }
+        Debug.Log(_caster.TotalAS);
         caster.BaseAS += _bonus;
         _caster.UpdateStats();
 
+        Debug.Log(_caster.TotalAS);
         StartCoroutine(Effect());
     }
     IEnumerator Effect()
     {
         yield return new WaitForSeconds(SKILL_DURATION);
-        _caster.TotalAS -= _bonus;
+        _caster.BaseAS -= _bonus;
         _caster.UpdateStats();
     }
 

@@ -7,6 +7,17 @@ public class MassHeal : SkillBase
     private const float RADIUS = 1f;
 
     protected override void ForceStop() { }
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
+
     /// <summary>
     /// 현재 힐 대상 혹은 자기 주변에 광역으로 힐을 뿌립니다. 
     /// </summary>

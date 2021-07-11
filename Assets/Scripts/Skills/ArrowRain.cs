@@ -9,6 +9,18 @@ public class ArrowRain : SkillBase
     private const int AP = 0;
     private const int NUM_ARROWS = 6;
     protected override void ForceStop(){}//죽어도 쏜 화살은 계속 떨어짐
+
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
+
     /// <summary>
     /// 스킬설명: 타겟은 시전자, 인트는 데미지
     /// 약간의 딜레이 뒤, 시전자의 타겟근처에 범위공격

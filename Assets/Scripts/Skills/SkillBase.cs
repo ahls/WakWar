@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class SkillBase : MonoBehaviour
 {
     public float BaseCD { get; set; } = 60;
-    public float TotalCD { get; set; }
+    public float TotalCD { get; set; } = 60;
     protected float _timeReady = 0;
 
     /// <summary>
@@ -17,16 +17,7 @@ public abstract class SkillBase : MonoBehaviour
     {
         TotalCD = BaseCD * skillHasteAmount;
     }
-    public void UseSkill(UnitCombat caster)
-    {
-        print(this.name);
-        if(Time.time > _timeReady)
-        {
-            Debug.Log("Skill Was able to be used");
-            _timeReady = TotalCD + Time.time;
-            SkillEffect(caster);
-        }
-    }
+    public abstract void UseSkill(UnitCombat caster);
     public abstract void SkillEffect(UnitCombat caster);
     protected abstract void ForceStop();
 }

@@ -9,6 +9,16 @@ public class Bladestorm : SkillBase
     private int _durationTimer = -1;
     private int _damage;
     private Transform _caster;
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
 
     protected override void ForceStop()
     {

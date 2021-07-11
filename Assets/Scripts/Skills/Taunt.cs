@@ -10,7 +10,16 @@ public class Taunt : SkillBase
     private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//단발성 스킬이라 필요 없음
 
-
+    public override void UseSkill(UnitCombat caster)
+    {
+        print(this.name);
+        if (Time.time > _timeReady)
+        {
+            Debug.Log("Skill Was able to be used");
+            _timeReady = TotalCD + Time.time;
+            SkillEffect(caster);
+        }
+    }
 
     /// <summary>
     /// 스킬설명: 인트는 방어력 보너스
@@ -24,16 +33,16 @@ public class Taunt : SkillBase
         switch (caster.GetItemRank())
         {
             case 0:
-                _bonus = (int)(caster.TotalArmor * 0.15);
+                _bonus = (int)(caster.TotalArmor * 0.2);
                 break;
             case 1:
-                _bonus = (int)(caster.TotalArmor * 0.3);
+                _bonus = (int)(caster.TotalArmor * 0.4);
                 break;
             case 2:
-                _bonus = (int)(caster.TotalArmor * 0.45);
+                _bonus = (int)(caster.TotalArmor * 0.6);
                 break;
             case 3:
-                _bonus = (int)(caster.TotalArmor * 0.6);
+                _bonus = (int)(caster.TotalArmor * 0.8);
                 break;
             default:
                 break;

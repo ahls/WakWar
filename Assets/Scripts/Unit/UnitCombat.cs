@@ -635,7 +635,6 @@ public class UnitCombat : MonoBehaviour
         {
             Destroy(Skill);
         }
-        
         GameObject skillObject = Instantiate(Global.ObjectManager.SpawnObject("skillcarrier"), transform);
         switch (Weapons.DB[_weaponIndex].weaponType)
         {
@@ -643,7 +642,7 @@ public class UnitCombat : MonoBehaviour
                 Skill = skillObject.AddComponent<Bladestorm>();
                 break;
             case WeaponType.Sword:
-                //skillObject.AddComponent<>();
+                Skill = skillObject.AddComponent<Berserk>();
                 break;
             case WeaponType.Shield:
                 Skill = skillObject.AddComponent<Taunt>();
@@ -656,7 +655,6 @@ public class UnitCombat : MonoBehaviour
                 break;
             case WeaponType.Throw:
                 Skill = skillObject.AddComponent<Rush>();
-                Skill.SkillEffect(this);
                 break;
             case WeaponType.Blunt:
                 Skill = skillObject.AddComponent<Stun>();
