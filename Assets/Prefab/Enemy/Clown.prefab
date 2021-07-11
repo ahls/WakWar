@@ -1511,8 +1511,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3}
-  m_Size: {x: 0.3, y: 0.6}
+  m_Offset: {x: 0, y: 0.29}
+  m_Size: {x: 0.54, y: 1.12}
   m_Direction: 0
 --- !u!114 &1849124289518635976
 MonoBehaviour:
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.3
+  radius: 0.25
   height: 2
   repathRate: 0.5
   canSearch: 1
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 8802182046104760724
+  uniqueID: 3733607409367373884
   updateError: 1
   checkTime: 1
 --- !u!1 &8562571837569888424

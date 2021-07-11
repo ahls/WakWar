@@ -1940,9 +1940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c49175d92af6140afdc1c556ee5767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 1710710650}
-  _bubbleTail: {fileID: 601857257}
-  _animator: {fileID: 403535084}
 --- !u!114 &403535082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8422,6 +8419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: IngameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6764091278587696954, guid: 8bfd1ba38ce5d8c409a75f580828a181,
+        type: 3}
+      propertyPath: _aimingCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: 565c69a30d42c0e4fa678b533c5a485c, type: 3}
     - target: {fileID: 6764091278587696954, guid: 8bfd1ba38ce5d8c409a75f580828a181,
         type: 3}
       propertyPath: _attackCursor
