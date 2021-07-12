@@ -34,25 +34,23 @@ public class Rush : SkillBase
         switch (caster.GetItemRank())
         {
             case 0:
-                _bonus = caster.TotalAS * 0.2f;
+                _bonus = caster.TotalAS * 0.3f;
                 break;
             case 1:
-                _bonus = caster.TotalAS * 0.4f;
+                _bonus = caster.TotalAS * 0.5f;
                 break;
             case 2:
-                _bonus = caster.TotalAS * 0.6f;
+                _bonus = caster.TotalAS * 0.75f;
                 break;
             case 3:
-                _bonus = caster.TotalAS * 0.7f;
+                _bonus = caster.TotalAS * 0.75f;
                 break;
             default:
                 break;
         }
-        Debug.Log(_caster.TotalAS);
         caster.BaseAS += _bonus;
         _caster.UpdateStats();
-
-        Debug.Log(_caster.TotalAS);
+        Global.AudioManager.PlayOnce("RushSound");
         StartCoroutine(Effect());
     }
     IEnumerator Effect()

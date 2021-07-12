@@ -5,7 +5,6 @@ using UnityEngine;
 public class ArrowRain : SkillBase
 {
     private const float ARROW_AOE = 0.1f;
-    private const float AOE = 0.2f;
     private const int AP = 0;
     private const int NUM_ARROWS = 6;
     protected override void ForceStop(){}//죽어도 쏜 화살은 계속 떨어짐
@@ -30,6 +29,9 @@ public class ArrowRain : SkillBase
     public override void SkillEffect(UnitCombat caster)
     {
         UnitCombat uc = caster.GetComponent<UnitCombat>();
+        Global.AudioManager.PlayOnce("ArrowRain");
+        caster.AddStun(40);
+        caster.PlaySkillAnim();
         if(uc.AttackTarget == null)
         {//현재 공격대상이 없으면 바로 머리위로 화살비 쏟아냄
             transform.position = caster.transform.position;
@@ -41,15 +43,16 @@ public class ArrowRain : SkillBase
         transform.rotation = Quaternion.identity;
 
         int dmg = caster.TotalDamage;
-        for (int i = 0; i < NUM_ARROWS; i++)
+        for (int i = 0; i < NUM_ARROWS + caster.GetItemRank() * 3 ; i++)
         {
             transform.rotation = Quaternion.AngleAxis(60 * i, Vector3.forward);
-            Vector2 arrowLandingLocation = transform.position + transform.up * AOE;
+            Vector2 arrowLandingLocation = transform.position + transform.up * Random.Range(0.1f,0.5f);
             GameObject arrow = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-            arrow.transform.position = transform.position;
+            arrow.transform.position = transform.position + Vector3.up * 10;
             AttackEffect attackEffect = arrow.GetComponent<AttackEffect>();
-            attackEffect.Setup(dmg,ARROW_AOE,AP,uc.AttackImage,0.1f, arrowLandingLocation, uc.TargetFaction);
-            attackEffect.AddTrajectory(180, 0.2f);
+            float randomSpeed = Random.Range(-0.3f,0.5f) + 5.5f;
+            attackEffect.Setup(dmg,ARROW_AOE,AP,uc.AttackImage,randomSpeed, arrowLandingLocation, uc.TargetFaction);
+            attackEffect.AddSound(caster.ImpactAudio);
         }
     }
 

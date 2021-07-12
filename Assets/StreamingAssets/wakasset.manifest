@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 654188647
+CRC: 1758475328
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 790a96966264e23adb2ee3e319cee36e
+    Hash: 43d128d46d9d1c1c1194c7f657e2a7ed
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 463ea070d9b620d8ac0cbeceefa673d6
+    Hash: 863bd551cb13639080dd3b85a20dbfb2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -156,8 +156,10 @@ Assets:
 - Assets/Prefab/Skill/skillcarrier.prefab
 - Assets/Audio/BowShot.mp3
 - Assets/Sprites/textures/Equipped/img_instruments.png
+- Assets/Audio/SnipeSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png
 - Assets/Sprites/textures/Equipped/img_axe.png
+- Assets/Audio/MassHeal.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt0.png
 - Assets/Sprites/textures/Equipped/img_bow.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield2.png
@@ -176,14 +178,19 @@ Assets:
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Audio/MovePotion.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst0.png
+- Assets/Audio/TauntSound.mp3
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/Audio/MoveItem.mp3
+- Assets/Audio/ArrowRain.mp3
+- Assets/Audio/ArrowHit.mp3
 - Assets/Sprites/textures/Equipped/img_bullet.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe00.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow1.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/Cut.mp3
+- Assets/Audio/RushSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw0.png
+- Assets/Audio/heal.mp3
 - Assets/WakAsset/PooledPrefab/AttackEffect.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun0.png

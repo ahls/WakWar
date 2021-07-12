@@ -24,7 +24,7 @@ public class AttackEffect : MonoBehaviour
     private float _heightDelta = 0.1f;
     private float _deltaDelta;
     private GameObject _onHitEffect;
-
+    private bool _torque;
 
     public string _impactAudio;
 
@@ -33,9 +33,9 @@ public class AttackEffect : MonoBehaviour
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker,int damage, Vector3 destination, string attackSound)
+    public void Setup(UnitCombat attacker,int damage, Vector3 destination)
     {
-        _impactAudio = attackSound;
+        _impactAudio = attacker.ImpactAudio;
         _attacker = attacker;
         Setup(  damage, 
                 attacker.TotalAOE, 
@@ -55,7 +55,7 @@ public class AttackEffect : MonoBehaviour
         Vector2 offsetToTarget = destination - transform.position;
         transform.rotation = Quaternion.LookRotation(Vector3.back, offsetToTarget);
         _rigidBody.velocity = offsetToTarget.normalized * projSpeed;
-
+        _torque = false;
         // 거리 / 투사체 속도 = 목표까지 걸리는 시간
         // 목표까지 걸리는 시간 * 50(초당 프레임) = 목표까지 도달하는데 걸리는 fixedUpdate 프레임 수 
         // 매 프레임마다 거리 계산 하는거보다 int 비교 하는게 짧을거같아서 이렇게 했어요
@@ -77,9 +77,11 @@ public class AttackEffect : MonoBehaviour
         }
         else
         {
-            _heightDelta += _deltaDelta;
-            transform.position += new Vector3(0, _heightDelta, 0);
-
+            if (_deltaDelta != 0)
+            {
+                _heightDelta += _deltaDelta;
+                transform.position += new Vector3(0, _heightDelta, 0);
+            }
         }
 
     }
@@ -114,7 +116,10 @@ public class AttackEffect : MonoBehaviour
 
 
 
-
+    public void AddSound(string attackSound)
+    {
+        _impactAudio = attackSound;
+    }
     private void LifeSteal(float drainAmount)
     {
         if(_lifeDrain > 0)
@@ -122,10 +127,19 @@ public class AttackEffect : MonoBehaviour
             _attacker.TakeDamage((int)(-_damage * drainAmount));
         }
     }
+
+    /// <summary>
+    /// 투사체에 회전을 넣거나 포물선을 넣을때 사용됨
+    /// </summary>
+    /// <param name="torq"></param>
+    /// <param name="initHDelta"></param>
     public void AddTrajectory(int torq, float initHDelta)
     {
-        _rigidBody.AddTorque(torq);
-
+        if (torq != 0)
+        {
+            _rigidBody.AddTorque(torq);
+            _torque = true;
+        }
         if (_lifeTime > 0 && initHDelta > 0)
         {//투사체 포물선 그리게
 
@@ -134,6 +148,14 @@ public class AttackEffect : MonoBehaviour
             _deltaDelta = _heightDelta * -2 / _lifeTime;
         }
     }
+
+    /// <summary>
+    /// 크리티컬이나 라이프 스틸 효과를 추가할때 사용됨
+    /// </summary>
+    /// <param name="chance"></param>
+    /// <param name="multi"></param>
+    /// <param name="lifeDrain"></param>
+    /// <param name="attacker"></param>
     public void AddHitEffect(float chance, float multi, float lifeDrain,UnitCombat attacker = null)
     {
         _critChance = chance;

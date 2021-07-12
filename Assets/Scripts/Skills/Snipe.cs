@@ -6,6 +6,7 @@ public class Snipe : SkillBase
 {
     private bool _goodToShoot = true;
     private UnitCombat _uc;
+    private UnitCombat _target;
     protected override void ForceStop()
     {
         _goodToShoot = false;
@@ -28,19 +29,21 @@ public class Snipe : SkillBase
     /// <param name="caster"></param>
     public override void SkillEffect(UnitCombat caster)
     {
-        caster.AddStun(50);
+        caster.AddStun(100);
         int dmg = caster.TotalDamage * 10;
+        _target = caster.AttackTarget.GetComponent<UnitCombat>();
         StartCoroutine(fire(dmg, caster));
         
     }
     IEnumerator  fire(int dmg,UnitCombat uc)
     {
-        yield return new WaitForSeconds(1);
-        if(_goodToShoot && uc.AttackTarget != null)
+        yield return new WaitForSeconds(2);
+        if(_goodToShoot && _target.IsDead == false)
         {
+            Global.AudioManager.PlayOnce("SnipeSound");
             GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
             bullet.transform.position = transform.position;
-            bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, 3,uc.AttackTarget.position, uc.TargetFaction);
+            bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, uc.ProjectileSpeed + 1,uc.AttackTarget.position, uc.TargetFaction);
         }
     }
 }

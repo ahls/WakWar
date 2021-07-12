@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class XMLLoader
+{
+    public const string WEAPON_PATH = "weapons";
+    public const string ITEM_PATH = "items";
+    public const string STAGE_PATH = "stage_xml";
+    public const string DIALOG_PATH = "dialog_xml";
+    public const string PROGRESS_PATH = "progress_xml";
+    public const string ENEMY_PATH = "enemy_xml";
+    // Start is called before the first frame update
+
+    public XMLLoader()
+    {
+        WeaponContainer.Load(WEAPON_PATH);
+        ItemContainer.Load(ITEM_PATH);
+        StageXML.Load(STAGE_PATH);
+        DialogueXML.Load(DIALOG_PATH);
+        ProgressXML.Load(PROGRESS_PATH);
+        EnemyXML.Load(ENEMY_PATH);
+    }
+
+}

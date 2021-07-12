@@ -413,7 +413,7 @@
 			<Psrc>arrow_1</Psrc>
 			<projectileSpeed>2.5</projectileSpeed>
 			<projectileSound>BowShot</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>ArrowHit</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>
@@ -433,7 +433,7 @@
 			<Psrc>arrow_2</Psrc>
 			<projectileSpeed>3</projectileSpeed>
 			<projectileSound>BowShot</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>ArrowHit</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>
@@ -453,7 +453,7 @@
 			<Psrc>arrow_3</Psrc>
 			<projectileSpeed>3.5</projectileSpeed>
 			<projectileSound>BowShot</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>ArrowHit</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>
@@ -633,7 +633,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>null</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>heal</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
 			<target>Player</target>
@@ -653,7 +653,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>null</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>heal</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
 			<target>Player</target>
@@ -673,7 +673,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>null</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>heal</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
 			<target>Player</target>
@@ -693,7 +693,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>null</projectileSound>
-			<impactSound>null</impactSound>
+			<impactSound>heal</impactSound>
 			<armor>0</armor>
 			<class>Supporter</class>
 			<target>Player</target>

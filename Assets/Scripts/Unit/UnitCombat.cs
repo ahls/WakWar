@@ -51,7 +51,7 @@ public class UnitCombat : MonoBehaviour
     public float BaseAOE { get; set; }
     public int BaseAP { get; set; }
     private string _attackAudio = "null";
-    private string _impactAudio = "null";
+    public string ImpactAudio = "null";
 
     public float CritChance { get; set; } = 0f;
     public float CritDmg { get; set; } = 1.5f;
@@ -279,7 +279,7 @@ public class UnitCombat : MonoBehaviour
 
         //공격 사운드
         _attackAudio = Weapons.DB[_weaponIndex].projSound;
-        _impactAudio = Weapons.DB[_weaponIndex].impctSound;
+        ImpactAudio = Weapons.DB[_weaponIndex].impctSound;
         UpdateStats();
     }
 
@@ -352,11 +352,11 @@ public class UnitCombat : MonoBehaviour
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
         if (_weaponIndex * 0.1  == 10000) // 무기가 검인경우 공격데미지 수정
         {
-            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position, _impactAudio);
+            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position);
         }
         else
         {
-            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position, _impactAudio);
+            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position);
         }
 
 
@@ -629,6 +629,10 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 스킬관련
+    public void PlaySkillAnim()
+    {
+        _animator.SetTrigger("Skill");
+    }
     private void ChangeSkill()
     {
         if (Skill != null)
