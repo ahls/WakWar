@@ -253,7 +253,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
 			<projectileSound>Swing</projectileSound>
-			<impactSound>Blunt</impactSound>
+			<impactSound>WoodHit</impactSound>
 			<armor>4</armor>
 			<class>Warrior</class>
 			<target>Enemy</target>
@@ -273,7 +273,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
 			<projectileSound>Swing</projectileSound>
-			<impactSound>Blunt</impactSound>
+			<impactSound>GlassHit</impactSound>
 			<armor>6</armor>
 			<class>Warrior</class>
 			<target>Enemy</target>
@@ -493,7 +493,7 @@
 			<Psrc>thrown_1</Psrc>
 			<projectileSpeed>1.5</projectileSpeed>
 			<projectileSound>null</projectileSound>
-			<impactSound>Blunt</impactSound>
+			<impactSound>WoodHit</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>

@@ -22,24 +22,23 @@ public class Berserk : SkillBase
     }
     /// <summary>
     /// 스킬설명: 
-    /// 지속시간동안 죽지 않음
+    /// 지속시간동안 체력이 1 밑으로 떨어지지 않고, 패시브로 잃은 체력에 비례해서 추가데미지를 줌.
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
     public override void SkillEffect(UnitCombat caster)
     {
+        caster.CanBeKilled = false;
         _caster = caster;
-        _bonus = caster.GetItemRank() * 0.2f + 0.1f;
-        caster.BaseAS += _bonus;
-        _caster.UpdateStats();
+
 
         StartCoroutine(Effect());
     }
     IEnumerator Effect()
     {
         yield return new WaitForSeconds(SKILL_DURATION);
-        _caster.TotalAS -= _bonus;
-        _caster.UpdateStats();
+        _caster.CanBeKilled = true;
+   
     }
 
 }

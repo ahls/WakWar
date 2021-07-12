@@ -25,6 +25,7 @@ public class MassHeal : SkillBase
     public override void SkillEffect(UnitCombat caster)
     {
         Vector2 destination;
+        Global.AudioManager.PlayOnce("MassHeal");
         if(caster.AttackTarget!=null)
         {//힐링 타겟이 있으면 그 주변을 기반으로 힐
             destination = caster.AttackTarget.position;
@@ -33,14 +34,14 @@ public class MassHeal : SkillBase
         {//그 외에는 자기 중심으로 힐
             destination = caster.transform.position;
         }
-        int healAmount = -(caster.GetItemRank() * 20 + 20);
+        int healAmount = caster.GetItemRank() * 20 + 20;
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(destination, RADIUS);
         foreach (var hitUnit in hitByAttack)
         {
             UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
             if (hitCombat != null && hitCombat.OwnedFaction == Faction.Player)
             {
-                hitCombat.TakeDamage(healAmount);
+                hitCombat.Heal(healAmount);
             }
         }
 

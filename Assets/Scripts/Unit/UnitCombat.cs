@@ -580,7 +580,7 @@ public class UnitCombat : MonoBehaviour
         }
         else if(dmg< 0)
         {
-            _healthCurrent -= Mathf.Min(dmg + _healthCurrent, HealthMax);
+            Heal(-dmg);
         }
 
         if (_healthCurrent <= 0)
@@ -595,6 +595,10 @@ public class UnitCombat : MonoBehaviour
             }
         }
         HealthBarUpdate();
+    }
+    public void Heal(int amount)
+    {
+        _healthCurrent = Mathf.Min(_healthCurrent + amount, HealthMax);
     }
 
     private void HealthBarUpdate()

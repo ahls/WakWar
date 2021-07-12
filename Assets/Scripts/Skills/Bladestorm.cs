@@ -35,15 +35,19 @@ public class Bladestorm : SkillBase
     {
 
         _durationTimer = SKILL_DURATION;
-        _caster = transform;
+        _caster = caster.transform;
         _damage = caster.TotalDamage - (2-caster.GetItemRank());
+        caster.PlaySkillAnim();
+        Global.AudioManager.PlayLoop("BladeStormLoop", 3);
     }
 
     private void FixedUpdate()
     {
+        if (_durationTimer == -1) return;
         if(_durationTimer%50 == 0)
         {
             Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
+            Global.AudioManager.PlayOnce("Cut",true);
             foreach (var hitUnit in hitByAttack)
             {
                 UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
@@ -58,9 +62,11 @@ public class Bladestorm : SkillBase
             transform.position = _caster.position;
             _durationTimer--;
         }
-        else
+        else if(_durationTimer == 0)
         {//스크립트 비활성화
-            gameObject.SetActive(false);
+            _caster.GetComponent<UnitCombat>().PlaySkillAnim();
+            Debug.Log("Skill is Ending");
+            _durationTimer = -1;
         }
     }
 }
