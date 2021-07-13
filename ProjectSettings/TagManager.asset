@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skills
+    uniqueID: 3041073549
+    locked: 0
   - name: overlays
     uniqueID: 186482193
     locked: 0

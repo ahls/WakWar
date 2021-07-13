@@ -73,7 +73,7 @@
 			<Psrc>null</Psrc>
 			<projectileSpeed>5</projectileSpeed>
 			<projectileSound>Swing</projectileSound>
-			<impactSound>Cut</impactSound>
+			<impactSound>WoodHit</impactSound>
 			<armor>2</armor>
 			<class>Warrior</class>
 			<target>Enemy</target>

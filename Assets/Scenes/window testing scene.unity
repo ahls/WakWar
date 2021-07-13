@@ -2762,7 +2762,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 100202
+  weaponID: 300002
   torque: 0
 --- !u!1 &635290517
 GameObject:
@@ -4705,12 +4705,12 @@ PrefabInstance:
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7225797426657462201, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
@@ -5475,7 +5475,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 200003
+  weaponID: 200001
   torque: 0
 --- !u!1001 &1245672603
 PrefabInstance:
@@ -5639,7 +5639,7 @@ MonoBehaviour:
   hp: 10
   dmg: 1
   AP: 0
-  weaponID: 100201
+  weaponID: 100100
   torque: 0
 --- !u!1 &1260999488
 GameObject:
@@ -5971,6 +5971,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5484659015161531336, guid: f165f0db6d31c4a46a7a56fd9a66e64c,
     type: 3}
   m_PrefabInstance: {fileID: 1456595809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1416614596 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6695096943414789427, guid: 1d0c712a241d8d346b1aace1127b9365,
+    type: 3}
+  m_PrefabInstance: {fileID: 6695096943324581444}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1430704823
 PrefabInstance:
@@ -8618,6 +8624,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5900826945032943484, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
+    - target: {fileID: 6187975479475126371, guid: 8bfd1ba38ce5d8c409a75f580828a181,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6764091278536084021, guid: 8bfd1ba38ce5d8c409a75f580828a181,
         type: 3}
       propertyPath: m_RootOrder
@@ -9129,6 +9140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bladestorm
       objectReference: {fileID: 0}
+    - target: {fileID: 6695096943414789426, guid: 1d0c712a241d8d346b1aace1127b9365,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6695096943414789437, guid: 1d0c712a241d8d346b1aace1127b9365,
         type: 3}
       propertyPath: m_RootOrder
@@ -9188,6 +9204,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012168463463485554, guid: 1d0c712a241d8d346b1aace1127b9365,
+        type: 3}
+      propertyPath: _anime
+      value: 
+      objectReference: {fileID: 1416614596}
+    - target: {fileID: 8012168463463485554, guid: 1d0c712a241d8d346b1aace1127b9365,
+        type: 3}
+      propertyPath: _lifeTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012168463463485554, guid: 1d0c712a241d8d346b1aace1127b9365,
+        type: 3}
+      propertyPath: _prefabName
+      value: BladeStorm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0c712a241d8d346b1aace1127b9365, type: 3}
@@ -9263,12 +9294,12 @@ PrefabInstance:
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.282
+      value: -1.086
       objectReference: {fileID: 0}
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.174
+      value: 0.456
       objectReference: {fileID: 0}
     - target: {fileID: 2196562301156115143, guid: 5dcb491ae25327e4898decc3bc7fe7e7,
         type: 3}

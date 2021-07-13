@@ -17,7 +17,6 @@ public class Stun : SkillBase
         print(this.name);
         if (Time.time > _timeReady)
         {
-            Debug.Log("Skill Was able to be used");
             _timeReady = TotalCD + Time.time;
             SkillEffect(caster);
         }
@@ -31,6 +30,10 @@ public class Stun : SkillBase
     public override void SkillEffect(UnitCombat caster)
     {
         int stunAmount = (int)((caster.GetItemRank() * 0.5f + 1.5f) * 50);
+        Global.AudioManager.PlayOnce("StunSound");
+        GameObject effect = Global.ObjectManager.SpawnObject("StunEffect");
+        effect.transform.position = caster.transform.position;
+        effect.GetComponent<Effect>().PlayAnimation();
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
         foreach (var hitUnit in hitByAttack)
         {

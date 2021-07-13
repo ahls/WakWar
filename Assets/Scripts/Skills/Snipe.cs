@@ -31,7 +31,13 @@ public class Snipe : SkillBase
     {
         caster.AddStun(100);
         int dmg = caster.TotalDamage * 10;
+        if (caster.AttackTarget == null)
+        {
+            return;
+        }
         _target = caster.AttackTarget.GetComponent<UnitCombat>();
+
+
         StartCoroutine(fire(dmg, caster));
         
     }

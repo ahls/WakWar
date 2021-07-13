@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 296708749
+CRC: 216017123
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 5ae41adc1ba8baca1bb5eef147a6475d
+    Hash: 97a31dca2ce29ef47f7f5122817f0513
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 863bd551cb13639080dd3b85a20dbfb2
+    Hash: 650593de46815b9c292fc40c34687625
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -98,6 +98,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 2ee6cd8e73f383347b6a3bb4e0420ebd, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 7b34ed9e47345cc40b54761e320e53a8, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
@@ -170,6 +172,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/General/I_coin.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_wand3.png
 - Assets/Prefab/Enemy/Clown.prefab
+- Assets/Prefab/Skill/bladestorm.prefab
 - Assets/Audio/MoveCoin.mp3
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/WakAsset/PooledPrefab/AudioPlayer.prefab
@@ -205,4 +208,5 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3
+- Assets/Prefab/Skill/StunEffect.prefab
 Dependencies: []
