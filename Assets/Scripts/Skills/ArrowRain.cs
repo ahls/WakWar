@@ -14,7 +14,6 @@ public class ArrowRain : SkillBase
         print(this.name);
         if (Time.time > _timeReady)
         {
-            Debug.Log("Skill Was able to be used");
             _timeReady = TotalCD + Time.time;
             SkillEffect(caster);
         }
@@ -28,18 +27,20 @@ public class ArrowRain : SkillBase
     /// <param name="s"></param>
     public override void SkillEffect(UnitCombat caster)
     {
-        UnitCombat uc = caster.GetComponent<UnitCombat>();
+        if (caster.AttackTarget == null)
+        {//현재 공격대상이 없으면 실패판정
+            GameObject effect = Global.ObjectManager.SpawnObject("skillFail");
+            effect.transform.position = caster.transform.position;
+            effect.transform.parent = caster.transform;
+            effect.GetComponent<Effect>().PlayAnimation();
+            return;
+        }
         Global.AudioManager.PlayOnce("ArrowRain");
         caster.AddStun(40);
         caster.PlaySkillAnim();
-        if(uc.AttackTarget == null)
-        {//현재 공격대상이 없으면 바로 머리위로 화살비 쏟아냄
-            transform.position = caster.transform.position;
-        }
-       else
-        {
-            transform.position = uc.AttackTarget.position;
-        }
+
+        transform.position = caster.AttackTarget.position;
+       
         transform.rotation = Quaternion.identity;
 
         int dmg = caster.TotalDamage;
@@ -51,7 +52,7 @@ public class ArrowRain : SkillBase
             arrow.transform.position = transform.position + Vector3.up * 10;
             AttackEffect attackEffect = arrow.GetComponent<AttackEffect>();
             float randomSpeed = Random.Range(-0.3f,0.5f) + 5.5f;
-            attackEffect.Setup(dmg,ARROW_AOE,AP,uc.AttackImage,randomSpeed, arrowLandingLocation, uc.TargetFaction);
+            attackEffect.Setup(dmg,ARROW_AOE,AP, caster.AttackImage,randomSpeed, arrowLandingLocation, caster.TargetFaction);
             attackEffect.AddSound(caster.ImpactAudio);
         }
     }

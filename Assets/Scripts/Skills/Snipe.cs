@@ -25,6 +25,7 @@ public class Snipe : SkillBase
 
     /// <summary>
     /// 자체에 스턴걸고 시간 후에 평타 공격력의 10배 데미지를 방어무시로 때려박음.
+    /// 대상이 없을경우 스킬 사용 실패 판정
     /// </summary>
     /// <param name="caster"></param>
     public override void SkillEffect(UnitCombat caster)
@@ -33,6 +34,7 @@ public class Snipe : SkillBase
         int dmg = caster.TotalDamage * 10;
         if (caster.AttackTarget == null)
         {
+            failed(caster.transform);
             return;
         }
         _target = caster.AttackTarget.GetComponent<UnitCombat>();
@@ -44,12 +46,27 @@ public class Snipe : SkillBase
     IEnumerator  fire(int dmg,UnitCombat uc)
     {
         yield return new WaitForSeconds(2);
-        if(_goodToShoot && _target.IsDead == false)
+        if (_goodToShoot)
         {
-            Global.AudioManager.PlayOnce("SnipeSound");
-            GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-            bullet.transform.position = transform.position;
-            bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, uc.ProjectileSpeed + 1,uc.AttackTarget.position, uc.TargetFaction);
+            if (_target.IsDead == false)
+            {
+                Global.AudioManager.PlayOnce("SnipeSound");
+                GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
+                bullet.transform.position = transform.position;
+                bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, uc.ProjectileSpeed + 1, uc.AttackTarget.position, uc.TargetFaction);
+            }
+            else
+            {
+                failed(uc.transform);
+            }
         }
+    }
+    private void failed(Transform caster)
+    {
+        GameObject effect = Global.ObjectManager.SpawnObject("skillFail");
+        effect.transform.position = caster.position;
+        effect.transform.parent = caster;
+        effect.GetComponent<Effect>().PlayAnimation();
+
     }
 }
