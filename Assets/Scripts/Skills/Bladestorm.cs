@@ -42,7 +42,6 @@ public class Bladestorm : SkillBase
         GameObject effect = Global.ObjectManager.SpawnObject("bladestorm");
         effect.transform.parent = caster.transform;
         effect.transform.position = caster.transform.position;
-        effect.GetComponent<Effect>().PlayAnimation();
 
     }
 

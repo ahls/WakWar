@@ -66,7 +66,6 @@ public class Snipe : SkillBase
         GameObject effect = Global.ObjectManager.SpawnObject("skillFail");
         effect.transform.position = caster.position;
         effect.transform.parent = caster;
-        effect.GetComponent<Effect>().PlayAnimation();
 
     }
 }

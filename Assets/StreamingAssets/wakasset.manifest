@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1193165737
+CRC: 2611041637
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aff4c262f5fb6a22cd03cde991656a91
+    Hash: 837f353f25ac8c5b512146e1480612b6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 650593de46815b9c292fc40c34687625
+    Hash: 048141887f38aa7df5eda8baceaf3eaa
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -18,6 +18,8 @@ ClassTypes:
 - Class: 23
   Script: {instanceID: 0}
 - Class: 28
+  Script: {instanceID: 0}
+- Class: 43
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
@@ -107,6 +109,10 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 212
   Script: {instanceID: 0}
 - Class: 213
@@ -125,7 +131,9 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe1.png
+- Assets/Prefab/Skill/MassHealEffect.prefab
 - Assets/Prefab/inventory/Character Slot.prefab
+- Assets/Prefab/Skill/ArrowRainEffect.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield0.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow0.png
@@ -133,6 +141,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt3.png
 - Assets/Sprites/textures/Equipped/img_gun.png
 - Assets/Audio/GunFire.mp3
+- Assets/Prefab/Skill/MassHealTarget.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow2.png
 - Assets/Audio/BladeStormLoop.mp3
 - Assets/Prefab/inventory/Item Base.prefab
@@ -163,12 +172,14 @@ Assets:
 - Assets/Audio/SnipeSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png
 - Assets/Sprites/textures/Equipped/img_axe.png
+- Assets/Prefab/Skill/HealEffect.prefab
 - Assets/Audio/MassHeal.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt0.png
 - Assets/Sprites/textures/Equipped/img_bow.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst1.png
 - Assets/Audio/Swing.mp3
+- Assets/Sprites/textures/Equipped/Hunsu.png
 - Assets/Sprites/textures/ItemIcon/General/I_coin.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_wand3.png
 - Assets/Prefab/Enemy/Clown.prefab
@@ -195,6 +206,7 @@ Assets:
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/GlassHit.mp3
 - Assets/Audio/Cut.mp3
+- Assets/Prefab/Skill/RushEffect.prefab
 - Assets/Audio/RushSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw0.png
 - Assets/Audio/heal.mp3

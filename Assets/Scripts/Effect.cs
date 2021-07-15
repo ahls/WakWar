@@ -11,35 +11,17 @@ public class Effect : MonoBehaviour
 
     private void OnEnable()
     {
-        if(_particle != null)
-        {
-            _particle.Play();
-        }
-        if (_anime != null)
-        {
-            _anime.SetTrigger("Play");
-        }
+        StartCoroutine(ActiveLifeTime());
     }
-
     private void OnDisable()
     {
         StopAllCoroutines();
     }
 
-    public void PlayAnimation(float duration = -1)
+    private IEnumerator ActiveLifeTime()
     {
-        StartCoroutine(ActiveLifeTime(duration));
-    }
-    private IEnumerator ActiveLifeTime(float duration)
-    {
-        if(duration == -1)
-        {
-            yield return new WaitForSeconds(_lifeTime);
-        }
-        else
-        {
-            yield return new WaitForSeconds(duration);
-        }
+        yield return new WaitForSeconds(_lifeTime);
+        
         DestroyEffect();
 
         yield return null;

@@ -31,6 +31,9 @@ public class Rush : SkillBase
     public override void SkillEffect(UnitCombat caster)
     {
         _caster = caster;
+        GameObject effect = Global.ObjectManager.SpawnObject("RushEffect");
+        effect.transform.position = caster.transform.position;
+        effect.transform.SetParent(caster.transform);
         switch (caster.GetItemRank())
         {
             case 0:

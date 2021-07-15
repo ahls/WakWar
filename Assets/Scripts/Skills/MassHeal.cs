@@ -5,7 +5,8 @@ using UnityEngine;
 public class MassHeal : SkillBase
 {
     private const float RADIUS = 1f;
-
+    private const string EFFECT_TARGET = "MassHealTarget";
+    private const string EFFECT = "MassHealEffect";
     protected override void ForceStop() { }
     public override void UseSkill(UnitCombat caster)
     {
@@ -24,24 +25,26 @@ public class MassHeal : SkillBase
     /// <param name="caster"></param>
     public override void SkillEffect(UnitCombat caster)
     {
-        Vector2 destination;
         Global.AudioManager.PlayOnce("MassHeal");
         if(caster.AttackTarget!=null)
         {//힐링 타겟이 있으면 그 주변을 기반으로 힐
-            destination = caster.AttackTarget.position;
+            transform.position = caster.AttackTarget.position;
         }
        else
         {//그 외에는 자기 중심으로 힐
-            destination = caster.transform.position;
+            transform.position = caster.transform.position;
         }
+        GameObject HealEffect = Global.ObjectManager.SpawnObject(EFFECT);
+        HealEffect.transform.position = transform.position;
         int healAmount = caster.GetItemRank() * 20 + 20;
-        Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(destination, RADIUS);
+        //20 ~ 80
+        Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
         foreach (var hitUnit in hitByAttack)
         {
             UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
             if (hitCombat != null && hitCombat.OwnedFaction == Faction.Player)
             {
-                hitCombat.Heal(healAmount);
+                hitCombat.Heal(healAmount,EFFECT_TARGET);
             }
         }
 

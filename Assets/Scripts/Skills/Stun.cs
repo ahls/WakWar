@@ -29,11 +29,11 @@ public class Stun : SkillBase
     /// <param name="caster"></param>
     public override void SkillEffect(UnitCombat caster)
     {
-        int stunAmount = (int)((caster.GetItemRank() * 0.5f + 1.5f) * 50);
+        int stunAmount = (int)((caster.GetItemRank() * + 2f) * 50);
+        //2 ~ 5초
         Global.AudioManager.PlayOnce("StunSound");
         GameObject effect = Global.ObjectManager.SpawnObject("StunEffect");
         effect.transform.position = caster.transform.position;
-        effect.GetComponent<Effect>().PlayAnimation();
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
         foreach (var hitUnit in hitByAttack)
         {

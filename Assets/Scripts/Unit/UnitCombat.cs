@@ -596,9 +596,11 @@ public class UnitCombat : MonoBehaviour
         }
         HealthBarUpdate();
     }
-    public void Heal(int amount)
+    public void Heal(int amount, string effect= "HealEffect")
     {
         _healthCurrent = Mathf.Min(_healthCurrent + amount, HealthMax);
+        GameObject healEffect = Global.ObjectManager.SpawnObject(effect);
+        healEffect.transform.position = transform.position;
     }
 
     private void HealthBarUpdate()
