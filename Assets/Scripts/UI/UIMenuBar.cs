@@ -15,6 +15,17 @@ public class UIMenuBar : MonoBehaviour
             Global.UIPopupManager.Pop(PopupID.UIWakWindow);
         }
     }
+    public void PushUIUnitWindow()
+    {
+        if (Global.UIPopupManager.FindPopup(PopupID.UIUnitWindow) == null)
+        {
+            Global.UIPopupManager.Push(PopupID.UIUnitWindow);
+        }
+        else
+        {
+            Global.UIPopupManager.Pop(PopupID.UIUnitWindow);
+        }
+    }
 
     public void PushUIInventory()
     {

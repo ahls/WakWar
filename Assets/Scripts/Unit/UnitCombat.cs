@@ -681,7 +681,7 @@ public class UnitCombat : MonoBehaviour
     }
     public void useSkill()
     {
-        
+        Skill.UseSkill(this);
     }
     private int CalculateBerserkDamage()
     {

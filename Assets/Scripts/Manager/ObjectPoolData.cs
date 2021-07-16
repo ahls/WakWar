@@ -9,7 +9,7 @@ public class ObjectPoolData
     public GameObject GetObject()
     {
         var returnObject = _gameObjectsQueue.Dequeue();
-        returnObject.transform.SetParent(null,false);
+        returnObject.transform.SetParent(null,true);
         returnObject.SetActive(true);
 
         return returnObject;

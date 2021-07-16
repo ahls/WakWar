@@ -10,7 +10,7 @@ public class ProgressSequence
     [XmlElement("eventType")]
     public CurrentEvent CurrentProgressEvent;
     [XmlElement("value")]//스테이지 불러올떄는 스테이지 아이디, 대사할때는 대사 아이디, 전투시작과 전투종료에는 암것도 없음
-    public int value;
+    public string value;
 }
 public class ProgressSequences
 {

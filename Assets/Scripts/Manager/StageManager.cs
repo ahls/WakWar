@@ -16,6 +16,7 @@ public class StageManager
             Vector2 enemyPos = new Vector2(enemy.Position_x, enemy.Position_y);
             IngameManager.EnemyManager.SpawnEnemy(enemy.EnemyID, enemyPos);
         }
+        //foreach(var panzee in )
     }
     public void SetSpawnLocations(UnitSpawnLocations unitSpawn)
     {

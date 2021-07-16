@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public enum CurrentEvent { Dialog, StartCombat, EndCombat, LoadStage, RoomReward, BossReward }
+public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward }
 public class ProgressManager : MonoBehaviour
 {
     private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
@@ -39,15 +40,19 @@ public class ProgressManager : MonoBehaviour
         {
             case CurrentEvent.Dialog:
                 _dialogTurn = true;
-                IngameManager.DialogueDisplay.SetDialogue(ProgressSequences.DB[_currentProgressIndex].value);
+                IngameManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
+                break;
+            case CurrentEvent.LoadScene:
+                SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);
                 break;
             case CurrentEvent.LoadStage:
+                IngameManager.StageManager.SetStage(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.StartCombat:
                 StartCombat();
                 break;
             case CurrentEvent.EndCombat:
-                EndCombat();
+                StartCoroutine(EndCombat());
                 break;
             case CurrentEvent.RoomReward:
                 break;
@@ -73,13 +78,14 @@ public class ProgressManager : MonoBehaviour
         UnitCombat.AIenabled = true;
     }
 
-    public void EndCombat()
+    public IEnumerator  EndCombat()
     {//AI 및 조작 종료
         IngameManager.UnitManager.ControlOn = false;
         UnitCombat.AIenabled = false;
+        yield return new WaitForSeconds(1);
+        NextSequence();
 
     }
-
 
     public void Restart()
     {
