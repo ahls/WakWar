@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2611041637
+CRC: 2105744117
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 837f353f25ac8c5b512146e1480612b6
+    Hash: 4cd23a0cbb03975e65e939302d3b18cf
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 048141887f38aa7df5eda8baceaf3eaa
+    Hash: 314da56e7c77d1a61d4561695c16dba0
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -52,15 +52,25 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: e383e4a0451f52a42979d35263dc2f27, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 302569b0f0b0a304e8e531936bb1265a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
 - Class: 114
@@ -218,6 +228,7 @@ Assets:
 - Assets/Audio/StunSound.mp3
 - Assets/WakAsset/UI/UIShop.prefab
 - Assets/Audio/panzeeDeath0.mp3
+- Assets/WakAsset/UI/Panzee Window.prefab
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3

@@ -13,10 +13,10 @@ public class DialogueDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Dialog dispaly is awake");
         if (IngameManager.DialogueDisplay == null)
         {
             IngameManager.instance.SetDialogue(this);
+            DontDestroyOnLoad(gameObject);
         }
     }
     /// <summary>

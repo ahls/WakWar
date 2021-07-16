@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Stages/0_Prolog/TitleScene.unity
+    guid: e2bf0e84de3600d41ac0c45ed8c06c1a
+  - enabled: 1
+    path: Assets/Scenes/Stages/1_Graveyard/GY_ROOM.unity
+    guid: f7517798392613042a96a52a0d455e2f
   m_configObjects: {}

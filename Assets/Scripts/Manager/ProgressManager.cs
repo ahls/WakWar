@@ -7,9 +7,11 @@ public class ProgressManager : MonoBehaviour
 {
     private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
     private int _currentProgressIndex = -1;
+    public bool IsFirstScene = false;
     // Start is called before the first frame update
     void Start()
     {
+        NextSequence();
     }
 
     // Update is called once per frame

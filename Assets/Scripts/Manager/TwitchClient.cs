@@ -116,7 +116,10 @@ public class TwitchClient : MonoBehaviour
         instance.GetComponent<UnitStats>().PlayerUnitInit(userName);
         instance.GetComponent<UnitCombat>().playerSetup(inputClass);
 
-
+        if(PanzeeWindow.instance == null)
+        {
+            Global.UIPopupManager.Push(PopupID.UIUnitWindow);
+        }
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
         IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         _twitchPlayerDic.Add(userName, instance);

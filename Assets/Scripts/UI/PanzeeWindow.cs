@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanzeeWindow : MonoBehaviour
+public class PanzeeWindow : UIPopup
 {
     public static PanzeeWindow instance;
     [SerializeField] private Transform[] slotLists;
@@ -77,5 +77,15 @@ public class PanzeeWindow : MonoBehaviour
             }
         }
         contentBoxResize();
+    }
+
+    public override PopupID GetPopupID(){return PopupID.UIUnitWindow;}
+
+    public override void SetInfo()
+    {
+    }
+
+    public override void PostInitialize()
+    {
     }
 }

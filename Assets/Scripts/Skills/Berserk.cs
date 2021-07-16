@@ -6,8 +6,6 @@ public class Berserk : SkillBase
 {
     private const float SKILL_DURATION = 4;
     private UnitCombat _caster;
-    private float _bonus = 0;
-    private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//안죽는 스킬이라 상관 없음
 
     public override void UseSkill(UnitCombat caster)

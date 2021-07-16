@@ -6,7 +6,7 @@ public class StageManager
 {
     public int CurrentStageFloor { get; private set; } = 0;
     public int CurrentStageRoom { get; private set; } = 0;
-
+    private UnitSpawnLocations _unitSpawnLocations;
     public void SetStage(int id)
     {
         IngameManager.EnemyManager.KillAllEnemys();
@@ -17,4 +17,13 @@ public class StageManager
             IngameManager.EnemyManager.SpawnEnemy(enemy.EnemyID, enemyPos);
         }
     }
+    public void SetSpawnLocations(UnitSpawnLocations unitSpawn)
+    {
+        if(_unitSpawnLocations != null)
+        {
+            MonoBehaviour.Destroy(_unitSpawnLocations);
+        }
+        _unitSpawnLocations = unitSpawn;
+    }
+
 }

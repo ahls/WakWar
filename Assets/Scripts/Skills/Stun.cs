@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class Stun : SkillBase
 {
-    private bool _goodToShoot = true;
     private UnitCombat _uc;
     private const float RADIUS = 0.5f;
     protected override void ForceStop()
     {
-        _goodToShoot = false;
     }
 
     public override void UseSkill(UnitCombat caster)
