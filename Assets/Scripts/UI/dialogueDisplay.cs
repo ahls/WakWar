@@ -16,7 +16,6 @@ public class DialogueDisplay : MonoBehaviour
         if (IngameManager.DialogueDisplay == null)
         {
             IngameManager.instance.SetDialogue(this);
-            DontDestroyOnLoad(gameObject);
         }
     }
     /// <summary>

@@ -37,13 +37,46 @@ public class TwitchClient : MonoBehaviour
         Debug.Log("클라이언트 연결!");
         //이벤트 셋업
         Client.OnMessageReceived += MyMessageInputFunction;
-
+        Client.OnWhisperReceived += WhisperResponse;
     }
 
+    private void WhisperResponse(object sender,OnWhisperReceivedArgs e)
+    {
+        string userName = e.WhisperMessage.DisplayName;
+        Client.SendWhisper(e.WhisperMessage.Username, "당신의 이름은 "+ e.WhisperMessage.Username + "아이디는 +"+e.WhisperMessage.UserId);
+        Debug.Log(userName+": "+e.WhisperMessage.Message);
+        if (_twitchPlayerDic.ContainsKey(userName))
+        {
+            if (e.WhisperMessage.Message == "!스킬사용")
+            {
+                Debug.Log("스킬 사용중");
+                _twitchPlayerDic[userName].GetComponent<UnitCombat>().useSkill();
+            }
+            else if (e.WhisperMessage.Message == "!힘")
+            {
+                    _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseStr();
+                
+            }
+            else if (e.WhisperMessage.Message == "!민")
+            {
+                    _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseAgi();
+                
+
+            }
+            else if (e.WhisperMessage.Message == "!지")
+            {
+                    _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseInt();
+                
+            }
+
+        }
+    }
     private void MyMessageInputFunction(object sender, OnMessageReceivedArgs e)
     {
         string userName = e.ChatMessage.DisplayName;
 
+
+        
         if (_openSlots > 0 && e.ChatMessage.Message.StartsWith("!참가 "))
         {//게임 참가 메커니즘
             if (e.ChatMessage.Message.Length < 4)
@@ -65,29 +98,6 @@ public class TwitchClient : MonoBehaviour
             {//딕셔너리에 이름이 있는경우 
                 Client.SendMessage(Client.JoinedChannels[0], $"{userName}님은 이미 게임에 참가 하셨습니다.");
             }
-        }
-        else if (e.ChatMessage.Message.StartsWith("!힘"))
-        {
-            if (_twitchPlayerDic.ContainsKey(userName))
-            {
-                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseStr();
-            }
-        }
-        else if (e.ChatMessage.Message.StartsWith("!민"))
-        {
-            if (_twitchPlayerDic.ContainsKey(userName))
-            {
-                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseAgi();
-            }
-
-        }
-        else if (e.ChatMessage.Message.StartsWith("!지"))
-        {
-            if (_twitchPlayerDic.ContainsKey(userName))
-            {
-                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().RaiseInt();
-            }
-
         }
     }
 
@@ -118,13 +128,14 @@ public class TwitchClient : MonoBehaviour
 
         if(PanzeeWindow.instance == null)
         {
-            Global.UIPopupManager.Push(PopupID.UIUnitWindow);
+            Global.UIPopupManager.LoadUIs();
         }
         PanzeeWindow.instance.addToList(userName, instance, inputClass);
         IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         _twitchPlayerDic.Add(userName, instance);
         instance.GetComponent<UnitCombat>().UnEquipWeapon();
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
+        instance.transform.eulerAngles = new Vector3(0, 180, 0);
     }
 
     public void OpenEnrolling(int numSlots)

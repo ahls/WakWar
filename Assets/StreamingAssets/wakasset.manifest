@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2105744117
+CRC: 2771173925
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4cd23a0cbb03975e65e939302d3b18cf
+    Hash: f7baf8f06b6a247fd550f1527e8dce18
   TypeTreeHash:
     serializedVersion: 2
     Hash: 314da56e7c77d1a61d4561695c16dba0
@@ -228,7 +228,7 @@ Assets:
 - Assets/Audio/StunSound.mp3
 - Assets/WakAsset/UI/UIShop.prefab
 - Assets/Audio/panzeeDeath0.mp3
-- Assets/WakAsset/UI/Panzee Window.prefab
+- Assets/WakAsset/UI/UIUnitWindow.prefab
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3

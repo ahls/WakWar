@@ -73,4 +73,16 @@ public class UIPopupManager : MonoBehaviour
     {
         _popupQueue.Add(popup);
     }
+
+    public void LoadUIs()
+    {
+        foreach (var popup in (PopupID[])System.Enum.GetValues(typeof(PopupID)))
+        {
+            if (popup != PopupID.UIItemToolTip)
+            {
+                Push(popup);
+                Pop(popup);
+            }
+        }
+    }
 }

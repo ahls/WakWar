@@ -18,7 +18,7 @@ public class PanzeeWindow : UIPopup
         {
             instance = this;
         }
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
