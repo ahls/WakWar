@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _canvas;
     [SerializeField] private GameObject _btnMargin;
+    [SerializeField] private GameObject _menuBar;
+    [SerializeField] private GameObject _readyButton;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
 
@@ -24,4 +26,17 @@ public class UIManager : MonoBehaviour
         notiMsgObject.SetActive(true);
         notiMsgObject.GetComponent<UINotifyText>().SetInfo(text, lifeTime);
     }
+    public void ToggleMenu(bool state)
+    {
+        _menuBar.SetActive(state);
+    }
+    public void ShowReadyButton()
+    {
+        _readyButton.SetActive(true);
+    }
+    public void OnHitReadyButton()
+    {
+        IngameManager.ProgressManager.NextSequence();
+    }
+
 }

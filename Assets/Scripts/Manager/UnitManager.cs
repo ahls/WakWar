@@ -9,6 +9,7 @@ public class UnitManager : MonoBehaviour
     public bool ControlOn { get; set; } = true;
     private bool _attackMode = false;
     private bool _leftClicked, _rightClicked;
+    public List<GameObject> AllPlayerUnits = new List<GameObject>();
     private List<GameObject> _selectedUnitList = new List<GameObject>();
     private List<List<GameObject>> _unitSquads = new List<List<GameObject>>(10);
     [SerializeField] private GameObject _selectionBox;

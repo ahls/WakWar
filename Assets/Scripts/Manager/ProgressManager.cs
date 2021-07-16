@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward }
+public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward,DisplayReady }
 public class ProgressManager : MonoBehaviour
 {
     private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
@@ -58,6 +58,9 @@ public class ProgressManager : MonoBehaviour
                 break;
             case CurrentEvent.BossReward:
                 break;
+            case CurrentEvent.DisplayReady:
+                Global.UIManager.ShowReadyButton();
+                break;
         }
     }
     public void DialogOnClick()
@@ -76,13 +79,20 @@ public class ProgressManager : MonoBehaviour
     {//AI 및 조작 작동
         IngameManager.UnitManager.ControlOn = true;
         UnitCombat.AIenabled = true;
+        Global.UIManager.ToggleMenu(false);
+        NextSequence();
     }
 
+    /// <summary>
+    /// 지금 NextSequence가 Recursive 로 돌아가서, EndCombat일떄 코루틴으로 넣어서 끊기도록 했습니다.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator  EndCombat()
     {//AI 및 조작 종료
         IngameManager.UnitManager.ControlOn = false;
         UnitCombat.AIenabled = false;
         yield return new WaitForSeconds(1);
+        Global.UIManager.ToggleMenu(true);
         NextSequence();
 
     }

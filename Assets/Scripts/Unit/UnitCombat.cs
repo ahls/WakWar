@@ -77,7 +77,7 @@ public class UnitCombat : MonoBehaviour
     //타입
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
-    public ClassType weaponType = ClassType.Null;       //클래스 타입
+    public ClassType UnitClassType = ClassType.Null;       //클래스 타입
     private int _weaponIndex = 0;                       //무기 번호
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
@@ -106,7 +106,7 @@ public class UnitCombat : MonoBehaviour
     
     public void playerSetup(ClassType inputWeaponType)
     {
-        weaponType = inputWeaponType;
+        UnitClassType = inputWeaponType;
         OwnedFaction = Faction.Player;
         HealthBarColor(Color.green);
         _deathSound = "panzeeDeath0";
@@ -290,7 +290,7 @@ public class UnitCombat : MonoBehaviour
             _animator.SetTrigger("Regular");
         }
         _equippedImage.sprite = null;
-        switch (weaponType)
+        switch (UnitClassType)
         {
             case ClassType.Warrior:
             case ClassType.Wak:
@@ -339,6 +339,11 @@ public class UnitCombat : MonoBehaviour
     public int GetItemRank()
     {
         return _weaponIndex % 10;
+    }
+
+    public WeaponType GetWeaponType()
+    {
+        return Weapons.DB[_weaponIndex].weaponType;
     }
     #endregion
 
@@ -430,7 +435,7 @@ public class UnitCombat : MonoBehaviour
                 {
                     if (selectedCombat.OwnedFaction == TargetFaction)
                     { 
-                        if(selectedCombat.weaponType == PreferredTarget)
+                        if(selectedCombat.UnitClassType == PreferredTarget)
                         {
                             preferredList.Add(selected.transform);
                         }
