@@ -12,6 +12,7 @@ public class ProgressManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IngameManager.instance.SetProgressManager(this);
         NextSequence();
     }
 
@@ -44,6 +45,7 @@ public class ProgressManager : MonoBehaviour
                 break;
             case CurrentEvent.LoadScene:
                 SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);
+                NextSequence();
                 break;
             case CurrentEvent.LoadStage:
                 IngameManager.StageManager.SetStage(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));

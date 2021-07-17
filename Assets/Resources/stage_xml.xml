@@ -2,7 +2,7 @@
 <StageData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Stages>
   <Stage>
-    <id>10000</id>
+    <id>1000</id>
     <floor>1</floor>
     <room>1</room>
     <enemyList>
@@ -18,5 +18,22 @@
       </stageEnemyData>
   </enemyList>
   </Stage>
+    <Stage>
+      <id>1001</id>
+      <floor>1</floor>
+      <room>1</room>
+      <enemyList>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>0</position_x>
+          <position_y>0</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1</position_x>
+          <position_y>1</position_y>
+        </stageEnemyData>
+      </enemyList>
+    </Stage>
   </Stages>
 </StageData>

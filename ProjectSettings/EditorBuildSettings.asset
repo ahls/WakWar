@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stages/1_Graveyard/GY_ROOM.unity
     guid: f7517798392613042a96a52a0d455e2f
+  - enabled: 1
+    path: Assets/Scenes/Stages/1_Graveyard/GY_BOSS.unity
+    guid: 95e059dc77ac1574f8f128625ea3bb88
   m_configObjects: {}

@@ -47,7 +47,10 @@ public class CameraControl : MonoBehaviour
         }
         _camera.orthographicSize = Mathf.Lerp(_camera.orthographicSize, _targetSize, LERP_SPEED);
     }
-
+    private void OnLevelWasLoaded(int level)
+    {
+        _camera = Camera.main;
+    }
     private void CameraScrolling(Vector2 mousePos)
     {
         //테두리 설정
