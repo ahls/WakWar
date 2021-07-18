@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2163093718
+CRC: 1268108582
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2e13051a5dba164182e607371a83ff93
+    Hash: 3de5b3e3474829c161b43493d9e6acfc
   TypeTreeHash:
     serializedVersion: 2
     Hash: d6892e0926ef9b47c484de29c5f1a4b0
@@ -179,6 +179,7 @@ Assets:
 - Assets/Prefab/Skill/skillcarrier.prefab
 - Assets/Audio/BowShot.mp3
 - Assets/Sprites/textures/Equipped/img_instruments.png
+- Assets/Prefab/Skill/BerserkEffect.prefab
 - Assets/Audio/SnipeSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png
 - Assets/Sprites/textures/Equipped/img_axe.png

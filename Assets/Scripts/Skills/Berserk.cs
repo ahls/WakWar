@@ -28,7 +28,9 @@ public class Berserk : SkillBase
     {
         caster.CanBeKilled = false;
         _caster = caster;
-
+        GameObject effect = Global.ObjectManager.SpawnObject("BerserkEffect");
+        effect.transform.position = caster.transform.position;
+        effect.transform.SetParent(caster.transform);
 
         StartCoroutine(Effect());
     }
