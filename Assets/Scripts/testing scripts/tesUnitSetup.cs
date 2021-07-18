@@ -29,6 +29,21 @@ public class tesUnitSetup : MonoBehaviour
         GetComponent<UnitStats>().MoveSpeed = ms;
         UC.UpdateStats();
     }
+
+    private void Start()
+    {
+        OnStart();
+        //IngameManager.instance.OnSetUnitManager += OnStart;
+    }
+
+    public void OnStart()
+    {
+        if (!IngameManager.UnitManager.AllPlayerUnits.Contains(this.gameObject))
+        {
+            IngameManager.UnitManager.AllPlayerUnits.Add(this.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

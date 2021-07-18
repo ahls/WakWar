@@ -2,6 +2,7 @@
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitManager : MonoBehaviour
 {
@@ -299,5 +300,24 @@ public class UnitManager : MonoBehaviour
     public List<GameObject> GetSelectedUnits()
     {
         return _selectedUnitList;
+    }
+
+
+    public void OnSceneChange()
+    {
+        foreach (var unit in AllPlayerUnits)
+        {
+            unit.SetActive(false);
+        }
+    }
+
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        foreach (var unit in AllPlayerUnits)
+        {
+            unit.SetActive(true);
+        }
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
