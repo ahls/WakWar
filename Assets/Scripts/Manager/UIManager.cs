@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _readyButton;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
+    public DialogueDisplay DialogueDisplay;
 
     private void Start()
     {

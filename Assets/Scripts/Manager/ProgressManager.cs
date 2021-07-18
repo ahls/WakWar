@@ -41,11 +41,10 @@ public class ProgressManager : MonoBehaviour
         {
             case CurrentEvent.Dialog:
                 _dialogTurn = true;
-                IngameManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
+                Global.UIManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.LoadScene:
                 SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);
-                NextSequence();
                 break;
             case CurrentEvent.LoadStage:
                 IngameManager.StageManager.SetStage(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
@@ -65,24 +64,12 @@ public class ProgressManager : MonoBehaviour
                 break;
         }
     }
-    public void DialogOnClick()
-    {
-        if (!_dialogTurn)
-        {
-            return;
-        }
-        _dialogTurn = IngameManager.DialogueDisplay.LoadNextText();
-        if (!_dialogTurn)
-        {//마지막 대사 후, 다음으로 진행
-            NextSequence();
-        }
-    }
+
     private void StartCombat()
     {//AI 및 조작 작동
         IngameManager.UnitManager.ControlOn = true;
         UnitCombat.AIenabled = true;
         Global.UIManager.ToggleMenu(false);
-        NextSequence();
     }
 
     /// <summary>

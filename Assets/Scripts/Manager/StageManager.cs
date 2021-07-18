@@ -51,7 +51,7 @@ public class StageManager
 
 
         }
-        
+        IngameManager.ProgressManager.NextSequence();
     }
     public void SetSpawnLocations(UnitSpawnLocations unitSpawn)
     {

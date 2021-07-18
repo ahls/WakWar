@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     private static bool _aiON = false;
     private UnitCombat _unitCombat;
-
-
+    public string UnitName;
+    
     public ClassType PreferredClass;
 
     // Start is called before the first frame update

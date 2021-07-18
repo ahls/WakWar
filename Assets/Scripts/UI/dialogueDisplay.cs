@@ -9,14 +9,11 @@ public class DialogueDisplay : MonoBehaviour
     [SerializeField] private Animator _animator;
     private int _dialogID;
     private int _dialogIndex;
-
+    private bool _moreDialog;
     // Start is called before the first frame update
     void Start()
     {
-        if (IngameManager.DialogueDisplay == null)
-        {
-            IngameManager.instance.SetDialogue(this);
-        }
+        Global.UIManager.DialogueDisplay = this;
     }
     /// <summary>
     /// 다음 텍스트가 있으면 true, 마지막 텍스트였을 경우 false 리턴
@@ -24,7 +21,6 @@ public class DialogueDisplay : MonoBehaviour
     /// <returns></returns>
     public bool LoadNextText()
     {
-        
         if(_dialogIndex == Dialogues.DB[_dialogID].Count)// 백신때문에 몸 상태가 안좋아서 이게 맞는 조건문인지 햇갈립니당..
         {
             _animator.SetBool("Open", false);
@@ -35,10 +31,26 @@ public class DialogueDisplay : MonoBehaviour
             _text.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
             _bubbleTail.localPosition = new Vector2(Dialogues.DB[_dialogID][_dialogIndex].TailLocation, -100);
             _dialogIndex++;
+            _moreDialog = true;
         }
         return true;
 
     }
+
+    public void DialogOnClick()
+    {
+        if (!_moreDialog)
+        {
+            return;
+        }
+        _moreDialog = Global.UIManager.DialogueDisplay.LoadNextText();
+        if (!_moreDialog)
+        {//마지막 대사 후, 다음으로 진행
+            _moreDialog = true;
+            IngameManager.ProgressManager.NextSequence();
+        }
+    }
+
     public void SetDialogue(int dialogueID)
     {
         _dialogIndex = 0;

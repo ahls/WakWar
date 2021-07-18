@@ -1527,13 +1527,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 408419183171366038}
+  ImpactAudio: null
   AttackTarget: {fileID: 0}
   SearchRange: 0
   SeekTarget: 0
   PreferredTarget: 0
   OwnedFaction: 1
   TargetFaction: 0
-  weaponType: 0
+  UnitClassType: 4
   _equippedImage: {fileID: 0}
   Skill: {fileID: 0}
 --- !u!114 &4882216306343817342
@@ -1550,7 +1551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectionCircle: {fileID: 0}
   _playerNameText: {fileID: 0}
-  controller: {fileID: 0}
+  controller: {fileID: 7051653165093776596}
   _rotatingPart: {fileID: 8141039710118617438}
   runningSpeed: 0.75
   RepathRate: 1

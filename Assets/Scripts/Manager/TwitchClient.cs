@@ -137,6 +137,7 @@ public class TwitchClient : MonoBehaviour
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
         instance.transform.eulerAngles = new Vector3(0, 180, 0);
         IngameManager.UnitManager.AllPlayerUnits.Add(instance);
+        DontDestroyOnLoad(instance);
     }
 
     public void OpenEnrolling(int numSlots)

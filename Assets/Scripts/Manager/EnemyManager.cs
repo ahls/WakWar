@@ -24,8 +24,15 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (var enemy in _enemyList)
         {
-            // 여기에 적 이름 넣어줘야함 적 이름을 저장하고 있는 스크립트가 필요
-            //Global.ObjectPoolManager.ObjectPooling(, enemy);
+            Global.ObjectPoolManager.ObjectPooling(enemy.GetComponent<EnemyBehaviour>().UnitName, enemy);
+        }
+    }
+    public void EnemyDeath(GameObject enemy)
+    {
+        _enemyList.Remove(enemy);
+        if(_enemyList.Count == 0)
+        {
+            IngameManager.ProgressManager.NextSequence();
         }
     }
 }
