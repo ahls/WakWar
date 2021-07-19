@@ -17,6 +17,7 @@ public class WakgoodBehaviour : MonoBehaviour
         IngameManager.instance.SetWakgoodBehaviour(this);
         GetComponent<UnitStats>().PlayerUnitInit("우왁굳");
         _unitCombat.UnitClassType = ClassType.Wak;
+        _unitCombat.UnEquipWeapon();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -55,6 +56,7 @@ public class WakgoodBehaviour : MonoBehaviour
             default:
                 break;
         }
+        //Global.UIPopupManager.
         //_unitCombat.UpdateStats();
     }
     private void OnDisable()

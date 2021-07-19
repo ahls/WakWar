@@ -316,6 +316,7 @@ public class UnitManager : MonoBehaviour
         foreach (var unit in AllPlayerUnits)
         {
             unit.SetActive(true);
+            unit.GetComponent<UnitCombat>().ChangeEquipAnimation();
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;

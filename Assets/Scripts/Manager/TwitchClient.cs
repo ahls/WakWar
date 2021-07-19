@@ -123,19 +123,23 @@ public class TwitchClient : MonoBehaviour
         }
 
         GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
+        _twitchPlayerDic.Add(userName, instance);
+
         instance.GetComponent<UnitStats>().PlayerUnitInit(userName);
         instance.GetComponent<UnitCombat>().playerSetup(inputClass);
-
-        if(PanzeeWindow.instance == null)
-        {
-            Global.UIPopupManager.LoadUIs();
-        }
-        PanzeeWindow.instance.addToList(userName, instance, inputClass);
-        IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
-        _twitchPlayerDic.Add(userName, instance);
         instance.GetComponent<UnitCombat>().UnEquipWeapon();
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
         instance.transform.eulerAngles = new Vector3(0, 180, 0);
+
+        if (PanzeeWindow.instance == null)
+        {
+            Global.UIPopupManager.LoadUIs();
+        }
+
+
+        PanzeeWindow.instance.addToList(userName, instance, inputClass);
+
+        IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         IngameManager.UnitManager.AllPlayerUnits.Add(instance);
         DontDestroyOnLoad(instance);
     }

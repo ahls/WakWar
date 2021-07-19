@@ -50,6 +50,9 @@ public class Taunt : SkillBase
         _caster.BaseArmor += _bonus;
         _caster.UpdateStats();
         Global.AudioManager.PlayOnce("TauntSound");
+        GameObject effect = Global.ObjectManager.SpawnObject("TauntEffect");
+        effect.transform.position = caster.transform.position;
+        effect.transform.SetParent(caster.transform);
 
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
         foreach (var hitUnit in hitByAttack)

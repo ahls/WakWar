@@ -51,6 +51,7 @@ public class StageManager
 
 
         }
+        IngameManager.WakgoodBehaviour.transform.position = _unitSpawnLocations.Wak.position;
         IngameManager.ProgressManager.NextSequence();
     }
     public void SetSpawnLocations(UnitSpawnLocations unitSpawn)

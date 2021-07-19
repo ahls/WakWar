@@ -253,27 +253,7 @@ public class UnitCombat : MonoBehaviour
         {
             _equippedImage.sprite = null;
         }
-        //장비 이미지 바꾸는 코드
-        if (100200 <= weaponID && weaponID <= 100203)
-        {
-            _animator.SetTrigger("Shield");
-        }
-        else if (200000 <= weaponID && weaponID <= 200003)
-        {
-            _animator.SetTrigger("Gun");
-        }
-        else if (200100 <= weaponID && weaponID <= 200103)
-        {
-            _animator.SetTrigger("Bow");
-        }
-        else if (300200 <= weaponID && weaponID <= 300203)
-        {
-            _animator.SetTrigger("Inst");
-        }
-        else
-        {
-            _animator.SetTrigger("Regular");
-        }
+        ChangeEquipAnimation();
 
         ChangeSkill();
 
@@ -283,6 +263,30 @@ public class UnitCombat : MonoBehaviour
         UpdateStats();
     }
 
+    /// <summary>
+    /// 장비 애니메이션 변경
+    /// </summary>
+    public void ChangeEquipAnimation()
+    {
+        switch (GetWeaponType())
+        {
+            case WeaponType.Shield:
+                _animator.SetTrigger("Shield");
+                break;
+            case WeaponType.Bow:
+                _animator.SetTrigger("Bow");
+                break;
+            case WeaponType.Gun:
+                _animator.SetTrigger("Gun");
+                break;
+            case WeaponType.Instrument:
+                _animator.SetTrigger("Inst");
+                break;
+            default:
+                _animator.SetTrigger("Regular");
+                break;
+        }
+    }
     public void UnEquipWeapon()
     {
         if (_animator != null)
@@ -343,6 +347,8 @@ public class UnitCombat : MonoBehaviour
 
     public WeaponType GetWeaponType()
     {
+        Debug.Log($"Weapon Index: {_weaponIndex},");
+        Debug.Log($"Weapon name: {Weapons.DB[_weaponIndex].name}");
         return Weapons.DB[_weaponIndex].weaponType;
     }
     #endregion

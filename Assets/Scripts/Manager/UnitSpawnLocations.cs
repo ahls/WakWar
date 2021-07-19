@@ -5,7 +5,8 @@ using UnityEngine;
 public class UnitSpawnLocations : MonoBehaviour
 {
     public bool NextSequenceWhenLoaded = true;
-    public Transform Axe, Sword, Shield, Bow, Gun, Throw, Heal, Inst, Blunt;
+    public Transform Axe, Sword, Shield, Bow, Gun, Throw, Heal, Inst, Blunt, Wak;
+
     // Start is called before the first frame update
     void Start()
     {

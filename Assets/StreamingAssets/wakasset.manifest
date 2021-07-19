@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1268108582
+CRC: 1023932625
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3de5b3e3474829c161b43493d9e6acfc
+    Hash: b57ab3ecd00a497b0fa32fd52a065af4
   TypeTreeHash:
     serializedVersion: 2
     Hash: d6892e0926ef9b47c484de29c5f1a4b0
@@ -217,6 +217,7 @@ Assets:
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/GlassHit.mp3
 - Assets/Audio/Cut.mp3
+- Assets/Prefab/Skill/TauntEffect.prefab
 - Assets/Prefab/Skill/RushEffect.prefab
 - Assets/Audio/RushSound.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw0.png

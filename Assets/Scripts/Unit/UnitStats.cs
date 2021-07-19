@@ -58,11 +58,11 @@ public class UnitStats : MonoBehaviour
     }
 
     private void Start()
-    {
+    {/*
         if (!IngameManager.UnitManager.AllPlayerUnits.Contains(this.gameObject))
         {
             IngameManager.UnitManager.AllPlayerUnits.Add(this.gameObject);
-        }
+        }*/
     }
 
     private void FixedUpdate()
