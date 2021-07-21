@@ -64,7 +64,6 @@ public class UnitCombat : MonoBehaviour
     public float SearchRange = 0;
     public bool AttackGround { get; set; } = false;
     public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
-    public ClassType PreferredTarget; //선호하는 공격클래스. 
     private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
@@ -103,7 +102,7 @@ public class UnitCombat : MonoBehaviour
     //스킬관련
     public SkillBase Skill;
 
-    
+
     public void playerSetup(ClassType inputWeaponType)
     {
         UnitClassType = inputWeaponType;
@@ -111,7 +110,19 @@ public class UnitCombat : MonoBehaviour
         HealthBarColor(Color.green);
         _deathSound = "panzeeDeath0";
     }
+    public void EnemySetup(int HP,int armor, int armorPiercing, int damage,Sprite projImage, string deathSound,string projSound, string impactSound )
+    {
+        HealthMax = HP;
+        TotalArmor = armor;
+        TotalAP = armorPiercing;
+        TotalDamage = damage;
 
+        AttackImage = projImage;
+        _deathSound = deathSound;
+        _attackAudio = projSound;
+        ImpactAudio = impactSound;
+        
+    }
     #endregion
     private void Start()
     {
@@ -191,7 +202,7 @@ public class UnitCombat : MonoBehaviour
                     }
                 case ActionStats.Stun:
                     {
-                        if(_stunTimer > 0)
+                        if (_stunTimer > 0)
                         {
                             _stunTimer--;
                             return;
@@ -235,7 +246,7 @@ public class UnitCombat : MonoBehaviour
     #region 장비관련
 
     public void EquipWeapon(int weaponID)
-    {       
+    {
         _weaponIndex = weaponID;
         if (Weapons.DB[_weaponIndex].projImage != "null")
         {
@@ -361,7 +372,7 @@ public class UnitCombat : MonoBehaviour
         _effect.transform.position = transform.position;
 
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
-        if (_weaponIndex * 0.1  == 10000) // 무기가 검인경우 공격데미지 수정
+        if (_weaponIndex * 0.1 == 10000) // 무기가 검인경우 공격데미지 수정
         {
             attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position);
         }
@@ -371,12 +382,12 @@ public class UnitCombat : MonoBehaviour
         }
 
 
-        
+
         if (_torque > 0 || _heightDelta > 0)
         {
             attackEffectScript.AddTrajectory(_torque, _heightDelta);
         }
-        if(LifeSteal > 0 || CritChance > 0)
+        if (LifeSteal > 0 || CritChance > 0)
         {
             attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
         }
@@ -393,7 +404,7 @@ public class UnitCombat : MonoBehaviour
 
         UpdatePlaybackSpeed();
         _animator.SetTrigger("Attack");
-        _unitstats.RotateDirection( AttackTarget.transform.position.x - transform.position.x);
+        _unitstats.RotateDirection(AttackTarget.transform.position.x - transform.position.x);
     }
 
     private void ResetAttackTimer()
@@ -420,7 +431,7 @@ public class UnitCombat : MonoBehaviour
     /// </summary>
     private void Search()
     {
-        if(!AIenabled)
+        if (!AIenabled)
         {//AI 켜져있나 확인
             AttackTarget = null;
             return;
@@ -430,57 +441,26 @@ public class UnitCombat : MonoBehaviour
         List<Transform> listInRange = new List<Transform>();
 
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + SearchRange);
-        if (PreferredTarget != ClassType.Null)
-        {//선호대상이 있는경우
-            List<Transform> preferredList = new List<Transform>();
 
-            foreach (Collider2D selected in inRange)
+        foreach (Collider2D selected in inRange)
+        {
+            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            if (selectedCombat != null && selectedCombat != this)
             {
-                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
-                if (selectedCombat != null && selectedCombat != this)
+                if (selectedCombat.OwnedFaction == TargetFaction)
                 {
-                    if (selectedCombat.OwnedFaction == TargetFaction)
-                    { 
-                        if(selectedCombat.UnitClassType == PreferredTarget)
-                        {
-                            preferredList.Add(selected.transform);
-                        }
-                        else
-                        {
-                            listInRange.Add(selected.transform);
-                        }
+                    listInRange.Add(selected.transform);
 
-
-                    }
                 }
             }
-            BestTarget = ReturnClosestUnit(preferredList);
-            if(BestTarget == null)
-            {
-            BestTarget = ReturnClosestUnit(listInRange);
-            }
-
         }
-        else
-        {//선호대상이 없는경우
-            foreach (Collider2D selected in inRange)
-            {
-                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
-                if (selectedCombat != null && selectedCombat != this)
-                {
-                    if (selectedCombat.OwnedFaction == TargetFaction)
-                    {
-                        listInRange.Add(selected.transform);
+        BestTarget = ReturnClosestUnit(listInRange);
 
-                    }
-                }
-            }
-            BestTarget = ReturnClosestUnit(listInRange);
-        }
 
 
         if (BestTarget != null)
-        { AttackTarget = BestTarget;
+        {
+            AttackTarget = BestTarget;
             ActionStat = ActionStats.Attack;
         }
 
@@ -493,7 +473,7 @@ public class UnitCombat : MonoBehaviour
         {
             float currentDistance = (currentUnit.position - transform.position).magnitude;
 
-            if (currentDistance< closestDistance )
+            if (currentDistance < closestDistance)
             {
                 closestDistance = currentDistance;
                 currentBestTarget = currentUnit;
@@ -505,6 +485,8 @@ public class UnitCombat : MonoBehaviour
 
     private void SearchShell()
     {
+        if (OwnedFaction == Faction.Enemy)            return; // 적일경우 독자적인 EnemyBehvaiour으로 행동함.
+        
         if (_searchTimer <= 0)
         {
             ResetSearchTimer();//계속 돌려서 프레임당 최대한 적은 수의 탐색이 돌도록 함
@@ -526,7 +508,7 @@ public class UnitCombat : MonoBehaviour
 
     public void MoveIntoRange()
     {
-        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, TotalRange),false);
+        _unitstats.MoveToTarget(Vector2.MoveTowards(AttackTarget.position, transform.position, TotalRange), false);
     }
 
     private void ResetSearchTimer()
@@ -544,7 +526,7 @@ public class UnitCombat : MonoBehaviour
     private void EnemySearchAI()
     {
         if (!AIenabled) return;
-        if(SeekTarget && AttackTarget == null && _AIsearchTimer < Time.time)
+        if (SeekTarget && AttackTarget == null && _AIsearchTimer < Time.time)
         {
             _unitstats.MoveToTarget(IngameManager.WakgoodBehaviour.transform.position);
             AttackGround = true;
@@ -565,9 +547,9 @@ public class UnitCombat : MonoBehaviour
         _healthCurrent -= (damageAmount);
 
 
-        if(_healthCurrent <= 0)
+        if (_healthCurrent <= 0)
         {
-            if(CanBeKilled == false)
+            if (CanBeKilled == false)
             {
                 _healthCurrent = 1;
             }
@@ -589,7 +571,7 @@ public class UnitCombat : MonoBehaviour
         {
             _healthCurrent -= (dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, 999));
         }
-        else if(dmg< 0)
+        else if (dmg < 0)
         {
             Heal(-dmg);
         }
@@ -607,7 +589,7 @@ public class UnitCombat : MonoBehaviour
         }
         HealthBarUpdate();
     }
-    public void Heal(int amount, string effect= "HealEffect")
+    public void Heal(int amount, string effect = "HealEffect")
     {
         _healthCurrent = Mathf.Min(_healthCurrent + amount, HealthMax);
         GameObject healEffect = Global.ObjectManager.SpawnObject(effect);
@@ -621,7 +603,7 @@ public class UnitCombat : MonoBehaviour
 
     private void HealthBarColor(Color newColor)
     {
-       _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
+        _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
 
     }
 
@@ -631,7 +613,7 @@ public class UnitCombat : MonoBehaviour
         _animator.SetTrigger("Die");
         IsDead = true;
         GetComponent<Rigidbody2D>().simulated = false;
-        Global.AudioManager.PlayOnce(_deathSound,true);
+        Global.AudioManager.PlayOnce(_deathSound, true);
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);
@@ -697,7 +679,7 @@ public class UnitCombat : MonoBehaviour
     private int CalculateBerserkDamage()
     {
 
-        float maxDmgBonus= 1+(GetItemRank()+1) * 0.5f; // 50%, 100% 150% 200% 퍼센트의 추뎀
+        float maxDmgBonus = 1 + (GetItemRank() + 1) * 0.5f; // 50%, 100% 150% 200% 퍼센트의 추뎀
         int additionalDmg = Mathf.FloorToInt(maxDmgBonus * (HealthMax - _healthCurrent) * _healthInversed);
 
         return additionalDmg;

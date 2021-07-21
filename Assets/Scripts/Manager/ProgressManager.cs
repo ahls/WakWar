@@ -41,6 +41,7 @@ public class ProgressManager : MonoBehaviour
         {
             case CurrentEvent.Dialog:
                 _dialogTurn = true;
+                Debug.Log(Global.UIManager.DialogueDisplay);
                 Global.UIManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.LoadScene:
