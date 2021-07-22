@@ -61,7 +61,6 @@ public class UnitCombat : MonoBehaviour
     //타겟 관련
     public static bool AIenabled = false;
     public Transform AttackTarget;
-    public float SearchRange = 0;
     public bool AttackGround { get; set; } = false;
     public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
     private int _searchCooldown = 25;
@@ -110,12 +109,15 @@ public class UnitCombat : MonoBehaviour
         HealthBarColor(Color.green);
         _deathSound = "panzeeDeath0";
     }
-    public void EnemySetup(int HP,int armor, int armorPiercing, int damage,Sprite projImage, string deathSound,string projSound, string impactSound )
+    public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,Sprite projImage, string deathSound,string projSound, string impactSound )
     {
         HealthMax = HP;
         TotalArmor = armor;
         TotalAP = armorPiercing;
         TotalDamage = damage;
+
+        TotalRange = range;
+        ProjectileSpeed = 0.5f;
 
         AttackImage = projImage;
         _deathSound = deathSound;
@@ -158,7 +160,7 @@ public class UnitCombat : MonoBehaviour
                     {
                         if (AttackTarget != null)
                         {
-                            if (OffSetToTargetBound() <= TotalRange)
+                            if (OffsetToTargetBound() <= TotalRange)
                             {//적이 사정거리 내에 들어온경우 공격
                                 _unitstats.StopMoving();
                                 ActionStat = ActionStats.Attack;
@@ -222,7 +224,7 @@ public class UnitCombat : MonoBehaviour
                 {
                     if (_attackTimer <= 0)
                     {
-                        if (OffSetToTargetBound() <= TotalRange)
+                        if (OffsetToTargetBound() <= TotalRange)
                         {//적이 사정거리 내에 있을경우
                             _unitstats.StopMoving();
                             Attack();
@@ -440,7 +442,7 @@ public class UnitCombat : MonoBehaviour
         Transform BestTarget = null;
         List<Transform> listInRange = new List<Transform>();
 
-        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange + SearchRange);
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, TotalRange);
 
         foreach (Collider2D selected in inRange)
         {
@@ -465,7 +467,7 @@ public class UnitCombat : MonoBehaviour
         }
 
     }
-    private Transform ReturnClosestUnit(List<Transform> inputList)
+    public Transform ReturnClosestUnit(List<Transform> inputList)
     {
         Transform currentBestTarget = null;
         float closestDistance = float.PositiveInfinity;
@@ -516,7 +518,7 @@ public class UnitCombat : MonoBehaviour
         _searchTimer = _searchCooldown;
     }
 
-    private float OffSetToTargetBound()
+    public float OffsetToTargetBound()
     {
         Vector2 targetBoundLoc = AttackTarget.GetComponent<Collider2D>().ClosestPoint(transform.position);
         Vector2 unitBoundLoc = GetComponent<Collider2D>().ClosestPoint(AttackTarget.position);

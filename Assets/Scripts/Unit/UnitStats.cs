@@ -112,6 +112,7 @@ public class UnitStats : MonoBehaviour
 
     public void SetMoveToTarget(Vector2 target)
     {
+        Debug.LogError("SEtMoveToTarget Implenemnt 안됌");
     }
 
     public void StopMoving()
