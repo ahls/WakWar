@@ -51,7 +51,7 @@ public class UnitCombat : MonoBehaviour
     public float BaseAOE { get; set; }
     public int BaseAP { get; set; }
     private string _attackAudio = "null";
-    public string ImpactAudio = "null";
+    private string _impactAudio = "null";
 
     public float CritChance { get; set; } = 0f;
     public float CritDmg { get; set; } = 1.5f;
@@ -60,9 +60,9 @@ public class UnitCombat : MonoBehaviour
 
     //타겟 관련
     public static bool AIenabled = false;
-    public Transform AttackTarget;
+    [HideInInspector]public Transform AttackTarget;
     public bool AttackGround { get; set; } = false;
-    public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
+    [HideInInspector]public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
     private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
@@ -75,13 +75,13 @@ public class UnitCombat : MonoBehaviour
     //타입
     public Faction OwnedFaction = Faction.Enemy;        //소유주. 유닛스탯에서 플레이어 init 할때 자동으로 아군으로 바꿔줌
     public Faction TargetFaction;                       //공격타겟
-    public ClassType UnitClassType = ClassType.Null;       //클래스 타입
+    [HideInInspector]public ClassType UnitClassType = ClassType.Null;       //클래스 타입
     private int _weaponIndex = 0;                       //무기 번호
     private GameObject _effect;
     public Sprite AttackImage { get; set; }
     public float AttackTorque { get; set; } = 0;
     private UnitStats _unitstats;
-    [SerializeField] private SpriteRenderer _equippedImage;
+    [SerializeField]private SpriteRenderer _equippedImage;
     private Animator _animator;
     private float _heightDelta;
     private int _torque;
@@ -99,8 +99,9 @@ public class UnitCombat : MonoBehaviour
 
 
     //스킬관련
-    public SkillBase Skill;
+    [HideInInspector]public SkillBase Skill;
 
+    public EnemyBehaviour EnemyBehavour = null; //적이 아니라면 null. 있을경우엔 피격시 어그로 레벨 상승
 
     public void playerSetup(ClassType inputWeaponType)
     {
@@ -122,7 +123,7 @@ public class UnitCombat : MonoBehaviour
         AttackImage = projImage;
         _deathSound = deathSound;
         _attackAudio = projSound;
-        ImpactAudio = impactSound;
+        _impactAudio = impactSound;
         
     }
     #endregion
@@ -167,7 +168,7 @@ public class UnitCombat : MonoBehaviour
                             }
                             else
                             {
-                                _unitstats.SetMoveToTarget(AttackTarget.position);
+                                _unitstats.MoveToTarget(AttackTarget.position);
                                 //MoveIntoRange();
                             }
                         }
@@ -272,7 +273,7 @@ public class UnitCombat : MonoBehaviour
 
         //공격 사운드
         _attackAudio = Weapons.DB[_weaponIndex].projSound;
-        ImpactAudio = Weapons.DB[_weaponIndex].impctSound;
+        _impactAudio = Weapons.DB[_weaponIndex].impctSound;
         UpdateStats();
     }
 
@@ -424,6 +425,10 @@ public class UnitCombat : MonoBehaviour
         ActionStat = ActionStats.Stun;
         _stunTimer += numFrames;
     }
+    public string GetImpactSound()
+    {
+        return _impactAudio;
+    }
     #endregion
 
     #region 탐색 관련
@@ -547,7 +552,7 @@ public class UnitCombat : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         _healthCurrent -= (damageAmount);
-
+        EnemyBehavour.AggroChange(1024);
 
         if (_healthCurrent <= 0)
         {
@@ -571,25 +576,13 @@ public class UnitCombat : MonoBehaviour
     {
         if (dmg > 0)
         {
-            _healthCurrent -= (dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, 999));
+            TakeDamage(dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, (dmg-1)));
         }
         else if (dmg < 0)
         {
             Heal(-dmg);
         }
 
-        if (_healthCurrent <= 0)
-        {
-            if (CanBeKilled == false)
-            {
-                _healthCurrent = 1;
-            }
-            else
-            {
-                Death();
-            }
-        }
-        HealthBarUpdate();
     }
     public void Heal(int amount, string effect = "HealEffect")
     {

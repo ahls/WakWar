@@ -1422,11 +1422,11 @@ GameObject:
   - component: {fileID: 1849124289518635976}
   - component: {fileID: 4882216306343817342}
   - component: {fileID: 8371356473361272695}
-  - component: {fileID: 2060827568}
   - component: {fileID: 2060827569}
   - component: {fileID: 2060827570}
   - component: {fileID: 7051653165093776596}
   - component: {fileID: 2361444041629393744}
+  - component: {fileID: 3771802690446731041}
   m_Layer: 9
   m_Name: Clown
   m_TagString: Untagged
@@ -1527,16 +1527,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 408419183171366038}
-  ImpactAudio: null
   AttackTarget: {fileID: 0}
-  SearchRange: 0
   SeekTarget: 0
-  PreferredTarget: 0
   OwnedFaction: 1
   TargetFaction: 0
   UnitClassType: 4
   _equippedImage: {fileID: 0}
   Skill: {fileID: 0}
+  EnemyBehavour: {fileID: 3771802690446731041}
 --- !u!114 &4882216306343817342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,29 +1575,6 @@ MonoBehaviour:
   - {fileID: 4274438507931283159}
   - {fileID: 5469254956156010958}
   - {fileID: 6387942090951177443}
---- !u!114 &2060827568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8221494682217568640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanControl: 0
-  range: 0.25
-  AOE: 0.01
-  projSpeed: 1
-  ms: 0.005
-  AS: 1
-  hp: 15
-  dmg: 5
-  AP: 0
-  weaponID: 0
-  torque: 0
 --- !u!114 &2060827569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1707,6 +1682,33 @@ MonoBehaviour:
   uniqueID: 3733607409367373884
   updateError: 1
   checkTime: 1
+--- !u!114 &3771802690446731041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8221494682217568640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitName: Clown
+  SearchRange: 1
+  HP: 50
+  Armor: 2
+  Damage: 5
+  AP: 0
+  MoveSpeed: 0.6
+  AttackSpeed: 1
+  range: 0.3
+  ProjectileImage: 
+  ProjectileSound: 
+  ImpactSound: CymbalsAttack
+  DeathSound: panzeeDeath1
+  _unitCombat: {fileID: 1849124289518635976}
+  _unitStats: {fileID: 4882216306343817342}
 --- !u!1 &8562571837569888424
 GameObject:
   m_ObjectHideFlags: 0

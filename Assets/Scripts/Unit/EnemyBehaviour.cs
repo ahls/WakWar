@@ -22,14 +22,15 @@ public class EnemyBehaviour : MonoBehaviour
     //유닛 스탯 설정창
     [SerializeField] private int HP,Armor, Damage, AP;
     [SerializeField] private float MoveSpeed, AttackSpeed, range;
-    [SerializeField] private string ProjectileImage, ProjectileSound, ImpactSound, DeathSound;
+    [SerializeField] private string ProjectileImage = null, ProjectileSound = null, ImpactSound = null, DeathSound = null;
     [SerializeField] UnitCombat _unitCombat;
-    [SerializeField] UnitStats unitStats;
+    [SerializeField] UnitStats _unitStats;
 
     // Start is called before the first frame update
     void Awake()
     {
         _unitCombat.EnemySetup(HP, Armor, AP, Damage,range, Global.ResourceManager.LoadTexture(ProjectileImage), DeathSound,ProjectileSound,ImpactSound);
+        _unitStats.MoveSpeed = MoveSpeed;
         _searchTimer = _searchIndex++;
         _searchIndex &= SEARCH_RATE;
         _restingPosition = transform.position;
@@ -66,7 +67,7 @@ public class EnemyBehaviour : MonoBehaviour
             {
                 if(_unitCombat.AttackTarget != null)
                 {
-                    unitStats.MoveToTarget(_restingPosition);
+                    _unitStats.MoveToTarget(_restingPosition);
                     _unitCombat.AttackTarget = null;
                 }
             }

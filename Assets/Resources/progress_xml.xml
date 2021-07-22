@@ -23,7 +23,7 @@
     </Sequence>
     <Sequence>
       <eventType>LoadStage</eventType>
-      <value>1000</value>
+      <value>1001</value>
     </Sequence>
     
     <Sequence>

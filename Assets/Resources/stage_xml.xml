@@ -31,7 +31,37 @@
         <stageEnemyData>
           <id>10000</id>
           <position_x>1</position_x>
-          <position_y>1</position_y>
+          <position_y>0.5</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>0.9</position_x>
+          <position_y>0.5</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1.2</position_x>
+          <position_y>0.5</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1.1</position_x>
+          <position_y>0.5</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1.1</position_x>
+          <position_y>0.5</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1</position_x>
+          <position_y>0.6</position_y>
+        </stageEnemyData>
+        <stageEnemyData>
+          <id>10000</id>
+          <position_x>1</position_x>
+          <position_y>0.4</position_y>
         </stageEnemyData>
       </enemyList>
     </Stage>

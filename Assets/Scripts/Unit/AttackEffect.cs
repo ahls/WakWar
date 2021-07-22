@@ -26,6 +26,9 @@ public class AttackEffect : MonoBehaviour
     private GameObject _onHitEffect;
     public string _impactAudio;
 
+    private const float AGGRO_RANGE_CONSTANCE = 0.05f;
+    private const float AGGRO_RANGE_MINIMUM = 0.5f;
+
     /// <summary>
     /// 셋업 하기 전에 공격자 위치로 미리 불러와야 합니다.
     /// </summary>
@@ -33,7 +36,7 @@ public class AttackEffect : MonoBehaviour
     /// <param name="destination"></param>
     public void Setup(UnitCombat attacker,int damage, Vector3 destination)
     {
-        _impactAudio = attacker.ImpactAudio;
+        _impactAudio = attacker.GetImpactSound();
         _attacker = attacker;
         Setup(  damage, 
                 attacker.TotalAOE, 
@@ -64,6 +67,7 @@ public class AttackEffect : MonoBehaviour
         if (_lifeTime == 0)
         {
             DealDamage();
+            TakeAggro();
             if (_impactAudio != "null")
             {
                 Global.AudioManager.PlayOnce(_impactAudio, true);
@@ -94,18 +98,33 @@ public class AttackEffect : MonoBehaviour
                 if (_targetFaction == targetCombat.OwnedFaction || _targetFaction == Faction.Both)
                 {
                     //Debug.Log(_attackerInfo.gameObject.name + " dealt damage to " + targetCombat.gameObject.name + _damage);
-                    
-                    if(_critChance > 0)
+
+                    if (_critChance > 0)
                     {//크리티컬 확률이 있으면 확인
-                        if(Random.Range(0,1) >= _critChance)
+                        if (Random.Range(0, 1) >= _critChance)
                         {
-                            targetCombat.TakeDamage((int)(_damage *  _critMult), _AP);
+                            targetCombat.TakeDamage((int)(_damage * _critMult), _AP);
                             LifeSteal(_critMult * _lifeDrain);
                         }
                     }
-                    targetCombat.TakeDamage(_damage, _AP);
-                    LifeSteal(_lifeDrain);
+                    else
+                    {
+                        targetCombat.TakeDamage(_damage, _AP);
+                        LifeSteal(_lifeDrain);
+                    }
                 }
+            }
+        }
+    }
+    private void TakeAggro()
+    {
+        Collider2D[] unitsInRange = Physics2D.OverlapCircleAll(_destination, _damage*AGGRO_RANGE_CONSTANCE + AGGRO_RANGE_MINIMUM);
+        foreach (var target in unitsInRange)
+        {
+            UnitCombat targetCombat = target.GetComponent<UnitCombat>();
+            if (targetCombat != null && targetCombat.EnemyBehavour != null)
+            {
+                targetCombat.EnemyBehavour.AggroChange(256);
             }
         }
     }
