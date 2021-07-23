@@ -46,7 +46,7 @@ public class ProgressManager : MonoBehaviour
                 break;
             case CurrentEvent.LoadScene:
                 SceneManager.sceneLoaded += IngameManager.UnitManager.OnSceneLoaded;
-                IngameManager.UnitManager.OnSceneChange();
+                //IngameManager.UnitManager.OnSceneChange();
                 SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);
                 break;
             case CurrentEvent.LoadStage:

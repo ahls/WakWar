@@ -22,7 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
     //유닛 스탯 설정창
     [SerializeField] private int HP,Armor, Damage, AP;
     [SerializeField] private float MoveSpeed, AttackSpeed, range;
-    [SerializeField] private string ProjectileImage = null, ProjectileSound = null, ImpactSound = null, DeathSound = null;
+    [SerializeField] private string ProjectileImage = "null", ProjectileSound = "null", ImpactSound = "null", DeathSound = "null";
     [SerializeField] UnitCombat _unitCombat;
     [SerializeField] UnitStats _unitStats;
 
@@ -53,19 +53,21 @@ public class EnemyBehaviour : MonoBehaviour
                 if(_unitCombat.AttackTarget == null || _unitCombat.OffsetToTargetBound() > range)
                 {
                     Search();
+                    /*
+                    if(_unitCombat.AttackTarget)
+                    {//새로운 대상을 못찾을 경우 우왁굳을 향해서 어택땅
+
+                    }*/
                 }
                 Debug.Log($"Aggro Level: {_aggroLevel - SEARCH_RATE}");
-                if (_aggroLevel - SEARCH_RATE < 0)
-                {
-                    //어그로 레벨이 0이 되면 원래 자리로 돌아감
-                    _aggroLevel = 0;
-                }
-                else
-                    _aggroLevel -= SEARCH_RATE;
+
+
+                LookOutEnemy(false, true);
             }
             else
             {
-                if(_unitCombat.AttackTarget != null)
+                LookOutEnemy(true,false);
+                if (_unitCombat.AttackTarget != null)
                 {
                     _unitStats.MoveToTarget(_restingPosition);
                     _unitCombat.AttackTarget = null;
@@ -78,6 +80,54 @@ public class EnemyBehaviour : MonoBehaviour
         }
         
     }
+
+    private void LookOutEnemy(bool alertNearby,bool decreaseAggro)
+    {
+        bool enemyFound = false;
+        List<EnemyBehaviour> enemiesInRange = new List<EnemyBehaviour>();
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, SearchRange);
+        foreach (Collider2D selected in inRange)
+        {
+            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            if (selectedCombat != null)
+            {
+                if(selectedCombat.OwnedFaction == Faction.Enemy)
+                {
+                    enemiesInRange.Add(selectedCombat.EnemyBehavour);
+                }
+                else if(!enemyFound)
+                {
+                    if(!alertNearby)
+                    {//주변 적 알릴 필요가 없으면 바로 종료
+                        return;
+                    }
+                    enemyFound = true;
+                    _unitCombat.AttackTarget = selectedCombat.transform;
+                    _unitCombat.ActionStat = UnitCombat.ActionStats.Attack;
+                }
+            }
+        }
+        if(enemyFound)
+        {
+            //적들 알릴 필요가 있으면 위쪽에서 끝났으므로, 직므은 주변에 상황을 알림
+            foreach (var item in enemiesInRange)
+            {
+                item.AggroChange(256);
+            }
+
+        }
+        else if(decreaseAggro)
+        {//주변에 적 없고 위의 조건 충족하면 어그로 수준 낮춤
+            if (_aggroLevel - SEARCH_RATE < 0)
+            {
+                //어그로 레벨이 0이 되면 원래 자리로 돌아감
+                _aggroLevel = 0;
+            }
+            else
+                _aggroLevel -= SEARCH_RATE;
+        }
+    }
+
     /// <summary>
     /// 받은 피해에 비례한 범위 내의 적들에게 전투상황 알림
     /// </summary>

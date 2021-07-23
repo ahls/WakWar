@@ -227,6 +227,7 @@ public class UnitCombat : MonoBehaviour
                     {
                         if (OffsetToTargetBound() <= TotalRange)
                         {//적이 사정거리 내에 있을경우
+                            Debug.Log($"offset distance: {OffsetToTargetBound()}");
                             _unitstats.StopMoving();
                             Attack();
                         }
@@ -374,14 +375,15 @@ public class UnitCombat : MonoBehaviour
         _effect = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
 
+        Vector2 targetLoc = AttackTarget.GetComponent<Collider2D>().ClosestPoint(transform.position);
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
         if (_weaponIndex * 0.1 == 10000) // 무기가 검인경우 공격데미지 수정
         {
-            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position);
+            attackEffectScript.Setup(this, CalculateBerserkDamage(), targetLoc);
         }
         else
         {
-            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position);
+            attackEffectScript.Setup(this, TotalDamage, targetLoc);
         }
 
 
@@ -395,7 +397,7 @@ public class UnitCombat : MonoBehaviour
             attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
         }
 
-        if (_attackAudio != "null")
+        if (_attackAudio != "null" )
         {
             Global.AudioManager.PlayOnceAt(_attackAudio, transform.position, true);
         }
@@ -552,7 +554,7 @@ public class UnitCombat : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         _healthCurrent -= (damageAmount);
-        EnemyBehavour.AggroChange(1024);
+        if(EnemyBehavour != null)        EnemyBehavour.AggroChange(1024); //적이라면 일정시간동안 어그로수준 추가
 
         if (_healthCurrent <= 0)
         {

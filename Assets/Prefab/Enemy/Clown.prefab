@@ -1703,8 +1703,8 @@ MonoBehaviour:
   MoveSpeed: 0.6
   AttackSpeed: 1
   range: 0.3
-  ProjectileImage: 
-  ProjectileSound: 
+  ProjectileImage: null
+  ProjectileSound: null
   ImpactSound: CymbalsAttack
   DeathSound: panzeeDeath1
   _unitCombat: {fileID: 1849124289518635976}

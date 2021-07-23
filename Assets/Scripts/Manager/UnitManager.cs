@@ -301,7 +301,7 @@ public class UnitManager : MonoBehaviour
     {
         return _selectedUnitList;
     }
-
+    
 
     public void OnSceneChange()
     {
@@ -310,11 +310,12 @@ public class UnitManager : MonoBehaviour
             unit.SetActive(false);
         }
     }
-
+    
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         foreach (var unit in AllPlayerUnits)
         {
+            unit.SetActive(false);
             unit.SetActive(true);
             unit.GetComponent<UnitCombat>().ChangeEquipAnimation();
         }
