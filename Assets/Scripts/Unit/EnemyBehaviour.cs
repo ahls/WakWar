@@ -29,11 +29,15 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _unitCombat.EnemySetup(HP, Armor, AP, Damage,range, Global.ResourceManager.LoadTexture(ProjectileImage), DeathSound,ProjectileSound,ImpactSound);
+        _unitCombat.EnemySetup(HP, Armor, AP, Damage,range,AttackSpeed, Global.ResourceManager.LoadTexture(ProjectileImage), DeathSound,ProjectileSound,ImpactSound);
         _unitStats.MoveSpeed = MoveSpeed;
         _searchTimer = _searchIndex++;
         _searchIndex &= SEARCH_RATE;
-        _restingPosition = transform.position;
+    }
+    private void Start()
+    {
+
+        _restingPosition = transform.position; 
     }
 
     // Update is called once per frame
@@ -59,7 +63,7 @@ public class EnemyBehaviour : MonoBehaviour
 
                     }*/
                 }
-                Debug.Log($"Aggro Level: {_aggroLevel - SEARCH_RATE}");
+                //Debug.Log($"Aggro Level: {_aggroLevel - SEARCH_RATE}");
 
 
                 LookOutEnemy(false, true);

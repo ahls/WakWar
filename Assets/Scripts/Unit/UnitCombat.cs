@@ -14,7 +14,7 @@ public class UnitCombat : MonoBehaviour
         Attack,
         Stun
     }
-
+    public bool debugAction = false;
     #region 변수
 
     private ActionStats _actionStat;
@@ -110,13 +110,13 @@ public class UnitCombat : MonoBehaviour
         HealthBarColor(Color.green);
         _deathSound = "panzeeDeath0";
     }
-    public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,Sprite projImage, string deathSound,string projSound, string impactSound )
+    public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,float attackSpeed,Sprite projImage, string deathSound,string projSound, string impactSound )
     {
         HealthMax = HP;
         TotalArmor = armor;
         TotalAP = armorPiercing;
         TotalDamage = damage;
-
+        TotalAS = attackSpeed;
         TotalRange = range;
         ProjectileSpeed = 0.5f;
 
@@ -154,6 +154,7 @@ public class UnitCombat : MonoBehaviour
     {
         if (!IsDead)
         {
+            
             switch (ActionStat)
             {
 
@@ -222,17 +223,20 @@ public class UnitCombat : MonoBehaviour
             if (ActionStat == ActionStats.Attack)
             {
                 if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
-                {
+                {//살아있는 공격대상이 있을경우
+                    if (debugAction) Debug.Log($"공격쿨탐 남은시간: {_attackTimer}");
                     if (_attackTimer <= 0)
-                    {
+                    {//공격 쿨탐이 된경우
+                        if (debugAction) Debug.Log("공격준비 완료");
                         if (OffsetToTargetBound() <= TotalRange)
                         {//적이 사정거리 내에 있을경우
-                            Debug.Log($"offset distance: {OffsetToTargetBound()}");
+                            if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
                             _unitstats.StopMoving();
                             Attack();
                         }
                         else
                         {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
+                            if (debugAction) Debug.Log("적에게 이동중");
                             MoveIntoRange();
                         }
 
@@ -375,15 +379,14 @@ public class UnitCombat : MonoBehaviour
         _effect = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
         _effect.transform.position = transform.position;
 
-        Vector2 targetLoc = AttackTarget.GetComponent<Collider2D>().ClosestPoint(transform.position);
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
         if (_weaponIndex * 0.1 == 10000) // 무기가 검인경우 공격데미지 수정
         {
-            attackEffectScript.Setup(this, CalculateBerserkDamage(), targetLoc);
+            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position);
         }
         else
         {
-            attackEffectScript.Setup(this, TotalDamage, targetLoc);
+            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position);
         }
 
 

@@ -10,6 +10,7 @@ public class DialogueDisplay : MonoBehaviour
     private int _dialogID;
     private int _dialogIndex;
     private bool _moreDialog;
+    private bool _dialogueActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class DialogueDisplay : MonoBehaviour
         if(_dialogIndex == Dialogues.DB[_dialogID].Count)// 백신때문에 몸 상태가 안좋아서 이게 맞는 조건문인지 햇갈립니당..
         {
             _animator.SetBool("Open", false);
+            _dialogueActive = false;
             return false;
         }
         else
@@ -32,6 +34,7 @@ public class DialogueDisplay : MonoBehaviour
             _bubbleTail.localPosition = new Vector2(Dialogues.DB[_dialogID][_dialogIndex].TailLocation, -100);
             _dialogIndex++;
             _moreDialog = true;
+            _dialogueActive = true;
         }
         return true;
 
@@ -39,7 +42,7 @@ public class DialogueDisplay : MonoBehaviour
 
     public void DialogOnClick()
     {
-        if (!_moreDialog)
+        if (!_dialogueActive || !_moreDialog)
         {
             return;
         }
