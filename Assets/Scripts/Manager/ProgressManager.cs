@@ -45,6 +45,7 @@ public class ProgressManager : MonoBehaviour
                 Global.UIManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.LoadScene:
+                Global.UIPopupManager.PopAll();
                 SceneManager.sceneLoaded += IngameManager.UnitManager.OnSceneLoaded;
                 //IngameManager.UnitManager.OnSceneChange();
                 SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);

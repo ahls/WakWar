@@ -535,16 +535,6 @@ public class UnitCombat : MonoBehaviour
         return (targetBoundLoc - unitBoundLoc).magnitude;
     }
 
-    private void EnemySearchAI()
-    {
-        if (!AIenabled) return;
-        if (SeekTarget && AttackTarget == null && _AIsearchTimer < Time.time)
-        {
-            _unitstats.MoveToTarget(IngameManager.WakgoodBehaviour.transform.position);
-            AttackGround = true;
-            _AIsearchTimer = Time.time + 5f;
-        }
-    }
 
 
     #endregion

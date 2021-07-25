@@ -85,4 +85,11 @@ public class UIPopupManager : MonoBehaviour
             }
         }
     }
+    public void PopAll()
+    {
+        foreach (var popup in (PopupID[])System.Enum.GetValues(typeof(PopupID)))
+        {
+            Pop(popup);
+        }
+    }
 }

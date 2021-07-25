@@ -96,7 +96,7 @@ public class UnitStats : MonoBehaviour
 
         //애니메이션 부분
         _animator.SetBool("Move", true);
-        _animator.speed = 0.5f * runningSpeed;
+        _animator.speed = runningSpeed;
 
 
         if (controller.layer == RVOLayer.Ally)

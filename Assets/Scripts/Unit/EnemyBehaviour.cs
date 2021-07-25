@@ -57,11 +57,11 @@ public class EnemyBehaviour : MonoBehaviour
                 if(_unitCombat.AttackTarget == null || _unitCombat.OffsetToTargetBound() > range)
                 {
                     Search();
-                    /*
-                    if(_unitCombat.AttackTarget)
+                    
+                    if(_unitCombat.AttackTarget == null)
                     {//새로운 대상을 못찾을 경우 우왁굳을 향해서 어택땅
-
-                    }*/
+                        _unitStats.MoveToTarget(IngameManager.WakgoodBehaviour.transform.position, true);
+                    }
                 }
                 //Debug.Log($"Aggro Level: {_aggroLevel - SEARCH_RATE}");
 
@@ -69,7 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
                 LookOutEnemy(false, true);
             }
             else
-            {
+            {//어그로 수준이 없음
                 LookOutEnemy(true,false);
                 if (_unitCombat.AttackTarget != null)
                 {

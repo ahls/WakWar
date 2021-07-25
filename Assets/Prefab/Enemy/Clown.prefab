@@ -1526,6 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAction: 0
   _healthBar: {fileID: 408419183171366038}
   AttackTarget: {fileID: 0}
   SeekTarget: 0
@@ -1551,7 +1552,7 @@ MonoBehaviour:
   _playerNameText: {fileID: 0}
   controller: {fileID: 7051653165093776596}
   _rotatingPart: {fileID: 8141039710118617438}
-  runningSpeed: 0.75
+  runningSpeed: 1
   RepathRate: 1
   MoveNextDist: 1
 --- !u!114 &8371356473361272695
