@@ -2354,7 +2354,7 @@ MonoBehaviour:
   _selectionCircle: {fileID: 0}
   _playerNameText: {fileID: 0}
   controller: {fileID: 8963722385563592534}
-  _rotatingPart: {fileID: 0}
+  _rotatingPart: {fileID: 4430252256616907549}
   runningSpeed: 1
   RepathRate: 1
   MoveNextDist: 1

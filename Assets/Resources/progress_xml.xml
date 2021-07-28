@@ -29,6 +29,7 @@
     </Sequence>
     <Sequence>
       <eventType>RoomReward</eventType>
+      <value>100</value>
     </Sequence>
     <Sequence>
       <eventType>DisplayReady</eventType>

@@ -1192,7 +1192,7 @@ MonoBehaviour:
   _selectionCircle: {fileID: 0}
   _playerNameText: {fileID: 0}
   controller: {fileID: 8417728582654567389}
-  _rotatingPart: {fileID: 0}
+  _rotatingPart: {fileID: 2473365159506332078}
   runningSpeed: 1
   RepathRate: 1
   MoveNextDist: 1
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  uniqueID: 6091828700215242207
+  uniqueID: 6134491306427262937
   updateError: 1
   checkTime: 1
 --- !u!114 &2401936122429827112

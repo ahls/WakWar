@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2546084969
+CRC: 3908702271
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c2469ed32c65173ce0450e2045db8b2a
+    Hash: 66c62fe9f21c9dce5bc1f3b824159b18
   TypeTreeHash:
     serializedVersion: 2
-    Hash: ae68e3ca28c9bfbadcd2b949bc291df4
+    Hash: 39b6d295a6f88b2f4a25b071f098d549
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -64,6 +64,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5224e543a89d45a41a2ebcbfc0e46dd7, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
@@ -71,6 +73,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fcd79e36b80e7b84e8c938338acf717c, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
 - Class: 114
@@ -81,6 +85,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: f9c1a2d782491b14cbf54fcf06bb3039, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
 - Class: 114
@@ -103,6 +109,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: a293571c9399249459d5ab81acccd3af, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1125258db36aa3b42b19e031d8ab1af9, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 3c3cf4ada2655cd4cb7dfbc78b06b052, type: 3}
 - Class: 114
@@ -142,6 +150,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_throw3.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe1.png
 - Assets/Prefab/Skill/MassHealEffect.prefab
+- Assets/Prefab/Enemy/QueenBug.prefab
 - Assets/Prefab/inventory/Character Slot.prefab
 - Assets/Prefab/Skill/ArrowRainEffect.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt1.png
@@ -174,6 +183,7 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_thrown.png
 - Assets/Sprites/textures/Equipped/img_sword.png
 - Assets/Sprites/textures/Equipped/img_throwable.png
+- Assets/Prefab/Enemy/HyumPanzee.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe3.png
 - Assets/Prefab/Skill/skillcarrier.prefab
@@ -189,6 +199,7 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_bow.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst1.png
+- Assets/WakAsset/UI/UIReward.prefab
 - Assets/Audio/attacks/Swing.mp3
 - Assets/Sprites/textures/Equipped/Hunsu.png
 - Assets/Sprites/textures/ItemIcon/General/I_coin.png
@@ -199,6 +210,7 @@ Assets:
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/WakAsset/PooledPrefab/AudioPlayer.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_axe2.png
+- Assets/Prefab/Enemy/Minsu.prefab
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun1.png
 - Assets/Sprites/textures/Equipped/img_shield.png
@@ -234,5 +246,6 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3
+- Assets/Prefab/Enemy/GraveKeeper.prefab
 - Assets/Prefab/Skill/StunEffect.prefab
 Dependencies: []
