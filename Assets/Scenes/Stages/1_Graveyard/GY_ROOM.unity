@@ -1908,13 +1908,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8044606978299674777}
+  - {fileID: 2240989012240513720}
+  - {fileID: 444030484591528694}
+  - {fileID: 151155273223940459}
+  - {fileID: 7471337826411243909}
+  - {fileID: 2165322080695158513}
 --- !u!212 &151155273223940459
 SpriteRenderer:
   m_ObjectHideFlags: 0

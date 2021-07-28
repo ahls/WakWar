@@ -1209,14 +1209,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8422204622772321892}
+  - {fileID: 3182060656756210833}
+  - {fileID: 7280134286100977950}
+  - {fileID: 8524414248983750703}
+  - {fileID: 7006098255406642924}
+  - {fileID: 1871166051684403663}
 --- !u!114 &1516946428042081464
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2371,14 +2371,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4005180108651760508}
+  - {fileID: 1398219100311726304}
+  - {fileID: 3685792924913858086}
+  - {fileID: 7469822087837464534}
+  - {fileID: 2273031315782095432}
+  - {fileID: 181833601033783644}
+  - {fileID: 87401841954793251}
+  - {fileID: 2411363764620215511}
+  - {fileID: 3897208907836624396}
+  - {fileID: 6264330306488174522}
+  - {fileID: 1411132010807762588}
+  - {fileID: 5119333524335948381}
+  - {fileID: 7525814953292858252}
 --- !u!114 &2141755422917652531
 MonoBehaviour:
   m_ObjectHideFlags: 0

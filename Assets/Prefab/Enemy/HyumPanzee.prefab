@@ -190,14 +190,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2179117624778252421}
+  - {fileID: 3501723383219112644}
+  - {fileID: 6276984397478824342}
+  - {fileID: 8651203965897762766}
+  - {fileID: 3668431370561136608}
+  - {fileID: 835039478792607594}
 --- !u!114 &7050343701863957604
 MonoBehaviour:
   m_ObjectHideFlags: 0
