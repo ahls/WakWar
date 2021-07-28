@@ -8,8 +8,53 @@
     <enemyList>
       <stageEnemyData>
         <id>10000</id>
-        <position_x>0</position_x>
+        <position_x>3.2</position_x>
+        <position_y>1</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>0.8</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>0.6</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>0.4</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>0.2</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
         <position_y>0</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>-0.2</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>-0.4</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>-0.6</position_y>
+      </stageEnemyData>
+      <stageEnemyData>
+        <id>10000</id>
+        <position_x>3.2</position_x>
+        <position_y>-0.8</position_y>
       </stageEnemyData>
       <stageEnemyData>
         <id>10000</id>

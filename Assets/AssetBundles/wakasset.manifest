@@ -1,0 +1,238 @@
+ManifestFileVersion: 0
+CRC: 2546084969
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c2469ed32c65173ce0450e2045db8b2a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ae68e3ca28c9bfbadcd2b949bc291df4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 70
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 82
+  Script: {instanceID: 0}
+- Class: 83
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e383e4a0451f52a42979d35263dc2f27, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 302569b0f0b0a304e8e531936bb1265a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d1b0b51655ecd064d8da4a3820bd2fa0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 20d459c6dd606c34e8c914595cd01a63, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d19d9307e61739c49a8af4c8f0f309bb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f9c1a2d782491b14cbf54fcf06bb3039, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0aeaa3dad8f6d554b93db965b16e5d69, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 565b0c2b15dde5c46820b532bb092288, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 19f0668bed4145a46a7fffb5875f97d4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a293571c9399249459d5ab81acccd3af, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3c3cf4ada2655cd4cb7dfbc78b06b052, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: a192873e428aeaa4882a2567f37b3a73, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2ee6cd8e73f383347b6a3bb4e0420ebd, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7b34ed9e47345cc40b54761e320e53a8, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+- Class: 225
+  Script: {instanceID: 0}
+Assets:
+- Assets/Audio/attacks/Blunt.mp3
+- Assets/Audio/deaths/panzeeDeath1.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_throw2.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_throw3.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_axe1.png
+- Assets/Prefab/Skill/MassHealEffect.prefab
+- Assets/Prefab/inventory/Character Slot.prefab
+- Assets/Prefab/Skill/ArrowRainEffect.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_blunt1.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_shield0.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_bow0.png
+- Assets/Sprites/textures/Equipped/img_blunt.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_blunt3.png
+- Assets/Sprites/textures/Equipped/img_gun.png
+- Assets/Audio/attacks/GunFire.mp3
+- Assets/Prefab/Skill/MassHealTarget.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_bow2.png
+- Assets/Audio/skills/BladeStormLoop.mp3
+- Assets/Prefab/inventory/Item Base.prefab
+- Assets/Audio/SellItem.mp3
+- Assets/Audio/attacks/ToyFire.mp3
+- Assets/Audio/attacks/Squeak.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_sword2.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_gun3.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_inst3.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_wand1.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_wand0.png
+- Assets/WakAsset/UI/NotifyText.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_wand2.png
+- Assets/Audio/attacks/WoodHit.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_throw1.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_bow3.png
+- Assets/Sprites/textures/Equipped/img_arrow.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_sword1.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_sword3.png
+- Assets/Sprites/textures/Equipped/img_thrown.png
+- Assets/Sprites/textures/Equipped/img_sword.png
+- Assets/Sprites/textures/Equipped/img_throwable.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_shield1.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_axe3.png
+- Assets/Prefab/Skill/skillcarrier.prefab
+- Assets/Audio/attacks/BowShot.mp3
+- Assets/Sprites/textures/Equipped/img_instruments.png
+- Assets/Prefab/Skill/BerserkEffect.prefab
+- Assets/Audio/skills/SnipeSound.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_blunt2.png
+- Assets/Sprites/textures/Equipped/img_axe.png
+- Assets/Prefab/Skill/HealEffect.prefab
+- Assets/Audio/skills/MassHeal.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_blunt0.png
+- Assets/Sprites/textures/Equipped/img_bow.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_shield2.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_inst1.png
+- Assets/Audio/attacks/Swing.mp3
+- Assets/Sprites/textures/Equipped/Hunsu.png
+- Assets/Sprites/textures/ItemIcon/General/I_coin.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_wand3.png
+- Assets/Prefab/Enemy/Clown.prefab
+- Assets/Prefab/Skill/bladestorm.prefab
+- Assets/Audio/MoveCoin.mp3
+- Assets/WakAsset/UI/UIInventory.prefab
+- Assets/WakAsset/PooledPrefab/AudioPlayer.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_axe2.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_gun2.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_gun1.png
+- Assets/Sprites/textures/Equipped/img_shield.png
+- Assets/WakAsset/UI/UIItemToolTip.prefab
+- Assets/Audio/MovePotion.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_inst0.png
+- Assets/Audio/skills/TauntSound.mp3
+- Assets/WakAsset/UI/UIWakWindow.prefab
+- Assets/Audio/MoveItem.mp3
+- Assets/Audio/skills/ArrowRain.mp3
+- Assets/Audio/attacks/ArrowHit.mp3
+- Assets/Sprites/textures/Equipped/img_bullet.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_axe00.png
+- Assets/Prefab/Skill/skillFail.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_bow1.png
+- Assets/WakAsset/UI/NotifyWindow.prefab
+- Assets/Audio/attacks/GlassHit.mp3
+- Assets/Audio/attacks/Cut.mp3
+- Assets/Prefab/Skill/TauntEffect.prefab
+- Assets/Prefab/Skill/RushEffect.prefab
+- Assets/Audio/skills/RushSound.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_throw0.png
+- Assets/Audio/skills/heal.mp3
+- Assets/WakAsset/PooledPrefab/AttackEffect.prefab
+- Assets/Sprites/textures/ItemIcon/Weapon/I_shield3.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_gun0.png
+- Assets/Audio/attacks/CymbalsAttack.mp3
+- Assets/Sprites/textures/ItemIcon/Weapon/I_inst2.png
+- Assets/Audio/skills/StunSound.mp3
+- Assets/WakAsset/UI/UIShop.prefab
+- Assets/Audio/deaths/panzeeDeath0.mp3
+- Assets/WakAsset/UI/UIUnitWindow.prefab
+- Assets/Sprites/textures/Equipped/img_wand.png
+- Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
+- Assets/Audio/MoveRelic.mp3
+- Assets/Prefab/Skill/StunEffect.prefab
+Dependencies: []

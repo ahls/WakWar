@@ -9,6 +9,7 @@ public enum PopupID
     UIUnitWindow,
     UIItemToolTip,
     UIShop,
+    UIReward
 }
 
 public class UIPopupManager : MonoBehaviour
@@ -19,7 +20,11 @@ public class UIPopupManager : MonoBehaviour
     {
         Global.instance.SetUIPopupManager(this);
     }
-
+    /// <summary>
+    /// 창 열기
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="param"></param>
     public void Push(PopupID id, object param = null)
     {
         var findPopup = FindPopup(id);
@@ -42,6 +47,10 @@ public class UIPopupManager : MonoBehaviour
         _popupQueue.Add(uiPopupScript);
     }
 
+    /// <summary>
+    /// 창 닫기
+    /// </summary>
+    /// <param name="id"></param>
     public void Pop(PopupID id)
     {
         var findPopup = _popupQueue.Find(x => x.GetPopupID() == id);

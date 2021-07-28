@@ -66,7 +66,6 @@ public class UnitCombat : MonoBehaviour
     private int _searchCooldown = 25;
     private int _searchTimer;
     private static int _searchAssign = 0;
-    private float _AIsearchTimer = 0;
 
     //방어력
     public int BaseArmor { get; set; }

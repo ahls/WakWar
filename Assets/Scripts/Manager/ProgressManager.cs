@@ -60,6 +60,7 @@ public class ProgressManager : MonoBehaviour
                 StartCoroutine(EndCombat());
                 break;
             case CurrentEvent.RoomReward:
+                Global.UIPopupManager.Push(PopupID.UIReward, int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.BossReward:
                 break;

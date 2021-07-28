@@ -18,6 +18,22 @@
       <eventType>DisplayReady</eventType>
     </Sequence>
     <Sequence>
+      <eventType>LoadStage</eventType>
+      <value>1000</value>
+    </Sequence>
+    <Sequence>
+      <eventType>StartCombat</eventType>
+    </Sequence>
+    <Sequence>
+      <eventType>EndCombat</eventType>
+    </Sequence>
+    <Sequence>
+      <eventType>RoomReward</eventType>
+    </Sequence>
+    <Sequence>
+      <eventType>DisplayReady</eventType>
+    </Sequence>
+    <Sequence>
       <eventType>LoadScene</eventType>
       <value>GY_BOSS</value>
     </Sequence>

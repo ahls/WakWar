@@ -11,7 +11,7 @@ public enum rewardType
     relic
 }
 
-public class RewardsWindow : MonoBehaviour
+public class RewardsWindow : UIPopup
 {
 
     [SerializeField] private GameObject categoryPanel;
@@ -19,7 +19,7 @@ public class RewardsWindow : MonoBehaviour
     [SerializeField] private Text[] rewardText;
 
     private rewardType[] _rewardTypes = new rewardType[3];
-    public int TestingLevelValue;
+    private int _rewardAmount = 0;
     public int AdditionalReinforce = 0;
     private const int lowerConstant = 10, upperConstant = 100;
 
@@ -29,11 +29,6 @@ public class RewardsWindow : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void SetRewards()
     {
@@ -100,7 +95,7 @@ public class RewardsWindow : MonoBehaviour
 
                 break;
             case rewardType.reinforcement:
-                IngameManager.TwitchClient.OpenEnrolling(TestingLevelValue + AdditionalReinforce);
+                IngameManager.TwitchClient.OpenEnrolling(_rewardAmount + AdditionalReinforce);
                 break;
             default:
                 break;
@@ -110,7 +105,7 @@ public class RewardsWindow : MonoBehaviour
     private void LayItems(int itemID)
     {
         int itemValue = Items.DB[itemID].value;
-        int numItems = (TestingLevelValue * lowerConstant / itemValue) + 1; // 지급될 아이템 갯수
+        int numItems = (_rewardAmount * lowerConstant / itemValue) + 1; // 지급될 아이템 갯수
         
         for (int i = 0; i < numItems; i++)
         {
@@ -118,5 +113,18 @@ public class RewardsWindow : MonoBehaviour
             newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
             slots[i].GetComponent<Item_Slot>().CurrentNumber++;
         }
+    }
+
+    public override PopupID GetPopupID()
+    {
+        return PopupID.UIReward;
+    }
+
+    public override void SetInfo()    {    }
+
+    public override void PostInitialize()
+    {
+        _rewardAmount = (int)Param;
+        SetRewards();
     }
 }
