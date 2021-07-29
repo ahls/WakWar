@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Minsu
   SearchRange: 1
-  HP: 50
+  HP: 20
   Armor: 2
   Damage: 5
   AP: 0

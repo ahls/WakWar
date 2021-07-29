@@ -20,7 +20,7 @@ public class RewardsWindow : UIPopup
     [SerializeField] private Text[] rewardText;
 
     private RewardType[] _rewardTypes = new RewardType[3];
-    private int _rewardAmount = 0;
+    private int _rewardAmount = 200;
     public int AdditionalReinforce = 0;
     private const int lowerConstant = 10, upperConstant = 100;
     public static int[] ChancesPerTier = { 8, 4, 2, 1 };
@@ -120,7 +120,7 @@ public class RewardsWindow : UIPopup
         }
         do
         {
-            int genItemID = baseNumber * 100000;
+            int genItemID = baseNumber * 10000;
             do//아이템 값이 너무 높으면 재생성
             {
                 genItemID += Random.Range(0, typeRange) * 100;
@@ -132,13 +132,20 @@ public class RewardsWindow : UIPopup
 
             } while (Items.DB[genItemID].value + totalValue > upperConstant + _rewardAmount);
             totalValue += Items.DB[genItemID].value;
-        } while (totalValue >= _rewardAmount && listOfItems.Count == 16);
+            listOfItems.Add(genItemID);
+
+            Debug.Log($"현재 생성된 아이템 ID: {genItemID}");
+            Debug.Log($"현재 생성된 아이템 이름: {Items.DB[genItemID].name}");
+        } while (totalValue < _rewardAmount && listOfItems.Count < 16);
+        listOfItems.Sort();
         for (int i = 0; i < listOfItems.Count; i++)
         {
             GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(listOfItems[i], slots[i].transform);
             slots[i].GetComponent<Item_Slot>().CurrentNumber++;
         }
+        Debug.Log($"총 가격: {_rewardAmount}");
+        Debug.Log($"아이템 갯수: {listOfItems.Count}");
     }
     private void LayItems(int itemID)
     {

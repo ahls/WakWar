@@ -365,8 +365,6 @@ public class UnitCombat : MonoBehaviour
 
     public WeaponType GetWeaponType()
     {
-        Debug.Log($"Weapon Index: {_weaponIndex},");
-        Debug.Log($"Weapon name: {Weapons.DB[_weaponIndex].name}");
         return Weapons.DB[_weaponIndex].weaponType;
     }
     #endregion
