@@ -606,6 +606,7 @@ public class UnitCombat : MonoBehaviour
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);
+        IngameManager.EnemyManager.EnemyDeath(gameObject);
         StartCoroutine(DeathDelay());
     }
 
