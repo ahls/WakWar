@@ -281,6 +281,7 @@ public class UnitManager : MonoBehaviour
 
     public void DeselectUnit(GameObject unitToDeselect)
     {
+        if(_selectedUnitList.Contains(unitToDeselect))
         _selectedUnitList.Remove(unitToDeselect);
     }
 

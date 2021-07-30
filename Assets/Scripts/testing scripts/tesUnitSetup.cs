@@ -8,7 +8,6 @@ public class tesUnitSetup : MonoBehaviour
     public float  range,  AOE, projSpeed,ms,AS;
     public int hp,dmg,AP;
     public int weaponID;
-    public float torque;
     private bool used = false;
     UnitCombat UC;
     private void Awake()
@@ -22,7 +21,6 @@ public class tesUnitSetup : MonoBehaviour
         UC.BaseAS = 0;
         UC.BaseArmor = 0;
         UC.HealthMax = hp;
-        UC.AttackTorque = torque;
         UC.BaseRange = range;
         UC.BaseAS = AS;
         UC.BaseDamage = dmg;

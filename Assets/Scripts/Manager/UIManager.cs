@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _btnMargin;
     [SerializeField] private GameObject _menuBar;
     [SerializeField] private GameObject _readyButton;
+    [SerializeField] private GameObject _gameOverPanel;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
     public DialogueDisplay DialogueDisplay;
@@ -39,5 +40,8 @@ public class UIManager : MonoBehaviour
     {
         IngameManager.ProgressManager.NextSequence();
     }
-
+    public void GameOver()
+    {
+        _gameOverPanel.SetActive(true);
+    }
 }

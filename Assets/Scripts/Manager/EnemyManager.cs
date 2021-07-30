@@ -29,6 +29,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void EnemyDeath(GameObject enemy)
     {
+        if (!_enemyList.Contains(enemy)) return;
         _enemyList.Remove(enemy);
         if(_enemyList.Count == 0)
         {

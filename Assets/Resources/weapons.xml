@@ -5,7 +5,7 @@
 			<id>10</id>
 			<name>주먹</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -65,7 +65,7 @@
 			<id>100000</id>
 			<name>나무검</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -85,7 +85,7 @@
 			<id>100001</id>
 			<name>돌검</name>
 			<damage>5</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -105,7 +105,7 @@
 			<id>100002</id>
 			<name>철검</name>
 			<damage>8</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>1</armorPiercing>
@@ -125,7 +125,7 @@
 			<id>100003</id>
 			<name>다이아검</name>
 			<damage>12</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>2</armorPiercing>
@@ -145,7 +145,7 @@
 			<id>100100</id>
 			<name>무릎망치</name>
 			<damage>3</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -165,7 +165,7 @@
 			<id>100101</id>
 			<name>돌도끼</name>
 			<damage>5</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -185,7 +185,7 @@
 			<id>100102</id>
 			<name>소방도끼</name>
 			<damage>8</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>1</armorPiercing>
@@ -205,7 +205,7 @@
 			<id>100103</id>
 			<name>전투도끼</name>
 			<damage>12</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>2</armorPiercing>
@@ -225,7 +225,7 @@
 			<id>100200</id>
 			<name>종이박스</name>
 			<damage>2</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.67</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -245,7 +245,7 @@
 			<id>100201</id>
 			<name>나무문짝</name>
 			<damage>4</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.67</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -265,7 +265,7 @@
 			<id>100202</id>
 			<name>방탄유리</name>
 			<damage>6</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.67</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>1</armorPiercing>
@@ -285,7 +285,7 @@
 			<id>100203</id>
 			<name>호쾌남의 방패</name>
 			<damage>8</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.67</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>2</armorPiercing>
@@ -545,7 +545,7 @@
 			<id>300000</id>
 			<name>뿅망치</name>
 			<damage>2</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -565,7 +565,7 @@
 			<id>300001</id>
 			<name>국자</name>
 			<damage>4</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -585,7 +585,7 @@
 			<id>300002</id>
 			<name>쌍절곤</name>
 			<damage>6</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
@@ -605,7 +605,7 @@
 			<id>300003</id>
 			<name>모닝스타</name>
 			<damage>8</damage>
-			<range>0.1</range>
+			<range>0.2</range>
 			<speed>0.77</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>

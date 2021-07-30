@@ -18,6 +18,10 @@ public class AudioManager
     }
     public void PlayOnceAt(string audioName,Vector2 location, bool randomPitch =false)
     {
+        if (audioName == "")
+        {
+            return;
+        }
         AudioPlayer audioPlayer = Global.ObjectManager.SpawnObject(AUDIO_PLAYER_NAME).GetComponent<AudioPlayer>();
         audioPlayer.transform.position = location;
         audioPlayer.init(audioName,randomPitch:randomPitch);

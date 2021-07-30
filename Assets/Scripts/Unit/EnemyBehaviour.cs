@@ -20,16 +20,17 @@ public class EnemyBehaviour : MonoBehaviour
     private const ushort SEARCH_RATE = 64;
 
     //유닛 스탯 설정창
-    [SerializeField] private int HP,Armor, Damage, AP;
+    [SerializeField] private int HP,Armor, Damage, AP, heightDelta,AttackSoundVariations = 1;
     [SerializeField] private float MoveSpeed, AttackSpeed, range;
-    [SerializeField] private string ProjectileImage = "null", ProjectileSound = "null", ImpactSound = "null", DeathSound = "null";
+    [SerializeField] private string ProjectileImage = "", ProjectileSound = "", ImpactSound = "", DeathSound = "";
     [SerializeField] UnitCombat _unitCombat;
     [SerializeField] UnitStats _unitStats;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _unitCombat.EnemySetup(HP, Armor, AP, Damage,range,AttackSpeed, Global.ResourceManager.LoadTexture(ProjectileImage), DeathSound,ProjectileSound,ImpactSound);
+        _unitCombat.EnemySetup(HP, Armor, AP, Damage,range,AttackSpeed, Global.ResourceManager.LoadTexture(ProjectileImage),heightDelta);
+        _unitCombat.SoundSetup(DeathSound, ProjectileSound, ImpactSound, AttackSoundVariations);
         _unitStats.MoveSpeed = MoveSpeed;
         _searchTimer = _searchIndex++;
         _searchIndex &= SEARCH_RATE;
@@ -88,7 +89,7 @@ public class EnemyBehaviour : MonoBehaviour
     private void LookOutEnemy(bool alertNearby,bool decreaseAggro)
     {
         bool enemyFound = false;
-        List<EnemyBehaviour> enemiesInRange = new List<EnemyBehaviour>();
+        List<EnemyBehaviour> enemiesInRange = new List<EnemyBehaviour>();//적의 아군들
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, SearchRange);
         foreach (Collider2D selected in inRange)
         {
@@ -113,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         if(enemyFound)
         {
-            //적들 알릴 필요가 있으면 위쪽에서 끝났으므로, 직므은 주변에 상황을 알림
+            //적들 알릴 필요가 없으면 위쪽에서 끝났으므로, 직므은 주변에 상황을 알림
             foreach (var item in enemiesInRange)
             {
                 item.AggroChange(256);

@@ -42,7 +42,6 @@ public class UnitCombat : MonoBehaviour
     private int _healthCurrent;
     [SerializeField] private Slider _healthBar;
     private int _stunTimer = 0;
-    private string _deathSound = "";
 
     //공격관련
     public int BaseDamage { get; set; }
@@ -50,8 +49,7 @@ public class UnitCombat : MonoBehaviour
     public float BaseAS { get; set; } // 초당 공격
     public float BaseAOE { get; set; }
     public int BaseAP { get; set; }
-    private string _attackAudio = "null";
-    private string _impactAudio = "null";
+
 
     public float CritChance { get; set; } = 0f;
     public float CritDmg { get; set; } = 1.5f;
@@ -61,7 +59,7 @@ public class UnitCombat : MonoBehaviour
     //타겟 관련
     public static bool AIenabled = false;
     [HideInInspector]public Transform AttackTarget;
-    public bool AttackGround { get; set; } = false;
+    public bool AttackGround { get; set; } = false; //어택땅
     [HideInInspector]public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
     private int _searchCooldown = 25;
     private int _searchTimer;
@@ -76,14 +74,25 @@ public class UnitCombat : MonoBehaviour
     public Faction TargetFaction;                       //공격타겟
     [HideInInspector]public ClassType UnitClassType = ClassType.Null;       //클래스 타입
     private int _weaponIndex = 0;                       //무기 번호
-    private GameObject _effect;
-    public Sprite AttackImage { get; set; }
-    public float AttackTorque { get; set; } = 0;
     private UnitStats _unitstats;
-    [SerializeField]private SpriteRenderer _equippedImage;
+
+
+
+    //이미지 관련
     private Animator _animator;
-    private float _heightDelta;
+    public Sprite AttackImage { get; set; }
+    [SerializeField]private SpriteRenderer _equippedImage;
+    
+    private float _heightDelta; //음수일경우 attack effect의 SetAngle 불러옴
     private int _torque;
+    private GameObject _effect;
+
+
+    //사운드
+    private string _attackAudio = "null";
+    private string _impactAudio = "null";
+    private string _deathSound = "";
+    private int _soundVariation = 1;
 
     //장비 장착후 스탯
     public int TotalDamage { get; set; }
@@ -109,7 +118,7 @@ public class UnitCombat : MonoBehaviour
         HealthBarColor(Color.green);
         _deathSound = "panzeeDeath0";
     }
-    public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,float attackSpeed,Sprite projImage, string deathSound,string projSound, string impactSound )
+    public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,float attackSpeed,Sprite projImage,int heightDelta )
     {
         HealthMax = HP;
         TotalArmor = armor;
@@ -117,13 +126,17 @@ public class UnitCombat : MonoBehaviour
         TotalDamage = damage;
         TotalAS = attackSpeed;
         TotalRange = range;
-        ProjectileSpeed = 0.5f;
-
+        ProjectileSpeed = 1.5f;
+        _heightDelta = heightDelta;
         AttackImage = projImage;
+        
+    }
+    public void SoundSetup(string deathSound, string projSound, string impactSound, int numVariations = 1)
+    {
         _deathSound = deathSound;
         _attackAudio = projSound;
         _impactAudio = impactSound;
-        
+        _soundVariation = numVariations;
     }
     #endregion
     private void Start()
@@ -227,9 +240,10 @@ public class UnitCombat : MonoBehaviour
                     if (_attackTimer <= 0)
                     {//공격 쿨탐이 된경우
                         if (debugAction) Debug.Log("공격준비 완료");
+                        if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
                         if (OffsetToTargetBound() <= TotalRange)
                         {//적이 사정거리 내에 있을경우
-                            if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
+                            
                             _unitstats.StopMoving();
                             Attack();
                         }
@@ -255,7 +269,7 @@ public class UnitCombat : MonoBehaviour
     public void EquipWeapon(int weaponID)
     {
         _weaponIndex = weaponID;
-        if (Weapons.DB[_weaponIndex].projImage != "null")
+        if (Weapons.DB[_weaponIndex].projImage != "" && Weapons.DB[_weaponIndex].projImage != "null")
         {
             AttackImage = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].projImage);
         }
@@ -263,7 +277,7 @@ public class UnitCombat : MonoBehaviour
         {
             _equippedImage.sprite = null;
         }
-        if (Weapons.DB[_weaponIndex].equipImage != "null")
+        if (Weapons.DB[_weaponIndex].equipImage != "" && Weapons.DB[_weaponIndex].equipImage != "null")
         {
             _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
         }
@@ -387,8 +401,12 @@ public class UnitCombat : MonoBehaviour
         }
 
 
+        if(_heightDelta < 0)
 
-        if (_torque > 0 || _heightDelta > 0)
+        {
+            attackEffectScript.SetAngle(-_heightDelta);
+        }
+        else if (_torque > 0 || _heightDelta > 0)
         {
             attackEffectScript.AddTrajectory(_torque, _heightDelta);
         }
@@ -396,10 +414,17 @@ public class UnitCombat : MonoBehaviour
         {
             attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
         }
-
-        if (_attackAudio != "null" )
+        Debug.Log($"attackSound: {_attackAudio}");
+        if (_attackAudio != "" )
         {
-            Global.AudioManager.PlayOnceAt(_attackAudio, transform.position, true);
+            if (_soundVariation > 1)
+            {
+                Global.AudioManager.PlayOnceAt(_attackAudio+Random.Range(0,_soundVariation).ToString(), transform.position);
+            }
+            else
+            {
+                Global.AudioManager.PlayOnceAt(_attackAudio, transform.position, true);
+            }
         }
     }
 
@@ -600,11 +625,15 @@ public class UnitCombat : MonoBehaviour
         _animator.SetTrigger("Die");
         IsDead = true;
         GetComponent<Rigidbody2D>().simulated = false;
-        Global.AudioManager.PlayOnce(_deathSound, true);
+        Global.AudioManager.PlayOnceAt(_deathSound,transform.position, true);
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
         IngameManager.UnitManager.DeselectUnit(gameObject);
         IngameManager.EnemyManager.EnemyDeath(gameObject);
+        if(UnitClassType == ClassType.Wak)
+        {
+            Global.UIManager.GameOver();
+        }
         StartCoroutine(DeathDelay());
     }
 

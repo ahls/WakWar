@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioPlayer : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
-    private const float PITCH_RANGE = 0.15f;
+    private const float PITCH_RANGE = 0.2f;
     /// <summary>
     /// duration 에 값을 지정 안하면 기본 클립 길이만큼 재생하고 다시 풀링
     /// 루프로 재생될경우, loop = true, duraion = 길이 로 정해줘야함

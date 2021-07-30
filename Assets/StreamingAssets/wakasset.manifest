@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3811956834
+CRC: 1335890072
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 243df87113024713256e89670d48916e
+    Hash: 29e43ee624135c0662ddf9516402a635
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 39b6d295a6f88b2f4a25b071f098d549
+    Hash: 663db19447719dd1a53fd1a60ddbf595
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -156,6 +156,8 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt1.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_shield0.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_bow0.png
+- Assets/Audio/attacks/hunsu_2.wav
+- Assets/Audio/deaths/wakgoodDeath.mp3
 - Assets/Sprites/textures/Equipped/img_blunt.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_blunt3.png
 - Assets/Sprites/textures/Equipped/img_gun.png
@@ -201,7 +203,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst1.png
 - Assets/WakAsset/UI/UIReward.prefab
 - Assets/Audio/attacks/Swing.mp3
-- Assets/Sprites/textures/Equipped/Hunsu.png
+- Assets/Sprites/textures/Equipped/img_Hunsu.png
 - Assets/Sprites/textures/ItemIcon/General/I_coin.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_wand3.png
 - Assets/Prefab/Enemy/Clown.prefab
@@ -214,6 +216,7 @@ Assets:
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun2.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_gun1.png
 - Assets/Sprites/textures/Equipped/img_shield.png
+- Assets/Audio/attacks/hunsu_0.wav
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Audio/MovePotion.mp3
 - Assets/Sprites/textures/ItemIcon/Weapon/I_inst0.png
@@ -246,6 +249,7 @@ Assets:
 - Assets/Sprites/textures/Equipped/img_wand.png
 - Assets/Sprites/textures/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3
+- Assets/Audio/attacks/hunsu_1.wav
 - Assets/Prefab/Enemy/GraveKeeper.prefab
 - Assets/Prefab/Skill/StunEffect.prefab
 Dependencies: []

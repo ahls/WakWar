@@ -1152,9 +1152,9 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
-  m_Size: {x: 0.3, y: 0.3}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0.03}
+  m_Size: {x: 0.25, y: 0.1}
+  m_Direction: 1
 --- !u!114 &910903618379793601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,14 +1338,16 @@ MonoBehaviour:
   SearchRange: 1
   HP: 20
   Armor: 2
-  Damage: 5
+  Damage: 2
   AP: 0
+  heightDelta: -1
+  AttackSoundVariations: 3
   MoveSpeed: 0.6
-  AttackSpeed: 1
-  range: 0.3
-  ProjectileImage: null
-  ProjectileSound: null
-  ImpactSound: Swing
+  AttackSpeed: 0.3
+  range: 1
+  ProjectileImage: img_Hunsu
+  ProjectileSound: hunsu_
+  ImpactSound: 
   DeathSound: panzeeDeath1
   _unitCombat: {fileID: 910903618379793601}
   _unitStats: {fileID: 6254474451733544823}

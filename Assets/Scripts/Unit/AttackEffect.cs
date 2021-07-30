@@ -70,7 +70,7 @@ public class AttackEffect : MonoBehaviour
             TakeAggro();
             if (_impactAudio != "null")
             {
-                Global.AudioManager.PlayOnce(_impactAudio, true);
+                Global.AudioManager.PlayOnceAt(_impactAudio,transform.position, true);
                 _impactAudio = "null";
             }
             ResetAdditionalProperties();
@@ -164,6 +164,13 @@ public class AttackEffect : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 민수처럼 공격의 각도가 정해져 있는경우, 이 함수로 각도를 설정해줍니다.
+    /// </summary>
+    public void SetAngle(float angle)
+    {
+        transform.eulerAngles = new Vector3(0, 0, angle);
+    }
     /// <summary>
     /// 크리티컬이나 라이프 스틸 효과를 추가할때 사용됨
     /// </summary>

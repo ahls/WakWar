@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine.SceneManagement; 
 public class WakgoodBehaviour : MonoBehaviour
 {
-    #region 함수
+    #region 변수
     private int3 _panzees = new int3(0, 0, 0);
     private UnitCombat _unitCombat;
     public int StatPerUnit { get; set; } = 1;
@@ -18,6 +18,7 @@ public class WakgoodBehaviour : MonoBehaviour
         GetComponent<UnitStats>().PlayerUnitInit("우왁굳");
         _unitCombat.UnitClassType = ClassType.Wak;
         _unitCombat.UnEquipWeapon();
+        _unitCombat.SoundSetup("wakgoodDeath", "", "");
         DontDestroyOnLoad(gameObject);
     }
 
