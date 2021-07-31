@@ -350,8 +350,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_2</Esrc>
-			<Psrc>bullet_2</Psrc>
-			<projectileSpeed>5</projectileSpeed>
+			<Psrc>null</Psrc>
+			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>GunFire</projectileSound>
 			<impactSound>null</impactSound>
 			<armor>0</armor>
@@ -370,8 +370,8 @@
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>
 			<Esrc>gun_3</Esrc>
-			<Psrc>bullet_3</Psrc>
-			<projectileSpeed>6</projectileSpeed>
+			<Psrc>null</Psrc>
+			<projectileSpeed>10</projectileSpeed>
 			<projectileSound>GunFire</projectileSound>
 			<impactSound>null</impactSound>
 			<armor>0</armor>

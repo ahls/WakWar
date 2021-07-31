@@ -624,7 +624,7 @@ public class UnitCombat : MonoBehaviour
         _unitstats.StopMoving();
         _animator.SetTrigger("Die");
         IsDead = true;
-        GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<Collider2D>().enabled = false;
         Global.AudioManager.PlayOnceAt(_deathSound,transform.position, true);
         _unitstats.SetSelectionCircleState(false);
         _unitstats.Selectable = false;
