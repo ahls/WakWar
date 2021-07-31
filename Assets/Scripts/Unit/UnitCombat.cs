@@ -86,7 +86,7 @@ public class UnitCombat : MonoBehaviour
     private float _heightDelta; //음수일경우 attack effect의 SetAngle 불러옴
     private int _torque;
     private GameObject _effect;
-
+    private static Vector2 _attackHeight = new Vector2(0, 0.1f);
 
     //사운드
     private string _attackAudio = "null";
@@ -388,7 +388,7 @@ public class UnitCombat : MonoBehaviour
     {
         if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
         _effect = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-        _effect.transform.position = transform.position;
+        _effect.transform.position = GetComponent<Collider2D>().ClosestPoint(AttackTarget.position) + _attackHeight;
 
         AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
         if (_weaponIndex * 0.1 == 10000) // 무기가 검인경우 공격데미지 수정

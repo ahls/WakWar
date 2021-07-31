@@ -22,13 +22,18 @@ public class RewardsWindow : UIPopup
     private RewardType[] _rewardTypes = new RewardType[3];
     private int _rewardAmount = 200;
     public int AdditionalReinforce = 0;
-    private const int lowerConstant = 10, upperConstant = 100;
     public static int[] ChancesPerTier = { 8, 4, 2, 1 };
     private static int[] _tierChances = { 0, 0, 0, 0 };
+    private const int lowerConstant = 10, upperConstant = 100;
+    private List<int> _spawnedRelics = new List<int>();
     // Start is called before the first frame update
     void Start()
     {
         SetChances();
+    }
+    private void OnDisable()
+    {
+        IngameManager.ProgressManager.NextSequence();
     }
     public void SetChances()
     {
@@ -92,7 +97,8 @@ public class RewardsWindow : UIPopup
                 MakeMultiples(2, 9, 4);
                 break;
             case RewardType.relic:
-                chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count)];
+                chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count - 3)];// 보스 보상 제외
+                
                 GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
                 newItem.GetComponent<Item_Data>().Setup(chosenItemID);
                 newItem.transform.SetParent(slots[0].transform);
@@ -101,7 +107,9 @@ public class RewardsWindow : UIPopup
 
                 break;
             case RewardType.reinforcement:
-                IngameManager.TwitchClient.OpenEnrolling(_rewardAmount + AdditionalReinforce);
+                Global.UIManager.PushNotiMsg($"팬치 {3}명을 증원 받을 수 있습니다!\n" +
+                    $"(남은 자리: {IngameManager.TwitchClient.OpenEnrolling(3 + AdditionalReinforce)})", 3);
+                Global.UIPopupManager.Pop(PopupID.UIReward);
                 break;
             default:
                 break;

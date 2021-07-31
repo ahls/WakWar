@@ -1336,15 +1336,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Minsu
   SearchRange: 1
-  HP: 20
+  HP: 10
   Armor: 2
-  Damage: 2
+  Damage: 5
   AP: 0
   heightDelta: -1
   AttackSoundVariations: 3
   MoveSpeed: 0.6
   AttackSpeed: 0.3
-  range: 1
+  range: 1.5
   ProjectileImage: img_Hunsu
   ProjectileSound: hunsu_
   ImpactSound: 

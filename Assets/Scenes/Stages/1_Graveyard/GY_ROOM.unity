@@ -2326,7 +2326,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1860088493953196174}
   m_Bounds:
-    m_Center: {x: 1.158852, y: -0.8607576, z: 0}
+    m_Center: {x: 1.1588521, y: -0.8607576, z: 0}
     m_Extent: {x: 0.03640604, y: 0.024371743, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -2886,8 +2886,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7414589560290133553}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -1.167, y: -0.45, z: 1}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalPosition: {x: -1.1, y: -0.45, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 131900508}
   - {fileID: 529853224}
@@ -3062,11 +3062,10 @@ MonoBehaviour:
   projSpeed: 10
   ms: 0.005
   AS: 0
-  hp: 10
+  hp: 500
   dmg: 1
   AP: 0
   weaponID: 0
-  torque: 0
 --- !u!114 &7414589560290133562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,7 +3266,7 @@ MonoBehaviour:
   - {fileID: 610262243375093482}
   - {fileID: 4044969614592815094}
   m_Bounds:
-    m_Center: {x: 1.1372821, y: -0.9954467, z: 0}
+    m_Center: {x: 1.1372821, y: -0.99544656, z: 0}
     m_Extent: {x: 0.068592966, y: 0.07966781, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

@@ -517,7 +517,7 @@
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>
-			<heightDelta>0.01</heightDelta>
+			<heightDelta>0</heightDelta>
 			<torq>700</torq>
 			<weaponType>Throw</weaponType>
 		</weapon>

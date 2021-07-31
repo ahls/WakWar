@@ -51,6 +51,7 @@ public class ProgressManager : MonoBehaviour
                 SceneManager.LoadScene(ProgressSequences.DB[_currentProgressIndex].value);
                 break;
             case CurrentEvent.LoadStage:
+                Global.UIPopupManager.PopAll();
                 IngameManager.StageManager.SetStage(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.StartCombat:

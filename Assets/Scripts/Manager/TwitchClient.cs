@@ -26,6 +26,8 @@ public class TwitchClient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        IngameManager.instance.SetTwitchClient(this);
+
         //백그라운드에서도 실행하게 해줌
         Application.runInBackground = true;
         //밑에 토큰은 그냥 귀찮아서 냅뒀어요 ㅋㅋㅋ....
@@ -89,7 +91,7 @@ public class TwitchClient : MonoBehaviour
             {//딕셔너리에 이름이 없을경우에만 새로 추가됨
                 if (_unitClasses.Contains(UnitClass))
                 {//고른 직업이 존재할경우
-                    Client.SendMessage(Client.JoinedChannels[0], $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.");
+                    Global.UIManager.PushNotiMsg( $"{userName} 님께서 {UnitClass}로 게임에 참가하셨습니다.",0.5f);
                     UnitCreation(userName, UnitClass);
                     _openSlots--;
                 }
@@ -144,9 +146,10 @@ public class TwitchClient : MonoBehaviour
         DontDestroyOnLoad(instance);
     }
 
-    public void OpenEnrolling(int numSlots)
+    public int OpenEnrolling(int numSlots)
     {
-        _openSlots = numSlots;
+        _openSlots += numSlots;
+        return _openSlots;
     }
 
 }

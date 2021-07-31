@@ -87,7 +87,7 @@ public class UIPopupManager : MonoBehaviour
     {
         foreach (var popup in (PopupID[])System.Enum.GetValues(typeof(PopupID)))
         {
-            if (popup != PopupID.UIItemToolTip)
+            if (popup != PopupID.UIItemToolTip && popup != PopupID.UIReward)
             {
                 Push(popup);
                 Pop(popup);
