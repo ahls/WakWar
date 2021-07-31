@@ -17,8 +17,10 @@ public class DialogueData
 [XmlType("dialogue")]
 public class Dialogue
 {
-    [XmlElement("tailLocation")]
-    public float TailLocation;//말풍선 꼬리 위치
+    [XmlElement("portraitImage")]
+    public string PortraitImage;//말풍선 꼬리 위치
+    [XmlElement("name")]
+    public string NameEntry;
     [XmlElement("text")]
     public string TextEntry;
 }

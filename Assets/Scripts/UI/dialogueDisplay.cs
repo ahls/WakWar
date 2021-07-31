@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DialogueDisplay : MonoBehaviour
 {
-    [SerializeField] private Text _text;
-    [SerializeField] private RectTransform _bubbleTail;
+    [SerializeField] private Text _dialogName, _dialogText;
+    [SerializeField] private Image _portrait;
+
     [SerializeField] private Animator _animator;
     private int _dialogID;
     private int _dialogIndex;
@@ -30,8 +31,9 @@ public class DialogueDisplay : MonoBehaviour
         }
         else
         {
-            _text.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
-            _bubbleTail.localPosition = new Vector2(Dialogues.DB[_dialogID][_dialogIndex].TailLocation, -100);
+            _dialogText.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
+            _dialogName.text = Dialogues.DB[_dialogID][_dialogIndex].NameEntry;
+            _portrait.sprite = Global.ResourceManager.LoadTexture(Dialogues.DB[_dialogID][_dialogIndex].PortraitImage);
             _dialogIndex++;
             _moreDialog = true;
             _dialogueActive = true;
@@ -58,7 +60,8 @@ public class DialogueDisplay : MonoBehaviour
     {
         _dialogIndex = 0;
         _dialogID = dialogueID;
-        _text.text = "";
+        _dialogName.text = string.Empty;
+        _dialogText.text = string.Empty;
         _animator.SetBool("Open", true);
         LoadNextText();
     }
