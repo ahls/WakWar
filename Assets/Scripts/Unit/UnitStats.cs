@@ -83,6 +83,11 @@ public class UnitStats : MonoBehaviour
 
     public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
     {
+        if (_unitCombat.IsDead)
+        {
+            return;
+        }
+
         _targetPos = target;
         controller.SetTarget(target, 0.5f, 0.5f);
 
@@ -117,7 +122,6 @@ public class UnitStats : MonoBehaviour
 
     public void StopMoving()
     {
-        if (_unitCombat.IsDead) return;
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
@@ -152,6 +156,11 @@ public class UnitStats : MonoBehaviour
 
     private void Move()
     {
+        if (_unitCombat.IsDead)
+        {
+            return;
+        }
+
         if (Time.time >= _nextRepath && _canSearchAgain)
         {
             RecalculatePath();
@@ -305,10 +314,7 @@ public class UnitStats : MonoBehaviour
     }
     public void DisableMovement()
     {
-        StopMoving();
-        GetComponent<Collider2D>().enabled = false;
-        /*
-        controller.velocity = Vector3.zero; 
-        controller.enabled = false;*/
+        MoveToTarget(this.transform.position);
+        controller.enabled = false;
     }
 }

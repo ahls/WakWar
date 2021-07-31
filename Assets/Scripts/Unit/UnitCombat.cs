@@ -169,7 +169,6 @@ public class UnitCombat : MonoBehaviour
             
             switch (ActionStat)
             {
-
                 case ActionStats.Move:
                     {
                         if (AttackTarget != null)
@@ -568,6 +567,11 @@ public class UnitCombat : MonoBehaviour
     /// <param name="damageAmount"></param>
     public void TakeDamage(int damageAmount)
     {
+        if (IsDead)
+        {
+            return;
+        }
+
         _healthCurrent -= (damageAmount);
         if(EnemyBehavour != null)        EnemyBehavour.AggroChange(1024); //적이라면 일정시간동안 어그로수준 추가
 
