@@ -25,18 +25,23 @@ public class WakWindow : UIPopup
     }
     private void Start()
     {
-        
+        if(IngameManager.UIWakWindow == null)
+        {
+            IngameManager.UIWakWindow = this;
+            Pop();
+        }
+    }
+    public void SetItemSlot()
+    {
+        _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();
     }
     public override void SetInfo()
     {
-        _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();
+        if (IngameManager.WakgoodBehaviour == null) return;
 
         UpdateStat(ClassType.Warrior, IngameManager.WakgoodBehaviour.WakStats[0]);
         UpdateStat(ClassType.Shooter, IngameManager.WakgoodBehaviour.WakStats[1]);
         UpdateStat(ClassType.Supporter, IngameManager.WakgoodBehaviour.WakStats[2]);
-        IngameManager.WakgoodBehaviour.WakStats[0] = 0;
-        IngameManager.WakgoodBehaviour.WakStats[1] = 0;
-        IngameManager.WakgoodBehaviour.WakStats[2] = 0;
     }
     public override void PostInitialize()
     {
@@ -77,6 +82,11 @@ public class WakWindow : UIPopup
         }
     }
 
+    /// <summary>
+    /// 유닛 숫자 갱신
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <param name="newValue"></param>
     public void UpdateStat(ClassType weaponType, int newValue )
     {
         switch (weaponType)

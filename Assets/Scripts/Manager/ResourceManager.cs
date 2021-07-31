@@ -84,12 +84,12 @@ public class ResourceManager
 
     private void PreloadResources()
     {
+        //경로 확인할때 소문자로 안적으면 인식 못함
         foreach (var path in _assetBundle.GetAllAssetNames())
         {
             if (path.Contains("images/"))//빌드에서도 적용 되는지 확인 필요
             {
                 Sprite[] sprites;
-                Debug.Log("텍스쳐: "+path + " 을 불러오는중입니다.");
                 sprites = _assetBundle.LoadAssetWithSubAssets<Sprite>(path);
                 foreach (var subsprite in sprites)
                 {

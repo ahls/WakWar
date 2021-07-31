@@ -18,7 +18,11 @@ public class UIShop : UIPopup
     // Start is called before the first frame update
     void Start()
     {
-        IngameManager.instance.SetShop(this);
+        if(IngameManager.UIShop == null)
+        {
+            IngameManager.UIShop = this;
+            Pop();
+        }
     }
 
     // Update is called once per frame

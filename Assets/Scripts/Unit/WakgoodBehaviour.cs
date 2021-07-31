@@ -9,7 +9,7 @@ public class WakgoodBehaviour : MonoBehaviour
     private int3 _panzees = new int3(0, 0, 0);
     private UnitCombat _unitCombat;
     public int StatPerUnit { get; set; } = 1;
-    public int[] WakStats { get; set; } = new int[3] { 0, 0, 0 };
+    public int[] WakStats { get; set; } = new int[3] { 0, 0, 0 }; //힘 민 지 처럼 전사 사수 지원가를 나타냄
     #endregion
     // Start is called before the first frame update
     private void Start()
@@ -19,6 +19,7 @@ public class WakgoodBehaviour : MonoBehaviour
         _unitCombat.UnitClassType = ClassType.Wak;
         _unitCombat.UnEquipWeapon();
         _unitCombat.SoundSetup("wakgoodDeath", "", "");
+        IngameManager.UIWakWindow.SetItemSlot();
         DontDestroyOnLoad(gameObject);
     }
 

@@ -18,7 +18,7 @@ public class IngameManager : MonoBehaviour
     public static TwitchClient TwitchClient => _twitchClient;
     public static WakgoodBehaviour WakgoodBehaviour => _wakgoodBehaviour;
     public static UIInventory UIInventory => _uiInventory;
-    public static UIShop UIShop => _uiShop;
+
     public static ProgressManager ProgressManager => _progressManager;
     public static EncounterManager EncounterManager => _encounterManager;
     public static SkillManager SkillManager => _skillManager;
@@ -26,13 +26,14 @@ public class IngameManager : MonoBehaviour
     public static StageManager StageManager => _stageManager;
     public static RelicManager RelicManager => _relicManager;
     public static PanzeeWindow UIPanzeeWindow { get; set; }
+    public static WakWindow UIWakWindow { get; set; }
+    public static UIShop UIShop { get; set; }
 
     private static IngameManager _instance;
     private static UnitManager _unitManager;
     private static TwitchClient _twitchClient;
     private static WakgoodBehaviour _wakgoodBehaviour;
     private static UIInventory _uiInventory;
-    private static UIShop _uiShop;
     private static ProgressManager _progressManager;
     private static EncounterManager _encounterManager;
     private static SkillManager _skillManager;
@@ -44,10 +45,10 @@ public class IngameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         _stageManager = new StageManager();
+        Global.UIPopupManager.LoadUIs();
     }
     private void Start()
     {
-        Global.UIPopupManager.LoadUIs();
     }
 
     public void SetUnitManager(UnitManager unitManager)
@@ -76,10 +77,6 @@ public class IngameManager : MonoBehaviour
     public void SetEncounterManager(EncounterManager encounterManager)
     {
         _encounterManager = encounterManager;
-    }
-    public void SetShop(UIShop uiShop)
-    {
-        _uiShop = uiShop;
     }
     public void SetSkillManager(SkillManager skillManager)
     {
