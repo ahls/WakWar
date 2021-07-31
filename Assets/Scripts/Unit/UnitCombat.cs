@@ -621,7 +621,7 @@ public class UnitCombat : MonoBehaviour
 
     private void Death()
     {
-        _unitstats.StopMoving();
+        _unitstats.DisableMovement();
         _animator.SetTrigger("Die");
         IsDead = true;
         GetComponent<Collider2D>().enabled = false;

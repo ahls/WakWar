@@ -83,7 +83,6 @@ public class UnitStats : MonoBehaviour
 
     public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
     {
-        if (_unitCombat.IsDead) return; //죽은상태면 무시
         _targetPos = target;
         controller.SetTarget(target, 0.5f, 0.5f);
 
@@ -302,5 +301,13 @@ public class UnitStats : MonoBehaviour
             _rotatingPart.localScale = new Vector3(1, yScale, 1);
         }
 
+    }
+    public void DisableMovement()
+    {
+        StopMoving();
+        GetComponent<Collider2D>().enabled = false;
+
+        controller.velocity = Vector3.zero; 
+        controller.enabled = false;
     }
 }
