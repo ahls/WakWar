@@ -319,6 +319,7 @@ public class UnitManager : MonoBehaviour
             unit.SetActive(false);
             unit.SetActive(true);
             unit.GetComponent<UnitCombat>().ChangeEquipAnimation();
+            unit.GetComponent<UnitStats>().StopMoving();
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;

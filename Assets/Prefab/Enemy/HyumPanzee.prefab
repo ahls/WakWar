@@ -65,8 +65,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427438654774666837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.761, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children:
   - {fileID: 5951387282882232013}
   - {fileID: 3966051650222585826}
@@ -174,7 +174,7 @@ MonoBehaviour:
   _playerNameText: {fileID: 0}
   controller: {fileID: 3196345472668417}
   _rotatingPart: {fileID: 994005851495738015}
-  runningSpeed: 1
+  runningSpeed: 1.5
   RepathRate: 1
   MoveNextDist: 1
 --- !u!114 &1583809552859246754
@@ -315,18 +315,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: Hyum
+  UnitName: HyumPanzee
   SearchRange: 1
-  HP: 50
+  HP: 20
   Armor: 2
   Damage: 5
   AP: 0
+  heightDelta: 0
+  AttackSoundVariations: 1
   MoveSpeed: 0.6
-  AttackSpeed: 1
+  AttackSpeed: 1.5
   range: 0.3
   ProjectileImage: null
-  ProjectileSound: null
-  ImpactSound: Swing
+  ProjectileSound: Swing
+  ImpactSound: Blunt
   DeathSound: panzeeDeath1
   _unitCombat: {fileID: 8682573398378296349}
   _unitStats: {fileID: 2456370426644271019}

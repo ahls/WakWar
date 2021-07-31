@@ -63,7 +63,6 @@ public class AttackEffect : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _lifeTime--;
         if (_lifeTime == 0)
         {
             DealDamage();
@@ -84,6 +83,7 @@ public class AttackEffect : MonoBehaviour
                 transform.position += new Vector3(0, _heightDelta, 0);
             }
         }
+        _lifeTime--;
 
     }
 

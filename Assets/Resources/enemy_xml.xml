@@ -2,31 +2,31 @@
 <EnemyDatas xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Enemys>
     <Enemy>
-      <id>10000</id>
+      <id>100</id>
       <name>Minsu</name>
     </Enemy>
     <Enemy>
-      <id>10001</id>
-      <name>Hyum</name>
+      <id>101</id>
+      <name>HyumPanzee</name>
     </Enemy>
     <Enemy>
-      <id>10002</id>
+      <id>110</id>
       <name>Parasite</name>
     </Enemy>
     <Enemy>
-      <id>20000</id>
+      <id>120</id>
       <name>Zombie</name>
     </Enemy>
     <Enemy>
-      <id>30000</id>
+      <id>130</id>
       <name>Clown</name>
     </Enemy>
     <Enemy>
-      <id>40000</id>
+      <id>140</id>
       <name>Ssakduk</name>
     </Enemy>
     <Enemy>
-      <id>40001</id>
+      <id>141</id>
       <name>HighSsakduk</name>
     </Enemy>
   </Enemys>

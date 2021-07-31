@@ -76,14 +76,7 @@ public class RewardsWindow : UIPopup
     {
         categoryPanel.SetActive(false);// 선택창 숨김
 
-        for (int i = 0; i < 16; i++)// 전에 올라온 아이템 전부 삭제
-        {
-            Transform tempTransform = slots[i].transform;
-            if (tempTransform.childCount != 0)
-            {
-                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, slots[i].transform.GetChild(0).gameObject);
-            }
-        }
+        ClearRewards();
 
         int chosenItemID;
 
@@ -98,12 +91,8 @@ public class RewardsWindow : UIPopup
                 break;
             case RewardType.relic:
                 chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count - 3)];// 보스 보상 제외
-                
-                GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
-                newItem.GetComponent<Item_Data>().Setup(chosenItemID);
-                newItem.transform.SetParent(slots[0].transform);
-                newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
-                slots[0].GetComponent<Item_Slot>().CurrentNumber++;
+
+                MakeSingle(chosenItemID);
 
                 break;
             case RewardType.reinforcement:
@@ -115,6 +104,33 @@ public class RewardsWindow : UIPopup
                 break;
         }
 
+    }
+
+    private void ClearRewards()
+    {
+        for (int i = 0; i < 16; i++)// 전에 올라온 아이템 전부 삭제
+        {
+            Transform tempTransform = slots[i].transform;
+            if (tempTransform.childCount != 0)
+            {
+                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, slots[i].transform.GetChild(0).gameObject);
+            }
+        }
+    }
+
+    public void BossRelic(int itemID)
+    {
+        categoryPanel.SetActive(false);
+        ClearRewards();
+        MakeSingle(itemID);
+    }
+    private void MakeSingle(int itemID)
+    {
+        GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
+        newItem.GetComponent<Item_Data>().Setup(itemID);
+        newItem.transform.SetParent(slots[0].transform);
+        newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
+        slots[0].GetComponent<Item_Slot>().CurrentNumber++;
     }
     private void MakeMultiples(int baseNumber,int typeRange, int tierRange)
     {
