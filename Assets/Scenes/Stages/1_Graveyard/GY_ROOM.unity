@@ -2749,7 +2749,7 @@ MonoBehaviour:
   _playerNameText: {fileID: 13598414}
   controller: {fileID: 2364891609491962671}
   _rotatingPart: {fileID: 3565399735693254869}
-  runningSpeed: 1
+  runningSpeed: 1.5
   RepathRate: 1
   MoveNextDist: 1
 --- !u!4 &5441846293697688355

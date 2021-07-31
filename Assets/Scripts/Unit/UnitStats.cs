@@ -117,6 +117,7 @@ public class UnitStats : MonoBehaviour
 
     public void StopMoving()
     {
+        if (_unitCombat.IsDead) return;
         IsMoving = false;
         _animator.SetBool("Move", false);
         ResetTarget();
@@ -306,8 +307,8 @@ public class UnitStats : MonoBehaviour
     {
         StopMoving();
         GetComponent<Collider2D>().enabled = false;
-
+        /*
         controller.velocity = Vector3.zero; 
-        controller.enabled = false;
+        controller.enabled = false;*/
     }
 }
