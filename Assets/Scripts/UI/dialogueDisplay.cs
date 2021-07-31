@@ -33,6 +33,8 @@ public class DialogueDisplay : MonoBehaviour
         {
             _dialogText.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
             _dialogName.text = Dialogues.DB[_dialogID][_dialogIndex].NameEntry;
+            Debug.Log(Dialogues.DB[_dialogID][_dialogIndex].PortraitImage);
+
             _portrait.sprite = Global.ResourceManager.LoadTexture(Dialogues.DB[_dialogID][_dialogIndex].PortraitImage);
             _dialogIndex++;
             _moreDialog = true;

@@ -25,6 +25,7 @@ public class IngameManager : MonoBehaviour
     public static EnemyManager EnemyManager => _enemyManager;
     public static StageManager StageManager => _stageManager;
     public static RelicManager RelicManager => _relicManager;
+    public static PanzeeWindow UIPanzeeWindow { get; set; }
 
     private static IngameManager _instance;
     private static UnitManager _unitManager;
@@ -43,6 +44,10 @@ public class IngameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         _stageManager = new StageManager();
+    }
+    private void Start()
+    {
+        Global.UIPopupManager.LoadUIs();
     }
 
     public void SetUnitManager(UnitManager unitManager)

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3766171313
+CRC: 4116858390
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: a31753f474cd4dfc43e91dbb218fdd3a
+    Hash: bd071b13573c229457aa31c8a047bed6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 663db19447719dd1a53fd1a60ddbf595
@@ -218,7 +218,7 @@ Assets:
 - Assets/Images/Sprites/textures/Equipped/img_shield.png
 - Assets/Audio/attacks/hunsu_0.wav
 - Assets/WakAsset/UI/UIItemToolTip.prefab
-- Assets/Images/DialogImage/img_dialog_panzee.png
+- Assets/Images/DialogImage/dialog_panzee.png
 - Assets/Audio/MovePotion.mp3
 - Assets/Images/Sprites/textures/ItemIcon/Weapon/I_inst0.png
 - Assets/Audio/skills/TauntSound.mp3

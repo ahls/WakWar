@@ -90,7 +90,6 @@ public class UIPopupManager : MonoBehaviour
             if (popup != PopupID.UIItemToolTip && popup != PopupID.UIReward)
             {
                 Push(popup);
-                Pop(popup);
             }
         }
     }

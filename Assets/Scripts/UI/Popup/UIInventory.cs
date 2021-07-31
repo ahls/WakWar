@@ -16,7 +16,11 @@ public class UIInventory : UIPopup
 
     private void Start()
     {
-        IngameManager.instance.SetInventory(this);
+        if (IngameManager.UIInventory == null)
+        {
+            IngameManager.instance.SetInventory(this);
+            Pop();
+        }
     }
     public List<Transform> getEmptySlots(int numSlots)
     {

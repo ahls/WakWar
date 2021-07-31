@@ -23,7 +23,10 @@ public class WakWindow : UIPopup
     void Awake()
     {
     }
-
+    private void Start()
+    {
+        
+    }
     public override void SetInfo()
     {
         _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();

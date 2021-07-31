@@ -133,13 +133,9 @@ public class TwitchClient : MonoBehaviour
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
         instance.transform.eulerAngles = new Vector3(0, 180, 0);
 
-        if (PanzeeWindow.instance == null)
-        {
-            Global.UIPopupManager.LoadUIs();
-        }
 
 
-        PanzeeWindow.instance.addToList(userName, instance, inputClass);
+        IngameManager.UIPanzeeWindow.addToList(userName, instance, inputClass);
 
         IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         IngameManager.UnitManager.AllPlayerUnits.Add(instance);

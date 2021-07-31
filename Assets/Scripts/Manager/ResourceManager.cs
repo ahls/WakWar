@@ -62,6 +62,7 @@ public class ResourceManager
         }
         else if (!_loadedTexture.ContainsKey(path))
         {
+            Debug.Log(path + " does not exist in the textures.");
             return null;
         }
         return _loadedTexture[path];
@@ -85,9 +86,10 @@ public class ResourceManager
     {
         foreach (var path in _assetBundle.GetAllAssetNames())
         {
-            if (path.Contains("sprites/textures"))//빌드에서도 적용 되는지 확인 필요
+            if (path.Contains("images/"))//빌드에서도 적용 되는지 확인 필요
             {
                 Sprite[] sprites;
+                Debug.Log("텍스쳐: "+path + " 을 불러오는중입니다.");
                 sprites = _assetBundle.LoadAssetWithSubAssets<Sprite>(path);
                 foreach (var subsprite in sprites)
                 {

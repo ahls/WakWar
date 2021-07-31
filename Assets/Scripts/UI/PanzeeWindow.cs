@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PanzeeWindow : UIPopup
 {
-    public static PanzeeWindow instance;
     [SerializeField] private Transform[] slotLists;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private RectTransform contentBox;
@@ -12,13 +11,13 @@ public class PanzeeWindow : UIPopup
     private float contentBoxHeight = 80;
     private bool collapsed = false;
     // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
-        if (instance == null)
+        if(IngameManager.UIPanzeeWindow == null)
         {
-            instance = this;
+            IngameManager.UIPanzeeWindow = this;
+            Pop();
         }
-        //gameObject.SetActive(false);
     }
 
     // Update is called once per frame
