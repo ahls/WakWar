@@ -87,11 +87,12 @@ public class UnitCombat : MonoBehaviour
     private int _torque;
     private GameObject _effect;
     private static Vector2 _attackHeight = new Vector2(0, 0.1f);
+    private string _impactEffect = null;
 
     //사운드
-    private string _attackAudio = "null";
-    private string _impactAudio = "null";
-    private string _deathSound = "";
+    private string _attackAudio = string.Empty;
+    private string _impactAudio = string.Empty;
+    private string _deathSound = string.Empty;
     private int _soundVariation = 1;
 
     //장비 장착후 스탯
@@ -284,6 +285,8 @@ public class UnitCombat : MonoBehaviour
         {
             _equippedImage.sprite = null;
         }
+
+        _impactEffect = Weapons.DB[_weaponIndex].impactEffect;
         ChangeEquipAnimation();
 
         ChangeSkill();
@@ -413,7 +416,11 @@ public class UnitCombat : MonoBehaviour
         {
             attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
         }
-        Debug.Log($"attackSound: {_attackAudio}");
+        if(_impactEffect != null)
+        {
+            attackEffectScript.AddEffect(_impactEffect);
+        }
+
         if (_attackAudio != "" )
         {
             if (_soundVariation > 1)

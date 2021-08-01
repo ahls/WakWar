@@ -51,6 +51,8 @@ public class PulledWeapon
     public string projSound;
     [XmlElement("impactSound")]
     public string impctSound;
+    [XmlElement("impactEffect")]
+    public string ImpactEffect;
     [XmlElement("armor")]
     public int Armor;
     [XmlElement("class")]
@@ -70,7 +72,7 @@ public struct Weapon
     public string name;
     public int damage,AP,Armor, torque;
     public float AttackRange, AttackSpeed, AttackArea, projSpeed, heightDelta;
-    public string equipImage, projImage, projSound, impctSound;
+    public string equipImage, projImage, projSound, impctSound, impactEffect;
     public ClassType Class;
     public WeaponType weaponType;
     public Faction targetFaction;
@@ -92,6 +94,7 @@ public struct Weapon
         targetFaction = _input.targetFaction;
         weaponType = _input.weaponType;
         impctSound = _input.impctSound;
+        impactEffect = _input.ImpactEffect;
         projSound = _input.projSound;
     }
 }

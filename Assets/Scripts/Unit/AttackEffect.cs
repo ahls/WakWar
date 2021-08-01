@@ -23,7 +23,7 @@ public class AttackEffect : MonoBehaviour
     [SerializeField] private SpriteRenderer _projectileImage;
     private float _heightDelta = 0.1f;
     private float _deltaDelta;
-    private GameObject _onHitEffect;
+    private string _onHitEffect;
     public string _impactAudio;
 
     private const float AGGRO_RANGE_CONSTANCE = 0.05f;
@@ -47,6 +47,7 @@ public class AttackEffect : MonoBehaviour
     }
     public void Setup(int dmg, float aoe,int ap,Sprite projImage,float projSpeed, Vector3 destination,Faction targetFaction)
     {
+        _onHitEffect = string.Empty;
         _damage = dmg;
         _targetFaction = targetFaction;
         _aoe = aoe;
@@ -65,6 +66,7 @@ public class AttackEffect : MonoBehaviour
     {
         if (_lifeTime == 0)
         {
+            PlayEffect();
             DealDamage();
             TakeAggro();
             if (_impactAudio != "null")
@@ -86,7 +88,16 @@ public class AttackEffect : MonoBehaviour
         _lifeTime--;
 
     }
+    private void PlayEffect()
+    {
+        if(_onHitEffect == string.Empty)
+        {
+            return;
+        }
+        GameObject effect = Global.ObjectManager.SpawnObject(_onHitEffect);
+        effect.transform.position = _destination;
 
+    }
     private void DealDamage()
     {
         Collider2D[] unitsInRange = Physics2D.OverlapCircleAll(_destination, _aoe);
@@ -129,8 +140,13 @@ public class AttackEffect : MonoBehaviour
         }
     }
 
-
-
+    /// <summary>
+    /// 시각효과 추가
+    /// </summary>
+    public void AddEffect(string effectPath)
+    {
+        _onHitEffect = effectPath;
+    }
 
     public void AddSound(string attackSound)
     {

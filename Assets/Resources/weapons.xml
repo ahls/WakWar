@@ -472,7 +472,7 @@
 			<Esrc>throwable_0</Esrc>
 			<Psrc>thrown_0</Psrc>
 			<projectileSpeed>1</projectileSpeed>
-			<projectileSound>null</projectileSound>
+			<projectileSound>Throw</projectileSound>
 			<impactSound>Blunt</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -492,7 +492,7 @@
 			<Esrc>throwable_1</Esrc>
 			<Psrc>thrown_1</Psrc>
 			<projectileSpeed>1.5</projectileSpeed>
-			<projectileSound>null</projectileSound>
+			<projectileSound>Throw</projectileSound>
 			<impactSound>WoodHit</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -512,7 +512,7 @@
 			<Esrc>throwable_2</Esrc>
 			<Psrc>thrown_2</Psrc>
 			<projectileSpeed>2</projectileSpeed>
-			<projectileSound>null</projectileSound>
+			<projectileSound>Throw</projectileSound>
 			<impactSound>Cut</impactSound>
 			<armor>0</armor>
 			<class>Shooter</class>
@@ -532,8 +532,9 @@
 			<Esrc>throwable_3</Esrc>
 			<Psrc>throwable_3</Psrc>
 			<projectileSpeed>2</projectileSpeed>
-			<projectileSound>null</projectileSound>
-			<impactSound>null</impactSound>
+			<projectileSound>Throw</projectileSound>
+			<impactSound>Explosion</impactSound>
+      <impactEffect>explosion</impactEffect>
 			<armor>0</armor>
 			<class>Shooter</class>
 			<target>Enemy</target>
