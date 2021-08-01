@@ -69,13 +69,15 @@ public class AttackEffect : MonoBehaviour
             PlayEffect();
             DealDamage();
             TakeAggro();
-            if (_impactAudio != "null")
+            if (!(_impactAudio == null ||  _impactAudio == string.Empty || _impactAudio == "null"))
             {
+
                 Global.AudioManager.PlayOnceAt(_impactAudio,transform.position, true);
                 _impactAudio = "null";
             }
             ResetAdditionalProperties();
             Global.ObjectManager.ReleaseObject(Weapons.attackPrefab, this.gameObject);
+            _lifeTime = -1;
         }
         else
         {

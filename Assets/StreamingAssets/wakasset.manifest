@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 642673063
+CRC: 21216977
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9f9cd587444f1dd71823f96e84aa4c5e
+    Hash: 9f614e8249f050923e726c132eac80f1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 663db19447719dd1a53fd1a60ddbf595
@@ -151,6 +151,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe1.png
 - Assets/Prefab/Skill/MassHealEffect.prefab
 - Assets/Prefab/Enemy/QueenBug.prefab
+- Assets/Prefab/Skill/slash.prefab
 - Assets/Prefab/inventory/Character Slot.prefab
 - Assets/Prefab/Skill/ArrowRainEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt1.png
@@ -223,6 +224,7 @@ Assets:
 - Assets/Images/Sprites/Equipped/img_shield.png
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Images/DialogImage/dialog_panzee.png
+- Assets/Prefab/Skill/critical.prefab
 - Assets/Audio/MovePotion.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst0.png
 - Assets/Audio/skills/TauntSound.mp3
@@ -237,6 +239,7 @@ Assets:
 - Assets/Audio/attacks/Explosion.mp3
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/attacks/GlassHit.mp3
+- Assets/Audio/attacks/Cut.mp3
 - Assets/Prefab/Skill/TauntEffect.prefab
 - Assets/Prefab/Skill/RushEffect.prefab
 - Assets/Audio/skills/RushSound.mp3

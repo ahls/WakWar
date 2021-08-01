@@ -118,4 +118,4 @@ MonoBehaviour:
   _prefabName: SnipeEffect
   _particle: {fileID: 0}
   _anime: {fileID: 5025125694031339261}
-  _lifeTime: 2.5
+  _lifeTime: 4

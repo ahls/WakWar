@@ -38,7 +38,8 @@ public class Snipe : SkillBase
             return;
         }
         _target = caster.AttackTarget.GetComponent<UnitCombat>();
-
+        GameObject effect = Global.ObjectManager.SpawnObject("SnipeEffect");
+        effect.transform.SetParent(_target.transform);
 
         StartCoroutine(fire(dmg, caster));
         
