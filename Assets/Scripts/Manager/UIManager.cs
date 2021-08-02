@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _menuBar;
     [SerializeField] private GameObject _readyButton;
     [SerializeField] private GameObject _gameOverPanel;
+    public SceneTransition SceneTransition;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
     public DialogueDisplay DialogueDisplay;

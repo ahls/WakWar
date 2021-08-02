@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 21216977
+CRC: 2481717469
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9f614e8249f050923e726c132eac80f1
+    Hash: 4f52d36bf49a0818b54b990f55938b9a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 663db19447719dd1a53fd1a60ddbf595
@@ -155,11 +155,13 @@ Assets:
 - Assets/Prefab/inventory/Character Slot.prefab
 - Assets/Prefab/Skill/ArrowRainEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt1.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_chicken.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield0.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow0.png
 - Assets/Audio/deaths/wakgoodDeath.mp3
 - Assets/Prefab/Skill/explosion.prefab
 - Assets/Images/Sprites/Equipped/img_blunt.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_dog.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt3.png
 - Assets/Images/Sprites/Equipped/img_gun.png
 - Assets/Audio/attacks/GunFire.mp3
@@ -171,6 +173,7 @@ Assets:
 - Assets/Audio/SellItem.mp3
 - Assets/Audio/attacks/ToyFire.mp3
 - Assets/Audio/attacks/Squeak.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_angel.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword2.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun3.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst3.png
@@ -187,6 +190,7 @@ Assets:
 - Assets/Images/Sprites/Equipped/img_thrown.png
 - Assets/Images/Sprites/Equipped/img_sword.png
 - Assets/Images/Sprites/Equipped/img_throwable.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_wanted.png
 - Assets/Prefab/Enemy/HyumPanzee.prefab
 - Assets/Audio/attacks/Throw.mp3
 - Assets/Audio/attacks/hunsu_0.mp3
@@ -197,12 +201,14 @@ Assets:
 - Assets/Images/Sprites/Equipped/img_instruments.png
 - Assets/Audio/attacks/hunsu_1.mp3
 - Assets/Prefab/Skill/SnipeEffect.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_vrgear.png
 - Assets/Prefab/Skill/BerserkEffect.prefab
 - Assets/Audio/skills/SnipeSound.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt2.png
 - Assets/Images/Sprites/Equipped/img_axe.png
 - Assets/Prefab/Skill/HealEffect.prefab
 - Assets/Audio/skills/MassHeal.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_grass.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt0.png
 - Assets/Images/Sprites/Equipped/img_bow.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield2.png
@@ -217,7 +223,9 @@ Assets:
 - Assets/Audio/MoveCoin.mp3
 - Assets/WakAsset/UI/UIInventory.prefab
 - Assets/WakAsset/PooledPrefab/AudioPlayer.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_tooth.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe2.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_donation.png
 - Assets/Prefab/Enemy/Minsu.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun2.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun1.png
@@ -231,12 +239,14 @@ Assets:
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/Audio/MoveItem.mp3
 - Assets/Audio/skills/ArrowRain.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_protein.png
 - Assets/Audio/attacks/ArrowHit.mp3
 - Assets/Images/Sprites/Equipped/img_bullet.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe00.png
 - Assets/Prefab/Skill/skillFail.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow1.png
 - Assets/Audio/attacks/Explosion.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_eye.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/attacks/GlassHit.mp3
 - Assets/Audio/attacks/Cut.mp3
@@ -258,5 +268,6 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword0.png
 - Assets/Audio/MoveRelic.mp3
 - Assets/Prefab/Enemy/GraveKeeper.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_ironbag.png
 - Assets/Prefab/Skill/StunEffect.prefab
 Dependencies: []

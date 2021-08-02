@@ -18,8 +18,14 @@
       <eventType>DisplayReady</eventType>
     </Sequence>
     <Sequence>
+      <eventType>FadeOut</eventType>
+    </Sequence>
+    <Sequence>
       <eventType>LoadStage</eventType>
       <value>1000</value>
+    </Sequence>
+    <Sequence>
+      <eventType>FadeIn</eventType>
     </Sequence>
     <Sequence>
       <eventType>StartCombat</eventType>
