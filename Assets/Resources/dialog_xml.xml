@@ -2,6 +2,60 @@
 <DialogueData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dialogues>
     <Dialogue>
+      <id>4552</id><!--아오오니 패러디-->
+      <dialogueList>
+        <dialogue>
+          <portraitImage>dialog_takuro</portraitImage>
+          <name>타쿠로</name>
+          <text>안은 생각했던 것보다 깨끗하네</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_mika</portraitImage>
+          <name>미카</name>
+          <text>왠지 추워...</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_takeshi</portraitImage>
+          <name>타케시</name>
+          <text>어, 어이...</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_takeshi</portraitImage>
+          <name>타케시</name>
+          <text>어, 어이...
+이제 돌아가자...</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_takuro</portraitImage>
+          <name>타쿠로</name>
+          <text>뭐야 타케시, 겁먹은거야?</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_plate</portraitImage>
+          <name>접시</name>
+          <text>쨍그랑</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_takeshi</portraitImage>
+          <name>타케시</name>
+          <text>이, 이제 돌아가자...</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_wak</portraitImage>
+          <name>우왁굳</name>
+          <text>바보같군...</text>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_wak</portraitImage>
+          <name>우왁굳</name>
+          <text>바보같군...
+괴물따위 있을리가 없잖아.
+과학적으로 생각해서...</text>
+        </dialogue>
+
+      </dialogueList>
+    </Dialogue>
+    <Dialogue>
       <id>1000</id>
       <dialogueList>
         <dialogue>

@@ -31,8 +31,11 @@ public class EnemyManager : MonoBehaviour
     {
         if (!_enemyList.Contains(enemy)) return;
         _enemyList.Remove(enemy);
+        IngameManager.UIInventory.AddMoney(IngameManager.RelicManager.GoldPerKill);
+        Debug.Log($"remaining enemyies: {_enemyList.Count}");
         if(_enemyList.Count == 0)
         {
+            Debug.Log("All enemies are killed");
             IngameManager.ProgressManager.NextSequence();
         }
     }

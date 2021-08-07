@@ -359,7 +359,7 @@
 			<weaponID>300203</weaponID>
 		</item>
 		<item>
-			<id>30001</id>
+			<id>30000</id>
 			<type>Relic</type>
 			<name>조그마한 치킨 조각</name>
 			<desc>유닛당 얻는 스탯 x2
@@ -367,6 +367,16 @@
  차갑게 식어버린 치킨조각. 온기라곤 하나도 남아있지 않으나,  마지막까지 늙은 팬치의 손에 쥐어져있던 듯 하다.
 이 유물을 가지고 있는 자는 두개의 세상에 걸쳐 살아가게 된다.</desc>
 			<Image>relic_chicken</Image>
+		</item>
+    <item>
+			<id>30001</id>
+			<type>Relic</type>
+			<name>난민의 증표</name>
+			<desc>팬치 유입을 보상으로 선택 할 시 
+팬치 유입량 + 5
+
+"난민 받아라!" / "난하!"</desc>
+			<Image>relic_nanmin</Image>
 		</item>
 		<item>
 			<id>30002</id>
@@ -381,7 +391,7 @@
 			<desc>각 방 보상의 가치를 보여줍니다.
 
    그 어떤 누구도, 심지어 몇년동안 수학과 과학에 매진한 이들마저 이 상자의 존재를 한번에 이해 하지 못한다고 전해진다.</desc>
-			<Image>null</Image>
+			<Image>relic_montihole</Image>
 		</item>
 		<item>
 			<id>30004</id>
@@ -412,7 +422,7 @@
  예로부터 뚫린적이 없다는 관짝의 뚜껑. 
 사실 관 안쪽에 것을 못나오게 막는 용도라 반대로 잡아야 효과가 더 크지만, 
 아무도 그 사실을 눈치채지 못하는 것 같다.</desc>
-			<Image>null</Image>
+			<Image>relic_shield</Image>
 		</item>
 		<item>
 			<id>30007</id>
@@ -424,7 +434,7 @@
 무수한 세월 동안 누군가의 발밑에서 점점 헐어갔지만, 
 그 끝에 얻은 여행의 기억은 소유자의 발걸음을 더 가볍게 해줄 것이다.
 어떤 것이든 시작이 어려운 것이기 때문에.</desc>
-			<Image>null</Image>
+			<Image>relic_oldBoots</Image>
 		</item>
 		<item>
 			<id>30008</id>
@@ -443,7 +453,7 @@
 			<desc>전사, 사수 공격속도 15% 증가
       
  빛바랜 회초리의 조각. 올바른 가르침에 건강한 정신이 깃들며, 건강한 정신은 칼끝을 날카롭게 벼린다.</desc>
-			<Image>null</Image>
+			<Image>relic_brokenStick</Image>
 		</item>
 		<item>
 			<id>30010</id>
@@ -462,7 +472,7 @@
       
  앞부분이 뭉텅이로 잘려나간 채찍. 
 더이상 채찍으로써의 기능은 불가능하지만, 그 역할은 이미 팬치들의 기억속에 각인 되어있다.</desc>
-			<Image>null</Image>
+			<Image>relic_whip</Image>
 		</item>
 		<item>
 			<id>30012</id>
@@ -493,7 +503,7 @@
  노예 '왁노예'의 대한 이름과 설명이 써져있다.
 그는 검술과 탈출의 달인이었으며, 오크란의 수용소에서 탈출한 엄청난 실력을 가지고 있다.
 또한 굉장히 잔혹한 인물로 동료였던 '레이'와 선동한 다른 노예들을 미끼로 빠져나갔다.</desc>
-			<Image>null</Image>
+			<Image>relic_slave</Image>
 		</item>
 		<item>
 			<id>30015</id>
@@ -509,22 +519,7 @@
 그의 손에 총이 쥐여졌 있었을 때 뿐이었거든요...."</desc>
 			<Image>relic_wanted</Image>
 		</item>
-		<item>
-			<id>30016</id>
-			<type>Relic</type>
-			<name>NONE</name>
-			<Image>null</Image>
-		</item>
-		<item>
-			<id>30017</id>
-			<type>Relic</type>
-			<name>난민의 증표</name>
-			<desc>팬치 유입을 보상으로 선택 할 시 
-팬치 유입량 + 5
 
-"난민 받아라!" / "난하!"</desc>
-			<Image>null</Image>
-		</item>
     
     <item>
       <id>31000</id>
@@ -557,7 +552,7 @@
       <desc>모두 치명타 확률 10%
 
   다른 이들을 놀래키기 좋아하는 장난꾸러기가 숨어있다.</desc>
-      <Image>null</Image>
+      <Image>relic_surpriseBox</Image>
     </item>
 	</items>
 </itemCollection>

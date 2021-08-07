@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2481717469
+CRC: 4236786737
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 4f52d36bf49a0818b54b990f55938b9a
+    Hash: 87b0193543cde4a25abfdbf9743e21b1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 663db19447719dd1a53fd1a60ddbf595
@@ -159,6 +159,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield0.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow0.png
 - Assets/Audio/deaths/wakgoodDeath.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_shield.png
 - Assets/Prefab/Skill/explosion.prefab
 - Assets/Images/Sprites/Equipped/img_blunt.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_dog.png
@@ -178,6 +179,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun3.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst3.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_wand1.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_brokenStick.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_wand0.png
 - Assets/WakAsset/UI/NotifyText.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_wand2.png
@@ -190,23 +192,28 @@ Assets:
 - Assets/Images/Sprites/Equipped/img_thrown.png
 - Assets/Images/Sprites/Equipped/img_sword.png
 - Assets/Images/Sprites/Equipped/img_throwable.png
+- Assets/Images/DialogImage/easterEgg_AoOni/dialog_plate.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_wanted.png
 - Assets/Prefab/Enemy/HyumPanzee.prefab
 - Assets/Audio/attacks/Throw.mp3
 - Assets/Audio/attacks/hunsu_0.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield1.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_nanmin.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe3.png
 - Assets/Prefab/Skill/skillcarrier.prefab
 - Assets/Audio/attacks/BowShot.mp3
 - Assets/Images/Sprites/Equipped/img_instruments.png
 - Assets/Audio/attacks/hunsu_1.mp3
 - Assets/Prefab/Skill/SnipeEffect.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_montihole.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_vrgear.png
 - Assets/Prefab/Skill/BerserkEffect.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_connan.png
 - Assets/Audio/skills/SnipeSound.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt2.png
 - Assets/Images/Sprites/Equipped/img_axe.png
 - Assets/Prefab/Skill/HealEffect.prefab
+- Assets/Images/Sprites/ItemIcon/Relic/relic_key.png
 - Assets/Audio/skills/MassHeal.mp3
 - Assets/Images/Sprites/ItemIcon/Relic/relic_grass.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt0.png
@@ -228,6 +235,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Relic/relic_donation.png
 - Assets/Prefab/Enemy/Minsu.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun2.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_slave.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun1.png
 - Assets/Images/Sprites/Equipped/img_shield.png
 - Assets/WakAsset/UI/UIItemToolTip.prefab
@@ -238,14 +246,20 @@ Assets:
 - Assets/Audio/skills/TauntSound.mp3
 - Assets/WakAsset/UI/UIWakWindow.prefab
 - Assets/Audio/MoveItem.mp3
+- Assets/Images/DialogImage/easterEgg_AoOni/dialog_takuro.png
 - Assets/Audio/skills/ArrowRain.mp3
+- Assets/Images/DialogImage/easterEgg_AoOni/dialog_takeshi.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_oldBoots.png
+- Assets/Images/Sprites/ItemIcon/Relic/relic_whip.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_protein.png
 - Assets/Audio/attacks/ArrowHit.mp3
 - Assets/Images/Sprites/Equipped/img_bullet.png
+- Assets/Images/DialogImage/easterEgg_AoOni/dialog_mika.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe00.png
 - Assets/Prefab/Skill/skillFail.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow1.png
 - Assets/Audio/attacks/Explosion.mp3
+- Assets/Images/Sprites/ItemIcon/Relic/relic_surpriseBox.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_eye.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/attacks/GlassHit.mp3
@@ -260,6 +274,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun0.png
 - Assets/Audio/attacks/CymbalsAttack.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst2.png
+- Assets/Images/DialogImage/dialog_wak.png
 - Assets/Audio/skills/StunSound.mp3
 - Assets/WakAsset/UI/UIShop.prefab
 - Assets/Audio/deaths/panzeeDeath0.mp3

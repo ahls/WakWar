@@ -7,11 +7,15 @@ using UnityEngine.EventSystems;
 public class Item_Slot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private ItemType _slotType;
-
     public UnitCombat assgiendUnit { get; set; }
-
+    
     public int CurrentNumber { get; set; } = 0;
-    public bool IsTradingSpot = false;    
+
+    //0: 아무것도 아님
+    //1: 상점창
+    //2: 유물창
+
+    [SerializeField] private short _spotPurpose = 0;
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.button != PointerEventData.InputButton.Left) return; //좌클릭이 아니면 리턴
@@ -23,7 +27,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
             if (CurrentNumber == 0)
             {
                 //상점 판매 로직
-                if(IsTradingSpot)
+                if(_spotPurpose == 1)
                 {
                     if(draggedItem.SellingItem)
                     {//상점에 진열된 아이템이면 리턴
@@ -40,12 +44,16 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                         IngameManager.UIShop.ToggleSellingWindow(false);
                     }
                 }
-
                 else if (draggedItem.compareType(_slotType))
                 {//아이템창 타입 비교
 
+
+                    if(_spotPurpose == 2)
+                    {//유물 장착했을때
+                        IngameManager.RelicManager.EquipRelic(draggedItem.GetComponent<Item_Data>().ItemID);
+                    }
                     //상점 구매 로직
-                    if (draggedItem.SellingItem)
+                    else if (draggedItem.SellingItem)
                     {
                         int itemPrice = -Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value;
                         if(!IngameManager.UIInventory.AddMoney(itemPrice))

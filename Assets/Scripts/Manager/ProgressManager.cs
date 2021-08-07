@@ -37,6 +37,7 @@ public class ProgressManager : MonoBehaviour
     public void NextSequence()
     {
         _currentProgressIndex++;
+        Debug.Log($"Current progress is: {ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent}");
         switch (ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent)   
         {
             case CurrentEvent.Dialog:
@@ -89,10 +90,12 @@ public class ProgressManager : MonoBehaviour
     /// <returns></returns>
     public IEnumerator  EndCombat()
     {//AI 및 조작 종료
+        Debug.Log("End of Combat sequence called");
         IngameManager.UnitManager.ControlOn = false;
         UnitCombat.AIenabled = false;
         yield return new WaitForSeconds(1);
         Global.UIManager.ToggleMenu(true);
+        Debug.Log("Next sequence is being called from the EndCombat");
         NextSequence();
 
     }

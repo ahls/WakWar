@@ -63,6 +63,7 @@ public class UIInventory : UIPopup
                 return false;
             }
 
+            //돈 추가
             _moneyLocation = getEmptySlot(1);
 
             GameObject newMoney = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
@@ -71,7 +72,7 @@ public class UIInventory : UIPopup
             return true;
         }
         else if(amount > 0)
-        {//추가시
+        {//돈의 위치가 있고, 추가
             _itemSlots[_moneyLocation].CurrentNumber += amount;
             return true;
         }
@@ -81,9 +82,14 @@ public class UIInventory : UIPopup
             {//돈이 모자르면
                 return false;
             }
-
+            //차감할 돈이 충분함
             _itemSlots[_moneyLocation].CurrentNumber += amount;
             return true;
         }
+    }
+    private void UpdateCurrentNumber(int index,int amount)
+    {
+        _itemSlots[index].CurrentNumber += amount;
+
     }
 }

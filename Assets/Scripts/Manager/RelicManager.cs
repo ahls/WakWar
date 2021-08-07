@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,10 @@ public class RelicManager : MonoBehaviour
         IngameManager.instance.SetRelicManager(this);
     }
 
+    internal void EquipRelic(int itemID)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class ClassModifier
