@@ -19,7 +19,6 @@ public class PulledItem
     public int value;
     [XmlElement("weaponID")]
     public int weaponID;
-    
     [XmlElement("Image")]
     public string imageSrc;
 }

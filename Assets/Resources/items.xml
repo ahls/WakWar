@@ -5,7 +5,7 @@
       <id>10000</id>
       <type>Money</type>
       <name>금화</name>
-      <desc>반짝반짝 빛나는 금화입니다. 상점에서 사용 할 수 있습니다.</desc>
+      <desc>반짝반짝 금색으로 빛나는 동전입니다. 상점에서 사용 할 수 있습니다.</desc>
       <value>1</value>
       <Image>I_coin</Image>
     </item>
@@ -382,13 +382,16 @@
 			<id>30002</id>
 			<type>Relic</type>
 			<name>흐물흐물한 잔디</name>
+      <desc>모든 유닛 이동속도 10% 증가
+      
+	되새김질을 몇번이고 반복한듯한 모습의 풀덩어리. 원형을 알아볼 수 없는 건 생김새 뿐만이 아니리라.</desc>
 			<Image>relic_grass</Image>
 		</item>
 		<item>
 			<id>30003</id>
 			<type>Relic</type>
 			<name>몬티홀의 상자</name>
-			<desc>각 방 보상의 가치를 보여줍니다.
+			<desc>장비나 소모품 보상을 선택시, 주어진 보상을 얻기 전에 다시 한번 더 재생성할 수 있습니다.
 
    그 어떤 누구도, 심지어 몇년동안 수학과 과학에 매진한 이들마저 이 상자의 존재를 한번에 이해 하지 못한다고 전해진다.</desc>
 			<Image>relic_montihole</Image>
@@ -539,7 +542,7 @@
       <id>31001</id>
       <type>Relic</type>
       <name>노잣돈 주머니</name>
-      <desc>적이 죽을때마다 금화 두개를 얻습니다.
+      <desc>적이 죽을때마다 금화 두개 추가로 얻습니다.
 
   산 자들을 위한 죽은자들의 호의</desc>
       <Image>null</Image>

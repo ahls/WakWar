@@ -9,7 +9,7 @@ public class RelicManager : MonoBehaviour
     public ClassModifier RangerModifier = new ClassModifier();
     public ClassModifier SupportModifier = new ClassModifier();
     public ClassModifier WakModifier = new ClassModifier();
-    public bool ShowRewardValue = false;
+    public bool RerollReward = false;
     public int GoldPerKill = 1;
     public int StatMutliplier = 1;
     public int BonusPanzee = 0;
@@ -21,7 +21,27 @@ public class RelicManager : MonoBehaviour
 
     internal void EquipRelic(int itemID)
     {
-        throw new NotImplementedException();
+        if (itemID == 31001)
+        {//노잣돈 주머니 유물
+            GoldPerKill += 2;
+        }
+        else if (itemID == 30001)
+        {//난민의 증표
+            BonusPanzee += 3;
+        }
+        else if (itemID == 30000)
+        {//치킨 조각
+            StatMutliplier +=1;
+        }
+        else if(itemID == 30003)
+        {
+            RerollReward = true;
+        }
+        else
+        {//그 외의 스탯 올려주는 유물들
+
+        }
+        
     }
 }
 

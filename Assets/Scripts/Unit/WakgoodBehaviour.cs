@@ -30,6 +30,7 @@ public class WakgoodBehaviour : MonoBehaviour
 
     public void AddPanzeeStat(ClassType panzeeClass, int numDelta)
     {
+        numDelta *= IngameManager.RelicManager.StatMutliplier;
         switch (panzeeClass)
         {
             case ClassType.Warrior:

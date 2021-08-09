@@ -144,7 +144,7 @@ public class TwitchClient : MonoBehaviour
 
     public int OpenEnrolling(int numSlots)
     {
-        _openSlots += numSlots;
+        _openSlots += numSlots + IngameManager.RelicManager.BonusPanzee;
         return _openSlots;
     }
 
