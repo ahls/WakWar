@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class RelicManager : MonoBehaviour
 {
-    public ClassModifier WarriorModifier = new ClassModifier();
-    public ClassModifier RangerModifier = new ClassModifier();
-    public ClassModifier SupportModifier = new ClassModifier();
-    public ClassModifier WakModifier = new ClassModifier();
+    public Dictionary<ClassType, ClassModifier> ClassModifiers = new Dictionary<ClassType, ClassModifier>();
     public bool RerollReward = false;
     public int GoldPerKill = 1;
     public int StatMutliplier = 1;
@@ -18,7 +15,18 @@ public class RelicManager : MonoBehaviour
     {
         IngameManager.instance.SetRelicManager(this);
     }
-
+    private void Awake()
+    {
+        
+        ClassModifiers[ClassType.Shooter] = new ClassModifier();
+        ClassModifiers[ClassType.Supporter] = new ClassModifier();
+        ClassModifiers[ClassType.Wak] = new ClassModifier();
+        ClassModifiers[ClassType.Warrior] = new ClassModifier();
+        foreach (var modifier in ClassModifiers.Values)
+        {
+            modifier.init();
+        }
+    }
     internal void EquipRelic(int itemID)
     {
         if (itemID == 31001)
@@ -31,31 +39,63 @@ public class RelicManager : MonoBehaviour
         }
         else if (itemID == 30000)
         {//치킨 조각
-            StatMutliplier +=1;
+            StatMutliplier += 1;
         }
-        else if(itemID == 30003)
-        {
+        else if (itemID == 30003)
+        {//몬티홀의 상자
             RerollReward = true;
+        }
+        else if(itemID == 30012)
+        {//코기 인형
+
         }
         else
         {//그 외의 스탯 올려주는 유물들
-
+            foreach (var effect in Items.DB[itemID].RelicEffects)
+            {
+                if (effect.ClassType == ClassType.Null)
+                {
+                    ClassModifiers[ClassType.Shooter].ApplyEffect(effect.attribute,effect.Value);
+                    ClassModifiers[ClassType.Warrior].ApplyEffect(effect.attribute, effect.Value);
+                    ClassModifiers[ClassType.Wak].ApplyEffect(effect.attribute, effect.Value);
+                    ClassModifiers[ClassType.Supporter].ApplyEffect(effect.attribute, effect.Value);
+                }
+                else
+                {
+                    ClassModifiers[effect.ClassType].ApplyEffect(effect.attribute, effect.Value);
+                }
+            }
         }
-        
+
     }
-}
 
-public class ClassModifier
-{
-    private static readonly string[] ATTRIBUTES = { "Damage", "AP", "Armor", "MaxHP", "MovementSpeed", "AttackSpeed", "CDReduction", "Regen", "CritChance" };
-    public Dictionary<string, float> Modifiers = new Dictionary<string, float>(); 
-
-    public void init()
+    public class ClassModifier
     {
-        foreach (string attribute in ATTRIBUTES)
-        {
-            Modifiers[attribute] = 0;
-        }
+        public static readonly string[] ATTRIBUTES = { "Damage", "AP", "Armor", "MaxHP", "MovementSpeed", "AttackSpeed", "CDReduction", "Regen", "CritChance","LifeSteal" };
+        public Dictionary<string, float> Modifiers = new Dictionary<string, float>();
 
+        public void init()
+        {
+            foreach (string attribute in ATTRIBUTES)
+            {
+                switch (attribute)
+                {
+                    case "MaxHP":
+                        Modifiers[attribute] = 50;
+                        break;
+                    case "MovementSpeed":
+                        Modifiers[attribute] = 0.1f;
+                        break;
+                    default:
+                        Modifiers[attribute] = 0;
+                        break;
+                }
+            }
+
+        }
+        public void ApplyEffect(string whichAttribute, float value)
+        {
+            Modifiers[whichAttribute] += value;
+        }
     }
 }

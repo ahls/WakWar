@@ -130,7 +130,6 @@ public class UnitCombat : MonoBehaviour
         ProjectileSpeed = 1.5f;
         _heightDelta = heightDelta;
         AttackImage = projImage;
-        
     }
     public void SoundSetup(string deathSound, string projSound, string impactSound, int numVariations = 1)
     {
@@ -356,17 +355,27 @@ public class UnitCombat : MonoBehaviour
             _heightDelta = 0;
             _torque = 0;
         }
-        else
+        else//무기 인덱스가 0이 아니면 플레이어가 조종하는 유닛임.
         {
-            TotalDamage = BaseDamage + Weapons.DB[_weaponIndex].damage;
-            TotalAOE = BaseAOE + Weapons.DB[_weaponIndex].AttackArea;
-            TotalRange = BaseRange + Weapons.DB[_weaponIndex].AttackRange;
-            TotalAS = BaseAS + Weapons.DB[_weaponIndex].AttackSpeed;
-            TotalArmor = BaseArmor + Weapons.DB[_weaponIndex].Armor;
-            ProjectileSpeed = Weapons.DB[_weaponIndex].projSpeed;
-            _heightDelta = Weapons.DB[_weaponIndex].heightDelta;
-            _torque = Weapons.DB[_weaponIndex].torque;
-            TargetFaction = Weapons.DB[_weaponIndex].targetFaction;
+            Dictionary<string, float> classModifier = IngameManager.RelicManager.ClassModifiers[UnitClassType].Modifiers;
+            Weapon weaponInfo = Weapons.DB[_weaponIndex];
+            //+classModifier.Modifiers[""]
+            TotalDamage = BaseDamage + weaponInfo.damage + (int)classModifier["Damage"];
+            
+            TotalRange = BaseRange + weaponInfo.AttackRange;
+            TotalAP = BaseAP + weaponInfo.AP + (int)classModifier["AP"];
+            TotalAS = BaseAS + weaponInfo.AttackSpeed + classModifier["AttackSpeed"];
+            TotalArmor = BaseArmor + weaponInfo.Armor + (int)classModifier["Armor"];
+            HealthMax = (int)classModifier["MaxHP"];
+            CritChance = classModifier["CritChance"];
+            LifeSteal = classModifier["LifeSteal"];
+            _unitstats.MoveSpeed = classModifier["MovementSpeed"];
+
+            TotalAOE = BaseAOE + weaponInfo.AttackArea;
+            ProjectileSpeed = weaponInfo.projSpeed;
+            _heightDelta = weaponInfo.heightDelta;
+            _torque = weaponInfo.torque;
+            TargetFaction = weaponInfo.targetFaction;
         }
         _healthInversed = 1 / HealthMax;
     }

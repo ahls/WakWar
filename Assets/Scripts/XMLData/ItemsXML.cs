@@ -21,6 +21,20 @@ public class PulledItem
     public int weaponID;
     [XmlElement("Image")]
     public string imageSrc;
+
+    [XmlArray("relicEffects")]
+    [XmlArrayItem("relicEffect")]
+    public List<itemEffect_Relic> relicEffects = new List<itemEffect_Relic>();
+}
+[XmlType("relicEffect")]
+public class itemEffect_Relic
+{
+    [XmlElement("class")]
+    public ClassType ClassType; //none 이면 모든 클래스 적용
+    [XmlElement("attribute")]
+    public string attribute;
+    [XmlElement("value")]
+    public float Value;
 }
 
 public struct Item
@@ -28,7 +42,7 @@ public struct Item
     public ItemType type;
     public string name, desc,imgSrc;
     public int value,weaponID;
-
+    public List<itemEffect_Relic> RelicEffects;
     public Item(PulledItem _input)
     {
         type = _input.itemType;
@@ -45,6 +59,7 @@ public struct Item
         {
             weaponID = 0;
         }
+        RelicEffects = _input.relicEffects;
     }
 }
 
