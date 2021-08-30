@@ -35,6 +35,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
         GetComponent<RectTransform>().sizeDelta = new Vector2(58, 58);
         transform.localScale = Vector3.one;
         transform.SetAsFirstSibling();
+
     }
 
     public void OnPointerDown(PointerEventData eventData)

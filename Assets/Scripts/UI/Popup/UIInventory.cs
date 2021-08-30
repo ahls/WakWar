@@ -67,7 +67,7 @@ public class UIInventory : UIPopup
             _moneyLocation = getEmptySlot(1);
 
             GameObject newMoney = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
-            newMoney.GetComponent<Item_Data>().Setup(10000, _itemSlots[_moneyLocation].transform);
+            newMoney.GetComponent<Item_Data>().Setup(1, _itemSlots[_moneyLocation].transform);
             _itemSlots[_moneyLocation].CurrentNumber = amount;
             return true;
         }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2846218371
+CRC: 1265514686
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 80b9dea76c57ddc5ba20d9e97d8e9255
+    Hash: 533ead40d5ff4e2559e614e494d5ae76
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f144fccf16bd88f39797cccc41a4bd58
+    Hash: e8d050b4a93fc83de4376df34a747863
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -150,6 +150,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_throw3.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe1.png
 - Assets/Prefab/Effects/Skill/MassHealEffect.prefab
+- Assets/Images/Sprites/ItemIcon/General/armor_potionpng.png
 - Assets/Prefab/Enemy/QueenBug.prefab
 - Assets/Prefab/Effects/slash.prefab
 - Assets/Prefab/inventory/Character Slot.prefab
@@ -186,6 +187,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_wand2.png
 - Assets/Audio/attacks/WoodHit.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_throw1.png
+- Assets/Images/Sprites/ItemIcon/General/attack_elixir.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow3.png
 - Assets/Images/Sprites/Equipped/img_arrow.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword1.png
@@ -201,6 +203,7 @@ Assets:
 - Assets/Audio/attacks/Throw.mp3
 - Assets/Audio/attacks/hunsu_0.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield1.png
+- Assets/Images/Sprites/ItemIcon/General/exp_potion.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_nanmin.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_axe3.png
 - Assets/Prefab/Effects/Skill/skillcarrier.prefab
@@ -212,12 +215,14 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Relic/relic_vrgear.png
 - Assets/Prefab/Effects/Skill/BerserkEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Relic/relic_connan.png
+- Assets/Images/Sprites/ItemIcon/General/hp_potion.png
 - Assets/Audio/skills/SnipeSound.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt2.png
 - Assets/Images/Sprites/Equipped/img_axe.png
 - Assets/Prefab/Effects/Skill/HealEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Relic/relic_key.png
 - Assets/Audio/skills/MassHeal.mp3
+- Assets/Images/Sprites/ItemIcon/General/attack_potion.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_grass.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_blunt0.png
 - Assets/Images/Sprites/Equipped/img_bow.png
@@ -243,6 +248,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Relic/relic_slave.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun1.png
 - Assets/Images/Sprites/Equipped/img_shield.png
+- Assets/Images/Sprites/ItemIcon/General/hp_elixir.png
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Images/DialogImage/dialog_panzee.png
 - Assets/Prefab/Effects/critical.prefab
@@ -267,6 +273,7 @@ Assets:
 - Assets/Audio/attacks/Explosion.mp3
 - Assets/Images/Sprites/ItemIcon/Relic/relic_surpriseBox.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_eye.png
+- Assets/Images/Sprites/ItemIcon/General/exp_elixir.png
 - Assets/WakAsset/UI/NotifyWindow.prefab
 - Assets/Audio/attacks/GlassHit.mp3
 - Assets/Audio/attacks/Cut.mp3
@@ -280,6 +287,7 @@ Assets:
 - Assets/WakAsset/PooledPrefab/AttackEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield3.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun0.png
+- Assets/Images/Sprites/ItemIcon/General/armor_elixir.png
 - Assets/Audio/attacks/CymbalsAttack.mp3
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst2.png
 - Assets/Images/DialogImage/dialog_wak.png

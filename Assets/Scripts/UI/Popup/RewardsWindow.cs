@@ -16,9 +16,11 @@ public class RewardsWindow : UIPopup
 {
 
     [SerializeField] private GameObject categoryPanel;
+    [SerializeField] private GameObject MontyPanel;
     [SerializeField] private GameObject[] slots;
     [SerializeField] private Text[] rewardText;
 
+    private RewardType _lastReward;
     private RewardType[] _rewardTypes = new RewardType[3];
     private int _rewardAmount = 200;
     public int AdditionalReinforce = 0;
@@ -78,19 +80,17 @@ public class RewardsWindow : UIPopup
 
         ClearRewards();
 
-        int chosenItemID;
 
         switch (_rewardTypes[index])
         {
             case RewardType.consumable:
-                chosenItemID = Items.consumableIDs[Random.Range(0, Items.consumableIDs.Count)];
-                LayItems(chosenItemID);
+                MakeMultiples(1, 9, 2);
                 break;
             case RewardType.equipment:
                 MakeMultiples(2, 9, 4);
                 break;
             case RewardType.relic:
-                chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count - 3)];// 보스 보상 제외
+                int chosenItemID = Items.relicIDs[Random.Range(0, Items.relicIDs.Count - 3)];// 보스 보상 제외
 
                 MakeSingle(chosenItemID);
 
@@ -185,6 +185,27 @@ public class RewardsWindow : UIPopup
             slots[i].GetComponent<Item_Slot>().CurrentNumber = 1;
         }
     }
+
+    public void MontyReroll()
+    {
+        MontyPanel.SetActive(false);
+        if(_lastReward == RewardType.equipment)
+        {
+            MakeMultiples(2, 9, 4);
+        }
+        else if(_lastReward == RewardType.consumable)
+        {
+            
+        }
+    }
+    public void MontyReveal()
+    {
+        MontyPanel.SetActive(false);
+    }
+
+
+
+
     public override PopupID GetPopupID()
     {
         return PopupID.UIReward;
