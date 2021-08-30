@@ -31,6 +31,11 @@
           <text>뭐야 타케시, 겁먹은거야?</text>
         </dialogue>
         <dialogue>
+          <name>sound</name>
+          <text></text>
+        </dialogue>
+        
+        <dialogue>
           <portraitImage>dialog_plate</portraitImage>
           <name>접시</name>
           <text>쨍그랑</text>

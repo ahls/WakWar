@@ -110,6 +110,7 @@ public class RewardsWindow : UIPopup
     {
         for (int i = 0; i < 16; i++)// 전에 올라온 아이템 전부 삭제
         {
+            slots[i].GetComponent<Item_Slot>().CurrentNumber = 0;
             Transform tempTransform = slots[i].transform;
             if (tempTransform.childCount != 0)
             {
@@ -130,7 +131,7 @@ public class RewardsWindow : UIPopup
         newItem.GetComponent<Item_Data>().Setup(itemID);
         newItem.transform.SetParent(slots[0].transform);
         newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
-        slots[0].GetComponent<Item_Slot>().CurrentNumber++;
+        slots[0].GetComponent<Item_Slot>().CurrentNumber=1;
     }
     private void MakeMultiples(int baseNumber,int typeRange, int tierRange)
     {
@@ -181,7 +182,7 @@ public class RewardsWindow : UIPopup
         {
             GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
             newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
-            slots[i].GetComponent<Item_Slot>().CurrentNumber++;
+            slots[i].GetComponent<Item_Slot>().CurrentNumber = 1;
         }
     }
     public override PopupID GetPopupID()

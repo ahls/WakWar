@@ -12,6 +12,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     public bool SellingItem = false; //상점에서 파는 아이템일경우 true
     private RectTransform _rectTransform;
     private ItemType _itemType;
+    private int _numberOfItems;
     
 
     // Start is called before the first frame update
@@ -72,7 +73,8 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber--; //현재 자리를 빈자리로 표시
+            _numberOfItems = ParentToReturn.GetComponent<Item_Slot>().CurrentNumber;
+            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber = 0; //현재 자리를 빈자리로 표시
             _rectTransform.SetParent(_canvas.transform);
             _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
@@ -104,14 +106,14 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             //setting parents
             _rectTransform.SetParent(ParentToReturn);
             _rectTransform.position = ParentToReturn.position;
-            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber++;
+            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber = _numberOfItems;
             IngameManager.UnitManager.ControlOn = true;
 
 
             //setting the raycast option
             _canvasGroup.blocksRaycasts = true;
             _canvasGroup.alpha = 1f;
-
+            transform.SetAsFirstSibling();
             //상점 판매칸 닫는 스크립트
             if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
             {

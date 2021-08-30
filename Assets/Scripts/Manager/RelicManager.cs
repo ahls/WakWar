@@ -29,6 +29,10 @@ public class RelicManager : MonoBehaviour
     }
     internal void EquipRelic(int itemID)
     {
+        if(itemID == 30016)
+        {
+            Global.AudioManager.PlayOnce("TaiwanN1");
+        }
         if (itemID == 31001)
         {//노잣돈 주머니 유물
             GoldPerKill += 2;

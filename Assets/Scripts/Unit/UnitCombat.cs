@@ -74,7 +74,7 @@ public class UnitCombat : MonoBehaviour
     public Faction TargetFaction;                       //공격타겟
     [HideInInspector]public ClassType UnitClassType = ClassType.Null;       //클래스 타입
     private int _weaponIndex = 0;                       //무기 번호
-    private UnitStats _unitstats;
+    [SerializeField]private UnitStats _unitstats;
 
 
 
@@ -141,7 +141,7 @@ public class UnitCombat : MonoBehaviour
     #endregion
     private void Start()
     {
-        _unitstats = GetComponent<UnitStats>();
+        if(_unitstats == null)_unitstats = GetComponent<UnitStats>();
         _healthCurrent = HealthMax;
         _healthBar.maxValue = HealthMax;
         HealthBarUpdate();
@@ -369,6 +369,7 @@ public class UnitCombat : MonoBehaviour
             HealthMax = (int)classModifier["MaxHP"];
             CritChance = classModifier["CritChance"];
             LifeSteal = classModifier["LifeSteal"];
+            Debug.Log(_unitstats);
             _unitstats.MoveSpeed = classModifier["MovementSpeed"];
 
             TotalAOE = BaseAOE + weaponInfo.AttackArea;

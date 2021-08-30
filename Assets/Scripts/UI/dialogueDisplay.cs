@@ -12,6 +12,9 @@ public class DialogueDisplay : MonoBehaviour
     private int _dialogIndex;
     private bool _moreDialog;
     private bool _dialogueActive;
+
+    private readonly HashSet<string> commands = new HashSet<string>() { "sound", "fadeout", "fadein" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +34,25 @@ public class DialogueDisplay : MonoBehaviour
         }
         else
         {
+            string namePart = Dialogues.DB[_dialogID][_dialogIndex].NameEntry;
+            if (commands.Contains(namePart))
+            {
+                switch (namePart)
+                {
+                    case "sound":
+                        Global.AudioManager.PlayOnce(Dialogues.DB[_dialogID][_dialogIndex].TextEntry);
+                        break;
+                    case "fadein":
+                        break;
+                    case "fadeout":
+                        break;
+                }
+                _dialogIndex++;
+                return LoadNextText();
+
+            }
             _dialogText.text = Dialogues.DB[_dialogID][_dialogIndex].TextEntry;
             _dialogName.text = Dialogues.DB[_dialogID][_dialogIndex].NameEntry;
-            Debug.Log(Dialogues.DB[_dialogID][_dialogIndex].PortraitImage);
 
             _portrait.sprite = Global.ResourceManager.LoadTexture(Dialogues.DB[_dialogID][_dialogIndex].PortraitImage);
             _dialogIndex++;

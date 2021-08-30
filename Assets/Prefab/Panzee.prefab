@@ -1345,17 +1345,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugAction: 0
   _healthBar: {fileID: 3964886467147534754}
-  ImpactAudio: null
   AttackTarget: {fileID: 0}
-  SearchRange: 0
   SeekTarget: 0
-  PreferredTarget: 0
   OwnedFaction: 1
   TargetFaction: 0
-  weaponType: 0
+  UnitClassType: 4
+  _unitstats: {fileID: 8252109871089551390}
   _equippedImage: {fileID: 2989731452029694304}
   Skill: {fileID: 0}
+  EnemyBehavour: {fileID: 0}
 --- !u!114 &8252109871089551390
 MonoBehaviour:
   m_ObjectHideFlags: 0

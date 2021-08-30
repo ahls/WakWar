@@ -2,14 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using TMPro;
 
 public class Item_Slot : MonoBehaviour, IDropHandler
 {
+    [SerializeField] private TMP_Text _numberDisplay;
     [SerializeField] private ItemType _slotType;
     public UnitCombat assgiendUnit { get; set; }
-    
-    public int CurrentNumber { get; set; } = 0;
+    private int _currentNumber = 0;
+    public int CurrentNumber
+    {
+        get => _currentNumber;
+        set
+        {
+            _currentNumber = value;
+            if (_numberDisplay != null)
+            {
+                if (value > 1)
+                {
+                    _numberDisplay.text = _currentNumber.ToString();
+
+                }
+                else
+                {                  
+                    _numberDisplay.text = "";
+                }
+            }
+
+        }
+    } 
 
     //0: 아무것도 아님
     //1: 상점창

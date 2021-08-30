@@ -687,6 +687,32 @@
         </relicEffect>
       </relicEffects>
 		</item>
+    
+    
+    
+    <!--##########################################################-->
+    
+		<item>
+			<id>30016</id>
+			<type>Relic</type>
+			<name>고난 액자 1</name>
+			<desc>우왁굳 체력 20%, 이동 속도 10% 증가
+      
+ 아무것도 몸에 두르지 않은 두 남자의 사투가 묘사된 그림이 들어있는 액자 시리즈 중 하나. 코가 큰 전사의 반항심 가득한 도발은 아직까지도 회자된다.</desc>
+			<Image>relic_connan</Image>
+      <relicEffects>
+        <relicEffect>
+          <class>Wak</class>
+          <attribute>MaxHP</attribute>
+          <value>0.2</value>
+        </relicEffect>
+        <relicEffect>
+          <class>Wak</class>
+          <attribute>MovementSpeed</attribute>
+          <value>0.1</value>
+        </relicEffect>
+      </relicEffects>
+		</item>
 
     <!--##########################################################-->
     
