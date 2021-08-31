@@ -9,10 +9,13 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public Transform ParentToReturn;
     public bool Equipped = false;
+    private bool _canDrag = true;
+    public bool SetToPool { get; set; }
     public bool SellingItem = false; //상점에서 파는 아이템일경우 true
     private RectTransform _rectTransform;
     private ItemType _itemType;
     private int _numberOfItems;
+    
     
 
     // Start is called before the first frame update
@@ -71,7 +74,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     #endregion
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (_canDrag &&eventData.button == PointerEventData.InputButton.Left)
         {
             _numberOfItems = ParentToReturn.GetComponent<Item_Slot>().CurrentNumber;
             ParentToReturn.GetComponent<Item_Slot>().CurrentNumber = 0; //현재 자리를 빈자리로 표시
@@ -119,6 +122,14 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             {
                 IngameManager.UIShop.ToggleSellingWindow(false);
             }
+            if(SetToPool)
+            {
+                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, gameObject);
+            }
         }
+    }
+    public void SetDraggable(bool state)
+    {
+        _canDrag = state;
     }
 }

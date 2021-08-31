@@ -35,6 +35,7 @@ public class RewardsWindow : UIPopup
     }
     private void OnDisable()
     {
+        if(IngameManager.ProgressManager!= null)
         IngameManager.ProgressManager.NextSequence();
     }
     public void SetChances()
@@ -80,13 +81,21 @@ public class RewardsWindow : UIPopup
 
         ClearRewards();
 
-
+        _lastReward = _rewardTypes[index];
         switch (_rewardTypes[index])
         {
             case RewardType.consumable:
-                MakeMultiples(1, 9, 2);
+                MakeMultiples(1, 4, 2);
+                if (IngameManager.RelicManager.RerollReward)
+                {
+                    MontySetup();
+                }
                 break;
             case RewardType.equipment:
+                if(IngameManager.RelicManager.RerollReward)
+                {
+                    MontySetup();
+                }
                 MakeMultiples(2, 9, 4);
                 break;
             case RewardType.relic:
@@ -105,6 +114,8 @@ public class RewardsWindow : UIPopup
         }
 
     }
+
+
 
     private void ClearRewards()
     {
@@ -172,31 +183,23 @@ public class RewardsWindow : UIPopup
         Debug.Log($"총 가격: {_rewardAmount}");
         Debug.Log($"아이템 갯수: {listOfItems.Count}");
     }
-    private void LayItems(int itemID)
+
+    private void MontySetup()
     {
-
-        int itemValue = Items.DB[itemID].value;
-        int numItems = (_rewardAmount * lowerConstant / itemValue) + 1; // 지급될 아이템 갯수
-        
-        for (int i = 0; i < numItems; i++)
-        {
-            GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
-            newItem.GetComponent<Item_Data>().Setup(itemID, slots[i].transform);
-            slots[i].GetComponent<Item_Slot>().CurrentNumber = 1;
-        }
+        MontyPanel.SetActive(true);
     }
-
     public void MontyReroll()
     {
-        MontyPanel.SetActive(false);
+        ClearRewards();
         if(_lastReward == RewardType.equipment)
         {
             MakeMultiples(2, 9, 4);
         }
         else if(_lastReward == RewardType.consumable)
         {
-            
+            MakeMultiples(1, 4, 2);
         }
+        MontyPanel.SetActive(false);
     }
     public void MontyReveal()
     {

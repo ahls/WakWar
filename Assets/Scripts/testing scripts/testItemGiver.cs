@@ -31,7 +31,7 @@ public class testItemGiver : MonoBehaviour
             }
             else
             {
-                Debug.LogError("존재하지 않는 ID입니다");
+                Debug.LogWarning("존재하지 않는 ID입니다");
             }
         }
     }

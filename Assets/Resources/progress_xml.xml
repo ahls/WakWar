@@ -9,7 +9,7 @@
     -->
     <Sequence>
       <eventType>Dialog</eventType>
-      <value>4552</value>
+      <value>1000</value>
     </Sequence>
     <Sequence>
       <eventType>EndCombat</eventType>

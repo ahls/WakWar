@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1265514686
+CRC: 3403401085
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 533ead40d5ff4e2559e614e494d5ae76
+    Hash: 0275e7cc0fb6826fa538c5ac0a510643
   TypeTreeHash:
     serializedVersion: 2
     Hash: e8d050b4a93fc83de4376df34a747863
@@ -194,7 +194,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword3.png
 - Assets/Images/Sprites/Equipped/img_thrown.png
 - Assets/Images/Sprites/Equipped/img_sword.png
-- Assets/Images/DialogImage/dialog_panzee0 .png
+- Assets/Images/DialogImage/dialog_panzee2.png
 - Assets/Images/Sprites/Equipped/img_throwable.png
 - Assets/Images/DialogImage/easterEgg_AoOni/dialog_plate.png
 - Assets/Images/Sprites/ItemIcon/Relic/relic_wanted.png
@@ -229,7 +229,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_shield2.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_inst1.png
 - Assets/WakAsset/UI/UIReward.prefab
-- Assets/Images/DialogImage/dialog_panzee2.png
+- Assets/Images/DialogImage/dialog_panzee0.png
 - Assets/Audio/attacks/Swing.mp3
 - Assets/Images/Sprites/Equipped/img_Hunsu.png
 - Assets/Images/Sprites/ItemIcon/General/I_coin.png
@@ -249,6 +249,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun1.png
 - Assets/Images/Sprites/Equipped/img_shield.png
 - Assets/Images/Sprites/ItemIcon/General/hp_elixir.png
+- Assets/Audio/UsePotion.wav
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Images/DialogImage/dialog_panzee.png
 - Assets/Prefab/Effects/critical.prefab

@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberDisplay: {fileID: 0}
   _slotType: 0
-  _spotPurpose: 0
+  _spotPurpose: 3
 --- !u!1 &51698179752636786
 GameObject:
   m_ObjectHideFlags: 0

@@ -74,13 +74,12 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     if(_spotPurpose == 2)
                     {//유물 장착했을때
                         IngameManager.RelicManager.EquipRelic(draggedItem.GetComponent<Item_Data>().ItemID);
-                        Destroy(draggedItem);   
-                        //유물 장착시 이동 불가 - 유물창에서 초기화 할떄는 장착된 아이템을 풀로 돌리느게 아니라 삭제해야함.
+                        draggedItem.SetDraggable(false);
                     }
                     else if (_spotPurpose == 3)
                     {//아이템 소비 로직
                         Global.AudioManager.PlayOnce("UsePotion");
-                        Global.ObjectPoolManager.ObjectPooling(Items.PREFAB_NAME, draggedItem.gameObject);
+                        draggedItem.SetToPool = true;
                     }
                     //상점 구매 로직
                     else if (draggedItem.SellingItem)
