@@ -63,27 +63,66 @@
     <Dialogue>
       <id>1000</id>
 			<dialogueList>
+
+        <dialogue>
+          <name>fadeout</name>
+        </dialogue>
+        <dialogue>
+          <name>CameraSet</name>
+          <text>-0.64,-0.24,0.5</text>
+        </dialogue>
 				<dialogue>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>우욱... 무슨 썩은내가 이렇게 나는거야...</text>
 				</dialogue>
+
+        <dialogue>
+          <name>UnitPlay</name>
+          <text>wakgood,Die</text>
+        </dialogue>
+
 				<dialogue>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>아이고 머리야...</text>
 				</dialogue>
-				<dialogue>
-					<portraitImage>dialog_wak</portraitImage>
-					<name>우왁굳</name>
-					<text>엥? 뭐야 여기는 어디야?</text>
-				</dialogue>
+        <dialogue>
+          <name>wait</name>
+          <text>0.5</text>
+        </dialogue>
+        <dialogue>
+          <name>fadein</name>
+        </dialogue>
+        <dialogue>
+          <portraitImage>dialog_wak</portraitImage>
+          <name>우왁굳</name>
+          <text>엥? 뭐야 여기는 어디야?</text>
+        </dialogue>
+
+
 				<dialogue>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>???</name>
 					<text>깨, 깨어났어! 
 		얘들아, 여기야! 어서 모여!</text>
 				</dialogue>
+        <dialogue>
+          <name>UnitMove</name>
+          <text>panzee0,-0.9,-0.45</text>
+        </dialogue>
+        <dialogue>
+          <name>UnitMove</name>
+          <text>panzee1,-1,-0.2</text>
+        </dialogue>
+        <dialogue>
+          <name>UnitMove</name>
+          <text>panzee2,-1,-0.7</text>
+        </dialogue>
+        <dialogue>
+          <name>UnitPlay</name>
+          <text>wakgood,Regular</text>
+        </dialogue>
 				<dialogue>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
@@ -184,6 +223,10 @@
 					<text>냄새가 왜이렇게 심해? 
 		어 저기 길 있네 절로 가보자 얘들아</text>
 				</dialogue>
+        <dialogue>
+          <name>UnitMove</name>
+          <text>wakgood,1,-0.7</text>
+        </dialogue>
 				<dialogue>
 					<portraitImage>dialog_panzee1</portraitImage>
 					<name>팬치2</name>

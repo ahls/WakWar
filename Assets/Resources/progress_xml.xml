@@ -8,6 +8,10 @@
     </Sequence>
     -->
     <Sequence>
+      <eventType>CameraLock</eventType>
+      <value>true</value>
+    </Sequence>
+    <Sequence>
       <eventType>Dialog</eventType>
       <value>1000</value>
     </Sequence>
@@ -20,6 +24,7 @@
     <Sequence>
       <eventType>FadeOut</eventType>
     </Sequence>
+    
     <Sequence>
       <eventType>LoadStage</eventType>
       <value>1000</value>

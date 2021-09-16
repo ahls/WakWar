@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 public class DialogueDisplay : MonoBehaviour
@@ -12,13 +13,14 @@ public class DialogueDisplay : MonoBehaviour
     private int _dialogIndex;
     private bool _moreDialog;
     private bool _dialogueActive;
-
-    private readonly HashSet<string> commands = new HashSet<string>() { "sound", "fadeout", "fadein" };
+    private Animator _dialogFader;
+    private readonly HashSet<string> commands = new HashSet<string>() { "sound","blackScreen", "fadeout", "fadein","wait" ,"UnitMove","UnitPlay","CameraSet"};
 
     // Start is called before the first frame update
     void Start()
     {
         Global.UIManager.DialogueDisplay = this;
+        _dialogFader = transform.parent.GetComponent<Animator>();
     }
     /// <summary>
     /// 다음 텍스트가 있으면 true, 마지막 텍스트였을 경우 false 리턴
@@ -43,8 +45,24 @@ public class DialogueDisplay : MonoBehaviour
                         Global.AudioManager.PlayOnce(Dialogues.DB[_dialogID][_dialogIndex].TextEntry);
                         break;
                     case "fadein":
+                        _dialogFader.SetTrigger("in");
                         break;
                     case "fadeout":
+                        _dialogFader.SetTrigger("out");
+                        break;
+                    case "wait":
+                        _dialogueActive = false;
+                        StartCoroutine(WaitCommand(float.Parse(Dialogues.DB[_dialogID][_dialogIndex].TextEntry)));
+                        return true;
+                    case "UnitMove":
+                        UnitMoveTo();
+
+                        break;
+                    case "UnitPlay":
+                        UnitPlayAnim();
+                        break;
+                    case "CameraSet":
+                        CameraSet();
                         break;
                 }
                 _dialogIndex++;
@@ -62,7 +80,37 @@ public class DialogueDisplay : MonoBehaviour
         return true;
 
     }
+    public IEnumerator WaitCommand(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        _dialogueActive = true;
+        _dialogIndex++;
+        //LoadNextText();
+    }
 
+    private void UnitMoveTo()
+    {
+        List<string> inputs = Dialogues.DB[_dialogID][_dialogIndex].TextEntry.Split(',').ToList();
+
+        Vector2 targetLoc = new Vector2(float.Parse(inputs[1]),float.Parse(inputs[2]));
+        GameObject go = GameObject.Find(inputs[0]);
+        UnitStats unitStats = go.GetComponent<UnitStats>();
+        unitStats.MoveToTarget(targetLoc);
+    }
+    private void UnitPlayAnim()
+    {
+        List<string> inputs = Dialogues.DB[_dialogID][_dialogIndex].TextEntry.Split(',').ToList();
+
+        GameObject go = GameObject.Find(inputs[0]);
+        go.GetComponent<Animator>().SetTrigger(inputs[1]);
+    }
+    private void CameraSet()
+    {
+        List<string> inputs = Dialogues.DB[_dialogID][_dialogIndex].TextEntry.Split(',').ToList();
+
+        Camera.main.transform.position = new Vector3(float.Parse(inputs[0]), float.Parse(inputs[1]),-10);
+        Camera.main.orthographicSize = float.Parse(inputs[2]);
+    }
     public void DialogOnClick()
     {
         if (!_dialogueActive || !_moreDialog)

@@ -11,19 +11,10 @@ public class SceneTransition : MonoBehaviour
     }
     [SerializeField] private Animator _transitionScreen;
 
-    public void playAnimation(TransitionType whichTransition, bool opening)
+    public void PlayAnimation(string animationName)
     {
 
-        /*
-        string openOrClose = opening ? "_open" : "_close";
-        _transitionScreen.SetTrigger(whichTransition.ToString() + openOrClose);
-        */
-    }
-    public void playAnimation(bool opening)
-    {
-
-        string openOrClose = opening ? "open" : "close";
-        _transitionScreen.SetTrigger(openOrClose);
+        _transitionScreen.SetTrigger(animationName);
     }
     public void ToNextStep()
     {

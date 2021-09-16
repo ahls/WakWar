@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward,DisplayReady,FadeOut,FadeIn }
+public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward,DisplayReady,FadeOut,FadeIn,CameraLock }
 public class ProgressManager : MonoBehaviour
 {
     private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
@@ -69,10 +69,14 @@ public class ProgressManager : MonoBehaviour
                 Global.UIManager.ShowReadyButton();
                 break;
             case CurrentEvent.FadeIn:
-                Global.UIManager.SceneTransition.playAnimation(true);
+                Global.UIManager.SceneTransition.PlayAnimation("open");
                 break;
             case CurrentEvent.FadeOut:
-                Global.UIManager.SceneTransition.playAnimation(false);
+                Global.UIManager.SceneTransition.PlayAnimation("close");
+                break;
+            case CurrentEvent.CameraLock:
+                IngameManager.instance.GetComponent<CameraControl>().CameraLocked = bool.Parse(ProgressSequences.DB[_currentProgressIndex].value);
+                NextSequence();
                 break;
         }
     }

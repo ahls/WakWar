@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    public bool CameraLocked = false;
     private const float SCROLL_MULTIPLIER= 0.1f;
     private const float SCROLL_SPEED = 0.05f;
     private const float LERP_SPEED = 0.2f;
@@ -27,6 +28,8 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (CameraLocked)
+            return;
         Vector2 mousePosition = Input.mousePosition;
 
         ZoomIn(mousePosition);

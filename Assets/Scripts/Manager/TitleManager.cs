@@ -11,6 +11,6 @@ public class TitleManager : MonoBehaviour
 
     public void OnButtonHit()
     {
-        SceneManager.LoadScene("GY_ROOM");
+        SceneManager.LoadScene("GY_CS00");
     }
 }
