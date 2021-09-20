@@ -4,243 +4,289 @@
     <Dialogue>
       <id>4552</id><!--아오오니 패러디-->
       <dialogueList>
-        <dialogue>
+        <dlg>
           <portraitImage>dialog_takuro</portraitImage>
           <name>타쿠로</name>
           <text>안은 생각했던 것보다 깨끗하네</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_mika</portraitImage>
           <name>미카</name>
           <text>왠지 추워...</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_takeshi</portraitImage>
           <name>타케시</name>
           <text>어, 어이...</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_takeshi</portraitImage>
           <name>타케시</name>
           <text>어, 어이...
 이제 돌아가자...</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_takuro</portraitImage>
           <name>타쿠로</name>
           <text>뭐야 타케시, 겁먹은거야?</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <name>sound</name>
           <text></text>
-        </dialogue>
+        </dlg>
         
-        <dialogue>
+        <dlg>
           <portraitImage>dialog_plate</portraitImage>
           <name>접시</name>
           <text>쨍그랑</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_takeshi</portraitImage>
           <name>타케시</name>
           <text>이, 이제 돌아가자...</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_wak</portraitImage>
           <name>우왁굳</name>
           <text>바보같군...</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_wak</portraitImage>
           <name>우왁굳</name>
           <text>바보같군...
 괴물따위 있을리가 없잖아.
 과학적으로 생각해서...</text>
-        </dialogue>
+        </dlg>
 
       </dialogueList>
     </Dialogue>
+    
+    <!--#####################################################################################-->
+    
+    
     <Dialogue>
       <id>1000</id>
 			<dialogueList>
-
-        <dialogue>
-          <name>fadeout</name>
-        </dialogue>
-        <dialogue>
+        <dlg>
+          <name>Wait</name>
+          <text>0.5</text>
+        </dlg>
+        <dlg>
+          <name>UnitPlay</name>
+          <text>wakgood,Die</text>
+        </dlg>
+        <dlg>
+          <name>CameraSet</name>
+          <text>Lock,true</text>
+        </dlg>
+        <dlg>
           <name>CameraSet</name>
           <text>-0.64,-0.24,0.5</text>
-        </dialogue>
-				<dialogue>
+        </dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>우욱... 무슨 썩은내가 이렇게 나는거야...</text>
-				</dialogue>
+				</dlg>
 
-        <dialogue>
-          <name>UnitPlay</name>
-          <text>wakgood,Die</text>
-        </dialogue>
-
-				<dialogue>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>아이고 머리야...</text>
-				</dialogue>
-        <dialogue>
-          <name>wait</name>
+				</dlg>
+        <dlg>
+          <name>Wait</name>
           <text>0.5</text>
-        </dialogue>
-        <dialogue>
-          <name>fadein</name>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
+          <name>FadeIn</name>
+        </dlg>
+        <dlg>
           <portraitImage>dialog_wak</portraitImage>
           <name>우왁굳</name>
           <text>엥? 뭐야 여기는 어디야?</text>
-        </dialogue>
+        </dlg>
 
-
-				<dialogue>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>???</name>
 					<text>깨, 깨어났어! 
-		얘들아, 여기야! 어서 모여!</text>
-				</dialogue>
-        <dialogue>
+얘들아, 여기야! 어서 모여!</text>
+				</dlg>
+        <dlg>
+          <name>Close</name>
+        </dlg>
+        <dlg>
           <name>UnitMove</name>
           <text>panzee0,-0.9,-0.45</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <name>UnitMove</name>
           <text>panzee1,-1,-0.2</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+        <dlg>
           <name>UnitMove</name>
           <text>panzee2,-1,-0.7</text>
-        </dialogue>
-        <dialogue>
+        </dlg>
+
+        <dlg>
+          <name>Wait</name>
+          <text>2</text>
+        </dlg>
+        <dlg>
           <name>UnitPlay</name>
           <text>wakgood,Regular</text>
-        </dialogue>
-				<dialogue>
+        </dlg>
+        <dlg>
+          <name>Open</name>
+        </dlg>
+
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>뭐야 누구세요?</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>???</name>
 					<text>커다란 코, 마른 몸매, 그리고 잘생긴 얼굴까지...
-		혹시... 왁굳형 맞으신가요..?</text>
-				</dialogue>
-				<dialogue>
+혹시... 왁굳형 맞으신가요..?</text>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>("왁굳형"..? 청자중 하난거 같은데... 납치같은건가..!?)</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>그러는 여러분은... 팬치..?</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>팬치1</name>
 					<text>우끼끼!!</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee1</portraitImage>
 					<name>팬치2</name>
 					<text>형이다!!!</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee2</portraitImage>
 					<name>팬치3</name>
 					<text>드디어 우리를 구해주러 왔구나!!!</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>나를 왜 여기로 데려온거야!
-		아니 얘드라, 내가 좋아도 그렇지 이러는거 범죄야, 알아?!</text>
-				</dialogue>
-				<dialogue>
+아니 얘드라, 내가 좋아도 그렇지 이러는거 범죄야, 알아?!</text>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>팬치</name>
 					<text>병 형신이야? 무슨소리야</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee1</portraitImage>
 					<name>팬치2</name>
 					<text>우리가 납치했으면 형이냐고 물어볼 이유가 없지..</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>그렇게 말하면서 날 속이려는걸 수 도 있지.</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee2</portraitImage>
 					<name>팬치3</name>
 					<text>그렇게 안믿으면 할 말이 없긴한데, 우리도 갇혀있는거야... 
-		우린 형이 구하러 와준줄 알았는데..?</text>
-				</dialogue>
-				<dialogue>
+우린 형이 구하러 와준줄 알았는데..?</text>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>뭐야, 너네들도 갇혀있는거라고?</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>후... 오케이 일단 여기서 좀 나가자</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>이건 무슨 토굴.. 인가? 왜 이렇게 음쓰냄새가 진동을해?
-		냄새가 너무 심해서 집중이 안된다.</text>
-				</dialogue>
-				<dialogue>
+냄새가 너무 심해서 집중이 안된다.</text>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>팬치1</name>
 					<text>잠깐, 형 이야기를 좀 들ㅇ...</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>어휴 냄새</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee0</portraitImage>
 					<name>팬치1</name>
 					<text>...</text>
-				</dialogue>
-				<dialogue>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
 					<text>냄새가 왜이렇게 심해? 
-		어 저기 길 있네 절로 가보자 얘들아</text>
-				</dialogue>
-        <dialogue>
+어 저기 길 있네 절로 가보자 얘들아</text>
+				</dlg>
+        <dlg>
           <name>UnitMove</name>
           <text>wakgood,1,-0.7</text>
-        </dialogue>
-				<dialogue>
+        </dlg>
+        <dlg>
+          <name>Close</name>
+        </dlg>
+        <dlg>
+          <name>Wait</name>
+          <text>1</text>
+        </dlg>
+        <dlg>
+          <name>Open</name>
+        </dlg>
+				<dlg>
 					<portraitImage>dialog_panzee1</portraitImage>
 					<name>팬치2</name>
 					<text>역시 형이야.. 우리말은 잘 안듣는군.
-		나머지 애들도 후딱 불러오자!</text>
-				</dialogue>
-				<dialogue>
+나머지 애들도 후딱 불러오자!</text>
+				</dlg>
+				<dlg>
 					<portraitImage>dialog_panzee</portraitImage>
 					<name>도움말</name>
 					<text>시청자분들은 이제 !참가 (직업) 커맨드를 사용하여 참가할 수 있습니다. 
-		(선착순 10명)
+(선착순 10명)
 
-		상단의 "팬치" 창을 눌러 10명이 들어온걸 확인하고 준비 완료 버튼을 눌러 진행해주세요!</text>
-				</dialogue>
+상단의 "팬치" 창을 눌러 10명이 들어온걸 확인하고 준비 완료 버튼을 눌러 진행해주세요!</text>
+				</dlg>
+        <dlg>
+          <name>Close</name>
+        </dlg>
+        <dlg>
+          <name>FadeOut</name>
+        </dlg>
+        <dlg>
+          <name>Wait</name>
+          <text>0.5</text>
+        </dlg>
+        <dlg>
+          <name>CameraSet</name>
+          <text>Lock,false</text>
+        </dlg>
+        <dlg>
+          <name>CameraSet</name>
+          <text>0,0,2</text>
+        </dlg>
 			</dialogueList>
     </Dialogue>
   </Dialogues>

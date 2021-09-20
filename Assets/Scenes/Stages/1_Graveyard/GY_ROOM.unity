@@ -652,7 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29a0eeefa621ac4409c39bb8995a4600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowRewardValue: 0
+  RerollReward: 0
   GoldPerKill: 1
   StatMutliplier: 1
   BonusPanzee: 0
@@ -1717,6 +1717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87713df8e1014146840b66c12af2e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraLocked: 0
 --- !u!1 &2003039806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2458,7 @@ MonoBehaviour:
   OwnedFaction: 0
   TargetFaction: 1
   UnitClassType: 4
+  _unitstats: {fileID: 0}
   _equippedImage: {fileID: 302393825}
   Skill: {fileID: 0}
   EnemyBehavour: {fileID: 0}
@@ -2670,7 +2672,7 @@ PrefabInstance:
     - target: {fileID: 4438045491748596991, guid: 886ff2a887d0a234aaa2a78508404f1d,
         type: 3}
       propertyPath: NextSequenceWhenLoaded
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 886ff2a887d0a234aaa2a78508404f1d, type: 3}

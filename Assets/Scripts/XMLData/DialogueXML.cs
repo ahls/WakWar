@@ -10,7 +10,7 @@ public class DialogueData
     [XmlElement("id")]
     public int DialogueID;//XXYY, XX: 층, YY: 순서
     [XmlArray("dialogueList")]
-    [XmlArrayItem("dialogue")]
+    [XmlArrayItem("dlg")]
     public List<Dialogue> DialogueList = new List<Dialogue>();
 }
 

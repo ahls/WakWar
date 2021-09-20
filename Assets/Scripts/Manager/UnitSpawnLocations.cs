@@ -13,7 +13,7 @@ public class UnitSpawnLocations : MonoBehaviour
         IngameManager.StageManager.SetSpawnLocations(this);
         if(NextSequenceWhenLoaded)
         {
-            IngameManager.ProgressManager.NextSequence();
+         //   IngameManager.ProgressManager.NextSequence();
         }
     }
 

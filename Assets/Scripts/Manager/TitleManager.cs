@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
@@ -11,6 +12,14 @@ public class TitleManager : MonoBehaviour
 
     public void OnButtonHit()
     {
+        Global.UIManager.SceneTransition.PlayAnimation("close");
+        StartCoroutine(CallScene());
+        
+    }
+    private IEnumerator CallScene()
+    {
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("GY_CS00");
+
     }
 }

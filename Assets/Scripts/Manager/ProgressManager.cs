@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum CurrentEvent { Dialog, StartCombat, EndCombat,LoadScene, LoadStage, RoomReward, BossReward,DisplayReady,FadeOut,FadeIn,CameraLock }
+public enum CurrentEvent { Dialog, StartCombat, EndCombat, LoadScene, LoadStage, RoomReward, BossReward, DisplayReady, FadeOut, FadeIn }
 public class ProgressManager : MonoBehaviour
 {
-    private bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
-    private int _currentProgressIndex = -1;
+    private static bool _dialogTurn;//트루면 현재 진행상황이 대사를 출력중
+    private static int _currentProgressIndex = -1;
     public bool IsFirstScene = false;
     // Start is called before the first frame update
     void Start()
     {
-        IngameManager.instance.SetProgressManager(this);
+            IngameManager.instance.SetProgressManager(this);
+        
         NextSequence();
     }
 
@@ -37,12 +38,13 @@ public class ProgressManager : MonoBehaviour
     public void NextSequence()
     {
         _currentProgressIndex++;
+        Debug.Log($"Current Sequence Index: {_currentProgressIndex}");
         Debug.Log($"Current progress is: {ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent}");
         switch (ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent)   
         {
             case CurrentEvent.Dialog:
                 _dialogTurn = true;
-                Global.UIManager.DialogueDisplay.SetDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
+                Global.UIManager.DialogueDisplay.SetupDialogue(int.Parse(ProgressSequences.DB[_currentProgressIndex].value));
                 break;
             case CurrentEvent.LoadScene:
                 Global.UIPopupManager.PopAll();
@@ -69,14 +71,10 @@ public class ProgressManager : MonoBehaviour
                 Global.UIManager.ShowReadyButton();
                 break;
             case CurrentEvent.FadeIn:
-                Global.UIManager.SceneTransition.PlayAnimation("open");
+                Global.UIManager.SceneTransition.PlayAnimation("open", true);
                 break;
             case CurrentEvent.FadeOut:
-                Global.UIManager.SceneTransition.PlayAnimation("close");
-                break;
-            case CurrentEvent.CameraLock:
-                IngameManager.instance.GetComponent<CameraControl>().CameraLocked = bool.Parse(ProgressSequences.DB[_currentProgressIndex].value);
-                NextSequence();
+                Global.UIManager.SceneTransition.PlayAnimation("close", true);
                 break;
         }
     }
