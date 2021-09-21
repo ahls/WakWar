@@ -26,7 +26,7 @@ public class TwitchClient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IngameManager.instance.SetTwitchClient(this);
+        if(IngameManager.TwitchClient == null)        IngameManager.instance.SetTwitchClient(this);
 
         //백그라운드에서도 실행하게 해줌
         Application.runInBackground = true;
