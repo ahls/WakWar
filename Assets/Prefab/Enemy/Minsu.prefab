@@ -99,8 +99,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4834897788172042394}
   m_Bounds:
-    m_Center: {x: -0.07366668, y: -0.06980452, z: 0}
-    m_Extent: {x: 0.051513672, y: 0.035346676, z: 0}
+    m_Center: {x: -0.07366668, y: -0.069804534, z: 0}
+    m_Extent: {x: 0.051513672, y: 0.035346672, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &294221332615467545
@@ -341,7 +341,7 @@ MonoBehaviour:
   - {fileID: 3179780638501098880}
   - {fileID: 900661622897560646}
   m_Bounds:
-    m_Center: {x: -0.511912, y: -0.06978206, z: 0}
+    m_Center: {x: -0.511912, y: -0.06978205, z: 0}
     m_Extent: {x: 0.08317678, y: 0.1162588, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -591,7 +591,7 @@ MonoBehaviour:
   - {fileID: 4027058499275766958}
   m_Bounds:
     m_Center: {x: 0.0457034, y: -0.06976105, z: 0.19}
-    m_Extent: {x: 0.051743176, y: 0.03537794, z: 0}
+    m_Extent: {x: 0.051743172, y: 0.03537794, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4473118319237607390
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 4552722043019719396}
   m_Bounds:
-    m_Center: {x: -0.12931538, y: -0.06984824, z: 0}
+    m_Center: {x: -0.12931535, y: -0.06984824, z: 0}
     m_Extent: {x: 0.043054946, y: 0.039947525, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1174,6 +1174,7 @@ MonoBehaviour:
   OwnedFaction: 1
   TargetFaction: 0
   UnitClassType: 4
+  _unitstats: {fileID: 0}
   _equippedImage: {fileID: 0}
   Skill: {fileID: 0}
   EnemyBehavour: {fileID: 2401936122429827112}
@@ -1554,8 +1555,8 @@ MonoBehaviour:
   - {fileID: 2824744210499478208}
   - {fileID: 900661622897560646}
   m_Bounds:
-    m_Center: {x: -0.008431576, y: -0.06963992, z: 0}
-    m_Extent: {x: 0.09077077, y: 0.11853567, z: 0}
+    m_Center: {x: -0.008431584, y: -0.06963993, z: 0}
+    m_Extent: {x: 0.09077078, y: 0.11853569, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8903029068764171874

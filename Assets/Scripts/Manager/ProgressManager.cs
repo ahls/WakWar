@@ -101,9 +101,12 @@ public class ProgressManager : MonoBehaviour
         NextSequence();
 
     }
-
+    public void SetProgressIndex(int index)
+    {
+        _currentProgressIndex = index - 1;
+    }
     public void Restart()
     {
-        _currentProgressIndex = 0;
+        _currentProgressIndex = -1;
     }
 }

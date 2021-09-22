@@ -79,7 +79,7 @@ public class UnitCombat : MonoBehaviour
 
 
     //이미지 관련
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
     public Sprite AttackImage { get; set; }
     [SerializeField]private SpriteRenderer _equippedImage;
     
@@ -151,7 +151,7 @@ public class UnitCombat : MonoBehaviour
         _searchAssign %= _searchCooldown;
 
         ActionStat = ActionStats.Idle;
-        _animator = GetComponent<Animator>();
+        if(_animator == null)        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -639,8 +639,30 @@ public class UnitCombat : MonoBehaviour
         _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
 
     }
-
-    private void Death()
+    public void ChangeFaction(Faction toWhichFaction)
+    {
+        switch (toWhichFaction)
+        {
+            case Faction.Player:
+                HealthBarColor(Color.green);
+                _unitstats.Selectable = true;
+                OwnedFaction = toWhichFaction;
+                TargetFaction = Faction.Enemy;
+                IngameManager.UnitManager.DeselectUnit(gameObject);
+                break;
+            case Faction.Enemy:
+                HealthBarColor(Color.red);
+                _unitstats.Selectable = false;
+                OwnedFaction = toWhichFaction;
+                TargetFaction = Faction.Player;
+                IngameManager.UnitManager.DeselectUnit(gameObject);
+                Debug.Log("TO ENEMY");
+                break;
+            default:
+                break;
+        }
+    }
+    public void Death()
     {
         _unitstats.DisableMovement();
         _animator.SetTrigger("Die");

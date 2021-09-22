@@ -411,7 +411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &131900508
 Transform:
   m_ObjectHideFlags: 0
@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &529853224
 RectTransform:
   m_ObjectHideFlags: 0
@@ -780,11 +780,16 @@ PrefabInstance:
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964886468274477674, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3964886468389457795, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
@@ -1136,7 +1141,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1348,11 +1353,16 @@ PrefabInstance:
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964886468274477674, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3964886468389457795, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
@@ -1453,11 +1463,16 @@ PrefabInstance:
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3964886467993289451, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964886468274477674, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3964886468389457795, guid: 5099cdc2351dd2d4e9969cf02b98bb09,
@@ -3263,8 +3278,6 @@ GameObject:
   - component: {fileID: 2364891609491962671}
   - component: {fileID: 7418434665945923488}
   - component: {fileID: 1926667096679855601}
-  - component: {fileID: 7414589560290133554}
-  - component: {fileID: 7414589560290133562}
   m_Layer: 10
   m_Name: wakgood
   m_TagString: Untagged
@@ -3272,40 +3285,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7414589560290133554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414589560290133553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CanControl: 1
-  range: 0.1
-  AOE: 0.01
-  projSpeed: 10
-  ms: 0.005
-  AS: 0
-  hp: 500
-  dmg: 1
-  AP: 0
-  weaponID: 0
---- !u!114 &7414589560290133562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7414589560290133553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e0651131cf90d048b4750239534875f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7418434665945923488
 MonoBehaviour:
   m_ObjectHideFlags: 0

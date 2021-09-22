@@ -27,7 +27,8 @@ public class UnitStats : MonoBehaviour
 
     //그래픽 관련
     [SerializeField] private Transform _rotatingPart;
-    private Animator _animator;
+    public bool FlipOnY = true;
+    [SerializeField]private Animator _animator;
     public float runningSpeed = 0.75f;//애니메이션 재생 속도 
 
     //예시 변수
@@ -46,7 +47,7 @@ public class UnitStats : MonoBehaviour
 
     void Awake()
     {
-        _animator = GetComponent<Animator>();
+        if(_animator == null) _animator = GetComponent<Animator>();
         _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
         _seeker = GetComponent<Seeker>();
@@ -297,20 +298,35 @@ public class UnitStats : MonoBehaviour
 
     public void RotateDirection(float xVelocity)
     {
+       
         var originalScale = _rotatingPart.localScale;
 
-
-        if (xVelocity > 0)
+        if (FlipOnY)
         {
-            float yScale = -Mathf.Abs(originalScale.y);
-            _rotatingPart.localScale = new Vector3(1, yScale, 1);
+            if (xVelocity > 0)
+            {
+                float yScale = -Mathf.Abs(originalScale.y);
+                _rotatingPart.localScale = new Vector3(1, yScale, 1);
+            }
+            else if (xVelocity < 0)
+            {
+                float yScale = Mathf.Abs(originalScale.y);
+                _rotatingPart.localScale = new Vector3(1, yScale, 1);
+            }
         }
-        else if(xVelocity < 0)
+        else
         {
-            float yScale = Mathf.Abs(originalScale.y);
-            _rotatingPart.localScale = new Vector3(1, yScale, 1);
+            if (xVelocity > 0)
+            {
+                float xScale = -Mathf.Abs(originalScale.x);
+                _rotatingPart.localScale = new Vector3( xScale, 1);
+            }
+            else if (xVelocity < 0)
+            {
+                float xScale = Mathf.Abs(originalScale.x);
+                _rotatingPart.localScale = new Vector3( xScale, 1);
+            }
         }
-
     }
     public void DisableMovement()
     {

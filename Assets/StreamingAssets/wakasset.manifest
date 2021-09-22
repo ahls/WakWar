@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3403401085
+CRC: 618099753
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0275e7cc0fb6826fa538c5ac0a510643
+    Hash: 76133110915b32a8f2666add667e2bd3
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e8d050b4a93fc83de4376df34a747863
+    Hash: 17b26d2d12ba28a4a5aeb29e0f35f9e5
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -66,6 +66,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 5224e543a89d45a41a2ebcbfc0e46dd7, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 8f927014767d881419a8c2873be34417, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
@@ -123,6 +125,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 7aef37afd66315b439420b3bc3d0f156, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8a41d9ce48787d94881975a6c12091fa, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -191,6 +195,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_bow3.png
 - Assets/Images/Sprites/Equipped/img_arrow.png
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword1.png
+- Assets/Prefab/Enemy/Parasite.prefab
 - Assets/Images/Sprites/ItemIcon/Weapon/I_sword3.png
 - Assets/Images/Sprites/Equipped/img_thrown.png
 - Assets/Images/Sprites/Equipped/img_sword.png

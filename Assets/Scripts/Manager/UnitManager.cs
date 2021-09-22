@@ -48,7 +48,7 @@ public class UnitManager : MonoBehaviour
     private void SelectUnitControl()
     {
         if (_attackMode)
-        {//공격모드 활서오하 되있으면 무시
+        {//공격모드 활성화 되있으면 무시
             return;
         }
         if (_leftClicked)
