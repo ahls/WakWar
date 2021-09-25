@@ -1436,7 +1436,9 @@ MonoBehaviour:
   TargetFaction: 0
   UnitClassType: 4
   _unitstats: {fileID: 8252109871089551390}
+  _animator: {fileID: 0}
   _equippedImage: {fileID: 2989731452029694304}
+  Head: {fileID: 6023770227881158884}
   Skill: {fileID: 0}
   EnemyBehavour: {fileID: 0}
 --- !u!114 &8252109871089551390
@@ -1455,6 +1457,8 @@ MonoBehaviour:
   _playerNameText: {fileID: 3964886468389457795}
   controller: {fileID: 1718074191863204450}
   _rotatingPart: {fileID: 8363145969454056403}
+  FlipOnY: 1
+  _animator: {fileID: 0}
   runningSpeed: 2
   RepathRate: 1
   MoveNextDist: 1

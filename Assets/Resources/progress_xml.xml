@@ -6,13 +6,13 @@
       <eventType>1000</eventType> 이벤트 종류 Dialog, StartCombat, EndCombat, LoadScene,LoadStage
       <value>1000</value> Dialog 일떄 XXYY, LoadStage 일떄 AABBB, 나머지일떄 아무것도 없음
     </Sequence>
-
+  -->
     
     <Sequence>
       <eventType>Dialog</eventType>
       <value>1000</value>
     </Sequence>
-    -->
+  
     <Sequence>
       <eventType>LoadScene</eventType>
       <value>GY_ROOM</value>

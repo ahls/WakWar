@@ -767,6 +767,8 @@ MonoBehaviour:
   _playerNameText: {fileID: 754845076}
   controller: {fileID: 374732133}
   _rotatingPart: {fileID: 637137991}
+  FlipOnY: 1
+  _animator: {fileID: 0}
   runningSpeed: 1.5
   RepathRate: 1
   MoveNextDist: 1
@@ -790,7 +792,9 @@ MonoBehaviour:
   TargetFaction: 1
   UnitClassType: 4
   _unitstats: {fileID: 0}
+  _animator: {fileID: 0}
   _equippedImage: {fileID: 307077044}
+  Head: {fileID: 241815370}
   Skill: {fileID: 0}
   EnemyBehavour: {fileID: 0}
 --- !u!114 &374732138

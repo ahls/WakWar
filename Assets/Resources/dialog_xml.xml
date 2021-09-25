@@ -177,6 +177,10 @@
 					<name>팬치3</name>
 					<text>드디어 우리를 구해주러 왔구나!!!</text>
 				</dlg>
+        <dlg>
+          <name>Sound</name>
+          <text>wakgood_ahni</text>
+        </dlg>
 				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>
@@ -235,6 +239,10 @@
 					<name>팬치1</name>
 					<text>...</text>
 				</dlg>
+        <dlg>
+          <name>Sound</name>
+          <text>wakgood_guys</text>
+        </dlg>
 				<dlg>
 					<portraitImage>dialog_wak</portraitImage>
 					<name>우왁굳</name>

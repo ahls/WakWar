@@ -60,8 +60,11 @@ public class Parasite_Behaviour : MonoBehaviour
             if( unit.transform != transform &&
                 unit.GetComponent<UnitCombat>()?.OwnedFaction == Faction.Player)
             {
-                Debug.Log("AHHH INFECTING");
+                GameObject effectGO = Global.ObjectManager.SpawnObject("Parasite_Attachment");
                 UnitCombat uc = unit.GetComponent<UnitCombat>();
+                effectGO.transform.position = uc.Head.position + new Vector3(0, 0.1f);
+                effectGO.transform.SetParent(uc.Head);
+                
                 uc.ChangeFaction(Faction.Enemy);
                 StartCoroutine(Disinfect(uc));
                 _bone.SetActive(false);

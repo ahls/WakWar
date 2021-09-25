@@ -88,6 +88,7 @@ public class UnitCombat : MonoBehaviour
     private GameObject _effect;
     private static Vector2 _attackHeight = new Vector2(0, 0.1f);
     private string _impactEffect = null;
+    public Transform Head;
 
     //사운드
     private string _attackAudio = string.Empty;
