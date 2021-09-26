@@ -46,6 +46,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
 
         if (draggedItem != null)
         {
+            Item_Data itemData = draggedItem.GetComponent<Item_Data>();
             if (CurrentNumber == 0)
             {
                 //상점 판매 로직
@@ -56,7 +57,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                         return;
                     }
                     //상점에 진열된 아이템이 아닐경우, 돈을 주고 아이템 삭제
-                    int itemPrice = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value/2;//반값에 팔림
+                    int itemPrice = Items.DB[itemData.ItemID].value/2;//반값에 팔림
                     IngameManager.UIInventory.AddMoney(itemPrice);
                     Global.ObjectManager.ReleaseObject(draggedItem.gameObject.name, draggedItem.gameObject);
                     Global.AudioManager.PlayOnce("SellItem");
@@ -73,7 +74,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
 
                     if(_spotPurpose == 2)
                     {//유물 장착했을때
-                        IngameManager.RelicManager.EquipRelic(draggedItem.GetComponent<Item_Data>().ItemID);
+                        IngameManager.RelicManager.EquipRelic(itemData.ItemID);
                         draggedItem.SetDraggable(false);
                     }
                     else if (_spotPurpose == 3)
@@ -84,7 +85,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     //상점 구매 로직
                     else if (draggedItem.SellingItem)
                     {
-                        int itemPrice = -Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].value;
+                        int itemPrice = -Items.DB[itemData.ItemID].value;
                         if(!IngameManager.UIInventory.AddMoney(itemPrice))
                         {
                             Global.UIManager.PushNotiMsg("소지금이 부족합니다.", 1f);
@@ -96,10 +97,12 @@ public class Item_Slot : MonoBehaviour, IDropHandler
 
                     if (assgiendUnit != null)
                     {//유닛과 연결되어있을경우, 
-                        int tempWeaponIndex = Items.DB[draggedItem.GetComponent<Item_Data>().ItemID].weaponID;
+                        int tempWeaponIndex = Items.DB[itemData.ItemID].weaponID;
                         if (Weapons.DB[tempWeaponIndex].Class == assgiendUnit.UnitClassType || assgiendUnit.UnitClassType == ClassType.Wak)
                         {
                             assgiendUnit.EquipWeapon(tempWeaponIndex);
+                            if(itemData.Enchant != null)    itemData.Enchant.OnEquip(assgiendUnit);
+
                             draggedItem.placeItem(transform);
                             draggedItem.Equipped = true;
                             

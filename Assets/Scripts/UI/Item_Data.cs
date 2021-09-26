@@ -9,7 +9,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
 {
     #region 변수
     public int ItemID { get; set; }
-    private int _enchantID;
+    public EnchantBase Enchant;
     public int Price; //0이면 비매품 
     #endregion
 
@@ -47,6 +47,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
         if(eventData.button == PointerEventData.InputButton.Right)  //아이템 정보 디스플레이
         {
             var param = new ItemInfoDisplay.Param();
+            param.enchant = Enchant;
             param.item = Items.DB[ItemID];
             param.position = eventData.position;
             Global.UIPopupManager.Push(PopupID.UIItemToolTip, param);

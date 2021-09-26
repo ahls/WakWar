@@ -13,6 +13,7 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
 
     public class Param
     {
+        public EnchantBase enchant;
         public Item item;
         public Vector2 position;
     }
@@ -41,7 +42,16 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
     public override void PostInitialize()
     {
         Param param = GetParam() as Param;
-        _name.text = param.item.name;
+        if (param.enchant != null)
+        {
+            _name.text = param.item.name;
+            _enchant.text = string.Empty;
+        }
+        else
+        {
+            _name.text = param.enchant.Name + param.item.name;
+            _enchant.text = param.enchant.Desc;
+        }
         switch (param.item.type)
         {
             case ItemType.Potion:

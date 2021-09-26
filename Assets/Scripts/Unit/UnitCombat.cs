@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -106,7 +107,8 @@ public class UnitCombat : MonoBehaviour
     public float TotalAS { get; set; }
     private float _attackTimer = 0; // 0일때 공격 가능
     public int TotalArmor { get; set; }
-
+    public event UnitCombatEvent OnUnequipItem;
+    public delegate void UnitCombatEvent(UnitCombat uc);
 
     //스킬관련
     [HideInInspector]public SkillBase Skill;
@@ -268,6 +270,7 @@ public class UnitCombat : MonoBehaviour
 
     public void EquipWeapon(int weaponID)
     {
+        UnEquipWeapon(true);
         _weaponIndex = weaponID;
         if (Weapons.DB[_weaponIndex].projImage != "" && Weapons.DB[_weaponIndex].projImage != "null")
         {
@@ -321,12 +324,14 @@ public class UnitCombat : MonoBehaviour
                 break;
         }
     }
-    public void UnEquipWeapon()
+    public void UnEquipWeapon(bool replacing = false)
     {
+        OnUnequipItem?.Invoke(this);
         if (_animator != null)
         {
             _animator.SetTrigger("Regular");
         }
+        if (replacing) return;
         _equippedImage.sprite = null;
         switch (UnitClassType)
         {
@@ -370,7 +375,6 @@ public class UnitCombat : MonoBehaviour
             HealthMax = (int)classModifier["MaxHP"];
             CritChance = classModifier["CritChance"];
             LifeSteal = classModifier["LifeSteal"];
-            Debug.Log(_unitstats);
             _unitstats.MoveSpeed = classModifier["MovementSpeed"];
 
             TotalAOE = BaseAOE + weaponInfo.AttackArea;
@@ -436,7 +440,7 @@ public class UnitCombat : MonoBehaviour
         {
             if (_soundVariation > 1)
             {
-                Global.AudioManager.PlayOnceAt(_attackAudio+Random.Range(0,_soundVariation).ToString(), transform.position);
+                Global.AudioManager.PlayOnceAt(_attackAudio+UnityEngine.Random.Range(0,_soundVariation).ToString(), transform.position);
             }
             else
             {

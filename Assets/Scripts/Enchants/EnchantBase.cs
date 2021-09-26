@@ -1,0 +1,119 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+ abstract public class EnchantBase
+{
+    public abstract string Name { get;}
+    public abstract string Desc { get; }
+    public virtual void Effect() { }
+    public virtual void OnEquip(UnitCombat uc) { }
+    public virtual void OnUnequip() { }
+     
+}
+
+public class Enchant_Dmg : EnchantBase
+{
+    public override string Name => "예리한 ";
+
+    public override string Desc => _desc;
+
+    private string _desc;
+    private int _amount;
+    Enchant_Dmg()
+    {
+        _amount = Random.Range(1, 5);
+        _desc = $"무기의 공격력 {_amount} 증가";
+    }
+    public override void OnEquip(UnitCombat uc)
+    {
+        uc.BaseDamage += _amount;
+        uc.UpdateStats();
+        uc.OnUnequipItem += Uc_OnUnequipItem;
+    }
+
+    private void Uc_OnUnequipItem(UnitCombat uc)
+    {
+        uc.BaseDamage -= _amount;
+        uc.UpdateStats();
+    }
+}
+public class Enchant_AttackSpeed : EnchantBase
+{
+    public override string Name => "가벼운 ";
+
+    public override string Desc => _desc;
+
+    private string _desc = "예리한 ";
+    private int _amount;
+    
+    Enchant_AttackSpeed()
+    {
+        _desc = $"공격속도 {_amount} 증가";
+    }
+    public override void Effect()
+    {
+        throw new System.NotImplementedException();
+    }
+}
+public class Enchant_HP : EnchantBase
+{
+    public override string Name => "영양만점 ";
+    public override string Desc => _desc;
+    private string _desc;
+    private int _amount;
+    Enchant_HP()
+    {
+        _amount = Random.Range(1,5) * 10;
+        _desc = $"체력 {_amount} 증가";
+    }
+}
+public class Enchant_Armor : EnchantBase
+{
+    public override string Name => "철갑 ";
+    public override string Desc => _desc;
+    private string _desc;
+    private int _amount;
+    Enchant_Armor()
+    {
+        _amount = Random.Range(1, 5);
+        _desc = $"방어력 {_amount} 증가";
+    }
+}
+public class Enchant_AP : EnchantBase
+{
+    public override string Name => "꿰뚫는 ";
+    public override string Desc => _desc;
+    private string _desc;
+    private int _amount;
+    Enchant_AP()
+    {
+        _amount = Random.Range(1, 5);
+        _desc = $"방어 관통 {_amount} 증가";
+    }
+}
+public class Enchant_LifeDrain : EnchantBase
+{
+    public override string Name => "흡혈 ";
+    public override string Desc => "피해의 10% 흡혈";
+}
+
+public class Enchant_Crit : EnchantBase
+{
+    public override string Name => "회심의 ";
+    public override string Desc => _desc;
+    private string _desc;
+    private float _amount;
+    Enchant_Crit()
+    {
+        _amount = Random.Range(1,10) * 0.05f;
+        _desc = $"치명타 확률 {_amount * 100}% 증가";
+    }
+}
+
+public class Enchant_heal : EnchantBase
+{
+    public override string Name => "자가수복 ";
+
+    public override string Desc => "초당 체력 2 회복";
+}
