@@ -2,41 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 
 public class Item_Slot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private TMP_Text _numberDisplay;
     [SerializeField] private ItemType _slotType;
     public UnitCombat assgiendUnit { get; set; }
-    private int _currentNumber = 0;
-    public int CurrentNumber
-    {
-        get => _currentNumber;
-        set
-        {
-            _currentNumber = value;
-            if (_numberDisplay != null)
-            {
-                if (value > 1)
-                {
-                    _numberDisplay.text = _currentNumber.ToString();
-
-                }
-                else
-                {                  
-                    _numberDisplay.text = "";
-                }
-            }
-
-        }
-    } 
+    public bool Occupied = false;
+    public Item_Drag OccupyingItem;
+    
+    public event ItemSlotEvent OnItemPlaced;
+    public event ItemSlotEvent OnItemRemoved;
+    public delegate void ItemSlotEvent (Item_Data itemData);
 
     //0: 아무것도 아님
     //1: 상점창
     //2: 유물창
     //3: 소비창 (가져다 놓으면 아이템 사용함)
-
+    //4: 마법부여
+    public short SpotPurpose => _spotPurpose;
     [SerializeField] private short _spotPurpose = 0;
     public void OnDrop(PointerEventData eventData)
     {
@@ -47,7 +30,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
         if (draggedItem != null)
         {
             Item_Data itemData = draggedItem.GetComponent<Item_Data>();
-            if (CurrentNumber == 0)
+            if (OccupyingItem == null)
             {
                 //상점 판매 로직
                 if(_spotPurpose == 1)
@@ -67,6 +50,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                         IngameManager.UIShop.ToggleSellingWindow(false);
                     }
                 }
+               
 
                 else if (draggedItem.compareType(_slotType))
                 {//아이템창 타입 비교
@@ -81,6 +65,11 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     {//아이템 소비 로직
                         Global.AudioManager.PlayOnce("UsePotion");
                         draggedItem.SetToPool = true;
+                    } 
+                    // 마법부여 로직
+                    else if (_spotPurpose == 4)
+                    {
+                        IngameManager.UIShop.EnableEnchantButton(itemData.Price * 2);
                     }
                     //상점 구매 로직
                     else if (draggedItem.SellingItem)
@@ -131,6 +120,5 @@ public class Item_Slot : MonoBehaviour, IDropHandler
     {
         _slotType = newType;
     }
-
 
 }

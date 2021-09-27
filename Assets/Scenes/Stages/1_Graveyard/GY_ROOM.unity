@@ -791,8 +791,8 @@ MonoBehaviour:
   OwnedFaction: 0
   TargetFaction: 1
   UnitClassType: 4
-  _unitstats: {fileID: 0}
-  _animator: {fileID: 0}
+  _unitstats: {fileID: 374732136}
+  _animator: {fileID: 374732139}
   _equippedImage: {fileID: 307077044}
   Head: {fileID: 241815370}
   Skill: {fileID: 0}

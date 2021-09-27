@@ -16,11 +16,16 @@ public class testItemGiver : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Return))
             {
+            if(_inputField.text == "상점")
+            {
+                Global.UIPopupManager.Push(PopupID.UIShop);
+                return;
+            }
             int givenInput = int.Parse(_inputField.text);
             _inputField.text = "";
+            
             if(Items.DB.ContainsKey(givenInput))
             {
-                Debug.Log("아이템 추가!");
                 List<Transform> itemslot = IngameManager.UIInventory.getEmptySlots(1);
                 if (itemslot.Count != 0)
                 {

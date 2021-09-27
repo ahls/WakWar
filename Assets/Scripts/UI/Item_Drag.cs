@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
     [SerializeField] CanvasGroup _canvasGroup;
+    [SerializeField] private TMP_Text _numberDisplay;
 
     public Transform ParentToReturn;
     public bool Equipped = false;
@@ -14,7 +16,27 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     public bool SellingItem = false; //상점에서 파는 아이템일경우 true
     private RectTransform _rectTransform;
     private ItemType _itemType;
-    private int _numberOfItems;
+    private int _numItems;
+
+    public int NumberOfItems 
+    {
+        get => _numItems;
+        set
+        {
+            _numItems = value;
+            if(_numberDisplay != null)
+            {
+                if(value > 1)
+                {
+                    _numberDisplay.text = value.ToString();
+                }
+                else
+                {
+                    _numberDisplay.text = "";
+                }
+            }
+        }
+    }
     
     
 
@@ -23,18 +45,27 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
 
         _rectTransform = GetComponent<RectTransform>();
-        _rectTransform.parent.GetComponent<Item_Slot>().CurrentNumber++;
+
+    }
+    public void Init()
+    {
+        _rectTransform.parent.GetComponent<Item_Slot>().OccupyingItem = this;
         ParentToReturn = _rectTransform.parent;
     }
-
     #region 헬퍼 함수
 
     public void placeItem(Transform parentToBe)
     {
+        Item_Slot lastSlot = ParentToReturn.GetComponent<Item_Slot>();
         if(Equipped)
         {
-            ParentToReturn.GetComponent<Item_Slot>().assgiendUnit.UnEquipWeapon();
+            lastSlot.assgiendUnit.UnEquipWeapon();
             Equipped = false;
+        }
+        lastSlot.OccupyingItem = null;
+        if(lastSlot.SpotPurpose == 4)
+        {//마법부여 칸이면 마법부여 버튼 해제
+            IngameManager.UIShop.DisableEnchantButton();
         }
         ParentToReturn = parentToBe;
         playSound();
@@ -76,8 +107,6 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         if (_canDrag &&eventData.button == PointerEventData.InputButton.Left)
         {
-            _numberOfItems = ParentToReturn.GetComponent<Item_Slot>().CurrentNumber;
-            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber = 0; //현재 자리를 빈자리로 표시
             _rectTransform.SetParent(_canvas.transform);
             _rectTransform.SetAsLastSibling();
             IngameManager.UnitManager.ControlOn = false;
@@ -109,7 +138,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             //setting parents
             _rectTransform.SetParent(ParentToReturn);
             _rectTransform.position = ParentToReturn.position;
-            ParentToReturn.GetComponent<Item_Slot>().CurrentNumber = _numberOfItems;
+            ParentToReturn.GetComponent<Item_Slot>().OccupyingItem = this;
             IngameManager.UnitManager.ControlOn = true;
 
 

@@ -133,7 +133,6 @@ public class UnitManager : MonoBehaviour
             var hitEnemy = Physics2D.Raycast(CursorLocation(), transform.forward, float.MaxValue, layerMask);
             if (hitEnemy && _selectedUnitList.Count > 0)
             {
-                Debug.Log(hitEnemy.transform.name);
 
                 foreach (var currentUnit in _selectedUnitList)
                 {
@@ -281,8 +280,13 @@ public class UnitManager : MonoBehaviour
 
     public void DeselectUnit(GameObject unitToDeselect)
     {
-        if(_selectedUnitList.Contains(unitToDeselect))
-        _selectedUnitList.Remove(unitToDeselect);
+        Debug.Log($"선택된 유닛에 포함됨: {_selectedUnitList.Contains(unitToDeselect)}");
+        if (_selectedUnitList.Contains(unitToDeselect))
+        {
+            unitToDeselect.GetComponent<UnitStats>().SetSelectionCircleState(false);
+            _selectedUnitList.Remove(unitToDeselect);
+        }
+        Debug.Log($"리스트 안에 유닛 수{_selectedUnitList.Count}");
     }
 
     private void ClickDetection()

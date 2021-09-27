@@ -661,7 +661,6 @@ public class UnitCombat : MonoBehaviour
                 OwnedFaction = toWhichFaction;
                 TargetFaction = Faction.Player;
                 IngameManager.UnitManager.DeselectUnit(gameObject);
-                Debug.Log("TO ENEMY");
                 break;
             default:
                 break;

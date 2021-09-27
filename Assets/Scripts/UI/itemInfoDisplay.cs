@@ -42,7 +42,7 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
     public override void PostInitialize()
     {
         Param param = GetParam() as Param;
-        if (param.enchant != null)
+        if (param.enchant == null)
         {
             _name.text = param.item.name;
             _enchant.text = string.Empty;

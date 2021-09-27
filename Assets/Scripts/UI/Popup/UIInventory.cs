@@ -6,7 +6,7 @@ public class UIInventory : UIPopup
 {
     [SerializeField] private Item_Slot[] _itemSlots;
     public override PopupID GetPopupID() { return PopupID.UIInventory; }
-    private int _moneyLocation = -1; //돈의 위치 인덱스. 돈이 없을경우 -1 로 설정
+    private Item_Drag moneyDrag;
     public override void SetInfo()
     {
     }
@@ -28,7 +28,7 @@ public class UIInventory : UIPopup
         int numSlotEmpty = 0;
         foreach (var itemSlot in _itemSlots)
         {
-            if (itemSlot.CurrentNumber == 0)
+            if (itemSlot.OccupyingItem != null)
             {
                 numSlotEmpty++;
                 returningList.Add(itemSlot.transform);
@@ -40,7 +40,7 @@ public class UIInventory : UIPopup
     {
         for (int i = 0; i < 16; i++)
         {
-            if(_itemSlots[i].CurrentNumber == 0)
+            if(_itemSlots[i].OccupyingItem == null)
             {
                 return i;
             }
@@ -56,40 +56,36 @@ public class UIInventory : UIPopup
     /// <returns></returns>
     public bool AddMoney(int amount)
     {
-        if(_moneyLocation == -1)
-        {//돈의 위치가 없는경우
+        if(moneyDrag == null)
+        {//돈이 없는경우
             if(amount <0 )
             {//돈이 아예 없는데 차감하려 할 경우
                 return false;
             }
 
             //돈 추가
-            _moneyLocation = getEmptySlot(1);
-
+            int emptySpot = getEmptySlot(1);
             GameObject newMoney = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
-            newMoney.GetComponent<Item_Data>().Setup(1, _itemSlots[_moneyLocation].transform);
-            _itemSlots[_moneyLocation].CurrentNumber = amount;
+            newMoney.GetComponent<Item_Data>().Setup(1, _itemSlots[emptySpot].transform);
+            moneyDrag = newMoney.GetComponent<Item_Drag>();
+            _itemSlots[emptySpot].OccupyingItem.NumberOfItems = amount;
             return true;
         }
         else if(amount > 0)
         {//돈의 위치가 있고, 추가
-            _itemSlots[_moneyLocation].CurrentNumber += amount;
+            moneyDrag.NumberOfItems += amount;
             return true;
         }
         else
         {//차감시
-            if(_itemSlots[_moneyLocation].CurrentNumber < -amount)
+            if(moneyDrag.NumberOfItems < -amount)
             {//돈이 모자르면
                 return false;
             }
             //차감할 돈이 충분함
-            _itemSlots[_moneyLocation].CurrentNumber += amount;
+            moneyDrag.NumberOfItems += amount;
+            if (moneyDrag.NumberOfItems == 0) moneyDrag = null; //돈 전부 소진시 아이템 제거
             return true;
         }
-    }
-    private void UpdateCurrentNumber(int index,int amount)
-    {
-        _itemSlots[index].CurrentNumber += amount;
-
     }
 }

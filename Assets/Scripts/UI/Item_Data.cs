@@ -27,6 +27,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
             GetComponent<Image>().sprite = Global.ResourceManager.LoadTexture(imgSrc);
         }
         Item_Drag itemDrag = GetComponent<Item_Drag>();
+        itemDrag.NumberOfItems = 1;
         itemDrag.SetDraggable(true);
         itemDrag.SetToPool = false;
         itemDrag.setType(Items.DB[ItemID].type);
@@ -35,6 +36,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
             transform.SetParent(parent);
             transform.position = parent.position;
             itemDrag.ParentToReturn = parent;
+            parent.GetComponent<Item_Slot>().OccupyingItem = itemDrag;
         }
         GetComponent<RectTransform>().sizeDelta = new Vector2(58, 58);
         transform.localScale = Vector3.one;
@@ -48,6 +50,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
         {
             var param = new ItemInfoDisplay.Param();
             param.enchant = Enchant;
+            Debug.Log($"인첸트 존재유무: {Enchant}");
             param.item = Items.DB[ItemID];
             param.position = eventData.position;
             Global.UIPopupManager.Push(PopupID.UIItemToolTip, param);
