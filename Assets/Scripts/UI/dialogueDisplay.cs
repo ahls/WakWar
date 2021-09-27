@@ -26,7 +26,7 @@ public class DialogueDisplay : MonoBehaviour
     /// <returns></returns>
     public bool LoadNextText()
     {
-        Debug.Log($"current dialogIndex = {_dialogIndex}");
+
         if(_dialogIndex == Dialogues.DB[_dialogID].Count)// 백신때문에 몸 상태가 안좋아서 이게 맞는 조건문인지 햇갈립니당..
         {
             _dialogueActive = false;

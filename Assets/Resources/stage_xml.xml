@@ -11,7 +11,7 @@
         <position_x>3</position_x>
         <position_y>1</position_y>
       </stageEnemyData>
-     <!-- 
+     
       <stageEnemyData>
         <id>100</id>
         <position_x>3</position_x>
@@ -22,6 +22,7 @@
         <position_x>3</position_x>
         <position_y>0.6</position_y>
       </stageEnemyData>
+      <!-- 
       <stageEnemyData>
         <id>100</id>
         <position_x>3</position_x>

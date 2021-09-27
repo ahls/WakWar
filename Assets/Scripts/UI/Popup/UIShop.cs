@@ -74,7 +74,7 @@ public class UIShop : UIPopup
     }
     public void OnEnchantPressed()
     {
-        if(IngameManager.UIInventory.AddMoney(_enchantPrice))
+        if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
         {//돈이 충분하면
             AddEnchant(_enchantSpot.GetComponent<Item_Slot>().OccupyingItem.GetComponent<Item_Data>());
         }

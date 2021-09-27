@@ -70,7 +70,7 @@ public class Enchant_AttackSpeed : EnchantBase
     private string _desc = "";
     private float _amount;
     
-    Enchant_AttackSpeed()
+    public Enchant_AttackSpeed()
     {
         _amount = (float)UnityEngine.Random.Range(2, 5) / 10;
         _desc = $"공격속도 {_amount} 증가";
@@ -86,7 +86,7 @@ public class Enchant_HP : EnchantBase
     public override string Desc => _desc;
     private string _desc;
     private int _amount;
-    Enchant_HP()
+    public Enchant_HP()
     {
         _amount = UnityEngine.Random.Range(1,5) * 10;
         _desc = $"체력 {_amount} 증가";
@@ -98,7 +98,7 @@ public class Enchant_Armor : EnchantBase
     public override string Desc => _desc;
     private string _desc;
     private int _amount;
-    Enchant_Armor()
+    public Enchant_Armor()
     {
         _amount = UnityEngine.Random.Range(1, 5);
         _desc = $"방어력 {_amount} 증가";
@@ -110,7 +110,7 @@ public class Enchant_AP : EnchantBase
     public override string Desc => _desc;
     private string _desc;
     private int _amount;
-    Enchant_AP()
+    public Enchant_AP()
     {
         _amount = UnityEngine.Random.Range(1, 5);
         _desc = $"방어 관통 {_amount} 증가";
@@ -128,7 +128,7 @@ public class Enchant_Crit : EnchantBase
     public override string Desc => _desc;
     private string _desc;
     private float _amount;
-    Enchant_Crit()
+    public Enchant_Crit()
     {
         _amount = UnityEngine.Random.Range(1,10) * 0.05f;
         _desc = $"치명타 확률 {_amount * 100}% 증가";
