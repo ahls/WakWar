@@ -47,6 +47,11 @@ public class UIInventory : UIPopup
         }
         return -1;
     }
+    public int GetCurrentMoney()
+    {
+        if (moneyDrag != null) return moneyDrag.NumberOfItems;
+        return 0;
+    }
     /// <summary>
     /// 돈을 받는경우 +, 뺴는경우 -로 가능.
     /// 돈을 빼는경우, 0보다 적을경우 false 를 리턴,

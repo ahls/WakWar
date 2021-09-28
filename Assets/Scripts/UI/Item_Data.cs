@@ -18,9 +18,15 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
 //        setup(testID);//테스팅용 라인
     }
 
+    /// <summary>
+    /// parent를 지정하면 위치 이동, 부모관계 설정, 그리고 부모의 occupyingItem 도 설정함
+    /// </summary>
+    /// <param name="ID"></param>
+    /// <param name="parent"></param>
     public void Setup(int ID, Transform parent = null)
     {
         ItemID = ID;
+        Price = Items.DB[ItemID].value;
         string imgSrc = Items.DB[ItemID].imgSrc;
         if (imgSrc != "Null")
         {

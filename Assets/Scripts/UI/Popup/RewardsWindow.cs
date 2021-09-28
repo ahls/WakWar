@@ -139,10 +139,7 @@ public class RewardsWindow : UIPopup
     private void MakeSingle(int itemID)
     {
         GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);
-        newItem.GetComponent<Item_Data>().Setup(itemID);
-        newItem.transform.SetParent(slots[0].transform);
-        newItem.GetComponent<RectTransform>().position = slots[0].transform.position;
-        slots[0].GetComponent<Item_Slot>().OccupyingItem = newItem.GetComponent<Item_Drag>();
+        newItem.GetComponent<Item_Data>().Setup(itemID,slots[0].transform);
     }
     private void MakeMultiples(int baseNumber,int typeRange, int tierRange)
     {
@@ -170,8 +167,6 @@ public class RewardsWindow : UIPopup
             totalValue += Items.DB[genItemID].value;
             listOfItems.Add(genItemID);
 
-            Debug.Log($"현재 생성된 아이템 ID: {genItemID}");
-            Debug.Log($"현재 생성된 아이템 이름: {Items.DB[genItemID].name}");
         } while (totalValue < _rewardAmount && listOfItems.Count < 16);
         listOfItems.Sort();
         for (int i = 0; i < listOfItems.Count; i++)

@@ -38,7 +38,7 @@ public class ProgressManager : MonoBehaviour
     public void NextSequence()
     {
         _currentProgressIndex++;
-        Debug.Log($"Current Sequence Index: {_currentProgressIndex}");
+
         Debug.Log($"Current progress is: {ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent}");
         switch (ProgressSequences.DB[_currentProgressIndex].CurrentProgressEvent)   
         {

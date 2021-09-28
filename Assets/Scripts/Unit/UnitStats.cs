@@ -288,7 +288,7 @@ public class UnitStats : MonoBehaviour
 
     public void SetSelectionCircleState(bool value)
     {
-        if (!Selectable)
+        if (!Selectable && (value == true))
         {
             return;
         }

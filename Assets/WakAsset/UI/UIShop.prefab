@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 2452788782858065966}
   - component: {fileID: 8368795152279485554}
   m_Layer: 0
-  m_Name: Text
+  m_Name: EnchantResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -208,8 +208,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\uBB34\uC2A8\uBB34\uC2A8 \uB9C8\uBC95 \uBD80\uC5EC \uC131\uACF5!\n\uBB34\uC2A8\uBB34\uC2A8
-    \uD6A8\uACFC\uAC00 \uC788\uC2A4\uBE48\uB2E4."
+  m_Text: 
 --- !u!1 &4295001490755755590
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +427,7 @@ GameObject:
   - component: {fileID: 4295001491148990539}
   - component: {fileID: 4295001491148990538}
   m_Layer: 0
-  m_Name: Text
+  m_Name: buttonLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,7 +740,7 @@ MonoBehaviour:
   _enchantSpot: {fileID: 8612999363013019628}
   _enchantButton: {fileID: 4295001490832263325}
   _anim: {fileID: 27474108689948760}
-  _priceDisplay: {fileID: 957566704124151838}
+  _priceDisplay: {fileID: 248765221702416288}
   _enchantResultDisplay: {fileID: 8368795152279485554}
 --- !u!1 &4295001492309819282
 GameObject:

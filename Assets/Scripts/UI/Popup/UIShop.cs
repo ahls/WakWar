@@ -70,6 +70,7 @@ public class UIShop : UIPopup
         _enchantButton.interactable = true;
         _anim.SetBool("enabled", true);
         _priceDisplay.text = price.ToString();
+        _enchantResultDisplay.text = "";
     }
     public void DisableEnchantButton()
     {
@@ -77,9 +78,11 @@ public class UIShop : UIPopup
         _enchantButton.interactable = false;
         _anim.SetBool("enabled", false);
         _priceDisplay.text = "";
+        _enchantResultDisplay.text = "";
     }
     public void OnEnchantPressed()
     {
+        Debug.Log($"업그레이드 가격: {_enchantPrice} ## 현재 소지금: {IngameManager.UIInventory.GetCurrentMoney()}");
         if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
         {//돈이 충분하면
             AddEnchant(_enchantSpot.GetComponent<Item_Slot>().OccupyingItem.GetComponent<Item_Data>());
@@ -87,7 +90,7 @@ public class UIShop : UIPopup
         }
         else
         {//돈이 모자르면
-            Global.UIManager.PushNotiMsg("돈이 부족합니다.", 2);
+            Global.UIManager.PushNotiMsg("소지금이 부족합니다.", 1);
         }
     }
     public void AddEnchant(Item_Data itemData)

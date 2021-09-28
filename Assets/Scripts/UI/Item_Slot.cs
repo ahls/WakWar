@@ -42,7 +42,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     //상점에 진열된 아이템이 아닐경우, 돈을 주고 아이템 삭제
                     int itemPrice = Items.DB[itemData.ItemID].value/2;//반값에 팔림
                     IngameManager.UIInventory.AddMoney(itemPrice);
-                    Global.ObjectManager.ReleaseObject(draggedItem.gameObject.name, draggedItem.gameObject);
+                    draggedItem.SetToPool = true;
                     Global.AudioManager.PlayOnce("SellItem");
                     //상점 판매칸 닫는 스크립트
                     if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
