@@ -85,7 +85,10 @@ public class UIShop : UIPopup
         Debug.Log($"업그레이드 가격: {_enchantPrice} ## 현재 소지금: {IngameManager.UIInventory.GetCurrentMoney()}");
         if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
         {//돈이 충분하면
-            AddEnchant(_enchantSpot.GetComponent<Item_Slot>().OccupyingItem.GetComponent<Item_Data>());
+            Item_Drag itemDrag = _enchantSpot.GetComponent<Item_Slot>().OccupyingItem;
+            AddEnchant(itemDrag.GetComponent<Item_Data>());
+            itemDrag.Enchanted();
+
             _anim.SetTrigger("apply");
         }
         else

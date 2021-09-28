@@ -161,4 +161,8 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         _canDrag = state;
     }
+    public void Enchanted()
+    {
+        _numberDisplay.text = "+";
+    }
 }

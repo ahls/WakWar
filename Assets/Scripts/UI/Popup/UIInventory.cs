@@ -89,7 +89,11 @@ public class UIInventory : UIPopup
             }
             //차감할 돈이 충분함
             moneyDrag.NumberOfItems += amount;
-            if (moneyDrag.NumberOfItems == 0) moneyDrag = null; //돈 전부 소진시 아이템 제거
+            if (moneyDrag.NumberOfItems == 0)
+            {
+                moneyDrag = null; //돈 전부 소진시 아이템 제거
+                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, moneyDrag.gameObject);
+            }
             return true;
         }
     }

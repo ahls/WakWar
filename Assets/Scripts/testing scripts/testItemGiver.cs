@@ -21,6 +21,11 @@ public class testItemGiver : MonoBehaviour
                 Global.UIPopupManager.Push(PopupID.UIShop);
                 return;
             }
+            else if(_inputField.text == "돈")
+            {
+                IngameManager.UIInventory.AddMoney(100);
+                return;
+            }
             int givenInput = int.Parse(_inputField.text);
             _inputField.text = "";
             
