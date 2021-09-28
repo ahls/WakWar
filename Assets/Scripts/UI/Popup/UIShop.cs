@@ -9,6 +9,9 @@ public class UIShop : UIPopup
     [SerializeField] private GameObject sellingPanel;
     [SerializeField] private Transform _enchantSpot;
     [SerializeField] private Button _enchantButton;
+    [SerializeField] private Animator _anim;
+    [SerializeField] private Text _priceDisplay;
+    [SerializeField] private Text _enchantResultDisplay;
     private int _enchantPrice;
     public override PopupID GetPopupID() { return PopupID.UIShop; }
 
@@ -65,18 +68,22 @@ public class UIShop : UIPopup
     {
         _enchantPrice = price;
         _enchantButton.interactable = true;
+        _anim.SetBool("enabled", true);
+        _priceDisplay.text = price.ToString();
     }
     public void DisableEnchantButton()
     {
         _enchantPrice = 0;
         _enchantButton.interactable = false;
-        Debug.Log("Disable Enchant is called");
+        _anim.SetBool("enabled", false);
+        _priceDisplay.text = "";
     }
     public void OnEnchantPressed()
     {
         if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
         {//돈이 충분하면
             AddEnchant(_enchantSpot.GetComponent<Item_Slot>().OccupyingItem.GetComponent<Item_Data>());
+            _anim.SetTrigger("apply");
         }
         else
         {//돈이 모자르면
@@ -87,6 +94,6 @@ public class UIShop : UIPopup
     {
         List<Type> enchants = EnchantDB.GetEnchants();
         itemData.Enchant = (EnchantBase)Activator.CreateInstance(enchants[UnityEngine.Random.Range(0, enchants.Count)]);
-        //itemData.Enchant = new Enchant_Dmg();
+        _enchantResultDisplay.text = $"{itemData.Enchant.Name} 마법 부여 성공!\n{itemData.Enchant.Desc}";
     }
 }

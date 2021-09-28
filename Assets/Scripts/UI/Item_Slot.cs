@@ -69,7 +69,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     // 마법부여 로직
                     else if (_spotPurpose == 4)
                     {
-                        IngameManager.UIShop.EnableEnchantButton(itemData.Price * 2);
+                        IngameManager.UIShop.EnableEnchantButton(itemData.Price);
                     }
                     //상점 구매 로직
                     else if (draggedItem.SellingItem)

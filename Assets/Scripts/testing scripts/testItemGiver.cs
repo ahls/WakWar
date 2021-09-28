@@ -26,6 +26,7 @@ public class testItemGiver : MonoBehaviour
             
             if(Items.DB.ContainsKey(givenInput))
             {
+                Debug.Log("치트 사용됨!");
                 List<Transform> itemslot = IngameManager.UIInventory.getEmptySlots(1);
                 if (itemslot.Count != 0)
                 {
