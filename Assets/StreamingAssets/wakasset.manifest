@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3560894004
+CRC: 3289156884
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 29e168c20e0b8d8769ac99c8afcc9a48
+    Hash: 84fa641d50918285a37110919f40bcb8
   TypeTreeHash:
     serializedVersion: 2
-    Hash: e2296e611d8c78510d698c51a53417db
+    Hash: 88c0d7c9846c0ba124d56d6802e7d46f
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -217,6 +217,7 @@ Assets:
 - Assets/Prefab/Effects/Skill/skillcarrier.prefab
 - Assets/Audio/attacks/BowShot.mp3
 - Assets/Images/Sprites/Equipped/img_instruments.png
+- Assets/Audio/cursed_ambient.mp3
 - Assets/Audio/attacks/hunsu_1.mp3
 - Assets/Prefab/Effects/Skill/SnipeEffect.prefab
 - Assets/Images/Sprites/ItemIcon/Relic/relic_montihole.png
@@ -257,6 +258,7 @@ Assets:
 - Assets/Images/Sprites/ItemIcon/Weapon/I_gun1.png
 - Assets/Images/Sprites/Equipped/img_shield.png
 - Assets/Images/Sprites/ItemIcon/General/hp_elixir.png
+- Assets/Audio/enchant_apply.mp3
 - Assets/Audio/UsePotion.wav
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Images/DialogImage/dialog_panzee.png

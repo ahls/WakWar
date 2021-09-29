@@ -11,7 +11,16 @@ public class UnitStats : MonoBehaviour
     private UnitCombat _unitCombat;
 
     //선택관련
-    public bool Selectable { get; set; } = false;
+    private bool _selectable = false;
+    public bool Selectable { get => _selectable; 
+        set 
+        {
+            if(value == false)
+            {
+                SetSelectionCircleState(false);
+            }    
+        } 
+    }
     public Faction OwnedFaction { get; set; }
     [SerializeField] private GameObject _selectionCircle;
     [SerializeField] private Text _playerNameText;
@@ -76,7 +85,7 @@ public class UnitStats : MonoBehaviour
 
     public void PlayerUnitInit(string playerName)
     {
-        Selectable = true;
+        _selectable = true;
         _selectionCircle.SetActive(false);
         _playerNameText.text = playerName;
         GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
@@ -288,7 +297,7 @@ public class UnitStats : MonoBehaviour
 
     public void SetSelectionCircleState(bool value)
     {
-        if (!Selectable && (value == true))
+        if (_selectionCircle == null || (!_selectable && value))
         {
             return;
         }

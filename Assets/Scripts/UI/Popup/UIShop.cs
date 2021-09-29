@@ -82,10 +82,14 @@ public class UIShop : UIPopup
     }
     public void OnEnchantPressed()
     {
-        Debug.Log($"업그레이드 가격: {_enchantPrice} ## 현재 소지금: {IngameManager.UIInventory.GetCurrentMoney()}");
-        if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
+        Item_Drag itemDrag = _enchantSpot.GetComponent<Item_Slot>().OccupyingItem;
+        Item_Data itemData = itemDrag.GetComponent<Item_Data>();
+        if (itemData.Enchant != null  && itemData.Enchant.Cursed)
+        {
+            Global.UIManager.PushNotiMsg("저주받은 장비는 강화할 수 없습니다.", 1);
+        }
+        else if(IngameManager.UIInventory.AddMoney(-_enchantPrice))
         {//돈이 충분하면
-            Item_Drag itemDrag = _enchantSpot.GetComponent<Item_Slot>().OccupyingItem;
             AddEnchant(itemDrag.GetComponent<Item_Data>());
             itemDrag.Enchanted();
 
@@ -100,6 +104,17 @@ public class UIShop : UIPopup
     {
         List<Type> enchants = EnchantDB.GetEnchants();
         itemData.Enchant = (EnchantBase)Activator.CreateInstance(enchants[UnityEngine.Random.Range(0, enchants.Count)]);
+        Global.AudioManager.PlayOnce("enchant_apply");
+        StartCoroutine(EnchantButtonEnumerator(itemData));
+    }
+    private IEnumerator EnchantButtonEnumerator(Item_Data itemData)
+    {
+        Item_Drag drag = itemData.GetComponent<Item_Drag>();
+        drag.SetDraggable(false, true);
+        _enchantButton.interactable = false;
+        yield return new WaitForSeconds(1f);
+        _enchantButton.interactable = true;
+        drag.SetDraggable(true, true);
         _enchantResultDisplay.text = $"{itemData.Enchant.Name} 마법 부여 성공!\n{itemData.Enchant.Desc}";
     }
 }

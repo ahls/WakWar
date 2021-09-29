@@ -43,7 +43,6 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     int itemPrice = itemData.Price/2;//반값에 팔림
                     IngameManager.UIInventory.AddMoney(itemPrice);
                     draggedItem.SetToPool = true;
-                    Debug.Log("아이템 판매중");
                     Global.AudioManager.PlayOnce("SellItem");
                     //상점 판매칸 닫는 스크립트
                     if (Global.UIPopupManager.FindPopup(PopupID.UIShop) != null)
@@ -70,6 +69,11 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     // 마법부여 로직
                     else if (_spotPurpose == 4)
                     {
+                        if(itemData.Enchant !=null && itemData.Enchant.Cursed)
+                        {
+                            Global.UIManager.PushNotiMsg("저주받은 장비는 강화할 수 없습니다.", 1);
+                            return;
+                        }
                         IngameManager.UIShop.EnableEnchantButton(itemData.Price);
                     }
                     //상점 구매 로직
@@ -91,7 +95,10 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                         if (Weapons.DB[tempWeaponIndex].Class == assgiendUnit.UnitClassType || assgiendUnit.UnitClassType == ClassType.Wak)
                         {
                             assgiendUnit.EquipWeapon(tempWeaponIndex);
-                            if(itemData.Enchant != null)    itemData.Enchant.OnEquip(assgiendUnit);
+                            if (itemData.Enchant != null) 
+                            {   
+                                itemData.Enchant.OnEquip(draggedItem,assgiendUnit); 
+                            }
 
                             draggedItem.placeItem(transform);
                             draggedItem.Equipped = true;

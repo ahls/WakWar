@@ -36,7 +36,8 @@ public class UnitCombat : MonoBehaviour
 
 
     //체력
-    public int HealthMax { get; set; } = 10;
+    public int BaseHP = 10;
+    public int HealthMax { get; set; } 
     private float _healthInversed;
     public bool IsDead { get; set; } = false;
     public bool CanBeKilled { get; set; } = true;
@@ -51,7 +52,8 @@ public class UnitCombat : MonoBehaviour
     public float BaseAOE { get; set; }
     public int BaseAP { get; set; }
 
-
+    public float BaseCrit = 0f;
+    public float BaseLD = 0f;//life drain
     public float CritChance { get; set; } = 0f;
     public float CritDmg { get; set; } = 1.5f;
     public float LifeSteal { get; set; } = 0f;
@@ -372,9 +374,9 @@ public class UnitCombat : MonoBehaviour
             TotalAP = BaseAP + weaponInfo.AP + (int)classModifier["AP"];
             TotalAS = BaseAS + weaponInfo.AttackSpeed + classModifier["AttackSpeed"];
             TotalArmor = BaseArmor + weaponInfo.Armor + (int)classModifier["Armor"];
-            HealthMax = (int)classModifier["MaxHP"];
-            CritChance = classModifier["CritChance"];
-            LifeSteal = classModifier["LifeSteal"];
+            HealthMax = BaseHP +(int)classModifier["MaxHP"];
+            CritChance =BaseCrit + classModifier["CritChance"];
+            LifeSteal = BaseLD + classModifier["LifeSteal"];
             _unitstats.MoveSpeed = classModifier["MovementSpeed"];
 
             TotalAOE = BaseAOE + weaponInfo.AttackArea;
@@ -653,14 +655,12 @@ public class UnitCombat : MonoBehaviour
                 _unitstats.Selectable = true;
                 OwnedFaction = toWhichFaction;
                 TargetFaction = Faction.Enemy;
-                IngameManager.UnitManager.DeselectUnit(gameObject);
                 break;
             case Faction.Enemy:
                 HealthBarColor(Color.red);
                 _unitstats.Selectable = false;
                 OwnedFaction = toWhichFaction;
                 TargetFaction = Faction.Player;
-                IngameManager.UnitManager.DeselectUnit(gameObject);
                 break;
             default:
                 break;

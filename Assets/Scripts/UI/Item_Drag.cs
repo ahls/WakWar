@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHandler
+public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
 
     [SerializeField] CanvasGroup _canvasGroup;
@@ -12,6 +12,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     public Transform ParentToReturn;
     public bool Equipped = false;
     private bool _canDrag = true;
+    private bool _canDragQueued = true;
     public bool SetToPool { get; set; }
     public bool SellingItem = false; //상점에서 파는 아이템일경우 true
     private RectTransform _rectTransform;
@@ -23,6 +24,11 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         get => _numItems;
         set
         {
+            if(value == 0)
+            {
+                transform.parent.GetComponent<Item_Slot>().OccupyingItem = null;
+                Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, gameObject);
+            }
             _numItems = value;
             if(_numberDisplay != null)
             {
@@ -47,10 +53,20 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
         _rectTransform = GetComponent<RectTransform>();
 
     }
-    public void Init()
+    public void setup(ItemType itemtype,Transform parent = null)
     {
-        _rectTransform.parent.GetComponent<Item_Slot>().OccupyingItem = this;
-        ParentToReturn = _rectTransform.parent;
+        NumberOfItems = 1;
+        _canDrag = true;
+        _canDragQueued = true;
+        SetToPool = false;
+        _itemType = itemtype;
+        if (parent != null)
+        {
+            transform.SetParent(parent);
+            transform.position = parent.position;
+            parent.GetComponent<Item_Slot>().OccupyingItem = this;
+            ParentToReturn = parent;
+        }
     }
     #region 헬퍼 함수
 
@@ -98,14 +114,11 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
     {
         return (slottype == _itemType || slottype == ItemType.Any);
     }
-    public void setType(ItemType _type)
-    {
-        _itemType = _type;
-    }
     #endregion
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (_canDrag &&eventData.button == PointerEventData.InputButton.Left)
+        if (!_canDrag) return;
+        if (eventData.button == PointerEventData.InputButton.Left)
         {
             _rectTransform.SetParent(_canvas.transform);
             _rectTransform.SetAsLastSibling();
@@ -125,7 +138,8 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (!_canDrag) return;
+        if ( eventData.button == PointerEventData.InputButton.Left)
         {
             _rectTransform.position = eventData.position;
         }
@@ -133,6 +147,7 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (!_canDrag) return;
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             //setting parents
@@ -153,13 +168,22 @@ public class Item_Drag : UIDraggable,IBeginDragHandler, IEndDragHandler, IDragHa
             }
             if(SetToPool)
             {
+                ParentToReturn.GetComponent<Item_Slot>().OccupyingItem = null;
                 Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, gameObject);
             }
         }
+        if (_canDragQueued != _canDrag) _canDrag = _canDragQueued;
     }
-    public void SetDraggable(bool state)
+    public void SetDraggable(bool state, bool immediate = false)
     {
-        _canDrag = state;
+        if (immediate)
+        {
+            _canDrag = state;
+        }
+        else
+        {
+            _canDragQueued = state;
+        }
     }
     public void Enchanted()
     {

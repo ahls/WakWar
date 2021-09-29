@@ -1036,7 +1036,7 @@ MonoBehaviour:
   _slotType: 4
   Occupied: 0
   OccupyingItem: {fileID: 0}
-  _spotPurpose: 0
+  _spotPurpose: 1
 --- !u!1 &6128665062963680237
 GameObject:
   m_ObjectHideFlags: 0

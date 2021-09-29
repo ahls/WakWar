@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCF00\uB9AD\uD130 \uC774\uB984"
+  m_Text: 
 --- !u!222 &43550001
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -843,6 +843,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 371193570}
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &371193571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,7 +1238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2294,8 +2305,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD9C\uB825\uD14D\uC2A4\uD2B8 \uB77C\uC7781\n\uCD9C\uB825\uD14D\uC2A4\uD2B8
-    \uB77C\uC7782\n\uCD9C\uB825\uD14D\uC2A4\uD2B8 \uB77C\uC778 3\n4\n5\n6 ------------------------------------------------------------------------------------------------------------------"
+  m_Text: 
 --- !u!222 &1376801898
 CanvasRenderer:
   m_ObjectHideFlags: 0
