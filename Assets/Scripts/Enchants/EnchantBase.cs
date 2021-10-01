@@ -306,16 +306,41 @@ public class Enchant_Crit : EnchantBase
         uc.UpdateStats();
     }
 }
-/*
+
 public class Enchant_heal : EnchantBase
 {
-    public override string Name => "자가수복 ";
+    public override string Name => _name;
+    private string _name = "자가수복 ";
 
-    public override string Desc => "초당 체력 2 회복.";
+    public override string Desc => _desc;
+    private string _desc = "초당 체력 2 회복.";
+    private int _amount = 2;
     public Enchant_heal()
     {
+    if(CursedCheck())
+        {
+            _amount += 2;
+            _desc += cursedDesc;
+            _name = cursedPrefix + _name;
+        }
+    }
+    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    {
+        uc.OnEachSecondAlive += heal; ;
+        base.OnEquip(itemDrag, uc);
+    }
+
+    private void heal(UnitCombat uc)
+    {
+        uc.Heal(_amount);
+    }
+
+    public override void OnUnequipItem(UnitCombat uc)
+    {
+        uc.OnEachSecondAlive -= heal;
     }
 }
+/*
 public class Enchant_meteor : EnchantBase
 {
     public override string Name => "궁극의 ";

@@ -109,13 +109,19 @@ public class UnitCombat : MonoBehaviour
     public float TotalAS { get; set; }
     private float _attackTimer = 0; // 0일때 공격 가능
     public int TotalArmor { get; set; }
-    public event UnitCombatEvent OnUnequipItem;
-    public delegate void UnitCombatEvent(UnitCombat uc);
 
     //스킬관련
     [HideInInspector]public SkillBase Skill;
 
     public EnemyBehaviour EnemyBehavour = null; //적이 아니라면 null. 있을경우엔 피격시 어그로 레벨 상승
+
+    //이벤트
+
+    public event UnitCombatEvent OnSkillUse;
+    public event UnitCombatEvent OnEachSecondAlive;
+    public event UnitCombatEvent OnUnequipItem;
+    public delegate void UnitCombatEvent(UnitCombat uc);
+    private int _secondCounter = 60;
 
     public void playerSetup(ClassType inputWeaponType)
     {
@@ -171,7 +177,11 @@ public class UnitCombat : MonoBehaviour
     {
         if (!IsDead)
         {
-            
+            if(_secondCounter-- == 0)
+            {
+                _secondCounter = 60;
+                OnEachSecondAlive?.Invoke(this);
+            }
             switch (ActionStat)
             {
                 case ActionStats.Move:

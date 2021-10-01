@@ -102,8 +102,6 @@ public class UIShop : UIPopup
     }
     public void AddEnchant(Item_Data itemData)
     {
-        List<Type> enchants = EnchantDB.GetEnchants();
-        itemData.Enchant = (EnchantBase)Activator.CreateInstance(enchants[UnityEngine.Random.Range(0, enchants.Count)]);
         Global.AudioManager.PlayOnce("enchant_apply");
         StartCoroutine(EnchantButtonEnumerator(itemData));
     }
@@ -115,6 +113,9 @@ public class UIShop : UIPopup
         yield return new WaitForSeconds(1f);
         _enchantButton.interactable = true;
         drag.SetDraggable(true, true);
+
+        List<Type> enchants = EnchantDB.GetEnchants();
+        itemData.Enchant = (EnchantBase)Activator.CreateInstance(enchants[UnityEngine.Random.Range(0, enchants.Count)]);
         _enchantResultDisplay.text = $"{itemData.Enchant.Name} 마법 부여 성공!\n{itemData.Enchant.Desc}";
     }
 }
