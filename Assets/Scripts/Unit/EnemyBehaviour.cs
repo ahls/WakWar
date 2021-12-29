@@ -108,7 +108,7 @@ public class EnemyBehaviour : MonoBehaviour
                     }
                     enemyFound = true;
                     _unitCombat.AttackTarget = selectedCombat.transform;
-                    _unitCombat.ActionStat = UnitCombat.ActionStats.Attack;
+                    _unitCombat.ActionStat = UnitCombat.UnitState.Attack;
                 }
             }
         }
@@ -177,7 +177,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (BestTarget != null)
         {
             _unitCombat.AttackTarget = BestTarget;
-            _unitCombat.ActionStat = UnitCombat.ActionStats.Attack;
+            _unitCombat.ActionStat = UnitCombat.UnitState.Attack;
         }
 
     }

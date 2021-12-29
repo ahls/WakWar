@@ -7,7 +7,10 @@ public class Item_Slot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private ItemType _slotType;
     public UnitCombat assgiendUnit { get; set; }
-    public bool Occupied = false;
+    public bool Occupied
+    {
+        get { return OccupyingItem != null; }
+    }
     public Item_Drag OccupyingItem;
     
     public event ItemSlotEvent OnItemPlaced;
@@ -30,7 +33,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
         if (draggedItem != null)
         {
             Item_Data itemData = draggedItem.GetComponent<Item_Data>();
-            if (OccupyingItem == null)
+            if (!Occupied)
             {
                 //상점 판매 로직
                 if(_spotPurpose == 1)
@@ -100,7 +103,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                                 itemData.Enchant.OnEquip(draggedItem,assgiendUnit); 
                             }
 
-                            draggedItem.placeItem(transform);
+                            draggedItem.SetupForItemPlacement(transform);
                             draggedItem.Equipped = true;
                             
                         }
@@ -111,7 +114,7 @@ public class Item_Slot : MonoBehaviour, IDropHandler
                     }
                     else
                     {
-                        draggedItem.placeItem(transform);
+                        draggedItem.SetupForItemPlacement(transform);
                     }
                 }
                 else

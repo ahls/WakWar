@@ -27,6 +27,7 @@ public class RewardsWindow : UIPopup
     public static int[] ChancesPerTier = { 8, 4, 2, 1 };
     private static int[] _tierChances = { 0, 0, 0, 0 };
     private const int lowerConstant = 10, upperConstant = 100;
+    private KeyCode _transferAllKey = KeyCode.Space;
     private List<int> _spawnedRelics = new List<int>();
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,28 @@ public class RewardsWindow : UIPopup
     {
         if(IngameManager.ProgressManager!= null)
         IngameManager.ProgressManager.NextSequence();
+    }
+    private void Update()
+    {
+     if(Input.GetKeyDown(_transferAllKey))
+        {
+            int emptySlotIndex = 0;
+            List<Transform> emptySlots = IngameManager.UIInventory.GetEmptySlots();
+            List<Transform> itemSlots = new List<Transform>();
+            foreach (GameObject slot in slots)
+            {
+                if (emptySlots.Count > emptySlotIndex)
+                {
+                    if (slot.GetComponent<Item_Slot>().Occupied)
+                    {
+                        Item_Drag itemDrag = slot.transform.GetChild(0).GetComponent<Item_Drag>();
+                        itemDrag.SetupForItemPlacement(emptySlots[emptySlotIndex]);
+                        itemDrag.PlaceItem();
+                        emptySlotIndex++;
+                    }
+                }
+            }
+        }
     }
     public void SetChances()
     {

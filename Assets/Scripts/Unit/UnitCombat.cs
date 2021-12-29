@@ -8,18 +8,20 @@ public enum Faction { Player, Enemy, Both }//유닛 컴뱃에 부여해서 피�
 
 public class UnitCombat : MonoBehaviour
 {
-    public enum ActionStats
+    public enum UnitState
     {
         Idle,
         Move,
         Attack,
-        Stun
+        Stun,
+        Chase
+
     }
     public bool debugAction = false;
     #region 변수
 
-    private ActionStats _actionStat;
-    public ActionStats ActionStat
+    private UnitState _actionStat;
+    public UnitState ActionStat
     {
         get
         {
@@ -46,6 +48,7 @@ public class UnitCombat : MonoBehaviour
     private int _stunTimer = 0;
 
     //공격관련
+    private const float RANDOM_ATTACK_DELAY_RANGE = 0.1f;
     public int BaseDamage { get; set; }
     public float BaseRange { get; set; }
     public float BaseAS { get; set; } // 초당 공격
@@ -60,13 +63,20 @@ public class UnitCombat : MonoBehaviour
 
 
     //타겟 관련
+    private byte _actionTimer;
+    private bool _attackGround = false; //어택땅
+    private bool _chasing = false;
     public static bool AIenabled = false;
+    public bool HoldPosition = false;
     [HideInInspector]public Transform AttackTarget;
-    public bool AttackGround { get; set; } = false; //어택땅
     [HideInInspector]public bool SeekTarget = false; //현재 공격대상이 없으면 왁굳을 향해 공격하러 오는 유닛들은 true
-    private int _searchCooldown = 25;
-    private int _searchTimer;
+    private const int TIMER_COOLDOWN = 5;
     private static int _searchAssign = 0;
+    private int _searchTimer;
+    public float SearchRadius = 1;
+    public float MaxStrayDistance = 1; // 0일경우 계속 따라감.s
+    private Vector3 _targetPosition;
+
 
     //방어력
     public int BaseArmor { get; set; }
@@ -118,11 +128,11 @@ public class UnitCombat : MonoBehaviour
     //이벤트
 
     public event UnitCombatEvent OnSkillUse;
-    public event UnitCombatEvent OnEachSecondAlive;
+    public event UnitCombatEvent OnEachSecondAlive; // 초당 체력회복등에 사용
     public event UnitCombatEvent OnUnequipItem;
     public delegate void UnitCombatEvent(UnitCombat uc);
-    private int _secondCounter = 60;
-
+    private Coroutine _aliveSecondCoroutine;
+    private Coroutine _attackCoroutine;
     public void playerSetup(ClassType inputWeaponType)
     {
         UnitClassType = inputWeaponType;
@@ -158,10 +168,12 @@ public class UnitCombat : MonoBehaviour
         HealthBarUpdate();
 
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
-        _searchTimer = _searchAssign++ % _searchCooldown;
-        _searchAssign %= _searchCooldown;
+        _searchTimer = _searchAssign++ % TIMER_COOLDOWN;
+        _actionTimer = (byte)(_searchAssign++ % TIMER_COOLDOWN);
+        _searchAssign %= TIMER_COOLDOWN;
 
-        ActionStat = ActionStats.Idle;
+        ActionStat = UnitState.Idle;
+        StartCoroutine(EachSecondAliveCoroutine());
         if(_animator == null)        _animator = GetComponent<Animator>();
     }
 
@@ -172,112 +184,149 @@ public class UnitCombat : MonoBehaviour
         //    ActionStat = ActionStats.Move;
         //}
     }
+    private void Action()
+    {
+        float biggerSearchRadius = SearchRadius + TotalRange;
+        switch (ActionStat)
+        {
+            case UnitState.Idle:
+                if(HoldPosition)
+                {
+                    if (SearchInRadius(TotalRange))
+                    {
+                        ActionStat = UnitState.Attack;
+                    }
+                }    
+                else
+                {
+                    if (SearchInRadius(biggerSearchRadius))
+                    {
+                        ActionStat = UnitState.Attack;
+                    }
+                }
+                break;
+            case UnitState.Move:
+                if(AttackTarget!= null && 
+                   !AttackTarget.GetComponent<UnitCombat>().IsDead &&
+                   OffsetToTargetBound() <= TotalRange)
+                {
+                    _unitstats.StopMoving();
+                    ActionStat = UnitState.Attack;
+                }
+                else if(_attackGround)
+                {
+                    if (SearchInRadius(biggerSearchRadius))
+                    {
+                        ActionStat = UnitState.Attack;
+                    }
+                }
+                break;
+            case UnitState.Attack:
+                if (AttackTarget == null || AttackTarget.GetComponent<UnitCombat>().IsDead)
+                {
+                    //공격스테이트에서 적이 없음
+                    if(SearchInRadius(biggerSearchRadius))
+                    {
+                        _unitstats.MoveToTarget(_targetPosition,false);
+                    }
+                }
 
+                break;
+            case UnitState.Stun:
+                if(_stunTimer > 0)
+                {
+                    _stunTimer-= TIMER_COOLDOWN;
+                    return;
+                }
+                ActionStat = UnitState.Idle;
+                break;
+            case UnitState.Chase:
+                if (SearchInRadius(TotalRange))
+                {
+                    ActionStat = UnitState.Attack;
+                }
+                if((transform.position - _targetPosition).magnitude > MaxStrayDistance && MaxStrayDistance != 0)
+                {
+                    _unitstats.MoveToTarget(_targetPosition);
+                }
+                else
+                {
+                    MoveIntoRange();
+                    ActionStat = UnitState.Chase;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 프레임당 돌리게 됨
+    /// </summary>
+    private void OnAttackTimerExpire()
+    {
+        _attackTimer -= Time.fixedDeltaTime;
+        if (_attackTimer > 0) return;
+        if (ActionStat == UnitState.Attack)
+        {
+            if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
+            {//살아있는 공격대상이 있을경우
+
+                if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
+                if (OffsetToTargetBound() <= TotalRange)
+                {//적이 사정거리 내에 있을경우
+
+                    _unitstats.StopMoving();
+                    Attack();
+                }
+                else
+                {
+                    if(HoldPosition)
+                    {
+                        //위치사수 상태였을 시 그대로 대기
+                        ActionStat = UnitState.Idle;
+                    }
+                    else if(!_chasing)
+                    {
+                        //적이 사정거리 내에 없을경우 추격 시작
+                        _chasing = true;
+                        if(!_attackGround)
+                        {
+                            _targetPosition = transform.position;
+                        }
+                    }
+                    ActionStat = UnitState.Chase;
+                }
+
+
+            }
+        }
+    }
     private void FixedUpdate()
     {
         if (!IsDead)
         {
-            if(_secondCounter-- == 0)
-            {
-                _secondCounter = 60;
-                OnEachSecondAlive?.Invoke(this);
-            }
-            switch (ActionStat)
-            {
-                case ActionStats.Move:
-                    {
-                        if (AttackTarget != null)
-                        {
-                            if (OffsetToTargetBound() <= TotalRange)
-                            {//적이 사정거리 내에 들어온경우 공격
-                                _unitstats.StopMoving();
-                                ActionStat = ActionStats.Attack;
-                            }
-                            else
-                            {
-                                _unitstats.MoveToTarget(AttackTarget.position);
-                                //MoveIntoRange();
-                            }
-                        }
-                        else
-                        {
-                            if (AttackGround)
-                            {
-                                SearchShell();
-                                if (AttackTarget != null)
-                                {//대상을 찾은 경우
-                                    MoveIntoRange();
-                                }
-                            }
-                            if (!_unitstats.IsMoving)
-                            {
-                                ActionStat = ActionStats.Idle;
-                            }
-                        }
-                        break;
-                    }
 
-                case ActionStats.Idle:
-                    {
-                        if (AttackTarget != null)
-                        {
-                            ActionStat = ActionStats.Attack;
-                        }
-                        else
-                        {
-                            SearchShell();
-                        }
-
-                        break;
-                    }
-                case ActionStats.Stun:
-                    {
-                        if (_stunTimer > 0)
-                        {
-                            _stunTimer--;
-                            return;
-                        }
-                        else
-                        {
-                            ActionStat = ActionStats.Idle;
-                        }
-                        break;
-                    }
-                default: break;
-            }
-            _attackTimer -= Time.deltaTime;
-            if (ActionStat == ActionStats.Attack)
+            _actionTimer--;
+            if (_actionTimer <= 0)
             {
-                if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
-                {//살아있는 공격대상이 있을경우
-                    if (debugAction) Debug.Log($"공격쿨탐 남은시간: {_attackTimer}");
-                    if (_attackTimer <= 0)
-                    {//공격 쿨탐이 된경우
-                        if (debugAction) Debug.Log("공격준비 완료");
-                        if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
-                        if (OffsetToTargetBound() <= TotalRange)
-                        {//적이 사정거리 내에 있을경우
-                            
-                            _unitstats.StopMoving();
-                            Attack();
-                        }
-                        else
-                        {//적이 사정거리 내에 없을경우 타겟쪽으로 이동함
-                            if (debugAction) Debug.Log("적에게 이동중");
-                            MoveIntoRange();
-                        }
-
-                    }
-                }
-                else
-                {//타겟이 없거나 비활성화 되어있으면 바로 타겟 비우고 대기상태로 변환
-                    AttackTarget = null;
-                    ActionStat = ActionStats.Idle;
-                }
+                //Debug.Log(ActionStat.ToString());
+                _actionTimer = TIMER_COOLDOWN;
+                Action();
             }
+            OnAttackTimerExpire();
         }
     }
 
+    IEnumerator EachSecondAliveCoroutine()
+    {
+
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            OnEachSecondAlive?.Invoke(this);
+        }
+    }
     #region 장비관련
 
     public void EquipWeapon(int weaponID)
@@ -317,6 +366,7 @@ public class UnitCombat : MonoBehaviour
     /// </summary>
     public void ChangeEquipAnimation()
     {
+        Debug.Log("this is called");
         switch (GetWeaponType())
         {
             case WeaponType.Shield:
@@ -339,11 +389,11 @@ public class UnitCombat : MonoBehaviour
     public void UnEquipWeapon(bool replacing = false)
     {
         OnUnequipItem?.Invoke(this);
+        if (replacing) return;
         if (_animator != null)
         {
             _animator.SetTrigger("Regular");
         }
-        if (replacing) return;
         _equippedImage.sprite = null;
         switch (UnitClassType)
         {
@@ -431,7 +481,6 @@ public class UnitCombat : MonoBehaviour
 
 
         if(_heightDelta < 0)
-
         {
             attackEffectScript.SetAngle(-_heightDelta);
         }
@@ -439,10 +488,12 @@ public class UnitCombat : MonoBehaviour
         {
             attackEffectScript.AddTrajectory(_torque, _heightDelta);
         }
+
         if (LifeSteal > 0 || CritChance > 0)
         {
             attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
         }
+
         if(_impactEffect != null)
         {
             attackEffectScript.AddEffect(_impactEffect);
@@ -464,7 +515,6 @@ public class UnitCombat : MonoBehaviour
     public void Attack()
     {
         ResetAttackTimer();
-
         UpdatePlaybackSpeed();
         _animator.SetTrigger("Attack");
         _unitstats.RotateDirection(AttackTarget.transform.position.x - transform.position.x);
@@ -472,7 +522,8 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetAttackTimer()
     {
-        _attackTimer = 1 / TotalAS;
+        _attackTimer = UnityEngine.Random.Range(0,RANDOM_ATTACK_DELAY_RANGE) + (1 / TotalAS);
+
     }
 
     public void UpdatePlaybackSpeed()
@@ -482,7 +533,7 @@ public class UnitCombat : MonoBehaviour
     public void AddStun(int numFrames)
     {
         _unitstats.StopMoving();
-        ActionStat = ActionStats.Stun;
+        ActionStat = UnitState.Stun;
         _stunTimer += numFrames;
     }
     public string GetImpactSound()
@@ -492,6 +543,44 @@ public class UnitCombat : MonoBehaviour
     #endregion
 
     #region 탐색 관련
+    /// <summary>
+    /// 주어진 거리 내에 적을 찾아보고, 적 발견시 타겟으로 지정 및 true 리턴, 실패시 false 리턴함.
+    /// </summary>
+    /// <param name="radius"></param>
+    /// <returns></returns>
+    private bool SearchInRadius(float radius)
+    {
+        Transform BestTarget = null;
+        List<Transform> listInRange = new List<Transform>();
+
+        Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, radius);
+
+        foreach (Collider2D selected in inRange)
+        {
+            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            if (selectedCombat != null && selectedCombat != this)
+            {
+                if (selectedCombat.OwnedFaction == TargetFaction)
+                {
+                    listInRange.Add(selected.transform);
+
+                }
+            }
+        }
+        BestTarget = ReturnClosestUnit(listInRange);
+
+        if (BestTarget != null)
+        {
+            AttackTarget = BestTarget;
+            ActionStat = UnitState.Attack;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
     /// <summary>
     /// 현재 각 서치마다 이터레이션을 두번 돌립니다. 범위 내에 유닛 찾기, 그리고 그 유닛 내에서 가장 가까운 적 찾기.
     /// 혹시 너무 무겁다면 탐색범위를 줄이고 빈도를 낮추는 방식으로 가야할 것 같습니다.
@@ -528,7 +617,7 @@ public class UnitCombat : MonoBehaviour
         if (BestTarget != null)
         {
             AttackTarget = BestTarget;
-            ActionStat = ActionStats.Attack;
+            ActionStat = UnitState.Attack;
         }
 
     }
@@ -580,7 +669,7 @@ public class UnitCombat : MonoBehaviour
 
     private void ResetSearchTimer()
     {
-        _searchTimer = _searchCooldown;
+        _searchTimer = TIMER_COOLDOWN;
     }
 
     public float OffsetToTargetBound()
@@ -590,7 +679,12 @@ public class UnitCombat : MonoBehaviour
         return (targetBoundLoc - unitBoundLoc).magnitude;
     }
 
-
+    public void OrderAttackGround(bool state, Vector3 ?targetLoc = null)
+    {
+        _attackGround = state;
+        if (state)
+            _targetPosition = (Vector3)targetLoc;
+    }
 
     #endregion
 
@@ -669,6 +763,7 @@ public class UnitCombat : MonoBehaviour
             case Faction.Enemy:
                 HealthBarColor(Color.red);
                 _unitstats.Selectable = false;
+                IngameManager.UnitManager.DeselectUnit(gameObject);
                 OwnedFaction = toWhichFaction;
                 TargetFaction = Faction.Player;
                 break;
@@ -680,6 +775,7 @@ public class UnitCombat : MonoBehaviour
     {
         _unitstats.DisableMovement();
         _animator.SetTrigger("Die");
+        if (_aliveSecondCoroutine != null) StopCoroutine(_aliveSecondCoroutine);
         IsDead = true;
         GetComponent<Collider2D>().enabled = false;
         Global.AudioManager.PlayOnceAt(_deathSound,transform.position, true);

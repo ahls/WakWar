@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1409735033
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_Sprite: {fileID: 6396345238543448743, guid: dd248cd954d68ab4ba3c334786804d6c,
     type: 3}
@@ -1429,9 +1429,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugAction: 0
+  BaseHP: 10
   _healthBar: {fileID: 3964886467147534754}
+  BaseCrit: 0
+  BaseLD: 0
+  HoldPosition: 0
   AttackTarget: {fileID: 0}
   SeekTarget: 0
+  SearchRadius: 1
+  MaxStrayDistance: 1
   OwnedFaction: 1
   TargetFaction: 0
   UnitClassType: 4

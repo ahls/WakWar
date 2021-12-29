@@ -53,41 +53,50 @@ public class IngameManager : MonoBehaviour
 
     public void SetUnitManager(UnitManager unitManager)
     {
+        if (_unitManager != null) Destroy(_unitManager);
         _unitManager = unitManager;
     }
 
     public void SetTwitchClient(TwitchClient twitchClient)
     {
+        if (_twitchClient != null) Destroy(_twitchClient);
         _twitchClient = twitchClient;
     }
 
     public void SetWakgoodBehaviour(WakgoodBehaviour wakgoodBehaviour)
     {
+        if (_wakgoodBehaviour != null) Destroy(_wakgoodBehaviour);
         _wakgoodBehaviour = wakgoodBehaviour;
     }
     public void SetInventory(UIInventory inventory)
     {
+        if (_uiInventory != null) Destroy(_uiInventory);
         _uiInventory = inventory;
     }
 
     public void SetProgressManager(ProgressManager progressManager)
     {
+        if (_progressManager != null) Destroy(_progressManager);
         _progressManager = progressManager;
     }
     public void SetEncounterManager(EncounterManager encounterManager)
     {
+        if (_encounterManager != null) Destroy(_encounterManager);
         _encounterManager = encounterManager;
     }
     public void SetSkillManager(SkillManager skillManager)
     {
+        if (_skillManager != null) Destroy(_skillManager);
         _skillManager = skillManager;
     }
     public void SetEnemyManager(EnemyManager enemyManager)
     {
+        if (_enemyManager != null) Destroy(_enemyManager);
         _enemyManager = enemyManager;
     }
     public void SetRelicManager(RelicManager relicManager)
     {
+        if (_relicManager != null) Destroy(_relicManager);
         _relicManager = relicManager;
     }
 }

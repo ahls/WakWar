@@ -32,7 +32,7 @@ public class testItemGiver : MonoBehaviour
             if(Items.DB.ContainsKey(givenInput))
             {
                 Debug.Log("치트 사용됨!");
-                List<Transform> itemslot = IngameManager.UIInventory.getEmptySlots(1);
+                List<Transform> itemslot = IngameManager.UIInventory.GetEmptySlots();
                 if (itemslot.Count != 0)
                 {
                     GameObject newItem = Global.ObjectManager.SpawnObject(Items.PREFAB_NAME);

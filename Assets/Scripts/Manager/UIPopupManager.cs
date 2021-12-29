@@ -15,10 +15,32 @@ public enum PopupID
 public class UIPopupManager : MonoBehaviour
 {
     private List<UIPopup> _popupQueue = new List<UIPopup>();
-
+    private KeyCode _inventoryKey = KeyCode.I;
+    private KeyCode _optionKey = KeyCode.Escape;
+    private KeyCode _panszeeKey = KeyCode.P;
+    private KeyCode _wakgoodKey = KeyCode.K;
     public void Start()
     {
         Global.instance.SetUIPopupManager(this);
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(_inventoryKey))
+        {
+            ToggleUI(PopupID.UIInventory);
+        }
+        else if (Input.GetKeyDown(_optionKey))
+        {
+        }
+        else if (Input.GetKeyDown(_panszeeKey))
+        {
+
+            ToggleUI(PopupID.UIUnitWindow);
+        }
+        else if (Input.GetKeyDown(_wakgoodKey))
+        {
+            ToggleUI(PopupID.UIWakWindow);
+        }
     }
     /// <summary>
     /// 창 열기
@@ -98,6 +120,17 @@ public class UIPopupManager : MonoBehaviour
         foreach (var popup in (PopupID[])System.Enum.GetValues(typeof(PopupID)))
         {
             Pop(popup);
+        }
+    }
+    public void ToggleUI(PopupID popupID)
+    {
+        if (FindPopup(popupID) == null)
+        {
+            Global.UIPopupManager.Push(popupID);
+        }
+        else
+        {
+            Pop(popupID);
         }
     }
 }

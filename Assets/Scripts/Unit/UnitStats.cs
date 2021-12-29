@@ -15,6 +15,7 @@ public class UnitStats : MonoBehaviour
     public bool Selectable { get => _selectable; 
         set 
         {
+            _selectable = value;
             if(value == false)
             {
                 SetSelectionCircleState(false);
@@ -91,6 +92,11 @@ public class UnitStats : MonoBehaviour
         GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
     }
 
+    /// <summary>
+    /// 지정 위치로 이동함. removeCurrentTarget은 현재 유닛컴뱃 공격타겟을 제거함
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="removeCurrentTarget"></param>
     public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
     {
         if (_unitCombat.IsDead)
@@ -102,7 +108,7 @@ public class UnitStats : MonoBehaviour
         controller.SetTarget(target, 0.5f, 0.5f);
 
         IsMoving = true;
-        _unitCombat.ActionStat = UnitCombat.ActionStats.Move;
+        _unitCombat.ActionStat = UnitCombat.UnitState.Move;
 
         if (removeCurrentTarget)
         {

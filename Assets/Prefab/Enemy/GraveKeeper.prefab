@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 4005180108651760508}
   - component: {fileID: 862908352111944101}
   m_Layer: 0
-  m_Name: "\uAC00\uBA74"
+  m_Name: HEAD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2330,13 +2330,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugAction: 0
+  BaseHP: 10
   _healthBar: {fileID: 1734998702368630548}
+  BaseCrit: 0
+  BaseLD: 0
+  HoldPosition: 0
   AttackTarget: {fileID: 0}
   SeekTarget: 0
+  SearchRadius: 1
+  MaxStrayDistance: 1
   OwnedFaction: 1
   TargetFaction: 0
   UnitClassType: 4
+  _unitstats: {fileID: 0}
+  _animator: {fileID: 0}
   _equippedImage: {fileID: 0}
+  Head: {fileID: 0}
   Skill: {fileID: 0}
   EnemyBehavour: {fileID: 3017739018103221411}
 --- !u!114 &6807216025683000316
@@ -2355,6 +2364,8 @@ MonoBehaviour:
   _playerNameText: {fileID: 0}
   controller: {fileID: 8963722385563592534}
   _rotatingPart: {fileID: 4430252256616907549}
+  FlipOnY: 1
+  _animator: {fileID: 0}
   runningSpeed: 1
   RepathRate: 1
   MoveNextDist: 1
@@ -2509,6 +2520,8 @@ MonoBehaviour:
   Armor: 2
   Damage: 5
   AP: 0
+  heightDelta: 0
+  AttackSoundVariations: 1
   MoveSpeed: 0.6
   AttackSpeed: 1
   range: 0.3

@@ -22,7 +22,7 @@ public class UIInventory : UIPopup
             Pop();
         }
     }
-    public List<Transform> getEmptySlots(int numSlots)
+    public List<Transform> GetEmptySlots()
     {
         List<Transform> returningList = new List<Transform>();
         int numSlotEmpty = 0;

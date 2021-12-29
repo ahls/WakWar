@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4050915712
+CRC: 571009309
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d967349deafc7a11d3e19be331dd3e15
+    Hash: 36f36f5a01b8f55a45235b311db9c5d0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 88c0d7c9846c0ba124d56d6802e7d46f
+    Hash: 78cb895997f4ab2ad6ecc27459c188c2
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -71,6 +71,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7a98125502f715b4b83cfb77b434e436, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: d1006ae50f0f00e45b6addfb4de7662f, type: 3}
 - Class: 114
@@ -259,6 +261,7 @@ Assets:
 - Assets/Images/Sprites/Equipped/img_shield.png
 - Assets/Images/Sprites/ItemIcon/General/hp_elixir.png
 - Assets/Audio/enchant_apply.mp3
+- Assets/Prefab/Effects/Skill/SnipeTrail.prefab
 - Assets/Audio/UsePotion.wav
 - Assets/WakAsset/UI/UIItemToolTip.prefab
 - Assets/Images/DialogImage/dialog_panzee.png

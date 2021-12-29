@@ -20,18 +20,6 @@ public class PanzeeWindow : UIPopup
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            addToList("thinggy", gameObject, ClassType.Shooter);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            addToList("11", gameObject, ClassType.Warrior);
-        }
-    }
 
     public void addToList(string name, GameObject unit, ClassType unitClass)
     {

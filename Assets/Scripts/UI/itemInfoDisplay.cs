@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ItemInfoDisplay : UIPopup, IPointerExitHandler
+public class ItemInfoDisplay : UIPopup, IDeselectHandler
 {
     public override PopupID GetPopupID() { return PopupID.UIItemToolTip; }
 
@@ -30,15 +30,16 @@ public class ItemInfoDisplay : UIPopup, IPointerExitHandler
 
     public void SetLocation(Vector2 mouseLocation)
     {
-        rectTransform.position = mouseLocation + new Vector2(0,-10);
+        rectTransform.position = mouseLocation;
         rectTransform.SetAsLastSibling();
+        GetComponent<Selectable>().Select();
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnDeselect(BaseEventData eventData)
     {
+
         Pop();
     }
-
     public override void PostInitialize()
     {
         Param param = GetParam() as Param;

@@ -33,7 +33,7 @@ public class Item_Data : MonoBehaviour, IPointerDownHandler
             GetComponent<Image>().sprite = Global.ResourceManager.LoadTexture(imgSrc);
         }
         Item_Drag itemDrag = GetComponent<Item_Drag>();
-        itemDrag.setup(Items.DB[ItemID].type,parent);
+        itemDrag.Init(Items.DB[ItemID].type,parent);
 
         GetComponent<RectTransform>().sizeDelta = new Vector2(58, 58);
         transform.localScale = Vector3.one;

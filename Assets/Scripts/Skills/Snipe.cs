@@ -39,10 +39,16 @@ public class Snipe : SkillBase
         }
         _target = caster.AttackTarget.GetComponent<UnitCombat>();
         GameObject effect = Global.ObjectManager.SpawnObject("SnipeEffect");
-        effect.transform.SetParent(_target.transform);
-
+        Transform head = caster.AttackTarget.Find("HEAD");
+        if (head != null)
+        {
+            effect.transform.SetParent(head);
+        }
+        else
+        {
+            effect.transform.SetParent(_target.transform);
+        }
         StartCoroutine(fire(dmg, caster));
-        
     }
     IEnumerator  fire(int dmg,UnitCombat uc)
     {
@@ -51,15 +57,28 @@ public class Snipe : SkillBase
         {
             if (_target.IsDead == false)
             {
+                StartCoroutine(CreateTrail(uc));
                 Global.AudioManager.PlayOnce("SnipeSound");
                 GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-                bullet.transform.position = transform.position;
+                bullet.transform.position = uc.AttackTarget.position;
                 bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, uc.ProjectileSpeed + 1, uc.AttackTarget.position, uc.TargetFaction);
             }
             else
             {
                 failed(uc.transform);
             }
+        }
+    }
+    IEnumerator CreateTrail(UnitCombat uc)
+    {
+        int numTrails = Mathf.CeilToInt(uc.OffsetToTargetBound() / 0.5f);
+        Quaternion facing = Quaternion.LookRotation(Vector3.forward,uc.transform.position - uc.AttackTarget.position);
+        for (int i = 0; i < numTrails; i++)
+        {
+            yield return new WaitForSeconds(0.05f);
+            GameObject effect = Global.ObjectManager.SpawnObject("SnipeTrail");
+            effect.transform.position = Vector3.MoveTowards(uc.transform.position, uc.AttackTarget.position, 0.3f * (i+1));
+            effect.transform.rotation = facing;
         }
     }
     private void failed(Transform caster)

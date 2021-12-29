@@ -53,7 +53,7 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
         _rectTransform = GetComponent<RectTransform>();
 
     }
-    public void setup(ItemType itemtype,Transform parent = null)
+    public void Init(ItemType itemtype,Transform parent = null)
     {
         NumberOfItems = 1;
         _canDrag = true;
@@ -70,7 +70,7 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
     }
     #region 헬퍼 함수
 
-    public void placeItem(Transform parentToBe)
+    public void SetupForItemPlacement(Transform parentToBe)
     {
         Item_Slot lastSlot = ParentToReturn.GetComponent<Item_Slot>();
         if(Equipped)
@@ -86,7 +86,13 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
         ParentToReturn = parentToBe;
         playSound();
     }
-
+    public void PlaceItem()
+    {
+        _rectTransform.SetParent(ParentToReturn);
+        _rectTransform.position = ParentToReturn.position;
+        ParentToReturn.GetComponent<Item_Slot>().OccupyingItem = this;
+        IngameManager.UnitManager.ControlOn = true;
+    }
 
     private void playSound()
     {
@@ -151,10 +157,7 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             //setting parents
-            _rectTransform.SetParent(ParentToReturn);
-            _rectTransform.position = ParentToReturn.position;
-            ParentToReturn.GetComponent<Item_Slot>().OccupyingItem = this;
-            IngameManager.UnitManager.ControlOn = true;
+            PlaceItem();
 
 
             //setting the raycast option
@@ -166,7 +169,7 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
             {
                 IngameManager.UIShop.ToggleSellingWindow(false);
             }
-            if(SetToPool)
+            if (SetToPool)
             {
                 ParentToReturn.GetComponent<Item_Slot>().OccupyingItem = null;
                 Global.ObjectManager.ReleaseObject(Items.PREFAB_NAME, gameObject);
@@ -174,6 +177,8 @@ public class Item_Drag : UIDraggable, IBeginDragHandler, IEndDragHandler, IDragH
         }
         if (_canDragQueued != _canDrag) _canDrag = _canDragQueued;
     }
+
+
     public void SetDraggable(bool state, bool immediate = false)
     {
         if (immediate)

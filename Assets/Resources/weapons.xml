@@ -329,7 +329,7 @@
 			<id>200001</id>
 			<name>BB탄총</name>
 			<damage>3</damage>
-			<range>1.2</range>
+			<range>5.2</range>
 			<speed>1</speed>
 			<aoe>0.01</aoe>
 			<armorPiercing>0</armorPiercing>

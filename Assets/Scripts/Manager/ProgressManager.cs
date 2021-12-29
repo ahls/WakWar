@@ -23,9 +23,8 @@ public class ProgressManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            NextSequence();
+            //NextSequence();
         }
-
     }
 
 
