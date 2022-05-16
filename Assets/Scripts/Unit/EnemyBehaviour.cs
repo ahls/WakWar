@@ -23,28 +23,25 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private int HP,Armor, Damage, AP, heightDelta,AttackSoundVariations = 1;
     [SerializeField] private float MoveSpeed, AttackSpeed, range;
     [SerializeField] private string ProjectileImage = "", ProjectileSound = "", ImpactSound = "", DeathSound = "";
-    [SerializeField] UnitCombat _unitCombat;
-    [SerializeField] UnitStats _unitStats;
+    [SerializeField] UnitController _unitController;
+    UnitCombatNew _unitCombat;
+    UnitMove _unitStats;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _unitCombat.EnemySetup(HP, Armor, AP, Damage,range,AttackSpeed, Global.ResourceManager.LoadTexture(ProjectileImage),heightDelta);
-        _unitCombat.SoundSetup(DeathSound, ProjectileSound, ImpactSound, AttackSoundVariations);
+       // _unitCombat.EnemySetup(HP, Armor, AP, Damage,range,AttackSpeed, Global.ResourceManager.LoadTexture(ProjectileImage),heightDelta);
+        //_unitCombat.SoundSetup(DeathSound, ProjectileSound, ImpactSound, AttackSoundVariations);
         _unitStats.MoveSpeed = MoveSpeed;
         _searchTimer = _searchIndex++;
         _searchIndex &= SEARCH_RATE;
+        _unitCombat = _unitController.unitCombat;
+        _unitStats = _unitController.unitStats;
     }
     private void Start()
     {
 
         _restingPosition = transform.position; 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -55,11 +52,11 @@ public class EnemyBehaviour : MonoBehaviour
             if (_aggroLevel > 0)
             {
                 //현재 타겟 거리가 공격범위 밖이거나, 타겟이 얿을경우 새 타겟을 찾음
-                if(_unitCombat.AttackTarget == null || _unitCombat.OffsetToTargetBound() > range)
+                if(_unitCombat.attackTarget == null || _unitCombat.OffsetToTargetBound() > range)
                 {
                     Search();
                     
-                    if(_unitCombat.AttackTarget == null)
+                    if(_unitCombat.attackTarget == null)
                     {//새로운 대상을 못찾을 경우 우왁굳을 향해서 어택땅
                         _unitStats.MoveToTarget(IngameManager.WakgoodBehaviour.transform.position, true);
                     }
@@ -72,10 +69,10 @@ public class EnemyBehaviour : MonoBehaviour
             else
             {//어그로 수준이 없음
                 LookOutEnemy(true,false);
-                if (_unitCombat.AttackTarget != null)
+                if (_unitCombat.attackTarget != null)
                 {
                     _unitStats.MoveToTarget(_restingPosition);
-                    _unitCombat.AttackTarget = null;
+                    _unitCombat.attackTarget = null;
                 }
             }
         }
@@ -93,12 +90,12 @@ public class EnemyBehaviour : MonoBehaviour
         Collider2D[] inRange = Physics2D.OverlapCircleAll(transform.position, SearchRange);
         foreach (Collider2D selected in inRange)
         {
-            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            HealthSystem selectedCombat = selected.GetComponent<HealthSystem>();
             if (selectedCombat != null)
             {
                 if(selectedCombat.OwnedFaction == Faction.Enemy)
                 {
-                    enemiesInRange.Add(selectedCombat.EnemyBehavour);
+                    enemiesInRange.Add(selectedCombat.GetComponent<EnemyBehaviour>());
                 }
                 else if(!enemyFound)
                 {
@@ -107,8 +104,8 @@ public class EnemyBehaviour : MonoBehaviour
                         return;
                     }
                     enemyFound = true;
-                    _unitCombat.AttackTarget = selectedCombat.transform;
-                    _unitCombat.ActionStat = UnitCombat.UnitState.Attack;
+                    _unitCombat.attackTarget = selectedCombat.transform;
+                    _unitController.unitState = UnitController.UnitState.Attack;
                 }
             }
         }
@@ -160,7 +157,7 @@ public class EnemyBehaviour : MonoBehaviour
 
             foreach (Collider2D selected in inRange)
             {
-                UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+                HealthSystem selectedCombat = selected.GetComponent<HealthSystem>();
                 if (selectedCombat != null && selectedCombat != this)
                 {
                     if (selectedCombat.OwnedFaction == Faction.Player)
@@ -170,14 +167,14 @@ public class EnemyBehaviour : MonoBehaviour
                     }
                 }
             }
-            BestTarget = _unitCombat.ReturnClosestUnit(listInRange);
+            BestTarget = _unitController.ReturnClosestUnit(listInRange);
         
 
 
         if (BestTarget != null)
         {
-            _unitCombat.AttackTarget = BestTarget;
-            _unitCombat.ActionStat = UnitCombat.UnitState.Attack;
+            _unitCombat.attackTarget = BestTarget;
+            _unitController.unitState = UnitController.UnitState.Attack;
         }
 
     }

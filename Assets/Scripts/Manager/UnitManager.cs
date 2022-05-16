@@ -68,7 +68,7 @@ public class UnitManager : MonoBehaviour
             {
                 foreach (GameObject selectedUnit in _selectedUnitList)
                 {
-                    selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(false);
+                    selectedUnit.GetComponent<UnitMove>().SetSelectionCircleState(false);
                 }
 
                 _selectedUnitList.Clear();
@@ -107,7 +107,7 @@ public class UnitManager : MonoBehaviour
             Collider2D[] UnitsInRange = Physics2D.OverlapBoxAll(centerOfBox, sizeOfBox, 0f);
             foreach (Collider2D selectingUnit in UnitsInRange)
             {
-                UnitStats tempStats = selectingUnit.GetComponent<UnitStats>();
+                UnitMove tempStats = selectingUnit.GetComponent<UnitMove>();
 
                 if (tempStats != null && tempStats.Selectable)
                 {
@@ -137,7 +137,6 @@ public class UnitManager : MonoBehaviour
     {
         if (_rightClicked && _selectedUnitList.Count > 0)
         {
-            Debug.Log($"rightclick dtected {_selectedUnitList.Count}");
             if (_attackMode)
             {//공격모드상태에서 우클릭 누르면 취소됨
                 _attackMode = false;
@@ -153,11 +152,11 @@ public class UnitManager : MonoBehaviour
 
                 foreach (var currentUnit in _selectedUnitList)
                 {
-                    UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
-                    currentUnitCombat.AttackTarget = hitEnemy.transform;
-                    currentUnitCombat.MoveIntoRange();
-                    currentUnitCombat.HoldPosition = false;
-                    currentUnitCombat.OrderAttackGround(false);
+                    UnitController currentUnitController = currentUnit.GetComponent<UnitController>();
+                    currentUnitController.unitCombat.attackTarget = hitEnemy.transform;
+                    currentUnitController.MoveIntoRange();
+                    currentUnitController.holdPosition = false;
+                    currentUnitController.OrderAttackGround(false);
                 }
 
                 return;
@@ -189,10 +188,10 @@ public class UnitManager : MonoBehaviour
                 //    float angle = ang * currentUnitNumber * Mathf.Deg2Rad;
                 //    squadOffset = new Vector2(Mathf.Cos(angle) * 0.2f, Mathf.Sin(angle) * 0.2f);
                 //}
-                selectedUnit.GetComponent<UnitStats>().MoveToTarget(CursorLocation(), true);
-                UnitCombat selectedUC = selectedUnit.GetComponent<UnitCombat>();
+                selectedUnit.GetComponent<UnitMove>().MoveToTarget(CursorLocation(), true);
+                UnitController selectedUC = selectedUnit.GetComponent<UnitController>();
                 selectedUC.OrderAttackGround(false);
-                selectedUC.HoldPosition = false;
+                selectedUC.holdPosition = false;
                 //currentUnitNumber++;
             }
         }
@@ -212,14 +211,14 @@ public class UnitManager : MonoBehaviour
                 //부대 선택
                 foreach (var selectedUnit in _selectedUnitList)
                 {
-                    selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(false);
+                    selectedUnit.GetComponent<UnitMove>().SetSelectionCircleState(false);
                 }
                 _selectedUnitList = _unitSquads[i].ToList();
                 foreach (var selectedUnit in _selectedUnitList)
                 {
-                    if (selectedUnit.GetComponent<UnitStats>().Selectable)
+                    if (selectedUnit.GetComponent<UnitMove>().Selectable)
                     {
-                        selectedUnit.GetComponent<UnitStats>().SetSelectionCircleState(true);
+                        selectedUnit.GetComponent<UnitMove>().SetSelectionCircleState(true);
                     }
                     else
                     {
@@ -245,21 +244,21 @@ public class UnitManager : MonoBehaviour
             {//범위에내 유닛이 있을경우 점사
                 foreach (var currentUnit in _selectedUnitList)
                 {
-                    UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
-                    currentUnitCombat.AttackTarget = targetUnit.transform;
+                    UnitController currentUnitCombat = currentUnit.GetComponent<UnitController>();
+                    currentUnitCombat.unitCombat.attackTarget = targetUnit.transform;
                     currentUnitCombat.MoveIntoRange();
                     currentUnitCombat.OrderAttackGround(false);
-                    currentUnitCombat.HoldPosition = false;
+                    currentUnitCombat.holdPosition = false;
                 }
             }
             else
             {//범위내 없을경우 어택땅
                 foreach (var currentUnit in _selectedUnitList)
                 {
-                    currentUnit.GetComponent<UnitStats>().MoveToTarget(cursorLoc,true);
-                    UnitCombat currentUnitCombat = currentUnit.GetComponent<UnitCombat>();
+                    currentUnit.GetComponent<UnitMove>().MoveToTarget(cursorLoc,true);
+                    UnitController currentUnitCombat = currentUnit.GetComponent<UnitController>();
                     currentUnitCombat.OrderAttackGround(true,cursorLoc);
-                    currentUnitCombat.HoldPosition = false;
+                    currentUnitCombat.holdPosition = false;
                 }
             }
             Cursor.SetCursor(_normalCursor, Vector2.zero, CursorMode.Auto);
@@ -305,13 +304,11 @@ public class UnitManager : MonoBehaviour
 
     public void DeselectUnit(GameObject unitToDeselect)
     {
-        Debug.Log($"{gameObject.name} - {unitToDeselect.name} 선택된 유닛에 포함됨: {_selectedUnitList.Contains(unitToDeselect)}");
         if (_selectedUnitList.Contains(unitToDeselect))
         {
-            unitToDeselect.GetComponent<UnitStats>().SetSelectionCircleState(false);
+            unitToDeselect.GetComponent<UnitMove>().SetSelectionCircleState(false);
             _selectedUnitList.Remove(unitToDeselect);
         }
-        Debug.Log($"리스트 안에 유닛 수{_selectedUnitList.Count}");
     }
 
     private void ClickDetection()
@@ -320,11 +317,10 @@ public class UnitManager : MonoBehaviour
         _rightClicked = Input.GetMouseButtonDown(1);
         if(Input.GetKeyDown(KeyCode.S))
         {//스탑명령 여기에 추가
-            Debug.Log($"DETECTION CALLED from {gameObject.name}");
             _attackMode = false;
             foreach(var unit in _selectedUnitList)
             {
-                unit.GetComponent<UnitStats>().MoveToTarget(unit.transform.position);
+                unit.GetComponent<UnitMove>().MoveToTarget(unit.transform.position);
             }
         }
         else if (Input.GetKeyDown(KeyCode.H))
@@ -332,9 +328,9 @@ public class UnitManager : MonoBehaviour
             //위치사수 키 눌림
             foreach (GameObject selectedUnit in _selectedUnitList)
             {
-                selectedUnit.GetComponent<UnitStats>().StopMoving();
-                selectedUnit.GetComponent<UnitCombat>().HoldPosition = true;
-                selectedUnit.GetComponent<UnitCombat>().ActionStat = UnitCombat.UnitState.Idle;
+                selectedUnit.GetComponent<UnitMove>().StopMoving();
+                selectedUnit.GetComponent<UnitController>().holdPosition = true;
+                selectedUnit.GetComponent<UnitController>().unitState = UnitController.UnitState.Idle;
             }
         }
     }
@@ -358,8 +354,8 @@ public class UnitManager : MonoBehaviour
         {
             unit.SetActive(false);
             unit.SetActive(true);
-            unit.GetComponent<UnitCombat>().ChangeEquipAnimation();
-            unit.GetComponent<UnitStats>().StopMoving();
+            unit.GetComponent<PanzeeBehaviour>().ChangeEquipAnimation();
+            unit.GetComponent<UnitMove>().StopMoving();
         }
 
         SceneManager.sceneLoaded -= OnSceneLoaded;

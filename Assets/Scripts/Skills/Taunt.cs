@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Taunt : SkillBase
 {
+    private static float[] SKILL_COEFFICIENT = { 0.2f, 0.4f, 0.6f, 0.8f };
     private const float SKILL_DURATION = 4;
-    private UnitCombat _caster;
+    private UnitController _caster;
     private int _bonus = 0;
     private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//단발성 스킬이라 필요 없음
 
-    public override void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitController caster)
     {
         print(this.name);
         if (Time.time > _timeReady)
@@ -27,28 +28,12 @@ public class Taunt : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    public override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitController caster)
     {
         _caster = caster;
-        switch (caster.GetItemRank())
-        {
-            case 0:
-                _bonus = (int)(caster.TotalArmor * 0.2);
-                break;
-            case 1:
-                _bonus = (int)(caster.TotalArmor * 0.4);
-                break;
-            case 2:
-                _bonus = (int)(caster.TotalArmor * 0.6);
-                break;
-            case 3:
-                _bonus = (int)(caster.TotalArmor * 0.8);
-                break;
-            default:
-                break;
-        }
-        _caster.BaseArmor += _bonus;
-        _caster.UpdateStats();
+        _bonus = (int)((caster.healthSystem.totalArmor) * SKILL_COEFFICIENT[caster.panzeeBehavior.GetItemRank()]);
+        _caster.healthSystem.baseArmor += _bonus;
+        _caster.panzeeBehavior.UpdateStats();
         Global.AudioManager.PlayOnce("TauntSound");
         GameObject effect = Global.ObjectManager.SpawnObject("TauntEffect");
         effect.transform.position = caster.transform.position;
@@ -57,10 +42,10 @@ public class Taunt : SkillBase
         Collider2D[] hitByAttack = Physics2D.OverlapCircleAll(transform.position, RADIUS);
         foreach (var hitUnit in hitByAttack)
         {
-            UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
-            if (hitCombat != null && hitCombat.OwnedFaction == Faction.Enemy)
+            UnitController hitController = hitUnit.GetComponent<UnitController>();
+            if (hitController != null && hitController.healthSystem.OwnedFaction == Faction.Enemy)
             {
-                hitCombat.AttackTarget = _caster.transform;
+                hitController.unitCombat.attackTarget = _caster.transform;
             }
         }
         StartCoroutine(Effect());
@@ -68,8 +53,8 @@ public class Taunt : SkillBase
     IEnumerator Effect()
     {
         yield return new WaitForSeconds(4);
-        _caster.BaseArmor -= _bonus;
-        _caster.UpdateStats();
+        _caster.healthSystem.baseArmor -= _bonus;
+        _caster.panzeeBehavior.UpdateStats();
     }
     // Start is called before the first frame update
     void Start()

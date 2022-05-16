@@ -18,8 +18,8 @@ public class skillTester : MonoBehaviour
             List<GameObject> skillUnitList = IngameManager.UnitManager.GetSelectedUnits();
             foreach (var unit in skillUnitList)
             {
-                UnitCombat unitCombat = unit.GetComponent<UnitCombat>();
-                unitCombat.Skill.UseSkill(unitCombat);
+                PanzeeBehaviour unitCombat = unit.GetComponent<PanzeeBehaviour>();
+                unitCombat.Skill.UseSkill(unitCombat.unitController);
             }
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Item_Slot : MonoBehaviour, IDropHandler
 {
     [SerializeField] private ItemType _slotType;
-    public UnitCombat assgiendUnit { get; set; }
+    public PanzeeBehaviour assgiendUnit { get; set; }
     public bool Occupied
     {
         get { return OccupyingItem != null; }

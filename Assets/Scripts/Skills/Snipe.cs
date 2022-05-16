@@ -5,14 +5,14 @@ using UnityEngine;
 public class Snipe : SkillBase
 {
     private bool _goodToShoot = true;
-    private UnitCombat _uc;
-    private UnitCombat _target;
+    private UnitController _uc;
+    private HealthSystem _target;
     protected override void ForceStop()
     {
         _goodToShoot = false;
     }
 
-    public override void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitController caster)
     {
         print(this.name);
         if (Time.time > _timeReady)
@@ -28,18 +28,18 @@ public class Snipe : SkillBase
     /// 대상이 없을경우 스킬 사용 실패 판정
     /// </summary>
     /// <param name="caster"></param>
-    public override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitController caster)
     {
         caster.AddStun(100);
-        int dmg = caster.TotalDamage * 10;
-        if (caster.AttackTarget == null)
+        int dmg = caster.unitCombat.TotalDamage * 10;
+        if (caster.unitCombat.attackTarget == null)
         {
             failed(caster.transform);
             return;
         }
-        _target = caster.AttackTarget.GetComponent<UnitCombat>();
+        _target = caster.unitCombat.attackTarget.GetComponent<HealthSystem>();
         GameObject effect = Global.ObjectManager.SpawnObject("SnipeEffect");
-        Transform head = caster.AttackTarget.Find("HEAD");
+        Transform head = caster.unitCombat.attackTarget.Find("HEAD");
         if (head != null)
         {
             effect.transform.SetParent(head);
@@ -50,7 +50,7 @@ public class Snipe : SkillBase
         }
         StartCoroutine(fire(dmg, caster));
     }
-    IEnumerator  fire(int dmg,UnitCombat uc)
+    IEnumerator  fire(int dmg, UnitController uc)
     {
         yield return new WaitForSeconds(2);
         if (_goodToShoot)
@@ -60,8 +60,9 @@ public class Snipe : SkillBase
                 StartCoroutine(CreateTrail(uc));
                 Global.AudioManager.PlayOnce("SnipeSound");
                 GameObject bullet = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-                bullet.transform.position = uc.AttackTarget.position;
-                bullet.GetComponent<AttackEffect>().Setup(dmg, 0.01f, 999, uc.AttackImage, uc.ProjectileSpeed + 1, uc.AttackTarget.position, uc.TargetFaction);
+                bullet.transform.position = uc.unitCombat.attackTarget.position;
+                bullet.GetComponent<AttackEffect>().Setup(dmg, 0.005f, 999, uc.unitCombat.AttackImage, uc.unitCombat.ProjectileSpeed + 1, 
+                                                            uc.unitCombat.attackTarget.position, uc.unitCombat.TargetFaction);
             }
             else
             {
@@ -69,15 +70,16 @@ public class Snipe : SkillBase
             }
         }
     }
-    IEnumerator CreateTrail(UnitCombat uc)
+    IEnumerator CreateTrail(UnitController uc)
     {
-        int numTrails = Mathf.CeilToInt(uc.OffsetToTargetBound() / 0.5f);
-        Quaternion facing = Quaternion.LookRotation(Vector3.forward,uc.transform.position - uc.AttackTarget.position);
-        for (int i = 0; i < numTrails; i++)
+        int numTrails = Mathf.CeilToInt(uc.unitCombat.OffsetToTargetBound() / 0.5f);
+        Quaternion facing = Quaternion.LookRotation(Vector3.forward,uc.transform.position - uc.unitCombat.attackTarget.position);
+        Vector3 targetPosition = uc.unitCombat.attackTarget.position;
+        for (int i = 1; i < numTrails+1; i++)
         {
             yield return new WaitForSeconds(0.05f);
             GameObject effect = Global.ObjectManager.SpawnObject("SnipeTrail");
-            effect.transform.position = Vector3.MoveTowards(uc.transform.position, uc.AttackTarget.position, 0.3f * (i+1));
+            effect.transform.position = Vector3.MoveTowards(uc.transform.position, targetPosition, 0.1f * (i*i));
             effect.transform.rotation = facing;
         }
     }

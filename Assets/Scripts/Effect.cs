@@ -27,7 +27,7 @@ public class Effect : MonoBehaviour
         yield return null;
     }
 
-    private void DestroyEffect()
+    public void DestroyEffect()
     {
         StopAllCoroutines();
 

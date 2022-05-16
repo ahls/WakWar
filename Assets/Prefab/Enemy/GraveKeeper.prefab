@@ -316,8 +316,8 @@ MonoBehaviour:
   - {fileID: 4136982167394369182}
   - {fileID: 2151915501760047633}
   m_Bounds:
-    m_Center: {x: 0.09967323, y: 0.914577, z: 0}
-    m_Extent: {x: 0.05224611, y: 0.055060536, z: 0}
+    m_Center: {x: 0.09967313, y: 0.914577, z: 0}
+    m_Extent: {x: 0.052246176, y: 0.055060536, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &1145595880294255801
@@ -481,8 +481,8 @@ MonoBehaviour:
   - {fileID: 981974864485637519}
   - {fileID: 4937398763010532693}
   m_Bounds:
-    m_Center: {x: 0.16528907, y: 0.74552894, z: 0}
-    m_Extent: {x: 0.028301746, y: 0.031729937, z: 0}
+    m_Center: {x: 0.1652892, y: 0.74552894, z: 0}
+    m_Extent: {x: 0.028301753, y: 0.031729937, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &2236454815660350800
@@ -585,8 +585,8 @@ MonoBehaviour:
   - {fileID: 4925805360451394311}
   - {fileID: 8775649179316305246}
   m_Bounds:
-    m_Center: {x: -0.046528492, y: 0.9248842, z: 0}
-    m_Extent: {x: 0.056152347, y: 0.04614404, z: 0}
+    m_Center: {x: -0.046528574, y: 0.9248842, z: 0}
+    m_Extent: {x: 0.056152355, y: 0.04614404, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &3041759569472903989
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 3422781846851358071}
   m_Bounds:
-    m_Center: {x: -0.03278178, y: 0.67841953, z: 0}
+    m_Center: {x: -0.03278184, y: 0.67841953, z: 0}
     m_Extent: {x: 0.34863287, y: 0.1552735, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -991,7 +991,7 @@ MonoBehaviour:
   - {fileID: 2151915501760047633}
   - {fileID: 8042517422109921962}
   m_Bounds:
-    m_Center: {x: 0.09607069, y: 0.8316639, z: 0}
+    m_Center: {x: 0.09607074, y: 0.8316639, z: 0}
     m_Extent: {x: 0.057432614, y: 0.03318262, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1095,8 +1095,8 @@ MonoBehaviour:
   - {fileID: 8775649179316305246}
   - {fileID: 5725303231873096491}
   m_Bounds:
-    m_Center: {x: -0.05567156, y: 0.7780878, z: 0}
-    m_Extent: {x: 0.049355965, y: 0.07757032, z: 0}
+    m_Center: {x: -0.05567164, y: 0.77808785, z: 0}
+    m_Extent: {x: 0.049356006, y: 0.07757035, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &4760140937474377023
@@ -1539,7 +1539,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 8775649179316305246}
   m_Bounds:
-    m_Center: {x: -0.05203094, y: 0.8543261, z: 0}
+    m_Center: {x: -0.052031014, y: 0.8543261, z: 0}
     m_Extent: {x: 0.057844233, y: 0.032714844, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1644,8 +1644,8 @@ MonoBehaviour:
   - {fileID: 4937398763010532693}
   - {fileID: 3433385895385749773}
   m_Bounds:
-    m_Center: {x: 0.14604989, y: 0.6749805, z: 0}
-    m_Extent: {x: 0.032988302, y: 0.04345703, z: 0}
+    m_Center: {x: 0.1460501, y: 0.6749805, z: 0}
+    m_Extent: {x: 0.032988384, y: 0.04345703, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &6264601724816908760
@@ -1748,7 +1748,7 @@ MonoBehaviour:
   - {fileID: 3433385895385749773}
   - {fileID: 4937398763010532693}
   m_Bounds:
-    m_Center: {x: 0.13597758, y: 0.61313665, z: 0}
+    m_Center: {x: 0.13597769, y: 0.61313665, z: 0}
     m_Extent: {x: 0.035123084, y: 0.05705279, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 5176295997103486712}
   m_Bounds:
-    m_Center: {x: 0.02874899, y: 0.44109368, z: 0}
+    m_Center: {x: 0.028749138, y: 0.44109368, z: 0}
     m_Extent: {x: 0.04630275, y: 0.09960939, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
@@ -1956,8 +1956,8 @@ MonoBehaviour:
   - {fileID: 4875046483825371836}
   - {fileID: 3961021756876185727}
   m_Bounds:
-    m_Center: {x: 0.14791566, y: 0.7265959, z: 0}
-    m_Extent: {x: 0.07881372, y: 0.16619506, z: 0}
+    m_Center: {x: 0.14791581, y: 0.7265959, z: 0}
+    m_Extent: {x: 0.078813806, y: 0.16619506, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7011957300612950187
@@ -2096,8 +2096,8 @@ MonoBehaviour:
   - {fileID: 4430252256616907549}
   - {fileID: 3961021756876185727}
   m_Bounds:
-    m_Center: {x: -0.017779708, y: 0.60146284, z: 0}
-    m_Extent: {x: 0.25880733, y: 0.32470626, z: 0}
+    m_Center: {x: -0.01777953, y: 0.60146284, z: 0}
+    m_Extent: {x: 0.25880742, y: 0.32470626, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &7918407551886709283
@@ -2200,8 +2200,8 @@ MonoBehaviour:
   - {fileID: 2151915501760047633}
   - {fileID: 8042517422109921962}
   m_Bounds:
-    m_Center: {x: 0.09705846, y: 0.7520945, z: 0}
-    m_Extent: {x: 0.049631357, y: 0.07763675, z: 0}
+    m_Center: {x: 0.09705855, y: 0.75209457, z: 0}
+    m_Extent: {x: 0.049631346, y: 0.07763672, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!1 &8043876364719690242
@@ -2223,7 +2223,7 @@ GameObject:
   - component: {fileID: 2141755422917652528}
   - component: {fileID: 8963722385563592534}
   - component: {fileID: 4430561191556294866}
-  - component: {fileID: 3017739018103221411}
+  - component: {fileID: 1234171445}
   m_Layer: 9
   m_Name: GraveKeeper
   m_TagString: Untagged
@@ -2329,9 +2329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugAction: 0
   BaseHP: 10
   _healthBar: {fileID: 1734998702368630548}
+  debugAction: 0
   BaseCrit: 0
   BaseLD: 0
   HoldPosition: 0
@@ -2342,12 +2342,13 @@ MonoBehaviour:
   OwnedFaction: 1
   TargetFaction: 0
   UnitClassType: 4
-  _unitstats: {fileID: 0}
-  _animator: {fileID: 0}
+  _unitstats: {fileID: 6807216025683000316}
+  _animator: {fileID: 8321918886474102696}
   _equippedImage: {fileID: 0}
-  Head: {fileID: 0}
+  Head: {fileID: 2067811395693537267}
   Skill: {fileID: 0}
-  EnemyBehavour: {fileID: 3017739018103221411}
+  EnemyBehavour: {fileID: 3017739018103221411, guid: ba059eefac62fca42880aef09fd1bac1,
+    type: 3}
 --- !u!114 &6807216025683000316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,7 +2366,7 @@ MonoBehaviour:
   controller: {fileID: 8963722385563592534}
   _rotatingPart: {fileID: 4430252256616907549}
   FlipOnY: 1
-  _animator: {fileID: 0}
+  _animator: {fileID: 8321918886474102696}
   runningSpeed: 1
   RepathRate: 1
   MoveNextDist: 1
@@ -2502,7 +2503,7 @@ MonoBehaviour:
   uniqueID: 2086142600264122735
   updateError: 1
   checkTime: 1
---- !u!114 &3017739018103221411
+--- !u!114 &1234171445
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2511,26 +2512,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 8043876364719690242}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 630327353d205eb448da9e14fac03dc0, type: 3}
+  m_Script: {fileID: 11500000, guid: e1587a831b42d2b4cbcf5b3cb6689086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: GraveKeeper
-  SearchRange: 1
-  HP: 50
-  Armor: 2
-  Damage: 5
+  HP: 10
+  Armor: 0
+  Damage: 1
   AP: 0
   heightDelta: 0
   AttackSoundVariations: 1
-  MoveSpeed: 0.6
-  AttackSpeed: 1
-  range: 0.3
-  ProjectileImage: null
-  ProjectileSound: null
-  ImpactSound: Swing
-  DeathSound: panzeeDeath1
+  MoveSpeed: 0
+  AttackSpeed: 0
+  range: 0
+  ProjectileSound: 
+  ImpactSound: 
+  DeathSound: 
   _unitCombat: {fileID: 292843425879703626}
   _unitStats: {fileID: 6807216025683000316}
+  _animator: {fileID: 8321918886474102696}
+  tombstoneUnitCombat: {fileID: 0}
+  _skillLocator: {fileID: 0}
 --- !u!1 &9101941209731029668
 GameObject:
   m_ObjectHideFlags: 0

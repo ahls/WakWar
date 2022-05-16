@@ -1331,8 +1331,11 @@ GameObject:
   - component: {fileID: 7225797426657462201}
   - component: {fileID: 4344950230771305123}
   - component: {fileID: 3875285444853921739}
-  - component: {fileID: 549415761910519137}
+  - component: {fileID: 6363457563559008328}
   - component: {fileID: 8252109871089551390}
+  - component: {fileID: 569977047875687971}
+  - component: {fileID: 5259528444353523534}
+  - component: {fileID: 4886783877680574172}
   - component: {fileID: 3565577381062980783}
   - component: {fileID: 3994128196793667038}
   - component: {fileID: 1718074191863204450}
@@ -1416,7 +1419,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &549415761910519137
+--- !u!114 &6363457563559008328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1425,28 +1428,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5900826945032943484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f1e2c98319bb2446816ec5c5c410fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugAction: 0
-  BaseHP: 10
-  _healthBar: {fileID: 3964886467147534754}
-  BaseCrit: 0
-  BaseLD: 0
-  HoldPosition: 0
-  AttackTarget: {fileID: 0}
-  SeekTarget: 0
-  SearchRadius: 1
-  MaxStrayDistance: 1
-  OwnedFaction: 1
-  TargetFaction: 0
-  UnitClassType: 4
-  _unitstats: {fileID: 8252109871089551390}
-  _animator: {fileID: 0}
-  _equippedImage: {fileID: 2989731452029694304}
-  Head: {fileID: 6023770227881158884}
-  Skill: {fileID: 0}
-  EnemyBehavour: {fileID: 0}
+  unitState: 0
+  unitCombat: {fileID: 569977047875687971}
+  unitStats: {fileID: 5259528444353523534}
+  healthSystem: {fileID: 4886783877680574172}
+  animator: {fileID: 4344950230771305123}
+  Head: {fileID: 6663394092595430671}
+  panzeeBehavior: {fileID: 8252109871089551390}
+  holdPosition: 0
 --- !u!114 &8252109871089551390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,18 +1448,81 @@ MonoBehaviour:
   m_GameObject: {fileID: 5900826945032943484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
+  m_Script: {fileID: 11500000, guid: f047c69d13d96a64eb8a2c8502dd61c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uc: {fileID: 569977047875687971}
+  unitController: {fileID: 0}
+  UnitClassType: 4
+  weaponIndex: 0
+  _equippedImage: {fileID: 2989731452029694304}
+  Skill: {fileID: 0}
+--- !u!114 &569977047875687971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074c30e140d9e3142a392344a2d3d535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitController: {fileID: 0}
+  BaseCrit: 0
+  BaseLD: 0
+  TotalCrit: 0
+  TotalLD: 0
+  attackTarget: {fileID: 0}
+  _soundVariation: 1
+  _attackAudio: 
+  _impactAudio: 
+  _heightDelta: 0
+  _torque: 0
+  _impactEffect: 
+  TargetFaction: 0
+--- !u!114 &5259528444353523534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0292ea1d28ba49ba4d22e323bc5cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitController: {fileID: 6363457563559008328}
   _selectionCircle: {fileID: 3964886468405007638}
   _playerNameText: {fileID: 3964886468389457795}
   controller: {fileID: 1718074191863204450}
   _rotatingPart: {fileID: 8363145969454056403}
   FlipOnY: 1
-  _animator: {fileID: 0}
-  runningSpeed: 2
+  _animator: {fileID: 4344950230771305123}
+  runningSpeed: 0.75
   RepathRate: 1
   MoveNextDist: 1
+--- !u!114 &4886783877680574172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5900826945032943484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e98b383581615e459eb9c000d648c41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitController: {fileID: 0}
+  BaseHP: 10
+  _healthCurrent: 0
+  _healthInversed: 0
+  OwnedFaction: 0
+  _healthBar: {fileID: 3964886467147534754}
+  panzeeBehavior: {fileID: 8252109871089551390}
 --- !u!50 &3565577381062980783
 Rigidbody2D:
   serializedVersion: 4

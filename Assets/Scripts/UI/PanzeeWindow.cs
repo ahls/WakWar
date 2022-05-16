@@ -21,7 +21,7 @@ public class PanzeeWindow : UIPopup
     }
 
 
-    public void addToList(string name, GameObject unit, ClassType unitClass)
+    public panzeeInventory addToList(string name, GameObject unit, ClassType unitClass)
     {
         Transform tempParent;
         switch (unitClass)
@@ -39,11 +39,12 @@ public class PanzeeWindow : UIPopup
                 contentCounter[2]++;
                 break;
             default:
-                return;
+                return null;
         }
         contentBoxResize();
         GameObject newSlot = Global.ObjectManager.SpawnObject(slotPrefab.name);
         newSlot.GetComponent<panzeeInventory>().Setup(name,unit,tempParent);
+        return newSlot.GetComponent<panzeeInventory>();
     }
 
 

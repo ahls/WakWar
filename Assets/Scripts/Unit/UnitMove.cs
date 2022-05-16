@@ -5,10 +5,11 @@ using Pathfinding;
 using Pathfinding.RVO;
 using System.Collections.Generic;
 
-public class UnitStats : MonoBehaviour
+public class UnitMove : MonoBehaviour
 {
     #region 변수
-    private UnitCombat _unitCombat;
+
+    public UnitController unitController;
 
     //선택관련
     private bool _selectable = false;
@@ -38,7 +39,6 @@ public class UnitStats : MonoBehaviour
     //그래픽 관련
     [SerializeField] private Transform _rotatingPart;
     public bool FlipOnY = true;
-    [SerializeField]private Animator _animator;
     public float runningSpeed = 0.75f;//애니메이션 재생 속도 
 
     //예시 변수
@@ -57,8 +57,6 @@ public class UnitStats : MonoBehaviour
 
     void Awake()
     {
-        if(_animator == null) _animator = GetComponent<Animator>();
-        _unitCombat = GetComponent<UnitCombat>();
         _rigid = GetComponent<Rigidbody2D>();
         _seeker = GetComponent<Seeker>();
 
@@ -89,7 +87,7 @@ public class UnitStats : MonoBehaviour
         _selectable = true;
         _selectionCircle.SetActive(false);
         _playerNameText.text = playerName;
-        GetComponent<UnitCombat>().OwnedFaction = OwnedFaction;
+        GetComponent<UnitController>().healthSystem.OwnedFaction = OwnedFaction;
     }
 
     /// <summary>
@@ -99,7 +97,7 @@ public class UnitStats : MonoBehaviour
     /// <param name="removeCurrentTarget"></param>
     public void MoveToTarget(Vector2 target, bool removeCurrentTarget = true)
     {
-        if (_unitCombat.IsDead)
+        if (unitController.healthSystem.IsDead)
         {
             return;
         }
@@ -108,16 +106,16 @@ public class UnitStats : MonoBehaviour
         controller.SetTarget(target, 0.5f, 0.5f);
 
         IsMoving = true;
-        _unitCombat.ActionStat = UnitCombat.UnitState.Move;
+        unitController.unitState = UnitController.UnitState.Move;
 
         if (removeCurrentTarget)
         {
-            _unitCombat.AttackTarget = null;
+            unitController.unitCombat.attackTarget = null;
         }
 
         //애니메이션 부분
-        _animator.SetBool("Move", true);
-        _animator.speed = runningSpeed;
+        unitController.animator.SetBool("Move", true);
+        unitController.animator.speed = runningSpeed;
 
 
         if (controller.layer == RVOLayer.Ally)
@@ -139,7 +137,7 @@ public class UnitStats : MonoBehaviour
     public void StopMoving()
     {
         IsMoving = false;
-        _animator.SetBool("Move", false);
+        unitController.animator.SetBool("Move", false);
         ResetTarget();
         //Debug.Log(controller);
         if (controller.layer == RVOLayer.MovingAlly)
@@ -172,7 +170,7 @@ public class UnitStats : MonoBehaviour
 
     private void Move()
     {
-        if (_unitCombat.IsDead)
+        if (unitController.healthSystem.IsDead)
         {
             return;
         }
@@ -347,5 +345,11 @@ public class UnitStats : MonoBehaviour
     {
         MoveToTarget(this.transform.position);
         controller.enabled = false;
+    }
+    public void OnUnitDeath()
+    {
+        DisableMovement();
+        SetSelectionCircleState(false);
+        Selectable = false;
     }
 }

@@ -81,7 +81,7 @@ public class ProgressManager : MonoBehaviour
     private void StartCombat()
     {//AI 및 조작 작동
         IngameManager.UnitManager.ControlOn = true;
-        UnitCombat.AIenabled = true;
+        EnemyBehaviour.EnemyAIenabled = true;
         Global.UIManager.ToggleMenu(false);
     }
 
@@ -93,7 +93,7 @@ public class ProgressManager : MonoBehaviour
     {//AI 및 조작 종료
         Debug.Log("End of Combat sequence called");
         IngameManager.UnitManager.ControlOn = false;
-        UnitCombat.AIenabled = false;
+        EnemyBehaviour.EnemyAIenabled = false;
         yield return new WaitForSeconds(1);
         Global.UIManager.ToggleMenu(true);
         Debug.Log("Next sequence is being called from the EndCombat");

@@ -12,9 +12,10 @@ public class AudioPlayer : MonoBehaviour
     /// </summary>
     /// <param name="soundName"></param>
     /// <param name="duration"></param>
-    public void init(string soundName, bool loop = false,float duration = -1, bool randomPitch = false)
+    public void init(string soundName,AudioType audioType, bool loop = false,float duration = -1, bool randomPitch = false)
     {
         _audioSource.clip = Global.ResourceManager.LoadAudio(soundName);
+        _audioSource.volume = Global.AudioManager.volume[audioType];
         _audioSource.loop = loop;
         if(randomPitch)
         {
@@ -42,6 +43,20 @@ public class AudioPlayer : MonoBehaviour
         {
             StartCoroutine(DelayedPooling(duration, loop));
         }
+    }
+    public void initLoop(string soundName)
+    {
+        _audioSource.clip = Global.ResourceManager.LoadAudio(soundName);
+        _audioSource.loop = true;
+        _audioSource.Play();
+    }
+    public void SetVolume(float value)
+    {
+        _audioSource.volume = value;
+    }
+    public void SetPitch(float value)
+    {
+        _audioSource.pitch = value;
     }
     IEnumerator DelayedPooling(float time, bool wasLoop)
     {

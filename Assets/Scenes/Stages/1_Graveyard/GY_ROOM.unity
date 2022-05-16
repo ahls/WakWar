@@ -603,13 +603,15 @@ GameObject:
   - component: {fileID: 374732138}
   - component: {fileID: 374732137}
   - component: {fileID: 374732136}
+  - component: {fileID: 374732130}
+  - component: {fileID: 374732129}
+  - component: {fileID: 374732142}
+  - component: {fileID: 374732141}
   - component: {fileID: 374732135}
   - component: {fileID: 374732134}
   - component: {fileID: 374732133}
   - component: {fileID: 374732132}
   - component: {fileID: 374732131}
-  - component: {fileID: 374732130}
-  - component: {fileID: 374732129}
   m_Layer: 10
   m_Name: wakgood
   m_TagString: Untagged
@@ -638,19 +640,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 374732128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f145a1398c73c4b4aac0de3953b4fe31, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e98b383581615e459eb9c000d648c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanControl: 1
-  range: 0.1
-  AOE: 0.01
-  projSpeed: 10
-  ms: 0.005
-  AS: 0
-  hp: 500
-  dmg: 1
-  AP: 0
-  weaponID: 0
+  unitController: {fileID: 0}
+  BaseHP: 10
+  _healthCurrent: 0
+  _healthInversed: 0
+  OwnedFaction: 0
+  _healthBar: {fileID: 346859918}
+  panzeeBehavior: {fileID: 374732142}
 --- !u!58 &374732131
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -760,18 +759,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 374732128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b190bc1029655642897a109204ea007, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f1e2c98319bb2446816ec5c5c410fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectionCircle: {fileID: 961889758}
-  _playerNameText: {fileID: 754845076}
-  controller: {fileID: 374732133}
-  _rotatingPart: {fileID: 637137991}
-  FlipOnY: 1
-  _animator: {fileID: 0}
-  runningSpeed: 1.5
-  RepathRate: 1
-  MoveNextDist: 1
+  unitState: 0
+  unitCombat: {fileID: 374732141}
+  unitStats: {fileID: 374732137}
+  healthSystem: {fileID: 374732130}
+  animator: {fileID: 374732139}
+  Head: {fileID: 1763502141}
+  panzeeBehavior: {fileID: 374732142}
+  holdPosition: 0
 --- !u!114 &374732137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,22 +779,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 374732128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7308309f79c11b04b9c74f0b43b468fc, type: 3}
+  m_Script: {fileID: 11500000, guid: e9d0292ea1d28ba49ba4d22e323bc5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugAction: 0
-  _healthBar: {fileID: 346859918}
-  AttackTarget: {fileID: 0}
-  SeekTarget: 0
-  OwnedFaction: 0
-  TargetFaction: 1
-  UnitClassType: 4
-  _unitstats: {fileID: 374732136}
-  _animator: {fileID: 374732139}
-  _equippedImage: {fileID: 307077044}
-  Head: {fileID: 241815370}
-  Skill: {fileID: 0}
-  EnemyBehavour: {fileID: 0}
+  unitController: {fileID: 374732136}
+  _selectionCircle: {fileID: 961889758}
+  _playerNameText: {fileID: 754845076}
+  controller: {fileID: 374732133}
+  _rotatingPart: {fileID: 637137991}
+  FlipOnY: 1
+  runningSpeed: 0.75
+  RepathRate: 1
+  MoveNextDist: 1
 --- !u!114 &374732138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -868,6 +862,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &374732141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374732128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074c30e140d9e3142a392344a2d3d535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitController: {fileID: 0}
+  BaseCrit: 0
+  BaseLD: 0
+  TotalCrit: 0
+  TotalLD: 0
+  attackTarget: {fileID: 0}
+  _soundVariation: 1
+  _attackAudio: 
+  _impactAudio: 
+  _heightDelta: 0
+  _torque: 0
+  _impactEffect: 
+  TargetFaction: 0
+--- !u!114 &374732142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 374732128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f047c69d13d96a64eb8a2c8502dd61c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uc: {fileID: 374732141}
+  unitController: {fileID: 0}
+  UnitClassType: 4
+  weaponIndex: 0
+  _equippedImage: {fileID: 307077044}
+  Skill: {fileID: 0}
 --- !u!1 &376165987
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +983,7 @@ GameObject:
   - component: {fileID: 433743185}
   - component: {fileID: 433743186}
   m_Layer: 0
-  m_Name: left hand
+  m_Name: hand1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1939,7 +1976,7 @@ GameObject:
   - component: {fileID: 951032140}
   - component: {fileID: 951032141}
   m_Layer: 0
-  m_Name: right hand
+  m_Name: hand2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

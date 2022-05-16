@@ -18,7 +18,7 @@ public class StageManager
         }
         foreach(var panzee in IngameManager.UnitManager.AllPlayerUnits)
         {
-            switch (panzee.GetComponent<UnitCombat>().GetWeaponType())
+            switch (panzee.GetComponent<PanzeeBehaviour>().GetWeaponType())
             {
                 case WeaponType.Sword:
                     panzee.transform.position = _unitSpawnLocations.Sword.position;

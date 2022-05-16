@@ -33,7 +33,7 @@ public class WakWindow : UIPopup
     }
     public void SetItemSlot()
     {
-        _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<UnitCombat>();
+        _itemSlot.assgiendUnit = IngameManager.WakgoodBehaviour.GetComponent<PanzeeBehaviour>();
     }
     public override void SetInfo()
     {

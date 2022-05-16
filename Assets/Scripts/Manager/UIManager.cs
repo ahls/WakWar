@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _readyButton;
     [SerializeField] private GameObject _gameOverPanel;
     public SceneTransition SceneTransition;
+    public Image imageOnScreen;
     private GameObject _notifyText;
     private GameObject _notifyWindow;
     public DialogueDisplay DialogueDisplay;
@@ -21,7 +22,18 @@ public class UIManager : MonoBehaviour
         UIDraggable.SetupDraggableWindow(_canvas);
         //_notifyText = Global.ObjectManager.SpawnObject("NotifyText");
     }
-
+    public void DisplayImage(string imagePath)
+    {
+        if(imagePath == "off")
+        {
+            imageOnScreen.gameObject.SetActive(false);
+        }
+        else
+        {
+            imageOnScreen.sprite = Global.ResourceManager.LoadTexture(imagePath);
+            imageOnScreen.gameObject.SetActive(true);
+        }
+    }
     public void PushNotiMsg(string text, float lifeTime)
     {
         var notiMsgObject = Global.ObjectManager.SpawnObject("NotifyText", true);

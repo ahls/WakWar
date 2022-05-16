@@ -17,7 +17,7 @@ public abstract class SkillBase : MonoBehaviour
     {
         TotalCD = BaseCD * skillHasteAmount;
     }
-    public abstract void UseSkill(UnitCombat caster);
-    public abstract void SkillEffect(UnitCombat caster);
+    public abstract void UseSkill(UnitController caster);
+    public abstract void SkillEffect(UnitController caster);
     protected abstract void ForceStop();
 }

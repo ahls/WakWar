@@ -23,13 +23,13 @@ public class panzeeInventory : MonoBehaviour
         _stats = _statDisplay.text.ToCharArray();
     }
 
-    public void Setup(string name, GameObject gameObject, Transform parent)
+    public void Setup(string name, GameObject unit, Transform parent)
     {
         _name.text = name;
-        _unit = gameObject;
+        _unit = unit;
         transform.SetParent(parent);
         transform.localScale = Vector3.one;
-        _itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<UnitCombat>();
+        _itemSlot.GetComponent<Item_Slot>().assgiendUnit = _unit.GetComponent<PanzeeBehaviour>();
     }
     /// <param name="one_or_zero"></param>
     public void Collapse(bool collapsing)

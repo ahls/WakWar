@@ -58,14 +58,14 @@ public class Parasite_Behaviour : MonoBehaviour
         foreach(var unit in unitsWithin)
         {
             if( unit.transform != transform &&
-                unit.GetComponent<UnitCombat>()?.OwnedFaction == Faction.Player)
+                unit.GetComponent<HealthSystem>()?.OwnedFaction == Faction.Player)
             {
                 GameObject effectGO = Global.ObjectManager.SpawnObject("Parasite_Attachment");
-                UnitCombat uc = unit.GetComponent<UnitCombat>();
-                effectGO.transform.position = uc.Head.position + new Vector3(0, 0.1f);
-                effectGO.transform.SetParent(uc.Head);
+                UnitCombatNew uc = unit.GetComponent<UnitCombatNew>();
+                effectGO.transform.position = uc.unitController.Head.position + new Vector3(0, 0.1f);
+                effectGO.transform.SetParent(uc.unitController.Head);
                 
-                uc.ChangeFaction(Faction.Enemy);
+                uc.unitController.ChangeFaction(Faction.Enemy);
                 StartCoroutine(Disinfect(uc));
                 _bone.SetActive(false);
                 transform.position = new Vector2(11, 11);
@@ -73,16 +73,16 @@ public class Parasite_Behaviour : MonoBehaviour
             }
         }
     }
-    private IEnumerator Disinfect(UnitCombat uc)
+    private IEnumerator Disinfect(UnitCombatNew uc)
     {
         yield return new WaitForSeconds(INFECT_DURATION);
 
-        uc.ChangeFaction(Faction.Player);
-        GetComponent<UnitCombat>().Death();
+        uc.unitController.ChangeFaction(Faction.Player);
+        GetComponent<HealthSystem>().Death();
     }
     public void jump()
     {
-        _jumpDirection = ((Vector2)(GetComponent<UnitCombat>().AttackTarget.position - transform.position)).normalized * INIT_HORIZONTAL_FORCE;
+        _jumpDirection = ((Vector2)(GetComponent<UnitCombatNew>().attackTarget.position - transform.position)).normalized * INIT_HORIZONTAL_FORCE;
         _jumping = true;
         _currentVelocity = INIT_VERTICAL_FORCE;
         _height =0.01f;

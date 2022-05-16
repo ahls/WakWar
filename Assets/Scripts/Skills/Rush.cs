@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Rush : SkillBase
 {
+    private static float[] SKILL_COEFFICIENT = { 0.3f, 0.5f, 0.75f, 0.75f };
     private const float SKILL_DURATION = 5;
-    private UnitCombat _caster;
+    private UnitController _caster;
     private float _bonus = 0;
     private const float RADIUS = 0.7f;
     protected override void ForceStop() { }//단발성 스킬이라 필요 없음
 
-    public override void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitController caster)
     {
         if (Time.time > _timeReady)
         {
@@ -28,39 +29,23 @@ public class Rush : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    public override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitController caster)
     {
         _caster = caster;
         GameObject effect = Global.ObjectManager.SpawnObject("RushEffect");
         effect.transform.position = caster.transform.position;
         effect.transform.SetParent(caster.transform);
-        switch (caster.GetItemRank())
-        {
-            case 0:
-                _bonus = caster.TotalAS * 0.3f;
-                break;
-            case 1:
-                _bonus = caster.TotalAS * 0.5f;
-                break;
-            case 2:
-                _bonus = caster.TotalAS * 0.75f;
-                break;
-            case 3:
-                _bonus = caster.TotalAS * 0.75f;
-                break;
-            default:
-                break;
-        }
-        caster.BaseAS += _bonus;
-        _caster.UpdateStats();
+        _bonus = SKILL_COEFFICIENT[caster.panzeeBehavior.GetItemRank()] * caster.unitCombat.TotalAS;
+        caster.unitCombat.BaseAS += _bonus;
+        _caster.panzeeBehavior.UpdateStats();
         Global.AudioManager.PlayOnce("RushSound");
         StartCoroutine(Effect());
     }
     IEnumerator Effect()
     {
         yield return new WaitForSeconds(SKILL_DURATION);
-        _caster.BaseAS -= _bonus;
-        _caster.UpdateStats();
+        _caster.unitCombat.BaseAS -= _bonus;
+        _caster.panzeeBehavior.UpdateStats();
     }
 
 }

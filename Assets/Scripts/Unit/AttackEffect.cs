@@ -11,7 +11,7 @@ public class AttackEffect : MonoBehaviour
     private float _aoe;
     private Vector3 _destination;
     private Faction _targetFaction;
-    private UnitCombat _attacker;
+    private UnitCombatNew _attacker;
     private int _lifeTime;//착탄지점에 도착했는지 여부를 검사할때 쓰일거
     [SerializeField] private Rigidbody2D _rigidBody;
 
@@ -34,7 +34,7 @@ public class AttackEffect : MonoBehaviour
     /// </summary>
     /// <param name="attacker"></param>
     /// <param name="destination"></param>
-    public void Setup(UnitCombat attacker,int damage, Vector3 destination)
+    public void Setup(UnitCombatNew attacker,int damage, Vector3 destination)
     {
         _impactAudio = attacker.GetImpactSound();
         _attacker = attacker;
@@ -44,6 +44,12 @@ public class AttackEffect : MonoBehaviour
                 attacker.AttackImage, 
                 attacker.ProjectileSpeed, 
                 destination, attacker.TargetFaction);
+    }
+    public void SetupWithFixedAirtime(int dmg, float aoe, int ap, Sprite projImage, float airTime, Vector3 destination, Faction targetFaction)
+    {
+        float distanceBetweenPoints = (transform.position - destination).magnitude;
+        float distPerFrame = distanceBetweenPoints /  airTime;
+        Setup(dmg, aoe, ap, projImage, distPerFrame, destination, targetFaction);
     }
     public void Setup(int dmg, float aoe,int ap,Sprite projImage,float projSpeed, Vector3 destination,Faction targetFaction)
     {
@@ -76,6 +82,16 @@ public class AttackEffect : MonoBehaviour
                 _impactAudio = "null";
             }
             ResetAdditionalProperties();
+            if(transform.childCount > 0 )
+            {
+                if(transform.GetChild(0).TryGetComponent<Effect>(out Effect attachedEffect))
+                {
+                   
+                Debug.Log("attached effect is being destroyed");
+                    attachedEffect.transform.parent = null;
+                }
+                
+            }
             Global.ObjectManager.ReleaseObject(Weapons.attackPrefab, this.gameObject);
             _lifeTime = -1;
         }
@@ -105,10 +121,10 @@ public class AttackEffect : MonoBehaviour
         Collider2D[] unitsInRange = Physics2D.OverlapCircleAll(_destination, _aoe);
         foreach (var target in unitsInRange)
         {
-            UnitCombat targetCombat = target.GetComponent<UnitCombat>();
-            if (targetCombat != null)
+            HealthSystem targetHealth = target.GetComponent<HealthSystem>();
+            if (targetHealth != null)
             {
-                if (_targetFaction == targetCombat.OwnedFaction || _targetFaction == Faction.Both)
+                if (_targetFaction == targetHealth.OwnedFaction || _targetFaction == Faction.Both)
                 {
                     //Debug.Log(_attackerInfo.gameObject.name + " dealt damage to " + targetCombat.gameObject.name + _damage);
 
@@ -116,13 +132,13 @@ public class AttackEffect : MonoBehaviour
                     {//크리티컬 확률이 있으면 확인
                         if (Random.Range(0, 1) >= _critChance)
                         {
-                            targetCombat.TakeDamage((int)(_damage * _critMult), _AP);
+                            targetHealth.TakeDamage((int)(_damage * _critMult), _AP);
                             LifeSteal(_critMult * _lifeDrain);
                         }
                     }
                     else
                     {
-                        targetCombat.TakeDamage(_damage, _AP);
+                        targetHealth.TakeDamage(_damage, _AP);
                         LifeSteal(_lifeDrain);
                     }
                 }
@@ -134,10 +150,10 @@ public class AttackEffect : MonoBehaviour
         Collider2D[] unitsInRange = Physics2D.OverlapCircleAll(_destination, _damage*AGGRO_RANGE_CONSTANCE + AGGRO_RANGE_MINIMUM);
         foreach (var target in unitsInRange)
         {
-            UnitCombat targetCombat = target.GetComponent<UnitCombat>();
-            if (targetCombat != null && targetCombat.EnemyBehavour != null)
+            EnemyBehaviour targetCombat = target.GetComponent<EnemyBehaviour>();
+            if (targetCombat != null )
             {
-                targetCombat.EnemyBehavour.AggroChange(256);
+                targetCombat.AggroChange(256);
             }
         }
     }
@@ -158,7 +174,7 @@ public class AttackEffect : MonoBehaviour
     {
         if(_lifeDrain > 0)
         {
-            _attacker.TakeDamage((int)(-_damage * drainAmount));
+            _attacker.unitController.healthSystem.TakeDamage((int)(-_damage * drainAmount));
         }
     }
 
@@ -196,7 +212,7 @@ public class AttackEffect : MonoBehaviour
     /// <param name="multi"></param>
     /// <param name="lifeDrain"></param>
     /// <param name="attacker"></param>
-    public void AddHitEffect(float chance, float multi, float lifeDrain,UnitCombat attacker = null)
+    public void AddHitEffect(float chance, float multi, float lifeDrain,UnitCombatNew attacker = null)
     {
         _critChance = chance;
         _critMult = multi;

@@ -9,7 +9,7 @@ public class Bladestorm : SkillBase
     private int _durationTimer = -1;
     private int _damage;
     private Transform _caster;
-    public override void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitController caster)
     {
         print(this.name);
         if (Time.time > _timeReady)
@@ -31,13 +31,13 @@ public class Bladestorm : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="damage"></param>
-    public override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitController caster)
     {
 
         _durationTimer = SKILL_DURATION;
         _caster = caster.transform;
-        _damage = caster.TotalDamage - (2-caster.GetItemRank());
-        caster.PlaySkillAnim();
+        _damage = caster.unitCombat.TotalDamage - (2-caster.panzeeBehavior.GetItemRank());
+        caster.panzeeBehavior.PlaySkillAnim();
         Global.AudioManager.PlayLoop("BladeStormLoop", 3);
         GameObject effect = Global.ObjectManager.SpawnObject("bladestorm");
         effect.transform.parent = caster.transform;
@@ -54,7 +54,7 @@ public class Bladestorm : SkillBase
             Global.AudioManager.PlayOnce("Cut",true);
             foreach (var hitUnit in hitByAttack)
             {
-                UnitCombat hitCombat = hitUnit.GetComponent<UnitCombat>();
+                HealthSystem hitCombat = hitUnit.GetComponent<HealthSystem>();
                 if(hitCombat!=null && hitCombat.OwnedFaction == Faction.Enemy)
                 {
                     hitCombat.TakeDamage(_damage);
@@ -68,7 +68,7 @@ public class Bladestorm : SkillBase
         }
         else if(_durationTimer == 0)
         {//스크립트 비활성화
-            _caster.GetComponent<UnitCombat>().PlaySkillAnim();
+            _caster.GetComponent<PanzeeBehaviour>().PlaySkillAnim();
             Debug.Log("Skill is Ending");
             _durationTimer = -1;
         }

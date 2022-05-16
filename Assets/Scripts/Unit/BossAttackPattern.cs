@@ -27,10 +27,10 @@ public class BossAttackPattern : MonoBehaviour
         Collider2D [] unitsInRange = Physics2D.OverlapCircleAll(transform.position, AOE);
         foreach(Collider2D unit in unitsInRange)
         {
-            UnitCombat selectedUnitCombat = unit.GetComponent<UnitCombat>();
+            HealthSystem selectedUnitCombat = unit.GetComponent<HealthSystem>();
             if (selectedUnitCombat != null)
             {
-                if (selectedUnitCombat.TargetFaction != TargetFaction)
+                if (selectedUnitCombat.OwnedFaction == TargetFaction)
                 {
                     selectedUnitCombat.TakeDamage(Damage);
                 }

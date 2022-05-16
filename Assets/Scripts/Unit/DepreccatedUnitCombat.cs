@@ -5,8 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum Faction { Player, Enemy, Both }//유닛 컴뱃에 부여해서 피아식별
-
-public class UnitCombat : MonoBehaviour
+/*
+public class DepreccatedUnitCombat : MonoBehaviour
 {
     public enum UnitState
     {
@@ -37,29 +37,33 @@ public class UnitCombat : MonoBehaviour
     }
 
 
-    //체력
-    public int BaseHP = 10;
-    public int HealthMax { get; set; } 
-    private float _healthInversed;
-    public bool IsDead { get; set; } = false;
-    public bool CanBeKilled { get; set; } = true;
-    private int _healthCurrent;
-    [SerializeField] private Slider _healthBar;
-    private int _stunTimer = 0;
+    ////체력
+    //public int BaseHP = 10;
+    //public int HealthMax { get; set; } 
+    //private float _healthInversed;
+    //public bool IsDead { get; set; } = false;
+    //public bool CanBeKilled { get; set; } = true;
+    //private int _healthCurrent;
+    //[SerializeField] private Slider _healthBar;
+    //private int _stunTimer = 0;
 
-    //공격관련
-    private const float RANDOM_ATTACK_DELAY_RANGE = 0.1f;
-    public int BaseDamage { get; set; }
-    public float BaseRange { get; set; }
-    public float BaseAS { get; set; } // 초당 공격
-    public float BaseAOE { get; set; }
-    public int BaseAP { get; set; }
 
-    public float BaseCrit = 0f;
-    public float BaseLD = 0f;//life drain
-    public float CritChance { get; set; } = 0f;
-    public float CritDmg { get; set; } = 1.5f;
-    public float LifeSteal { get; set; } = 0f;
+    ////방어력
+    //public int BaseArmor { get; set; }
+
+    ////공격관련
+    //private const float RANDOM_ATTACK_DELAY_RANGE = 0.1f;
+    //public int BaseDamage { get; set; }
+    //public float BaseRange { get; set; }
+    //public float BaseAS { get; set; } // 초당 공격
+    //public float BaseAOE { get; set; }
+    //public int BaseAP { get; set; }
+
+    //public float BaseCrit = 0f;
+    //public float BaseLD = 0f;//life drain
+    //public float CritChance { get; set; } = 0f;
+    //public float CritDmg { get; set; } = 1.5f;
+    //public float LifeSteal { get; set; } = 0f;
 
 
     //타겟 관련
@@ -77,9 +81,7 @@ public class UnitCombat : MonoBehaviour
     public float MaxStrayDistance = 1; // 0일경우 계속 따라감.s
     private Vector3 _targetPosition;
 
-
-    //방어력
-    public int BaseArmor { get; set; }
+   
 
 
     //타입
@@ -87,7 +89,7 @@ public class UnitCombat : MonoBehaviour
     public Faction TargetFaction;                       //공격타겟
     [HideInInspector]public ClassType UnitClassType = ClassType.Null;       //클래스 타입
     private int _weaponIndex = 0;                       //무기 번호
-    [SerializeField]private UnitStats _unitstats;
+    [SerializeField]private UnitMove _unitstats;
 
 
 
@@ -101,36 +103,37 @@ public class UnitCombat : MonoBehaviour
     private GameObject _effect;
     private static Vector2 _attackHeight = new Vector2(0, 0.1f);
     private string _impactEffect = null;
+    private GameObject _instrumentEffect = null;
     public Transform Head;
+
 
     //사운드
     private string _attackAudio = string.Empty;
     private string _impactAudio = string.Empty;
     private string _deathSound = string.Empty;
-    private int _soundVariation = 1;
 
     //장비 장착후 스탯
-    public int TotalDamage { get; set; }
-    public float TotalRange { get; set; }
-    public float TotalAOE { get; set; }
-    public int TotalAP { get; set; }
-    public float ProjectileSpeed { get; set; }
+    //public int TotalDamage { get; set; }
+    //public float TotalRange { get; set; }
+    //public float TotalAOE { get; set; }
+    //public int TotalAP { get; set; }
+    //public float ProjectileSpeed { get; set; }
 
-    public float TotalAS { get; set; }
-    private float _attackTimer = 0; // 0일때 공격 가능
-    public int TotalArmor { get; set; }
+    //public float TotalAS { get; set; }
+    //private float _attackTimer = 0; // 0일때 공격 가능
+    //public int TotalArmor { get; set; }
 
     //스킬관련
-    [HideInInspector]public SkillBase Skill;
 
     public EnemyBehaviour EnemyBehavour = null; //적이 아니라면 null. 있을경우엔 피격시 어그로 레벨 상승
 
     //이벤트
 
+    [HideInInspector]public SkillBase Skill;
     public event UnitCombatEvent OnSkillUse;
     public event UnitCombatEvent OnEachSecondAlive; // 초당 체력회복등에 사용
     public event UnitCombatEvent OnUnequipItem;
-    public delegate void UnitCombatEvent(UnitCombat uc);
+    public delegate void UnitCombatEvent(DepreccatedUnitCombat uc);
     private Coroutine _aliveSecondCoroutine;
     private Coroutine _attackCoroutine;
     public void playerSetup(ClassType inputWeaponType)
@@ -142,7 +145,6 @@ public class UnitCombat : MonoBehaviour
     }
     public void EnemySetup(int HP,int armor, int armorPiercing, int damage, float range,float attackSpeed,Sprite projImage,int heightDelta )
     {
-        HealthMax = HP;
         TotalArmor = armor;
         TotalAP = armorPiercing;
         TotalDamage = damage;
@@ -162,9 +164,7 @@ public class UnitCombat : MonoBehaviour
     #endregion
     private void Start()
     {
-        if(_unitstats == null)_unitstats = GetComponent<UnitStats>();
-        _healthCurrent = HealthMax;
-        _healthBar.maxValue = HealthMax;
+        if(_unitstats == null)_unitstats = GetComponent<UnitMove>();
         HealthBarUpdate();
 
         //모든 유닛이 같은 프레임에 대상을 탐지하는것을 방지
@@ -207,7 +207,7 @@ public class UnitCombat : MonoBehaviour
                 break;
             case UnitState.Move:
                 if(AttackTarget!= null && 
-                   !AttackTarget.GetComponent<UnitCombat>().IsDead &&
+                   !AttackTarget.GetComponent<DepreccatedUnitCombat>().IsDead &&
                    OffsetToTargetBound() <= TotalRange)
                 {
                     _unitstats.StopMoving();
@@ -222,7 +222,7 @@ public class UnitCombat : MonoBehaviour
                 }
                 break;
             case UnitState.Attack:
-                if (AttackTarget == null || AttackTarget.GetComponent<UnitCombat>().IsDead)
+                if (AttackTarget == null || AttackTarget.GetComponent<DepreccatedUnitCombat>().IsDead)
                 {
                     //공격스테이트에서 적이 없음
                     if(SearchInRadius(biggerSearchRadius))
@@ -269,7 +269,7 @@ public class UnitCombat : MonoBehaviour
         if (_attackTimer > 0) return;
         if (ActionStat == UnitState.Attack)
         {
-            if (AttackTarget != null && !AttackTarget.GetComponent<UnitCombat>().IsDead)
+            if (AttackTarget != null && !AttackTarget.GetComponent<DepreccatedUnitCombat>().IsDead)
             {//살아있는 공격대상이 있을경우
 
                 if (debugAction) Debug.Log($"사정거리: {TotalRange} || 대상과의 거리: {OffsetToTargetBound()}");
@@ -327,89 +327,7 @@ public class UnitCombat : MonoBehaviour
             OnEachSecondAlive?.Invoke(this);
         }
     }
-    #region 장비관련
 
-    public void EquipWeapon(int weaponID)
-    {
-        UnEquipWeapon(true);
-        _weaponIndex = weaponID;
-        if (Weapons.DB[_weaponIndex].projImage != "" && Weapons.DB[_weaponIndex].projImage != "null")
-        {
-            AttackImage = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].projImage);
-        }
-        else
-        {
-            _equippedImage.sprite = null;
-        }
-        if (Weapons.DB[_weaponIndex].equipImage != "" && Weapons.DB[_weaponIndex].equipImage != "null")
-        {
-            _equippedImage.sprite = Global.ResourceManager.LoadTexture(Weapons.DB[_weaponIndex].equipImage);
-        }
-        else
-        {
-            _equippedImage.sprite = null;
-        }
-
-        _impactEffect = Weapons.DB[_weaponIndex].impactEffect;
-        ChangeEquipAnimation();
-
-        ChangeSkill();
-
-        //공격 사운드
-        _attackAudio = Weapons.DB[_weaponIndex].projSound;
-        _impactAudio = Weapons.DB[_weaponIndex].impctSound;
-        UpdateStats();
-    }
-
-    /// <summary>
-    /// 장비 애니메이션 변경
-    /// </summary>
-    public void ChangeEquipAnimation()
-    {
-        Debug.Log("this is called");
-        switch (GetWeaponType())
-        {
-            case WeaponType.Shield:
-                _animator.SetTrigger("Shield");
-                break;
-            case WeaponType.Bow:
-                _animator.SetTrigger("Bow");
-                break;
-            case WeaponType.Gun:
-                _animator.SetTrigger("Gun");
-                break;
-            case WeaponType.Instrument:
-                _animator.SetTrigger("Inst");
-                break;
-            default:
-                _animator.SetTrigger("Regular");
-                break;
-        }
-    }
-    public void UnEquipWeapon(bool replacing = false)
-    {
-        OnUnequipItem?.Invoke(this);
-        if (replacing) return;
-        if (_animator != null)
-        {
-            _animator.SetTrigger("Regular");
-        }
-        _equippedImage.sprite = null;
-        switch (UnitClassType)
-        {
-            case ClassType.Warrior:
-            case ClassType.Wak:
-                _weaponIndex = 10;
-                break;
-            case ClassType.Shooter:
-                _weaponIndex = 20;
-                break;
-            case ClassType.Supporter:
-                _weaponIndex = 30;
-                break;
-        }
-        UpdateStats();
-    }
     public void UpdateStats()
     {
         if (_weaponIndex == 0)
@@ -460,87 +378,14 @@ public class UnitCombat : MonoBehaviour
     {
         return Weapons.DB[_weaponIndex].weaponType;
     }
-    #endregion
 
-    #region 공격관련
-    public void Fire()
-    {
-        if (AttackTarget == null) return; // 카이팅 안되게 막는 함수
-        _effect = Global.ObjectManager.SpawnObject(Weapons.attackPrefab);
-        _effect.transform.position = GetComponent<Collider2D>().ClosestPoint(AttackTarget.position) + _attackHeight;
-
-        AttackEffect attackEffectScript = _effect.GetComponent<AttackEffect>();
-        if (_weaponIndex * 0.1 == 10000) // 무기가 검인경우 공격데미지 수정
-        {
-            attackEffectScript.Setup(this, CalculateBerserkDamage(), AttackTarget.position);
-        }
-        else
-        {
-            attackEffectScript.Setup(this, TotalDamage, AttackTarget.position);
-        }
-
-
-        if(_heightDelta < 0)
-        {
-            attackEffectScript.SetAngle(-_heightDelta);
-        }
-        else if (_torque > 0 || _heightDelta > 0)
-        {
-            attackEffectScript.AddTrajectory(_torque, _heightDelta);
-        }
-
-        if (LifeSteal > 0 || CritChance > 0)
-        {
-            attackEffectScript.AddHitEffect(CritChance, CritDmg, LifeSteal);
-        }
-
-        if(_impactEffect != null)
-        {
-            attackEffectScript.AddEffect(_impactEffect);
-        }
-
-        if (_attackAudio != "" )
-        {
-            if (_soundVariation > 1)
-            {
-                Global.AudioManager.PlayOnceAt(_attackAudio+UnityEngine.Random.Range(0,_soundVariation).ToString(), transform.position);
-            }
-            else
-            {
-                Global.AudioManager.PlayOnceAt(_attackAudio, transform.position, true);
-            }
-        }
-    }
-
-    public void Attack()
-    {
-        ResetAttackTimer();
-        UpdatePlaybackSpeed();
-        _animator.SetTrigger("Attack");
-        _unitstats.RotateDirection(AttackTarget.transform.position.x - transform.position.x);
-    }
-
-    private void ResetAttackTimer()
-    {
-        _attackTimer = UnityEngine.Random.Range(0,RANDOM_ATTACK_DELAY_RANGE) + (1 / TotalAS);
-
-    }
-
-    public void UpdatePlaybackSpeed()
-    {
-        _animator.speed = Mathf.Max(TotalAS, 1f);
-    }
+   
     public void AddStun(int numFrames)
     {
         _unitstats.StopMoving();
         ActionStat = UnitState.Stun;
         _stunTimer += numFrames;
     }
-    public string GetImpactSound()
-    {
-        return _impactAudio;
-    }
-    #endregion
 
     #region 탐색 관련
     /// <summary>
@@ -557,7 +402,7 @@ public class UnitCombat : MonoBehaviour
 
         foreach (Collider2D selected in inRange)
         {
-            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            DepreccatedUnitCombat selectedCombat = selected.GetComponent<DepreccatedUnitCombat>();
             if (selectedCombat != null && selectedCombat != this)
             {
                 if (selectedCombat.OwnedFaction == TargetFaction)
@@ -600,7 +445,7 @@ public class UnitCombat : MonoBehaviour
 
         foreach (Collider2D selected in inRange)
         {
-            UnitCombat selectedCombat = selected.GetComponent<UnitCombat>();
+            DepreccatedUnitCombat selectedCombat = selected.GetComponent<DepreccatedUnitCombat>();
             if (selectedCombat != null && selectedCombat != this)
             {
                 if (selectedCombat.OwnedFaction == TargetFaction)
@@ -693,63 +538,62 @@ public class UnitCombat : MonoBehaviour
     /// 방어무시 공격
     /// </summary>
     /// <param name="damageAmount"></param>
-    public void TakeDamage(int damageAmount)
-    {
-        if (IsDead)
-        {
-            return;
-        }
+    //public void TakeDamage(int damageAmount)
+    //{
+    //    if (IsDead)
+    //    {
+    //        return;
+    //    }
 
-        _healthCurrent -= (damageAmount);
-        if(EnemyBehavour != null)        EnemyBehavour.AggroChange(1024); //적이라면 일정시간동안 어그로수준 추가
+    //    _healthCurrent -= (damageAmount);
+    //    if(EnemyBehavour != null)        EnemyBehavour.AggroChange(1024); //적이라면 일정시간동안 어그로수준 추가
 
-        if (_healthCurrent <= 0)
-        {
-            if (CanBeKilled == false)
-            {
-                _healthCurrent = 1;
-            }
-            else
-            {
-                Death();
-            }
-        }
-        HealthBarUpdate();
-    }
-    /// <summary>
-    /// 방어관통 있는 버젼
-    /// </summary>
-    /// <param name="dmg"></param>
-    /// <param name="armorPierce"></param>
-    public void TakeDamage(int dmg, int armorPierce)
-    {
-        if (dmg > 0)
-        {
-            TakeDamage(dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, (dmg-1)));
-        }
-        else if (dmg < 0)
-        {
-            Heal(-dmg);
-        }
+    //    if (_healthCurrent <= 0)
+    //    {
+    //        if (CanBeKilled == false)
+    //        {
+    //            _healthCurrent = 1;
+    //        }
+    //        else
+    //        {
+    //            Death();
+    //        }
+    //    }
+    //    HealthBarUpdate();
+    //}
+    ///// <summary>
+    ///// 방어관통 있는 버젼
+    ///// </summary>
+    ///// <param name="dmg"></param>
+    ///// <param name="armorPierce"></param>
+    //public void TakeDamage(int dmg, int armorPierce)
+    //{
+    //    if (dmg > 0)
+    //    {
+    //        TakeDamage(dmg - Mathf.Clamp(TotalArmor - armorPierce, 0, (dmg-1)));
+    //    }
+    //    else if (dmg < 0)
+    //    {
+    //        Heal(-dmg);
+    //    }
 
-    }
-    public void Heal(int amount, string effect = "HealEffect")
-    {
-        _healthCurrent = Mathf.Min(_healthCurrent + amount, HealthMax);
-        GameObject healEffect = Global.ObjectManager.SpawnObject(effect);
-        healEffect.transform.position = transform.position;
-    }
+    //}
+    //public void Heal(int amount, string effect = "HealEffect")
+    //{
+    //    _healthCurrent = Mathf.Min(_healthCurrent + amount, HealthMax);
+    //    GameObject healEffect = Global.ObjectManager.SpawnObject(effect);
+    //    healEffect.transform.position = transform.position;
+    //}
 
-    private void HealthBarUpdate()
-    {
-        _healthBar.value = _healthCurrent;
-    }
+    //private void HealthBarUpdate()
+    //{
+    //    _healthBar.value = _healthCurrent;
+    //}
 
-    private void HealthBarColor(Color newColor)
-    {
-        _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
-
-    }
+    //private void HealthBarColor(Color newColor)
+    //{
+    //    _healthBar.transform.GetChild(0).GetComponent<Image>().color = newColor;
+    //}
     public void ChangeFaction(Faction toWhichFaction)
     {
         switch (toWhichFaction)
@@ -808,7 +652,9 @@ public class UnitCombat : MonoBehaviour
         {
             Destroy(Skill);
         }
-        GameObject skillObject = Instantiate(Global.ObjectManager.SpawnObject("skillcarrier"), transform);
+        GameObject skillObject = Instantiate(Global.ObjectManager.SpawnObject("skillcarrier"));
+        skillObject.transform.SetParent(transform);
+        skillObject.transform.localPosition = Vector3.zero;
         switch (Weapons.DB[_weaponIndex].weaponType)
         {
             case WeaponType.Axe:
@@ -837,6 +683,7 @@ public class UnitCombat : MonoBehaviour
                 break;
             case WeaponType.Instrument:
                 Skill = skillObject.AddComponent<Finale>();
+                Skill.GetComponent<PolygonCollider2D>().enabled = true;
                 break;
             default:
                 break;
@@ -846,14 +693,6 @@ public class UnitCombat : MonoBehaviour
     {
         Skill.UseSkill(this);
     }
-    private int CalculateBerserkDamage()
-    {
 
-        float maxDmgBonus = 1 + (GetItemRank() + 1) * 0.5f; // 50%, 100% 150% 200% 퍼센트의 추뎀
-        int additionalDmg = Mathf.FloorToInt(maxDmgBonus * (HealthMax - _healthCurrent) * _healthInversed);
-
-        return additionalDmg;
-
-    }
     #endregion
-}
+}*/

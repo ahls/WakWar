@@ -5,10 +5,10 @@ using UnityEngine;
 public class Berserk : SkillBase
 {
     private const float SKILL_DURATION = 4;
-    private UnitCombat _caster;
+    private UnitController _caster;
     protected override void ForceStop() { }//안죽는 스킬이라 상관 없음
 
-    public override void UseSkill(UnitCombat caster)
+    public override void UseSkill(UnitController caster)
     {
         print(this.name);
         if (Time.time > _timeReady)
@@ -24,9 +24,9 @@ public class Berserk : SkillBase
     /// </summary>
     /// <param name="target"></param>
     /// <param name="s"></param>
-    public override void SkillEffect(UnitCombat caster)
+    public override void SkillEffect(UnitController caster)
     {
-        caster.CanBeKilled = false;
+        caster.healthSystem.CanBeKilled = false;
         _caster = caster;
         GameObject effect = Global.ObjectManager.SpawnObject("BerserkEffect");
         effect.transform.position = caster.transform.position;
@@ -37,7 +37,7 @@ public class Berserk : SkillBase
     IEnumerator Effect()
     {
         yield return new WaitForSeconds(SKILL_DURATION);
-        _caster.CanBeKilled = true;
+        _caster.healthSystem.CanBeKilled = true;
    
     }
 

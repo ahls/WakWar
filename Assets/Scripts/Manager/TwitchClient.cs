@@ -26,8 +26,12 @@ public class TwitchClient : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(IngameManager.TwitchClient == null)        IngameManager.instance.SetTwitchClient(this);
 
+        if(IngameManager.TwitchClient == null)        IngameManager.instance.SetTwitchClient(this);
+        else
+        {
+            Destroy(gameObject);
+        }
         //백그라운드에서도 실행하게 해줌
         Application.runInBackground = true;
         //밑에 토큰은 그냥 귀찮아서 냅뒀어요 ㅋㅋㅋ....
@@ -52,7 +56,7 @@ public class TwitchClient : MonoBehaviour
             if (e.WhisperMessage.Message == "!스킬사용")
             {
                 Debug.Log("스킬 사용중");
-                _twitchPlayerDic[userName].GetComponent<UnitCombat>().useSkill();
+                _twitchPlayerDic[userName].GetComponent<PanzeeBehaviour>().useSkill();
             }
             else if (e.WhisperMessage.Message == "!힘")
             {
@@ -127,15 +131,14 @@ public class TwitchClient : MonoBehaviour
         GameObject instance = Instantiate(UnitBase, Vector3.zero, Quaternion.identity);
         _twitchPlayerDic.Add(userName, instance);
 
-        instance.GetComponent<UnitStats>().PlayerUnitInit(userName);
-        instance.GetComponent<UnitCombat>().playerSetup(inputClass);
-        instance.GetComponent<UnitCombat>().UnEquipWeapon();
+        panzeeInventory pi = IngameManager.UIPanzeeWindow.addToList(userName, instance, inputClass);
+        instance.GetComponent<UnitMove>().PlayerUnitInit(userName);
+        instance.GetComponent<PanzeeBehaviour>().setup(pi,inputClass);
         instance.GetComponent<Rigidbody2D>().MovePosition(Vector2.left * 0.01f);
         instance.transform.eulerAngles = new Vector3(0, 180, 0);
 
 
 
-        IngameManager.UIPanzeeWindow.addToList(userName, instance, inputClass);
 
         IngameManager.WakgoodBehaviour.AddPanzeeStat(inputClass, 1);
         IngameManager.UnitManager.AllPlayerUnits.Add(instance);

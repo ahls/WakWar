@@ -34,19 +34,19 @@ public static class EnchantDB
     protected string cursedPrefix = "저주받은 ";
     protected string cursedDesc = "\n마법부여/장착해제 불가능. 최대체력 30% 감소, 판매가격 반감";
     public virtual void Effect() { }
-    public virtual void OnEquip(Item_Drag itemDrag, UnitCombat uc) 
+    public virtual void OnEquip(Item_Drag itemDrag, PanzeeBehaviour pb) 
     {
         if (Cursed)
         {
-            CurseOnEquip(itemDrag, uc);
+            CurseOnEquip(itemDrag, pb);
         }
         else
         {
-            uc.OnUnequipItem += OnUnequipItem;
-            uc.UpdateStats();
+            pb.OnUnequipItem += OnUnequipItem;
+            pb.UpdateStats();
         }
     }
-    public abstract void OnUnequipItem(UnitCombat uc);
+    public abstract void OnUnequipItem(PanzeeBehaviour uc);
     protected bool CursedCheck()
     {
         if (UnityEngine.Random.value <= CURSE_CHANCE)
@@ -57,10 +57,10 @@ public static class EnchantDB
         }
         return false;
     }
-    protected void CurseOnEquip(Item_Drag itemDrag, UnitCombat uc)
+    protected void CurseOnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
         itemDrag.SetDraggable(false);
-        uc.HealthMax /= 3;
+        uc.unitController.healthSystem.HealthMax /= 3;
         uc.UpdateStats();
     }
     
@@ -89,16 +89,16 @@ public class Enchant_Dmg : EnchantBase
             _desc = $"공격력이 {_amount} 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour panzee)
     {
-        uc.BaseDamage += _amount;
-        base.OnEquip(itemDrag, uc);
+        panzee.uc.BaseDamage += _amount;
+        base.OnEquip(itemDrag, panzee);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
         Debug.Log("UNEQUIP IS PROPERLY CALLD");
-        uc.BaseDamage -= _amount;
+        uc.uc.BaseDamage -= _amount;
         uc.UpdateStats();
     }
 }
@@ -127,15 +127,15 @@ public class Enchant_AttackSpeed : EnchantBase
             _desc = $"공격속도가 {_amount} 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.BaseAS += _amount;
+        uc.uc.BaseAS += _amount;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.BaseAS -= _amount;
+        uc.uc.BaseAS -= _amount;
         uc.UpdateStats();
     }
 }
@@ -160,15 +160,15 @@ public class Enchant_HP : EnchantBase
             _desc = $"체력 {_amount} 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.HealthMax += _amount;
+        uc.unitController.healthSystem.HealthMax += _amount;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.HealthMax -= _amount;
+        uc.unitController.healthSystem.HealthMax -= _amount;
         uc.UpdateStats();
     }
 }
@@ -193,15 +193,15 @@ public class Enchant_Armor : EnchantBase
             _desc = $"방어력 {_amount} 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.BaseArmor += _amount;
+        uc.unitController.healthSystem.baseArmor += _amount;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.BaseArmor -= _amount;
+        uc.unitController.healthSystem.baseArmor -= _amount;
         uc.UpdateStats();
     }
 }
@@ -226,15 +226,15 @@ public class Enchant_AP : EnchantBase
             _desc = $"방어관통이 {_amount} 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.BaseAP += _amount;
+        uc.uc.BaseAP += _amount;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.BaseAP -= _amount;
+        uc.uc.BaseAP -= _amount;
         uc.UpdateStats();
     }
 }
@@ -259,15 +259,15 @@ public class Enchant_LifeDrain : EnchantBase
             _desc = $"피해의 {_amount * 100}% 흡혈.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.BaseLD += 0.1f;
+        uc.uc.BaseLD += 0.1f;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.BaseLD -= 0.1f;
+        uc.uc.BaseLD -= 0.1f;
         uc.UpdateStats();
     }
 }
@@ -294,15 +294,15 @@ public class Enchant_Crit : EnchantBase
             _desc = $"치명타 확률 {_amount * 100}% 증가.";
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
-        uc.BaseCrit += _amount;
+        uc.uc.BaseCrit += _amount;
         base.OnEquip(itemDrag, uc);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
-        uc.BaseCrit -= _amount;
+        uc.uc.BaseCrit -= _amount;
         uc.UpdateStats();
     }
 }
@@ -324,18 +324,18 @@ public class Enchant_heal : EnchantBase
             _name = cursedPrefix + _name;
         }
     }
-    public override void OnEquip(Item_Drag itemDrag, UnitCombat uc)
+    public override void OnEquip(Item_Drag itemDrag, PanzeeBehaviour uc)
     {
         uc.OnEachSecondAlive += heal; ;
         base.OnEquip(itemDrag, uc);
     }
 
-    private void heal(UnitCombat uc)
+    private void heal(PanzeeBehaviour uc)
     {
-        uc.Heal(_amount);
+        uc.unitController.healthSystem.Heal(_amount);
     }
 
-    public override void OnUnequipItem(UnitCombat uc)
+    public override void OnUnequipItem(PanzeeBehaviour uc)
     {
         uc.OnEachSecondAlive -= heal;
     }

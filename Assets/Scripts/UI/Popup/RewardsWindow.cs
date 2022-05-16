@@ -17,6 +17,7 @@ public class RewardsWindow : UIPopup
 
     [SerializeField] private GameObject categoryPanel;
     [SerializeField] private GameObject MontyPanel;
+    [SerializeField] private GameObject _exitWarning;
     [SerializeField] private GameObject[] slots;
     [SerializeField] private Text[] rewardText;
 
@@ -152,7 +153,18 @@ public class RewardsWindow : UIPopup
             }
         }
     }
-
+    public void TryClose()
+    {
+        foreach (GameObject slot in slots)
+        {
+            if(slot.transform.childCount > 0)
+            {
+                _exitWarning.SetActive(true);
+                return;
+            }
+        }
+        gameObject.SetActive(false);
+    }
     public void BossRelic(int itemID)
     {
         categoryPanel.SetActive(false);

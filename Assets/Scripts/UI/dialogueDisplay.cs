@@ -27,7 +27,7 @@ public class DialogueDisplay : MonoBehaviour
     public bool LoadNextText()
     {
 
-        if(_dialogIndex == Dialogues.DB[_dialogID].Count)// 백신때문에 몸 상태가 안좋아서 이게 맞는 조건문인지 햇갈립니당..
+        if(_dialogIndex == Dialogues.DB[_dialogID].Count)
         {
             _dialogueActive = false;
             IngameManager.ProgressManager.NextSequence();
@@ -68,6 +68,9 @@ public class DialogueDisplay : MonoBehaviour
                     case "ClearScreen":
                         Global.UIManager.SceneTransition.BlackScreen(namePart == "BlackScreen");
                         break;
+                    case "Image":
+                        Global.UIManager.imageOnScreen.sprite = Global.ResourceManager.LoadTexture(namePart);
+                        break;
                 }
                 _dialogIndex++;
                 return LoadNextText();
@@ -104,7 +107,7 @@ public class DialogueDisplay : MonoBehaviour
 
         Vector2 targetLoc = new Vector2(float.Parse(inputs[1]),float.Parse(inputs[2]));
         GameObject go = GameObject.Find(inputs[0]);
-        UnitStats unitStats = go.GetComponent<UnitStats>();
+        UnitMove unitStats = go.GetComponent<UnitMove>();
         unitStats.MoveToTarget(targetLoc);
     }
     private void UnitPlayAnim()
